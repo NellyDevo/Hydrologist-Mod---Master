@@ -1,0 +1,32 @@
+{
+  "ON_SWAP": {
+    "PROPER_NAME": "On Swap",
+    "NAMES": [
+      "on swap",
+      "on_swap"
+    ],
+    "DESCRIPTION": "Has a special effect when the card is swapped out."
+  },
+  "SWAPPABLE": {
+    "PROPER_NAME": "Swappable",
+    "NAMES": [
+      "swappable"
+    ],
+    "DESCRIPTION": "Is tied to another card and can be freely Swapped between the two."
+  },
+  "TRANSMUTE": {
+    "PROPER_NAME": "Transmute",
+    "NAMES": [
+      "transmute",
+      "transmuted"
+    ],
+    "DESCRIPTION": "Transforms a card in combat into any card available to your current run."
+  },
+  "CORPOREAL": {
+    "PROPER_NAME": "Corporeal",
+    "NAMES": [
+      "corporeal"
+    ],
+    "DESCRIPTION": "Any permanent card that did not start the turn in your hand, draw pile, or discard pile."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "modid": "HydrologistMod",
+  "name": "The Hydrologist",
+  "author_list": ["Johnny Devo"],
+  "description": "Adds a new character: The Hydrologist.",
+  "dependencies": ["basemod"],
+  "credits": "",
+  "version": "${project.version}",
+  "sts_version": "${SlayTheSpire.version}",
+  "mts_version": "${ModTheSpire.version}",
+  "update_json": ""
+}

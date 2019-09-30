@@ -1,0 +1,12 @@
+{
+  "hydrologistmod:InputSettingsScreen": {
+    "TEXT": [
+      "Change \"Swappable\" cards"
+    ]
+  },
+  "hydrologistmod:FlowAction": {
+    "TEXT": [
+      "Choose any number of cards to discard."
+    ]
+  }
+}

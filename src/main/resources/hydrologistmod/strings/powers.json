@@ -1,0 +1,22 @@
+{
+  "hydrologistmod:AqueductsPower": {
+    "NAME": "Aqueducts",
+    "DESCRIPTIONS": ["Whenever you draw an extra card, deal #b", " damage to ALL enemies."]
+  },
+  "hydrologistmod:BranchingCreeksPower": {
+    "NAME": "Branching Creeks",
+    "DESCRIPTIONS": ["Whenever you #yTransmute a card, choose between it and ", " additional card.", " additional cards."]
+  },
+  "hydrologistmod:FlowPower": {
+    "NAME": "Flowing",
+    "DESCRIPTIONS": ["At the start of your next turn, draw #b", " cards."]
+  },
+  "hydrologistmod:HailstormPower": {
+    "NAME": "River Of Time",
+    "DESCRIPTIONS": ["Whenever you play an #yIce card, this enemy takes #b", " damage."]
+  },
+  "hydrologistmod:RiverOfTimePower": {
+    "NAME": "River Of Time",
+    "DESCRIPTIONS": ["Your next #ySwappable card is also played Swapped.", "Your next ", " #ySwappable cards are also played Swapped."]
+  }
+}

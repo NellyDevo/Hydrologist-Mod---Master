@@ -1,0 +1,7 @@
+{
+  "hydrologistmod:Distillery": {
+    "NAME": "Distillery",
+    "FLAVOR": "A chemical factory intended for separating liquids into its constituent parts.",
+    "DESCRIPTIONS": ["At the start of your turn, choose a card in your hand to #yhydrologistmod:Transmute."]
+  }
+}

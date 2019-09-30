@@ -1,0 +1,100 @@
+{
+  "hydrologistmod:Aqueducts": {
+    "NAME": "Aqueducts",
+    "DESCRIPTION": "Whenever you draw an extra card, deal !M! damage to ALL enemies.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:BranchingCreeks": {
+    "NAME": "Branching Creeks",
+    "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, choose between !M! additional cards.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:Defend_Hydrologist": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:IceBarrier": {
+    "NAME": "Ice Barrier",
+    "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, deal !M! damage to ALL enemies.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:GhostlyMist": {
+    "NAME": "Ghostly Mist",
+    "DESCRIPTION": "Deal !D! damage. NL If you played a hydrologistmod:Corporeal card this turn, deal !D! damage again.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:Hailstorm": {
+    "NAME": "Hailstorm",
+    "DESCRIPTION": "Gain !B! Block. NL Whenever you play an Ice card, the enemy takes !M! damage.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:OccludingMist": {
+    "NAME": "Occluding Mist",
+    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:PureWater": {
+    "NAME": "Pure Water",
+    "DESCRIPTION": "hydrologistmod:Flow. NL When hydrologistmod:Transmuted, hydrologistmod:Flow.",
+    "UPGRADE_DESCRIPTION": "hydrologistmod:Flow. NL Draw a card. NL When hydrologistmod:Transmuted, hydrologistmod:Flow."
+  },
+  "hydrologistmod:PurifyingSteam": {
+    "NAME": "Purifying Steam",
+    "DESCRIPTION": "Deal !D! damage. NL Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:RiverOfTime": {
+    "NAME": "River Of Time",
+    "DESCRIPTION": "This turn, your next hydrologistmod:Swappable card is also played *Swapped.",
+    "UPGRADE_DESCRIPTION": "This turn, your next 2 hydrologistmod:Swappable cards are also played *Swapped."
+  },
+  "hydrologistmod:ScaldingGeyser": {
+    "NAME": "Scalding Geyser",
+    "DESCRIPTION": "Innate. NL Deal !D! damage. NL Apply !M! Vulnerable. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:SoothingWater": {
+    "NAME": "Soothing Water",
+    "DESCRIPTION": "Heal !M! HP. NL Fleeting. NL hydrologistmod:On_Swap: permanently increase this card's healing by 4 and Exhaust. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Heal !M! HP. NL Fleeting. NL hydrologistmod:On_Swap: permanently increase this card's healing by 6 and Exhaust. NL hydrologistmod:Swappable."
+  },
+  "hydrologistmod:SteamLash": {
+    "NAME": "Steam Lash",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL hydrologistmod:On_Swap: Gain [E].",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:Strike_Hydrologist": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:SwelteringStrike": {
+    "NAME": "Sweltering Strike",
+    "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:UnstableStrike": {
+    "NAME": "Unstable Strike",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:UnstableDefend": {
+    "NAME": "Unstable Defend",
+    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:WallOfIce": {
+    "NAME": "Wall of Ice",
+    "DESCRIPTION": "Gain !B! Block. NL Exhaust. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:WaterWhip": {
+    "NAME": "Water Whip",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL hydrologistmod:On_Swap: Lose [E].",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "I don't have enough Energy!"
+    ]
+  }
+}
