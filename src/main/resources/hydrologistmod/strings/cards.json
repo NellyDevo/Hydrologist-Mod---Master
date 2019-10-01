@@ -4,6 +4,11 @@
     "DESCRIPTION": "Whenever you draw an extra card, deal !M! damage to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:BlockOfIce": {
+    "NAME": "Block of Ice",
+    "DESCRIPTION": "Gain !B! Block.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:BranchingCreeks": {
     "NAME": "Branching Creeks",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, choose between !M! additional cards.",
