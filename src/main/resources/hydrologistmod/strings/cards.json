@@ -34,6 +34,11 @@
     "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:PureIce": {
+    "NAME": "Pure Ice",
+    "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, gain !B! Block.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:PureWater": {
     "NAME": "Pure Water",
     "DESCRIPTION": "hydrologistmod:Flow. NL When hydrologistmod:Transmuted, hydrologistmod:Flow.",
