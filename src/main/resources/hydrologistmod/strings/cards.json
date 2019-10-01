@@ -69,6 +69,11 @@
     "DESCRIPTION": "Heal !M! HP. NL Fleeting. NL hydrologistmod:On_Swap: permanently increase this card's healing by 4 and Exhaust. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": "Heal !M! HP. NL Fleeting. NL hydrologistmod:On_Swap: permanently increase this card's healing by 6 and Exhaust. NL hydrologistmod:Swappable."
   },
+  "hydrologistmod:SteadyTide": {
+    "NAME": "Steady Tide",
+    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Flow.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:SteamLash": {
     "NAME": "Steam Lash",
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL hydrologistmod:On_Swap: Gain [E].",
