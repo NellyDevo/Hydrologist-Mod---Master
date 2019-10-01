@@ -19,6 +19,11 @@
     "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, deal !M! damage to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:IceSpike": {
+    "NAME": "Ice Spike",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:GhostlyMist": {
     "NAME": "Ghostly Mist",
     "DESCRIPTION": "Deal !D! damage. NL If you played a hydrologistmod:Corporeal card this turn, deal !D! damage again.",
@@ -77,6 +82,11 @@
   "hydrologistmod:SwelteringStrike": {
     "NAME": "Sweltering Strike",
     "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:TidalWave": {
+    "NAME": "Tidal Wave",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:UnstableStrike": {
