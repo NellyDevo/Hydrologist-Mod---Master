@@ -19,6 +19,11 @@
     "DESCRIPTION": "hydrologistmod:Flow. NL Gain !B! Block for each card discarded this way.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:DebilitatingExplosion": {
+    "NAME": "Debilitating Explosion",
+    "DESCRIPTION": "Apply !M! Weak and Vulnerable to ALL enemies. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Apply !M! Weak and Vulnerable to ALL enemies."
+  },
   "hydrologistmod:Defend_Hydrologist": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block.",
