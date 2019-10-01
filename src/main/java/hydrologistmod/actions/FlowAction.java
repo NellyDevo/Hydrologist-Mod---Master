@@ -15,9 +15,16 @@ public class FlowAction extends AbstractGameAction {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
+    private AfterDiscard followup;
 
     public FlowAction() {
         duration = DURATION;
+        followup = null;
+    }
+
+    public FlowAction(AfterDiscard followup) {
+        duration = DURATION;
+        this.followup = followup;
     }
 
     @Override
@@ -41,8 +48,15 @@ public class FlowAction extends AbstractGameAction {
                 ++cardsDiscarded;
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
+            if (followup != null) {
+                followup.doActions(cardsDiscarded);
+            }
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FlowPower(AbstractDungeon.player, cardsDiscarded)));
         }
         tickDuration();
+    }
+
+    public interface AfterDiscard {
+        void doActions(int numberDiscarded);
     }
 }
