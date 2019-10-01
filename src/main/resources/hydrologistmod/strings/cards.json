@@ -14,6 +14,11 @@
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, choose between !M! additional cards.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Cascade": {
+    "NAME": "Cascade",
+    "DESCRIPTION": "hydrologistmod:Flow. NL Gain !B! Block for each card discarded this way.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:Defend_Hydrologist": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block.",
