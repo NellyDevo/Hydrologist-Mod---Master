@@ -54,6 +54,11 @@
     "DESCRIPTION": "Deal !D! damage. NL If you played a hydrologistmod:Corporeal card this turn, deal !D! damage again.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Hail": {
+    "NAME": "Hail",
+    "DESCRIPTION": "Deal !D! damage. NL Increase the damage of ALL Ice cards by !M! this combat.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:Hailstorm": {
     "NAME": "Hailstorm",
     "DESCRIPTION": "Gain !B! Block. NL Whenever you play an Ice card, the enemy takes !M! damage.",
