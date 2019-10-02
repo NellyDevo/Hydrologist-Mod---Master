@@ -29,6 +29,11 @@
     "DESCRIPTION": "Gain !B! Block.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Dehydrate": {
+    "NAME": "Dehydrate",
+    "DESCRIPTION": "Gain !M! Temporary_HP. NL Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:FogOfWar": {
     "NAME": "Fog of War",
     "DESCRIPTION": "If the enemy intends to attack, apply !M! Weak.",
