@@ -64,6 +64,11 @@
     "DESCRIPTION": "Gain !B! Block. NL Whenever you play an Ice card, the enemy takes !M! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Hydraulics": {
+    "NAME": "Hydraulics",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy intends to attack, hydrologistmod:Flow.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:OccludingMist": {
     "NAME": "Occluding Mist",
     "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",
