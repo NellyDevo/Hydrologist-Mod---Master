@@ -34,6 +34,11 @@
     "DESCRIPTION": "If the enemy intends to attack, apply !M! Weak.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:ForceOfErosion": {
+    "NAME": "Force of Erosion",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:IceBarrier": {
     "NAME": "Ice Barrier",
     "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, deal !M! damage to ALL enemies.",
