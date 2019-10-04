@@ -34,6 +34,11 @@
     "DESCRIPTION": "Gain !M! Temporary_HP. NL Deal !D! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:DryingPond": {
+    "NAME": "Drying Pond",
+    "DESCRIPTION": "Choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Draw a card, then choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust. NL hydrologistmod:Swappable."
+  },
   "hydrologistmod:EndothermicReactions": {
     "NAME": "Endothermic Reactions",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, gain !M! Block. NL hydrologistmod:Swappable.",
@@ -42,6 +47,11 @@
   "hydrologistmod:ExothermicReactions": {
     "NAME": "Exothermic Reactions",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, deal !M! damage to a random enemy. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:FallingIcicles": {
+    "NAME": "Falling Icicles",
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FogOfWar": {
