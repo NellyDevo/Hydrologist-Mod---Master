@@ -24,6 +24,11 @@
     "DESCRIPTION": "Apply !M! Weak and Vulnerable to ALL enemies. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Apply !M! Weak and Vulnerable to ALL enemies."
   },
+  "hydrologistmod:DeepFreeze": {
+    "NAME": "Deep Freeze",
+    "DESCRIPTION": "Your Ice cards that gain Block gain !M! additional Block.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:Defend_Hydrologist": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block.",
@@ -67,6 +72,11 @@
   "hydrologistmod:FrigidLash": {
     "NAME": "Frigid Lash",
     "DESCRIPTION": "Deal !D! damage. NL Increase the Block gained by the *Paired card by !M! this combat. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:HighPressure": {
+    "NAME": "High Pressure",
+    "DESCRIPTION": "Your Steam cards that deal damage deal !M! additional damage.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:IceBarrier": {
