@@ -34,6 +34,16 @@
     "DESCRIPTION": "Gain !M! Temporary_HP. NL Deal !D! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:EndothermicReactions": {
+    "NAME": "Endothermic Reactions",
+    "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, gain !M! Block.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:ExothermicReactions": {
+    "NAME": "Exothermic Reactions",
+    "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, deal !M! damage to a random enemy.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:FogOfWar": {
     "NAME": "Fog of War",
     "DESCRIPTION": "If the enemy intends to attack, apply !M! Weak.",
