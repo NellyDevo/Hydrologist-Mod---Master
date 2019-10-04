@@ -54,6 +54,11 @@
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:FrigidLash": {
+    "NAME": "Frigid Lash",
+    "DESCRIPTION": "Deal !D! damage. NL Increase the Block gained by the *Paired card by !M! this combat.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:IceBarrier": {
     "NAME": "Ice Barrier",
     "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, deal !M! damage to ALL enemies.",
@@ -87,6 +92,11 @@
   "hydrologistmod:Hydraulics": {
     "NAME": "Hydraulics",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy intends to attack, hydrologistmod:Flow.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:LayeredShell": {
+    "NAME": "Layered Shell",
+    "DESCRIPTION": "Gain !B! Block. NL Increase the damage dealt by the *Paired card by !M! this combat. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:OccludingMist": {
