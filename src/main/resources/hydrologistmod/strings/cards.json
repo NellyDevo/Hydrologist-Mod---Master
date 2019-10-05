@@ -84,6 +84,11 @@
     "DESCRIPTION": "Your Steam cards that deal damage deal !M! additional damage.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:HighTide": {
+    "NAME": "High Tide",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Flow.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:IceBarrier": {
     "NAME": "Ice Barrier",
     "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, deal !M! damage to ALL enemies.",
@@ -162,6 +167,11 @@
   "hydrologistmod:ScaldingGeyser": {
     "NAME": "Scalding Geyser",
     "DESCRIPTION": "Innate. NL Deal !D! damage. NL Apply !M! Vulnerable. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:SeaFoam": {
+    "NAME": "Sea Foam",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SoothingWater": {
