@@ -49,6 +49,11 @@
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, gain !M! Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:EverflowingCurrents": {
+    "NAME": "Everflowing Currents",
+    "DESCRIPTION": "hydrologistmod:Flow. NL hydrologistmod:On_Swap: you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Draw a card, then hydrologistmod:Flow. NL hydrologistmod:On_Swap: you cannot swap away from this card again this turn. NL hydrologistmod:Swappable."
+  },
   "hydrologistmod:ExothermicReactions": {
     "NAME": "Exothermic Reactions",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, deal !M! damage to a random enemy. NL hydrologistmod:Swappable.",
@@ -107,6 +112,11 @@
   "hydrologistmod:GlacialStrike": {
     "NAME": "Glacial Strike",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy is Vulnerable, gain !B! Block. NL If the enemy is Weak, deal an additional !D! damage.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:GlacierBash": {
+    "NAME": "Glacier Bash",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:On_Swap: Reduce this card's cost by [E] for this combat. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Hail": {
