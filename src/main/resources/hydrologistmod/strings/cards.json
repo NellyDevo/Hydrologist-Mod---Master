@@ -26,7 +26,7 @@
   },
   "hydrologistmod:DeepFreeze": {
     "NAME": "Deep Freeze",
-    "DESCRIPTION": "Your Ice cards that gain Block gain !M! additional Block.",
+    "DESCRIPTION": "Your Ice cards that gain Block gain !M! additional Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Defend_Hydrologist": {
@@ -41,7 +41,7 @@
   },
   "hydrologistmod:DryingPond": {
     "NAME": "Drying Pond",
-    "DESCRIPTION": "Choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust.",
+    "DESCRIPTION": "Choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": "Draw a card, then choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:EndothermicReactions": {
@@ -79,31 +79,6 @@
     "DESCRIPTION": "Deal !D! damage. NL Increase the Block gained by the *Paired card by !M! this combat. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:HeatAndPressure": {
-    "NAME": "Heat and Pressure",
-    "DESCRIPTION": "Double the enemy's Vulnerable amount. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Triple the enemy's Vulnerable amount. NL Exhaust."
-  },
-  "hydrologistmod:HighPressure": {
-    "NAME": "High Pressure",
-    "DESCRIPTION": "Your Steam cards that deal damage deal !M! additional damage.",
-    "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:HighTide": {
-    "NAME": "High Tide",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Flow.",
-    "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:IceBarrier": {
-    "NAME": "Ice Barrier",
-    "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, deal !M! damage to ALL enemies.",
-    "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:IceSpike": {
-    "NAME": "Ice Spike",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": ""
-  },
   "hydrologistmod:GhostlyMist": {
     "NAME": "Ghostly Mist",
     "DESCRIPTION": "Deal !D! damage. NL If you played a hydrologistmod:Corporeal card this turn, deal !D! damage again.",
@@ -129,9 +104,34 @@
     "DESCRIPTION": "Gain !B! Block. NL Whenever you play an Ice card, the enemy takes !M! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:HeatAndPressure": {
+    "NAME": "Heat and Pressure",
+    "DESCRIPTION": "Double the enemy's Vulnerable amount. NL Exhaust. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Triple the enemy's Vulnerable amount. NL Exhaust. NL hydrologistmod:Swappable."
+  },
+  "hydrologistmod:HighPressure": {
+    "NAME": "High Pressure",
+    "DESCRIPTION": "Your Steam cards that deal damage deal !M! additional damage. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:HighTide": {
+    "NAME": "High Tide",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Flow. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:Hydraulics": {
     "NAME": "Hydraulics",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy intends to attack, hydrologistmod:Flow.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:IceBarrier": {
+    "NAME": "Ice Barrier",
+    "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, deal !M! damage to ALL enemies.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:IceSpike": {
+    "NAME": "Ice Spike",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:LayeredShell": {
@@ -166,8 +166,8 @@
   },
   "hydrologistmod:Ripcurrent": {
     "NAME": "Ripcurrent",
-    "DESCRIPTION": "Double the enemy's Weak amount. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Double the enemy's Weak amount. NL Exhaust."
+    "DESCRIPTION": "Double the enemy's Weak amount. NL Exhaust. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Double the enemy's Weak amount. NL Exhaust. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:RiverOfTime": {
     "NAME": "River Of Time",
@@ -181,7 +181,7 @@
   },
   "hydrologistmod:SeaFoam": {
     "NAME": "Sea Foam",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand.",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SoothingWater": {
