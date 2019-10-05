@@ -37,9 +37,7 @@ public class GhostlyMist extends AbstractHydrologistCard {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
         for (AbstractCard card : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
             if (card == this) {
-                System.out.println("Yes it does!");
-            } else {
-                System.out.println("No it does not!");
+                continue;
             }
             if (HydrologistMod.isThisCorporeal(card)) {
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
