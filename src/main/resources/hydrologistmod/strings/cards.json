@@ -74,6 +74,11 @@
     "DESCRIPTION": "Deal !D! damage. NL Increase the Block gained by the *Paired card by !M! this combat. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:HeatAndPressure": {
+    "NAME": "Heat and Pressure",
+    "DESCRIPTION": "Double the enemy's Vulnerable amount. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Triple the enemy's Vulnerable amount. NL Exhaust."
+  },
   "hydrologistmod:HighPressure": {
     "NAME": "High Pressure",
     "DESCRIPTION": "Your Steam cards that deal damage deal !M! additional damage.",
@@ -143,6 +148,11 @@
     "NAME": "Purifying Steam",
     "DESCRIPTION": "Deal !D! damage. NL Swappable.",
     "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:Ripcurrent": {
+    "NAME": "Ripcurrent",
+    "DESCRIPTION": "Double the enemy's Weak amount. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Double the enemy's Weak amount. NL Exhaust."
   },
   "hydrologistmod:RiverOfTime": {
     "NAME": "River Of Time",
