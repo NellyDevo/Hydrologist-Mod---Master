@@ -49,6 +49,11 @@
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, gain !M! Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Eruption": {
+    "NAME": "Eruption",
+    "DESCRIPTION": "Deal !D! damage. NL Gain [E] [E] [E] . NL hydrologistmod:Swaps when played. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:EverflowingCurrents": {
     "NAME": "Everflowing Currents",
     "DESCRIPTION": "hydrologistmod:Flow. NL hydrologistmod:On_Swap: you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
@@ -163,6 +168,11 @@
     "NAME": "Purifying Steam",
     "DESCRIPTION": "Deal !D! damage. NL Swappable.",
     "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:Reservoir": {
+    "NAME": "Reservoir",
+    "DESCRIPTION": "Innate, Ethereal. NL hydrologistmod:On_Swap: lose [E] [E] and discard this card. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Innate, Ethereal. NL hydrologistmod:On_Swap: lose [E] and discard this card. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:Ripcurrent": {
     "NAME": "Ripcurrent",
