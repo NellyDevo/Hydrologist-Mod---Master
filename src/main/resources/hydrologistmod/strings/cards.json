@@ -49,6 +49,11 @@
     "DESCRIPTION": "Choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": "Draw a card, then choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust. NL hydrologistmod:Swappable."
   },
+  "hydrologistmod:EncapsulatingIce": {
+    "NAME": "EncapsulatingIce",
+    "DESCRIPTION": "Your next *Pressure *Blast triggers an additional X times. hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Your next *Pressure *Blast triggers an additional X+1 times. hydrologistmod:Swappable."
+  },
   "hydrologistmod:EndothermicReactions": {
     "NAME": "Endothermic Reactions",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, gain !M! Block. NL hydrologistmod:Swappable.",
@@ -157,6 +162,11 @@
   "hydrologistmod:OccludingMist": {
     "NAME": "Occluding Mist",
     "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:PressureBlast": {
+    "NAME": "Pressure Blast",
+    "DESCRIPTION": "Deal !D! damage X+ !M! times. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:PureIce": {
