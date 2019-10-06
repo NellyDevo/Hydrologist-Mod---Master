@@ -21,7 +21,7 @@
   },
   "hydrologistmod:CrystalIce": {
     "NAME": "Crystal Ice",
-    "DESCRIPTION": "Block is not removed at the start of your turn.",
+    "DESCRIPTION": "Block is not removed at the start of your turn. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:DebilitatingExplosion": {
@@ -146,7 +146,7 @@
   },
   "hydrologistmod:LaminarFlow": {
     "NAME": "Laminar Flow",
-    "DESCRIPTION": "At the end of your turn, gain 3(4) Block.",
+    "DESCRIPTION": "At the end of your turn, gain 3(4) Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:LayeredShell": {
