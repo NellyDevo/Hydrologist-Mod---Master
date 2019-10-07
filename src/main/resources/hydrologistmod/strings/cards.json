@@ -79,6 +79,16 @@
     "DESCRIPTION": "Deal !D! damage. NL Exhaust. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:FleetingForm": {
+    "NAME": "Fleeting Form",
+    "DESCRIPTION": "Whenever you play a Steam card, deal !M! damage to a random enemy. NL hydrologistmod:Swaps to *Frigid *Form.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:FlowingForm": {
+    "NAME": "Flowing Form",
+    "DESCRIPTION": "Whenever you play a Water card, you may discard a card. If you do, draw !M! cards. NL hydrologistmod:Swaps to *Fleeting *Form.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:FogOfWar": {
     "NAME": "Fog of War",
     "DESCRIPTION": "If the enemy intends to attack, apply !M! Weak.",
@@ -87,6 +97,11 @@
   "hydrologistmod:ForceOfErosion": {
     "NAME": "Force of Erosion",
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:FrigidForm": {
+    "NAME": "Frigid Form",
+    "DESCRIPTION": "Whenever you play an Ice card, gain !M! block. NL hydrologistmod:Swaps to *Flowing *Form.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FrigidLash": {

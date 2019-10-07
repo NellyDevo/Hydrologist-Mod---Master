@@ -1,7 +1,5 @@
 package helpers;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
@@ -60,6 +58,12 @@ public class SwapperHelper {
             cardPairs.put(card1, card2);
             cardPairs.put(card2, card1);
             System.out.println("SwapperHelper: card pairing between " + card1 + " and " + card2 + " successfully registered.");
+        }
+    }
+
+    public static void registerOneWayPair(AbstractCard card1, AbstractCard card2) { //for creating chains, trios, etc.
+        if (!isCardRegistered(card1) && (!isCardRegistered(card2))) {
+            cardPairs.put(card1, card2);
         }
     }
 
