@@ -294,6 +294,11 @@
     "DESCRIPTION": "Gain !B! Block. NL Exhaust. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:WaterTurbine": {
+    "NAME": "Water Turbine",
+    "DESCRIPTION": "hydrologistmod:Flow. NL Next turn, gain [E] equal to the number of cards discarded this way. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:WaterWhip": {
     "NAME": "Water Whip",
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL hydrologistmod:On_Swap: Lose [E].",
