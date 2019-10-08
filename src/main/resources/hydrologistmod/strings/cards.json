@@ -124,6 +124,11 @@
     "DESCRIPTION": "Deal !D! damage. NL If you played a hydrologistmod:Corporeal card this turn, deal !D! damage again.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:GentleSnowfall": {
+    "NAME": "Gentle Snowfall",
+    "DESCRIPTION": "hydrologistmod:Flow. NL if you discarded !M! cards this way, gain 1 Intangible.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:GlacialStrike": {
     "NAME": "Glacial Strike",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy is Vulnerable, gain !B! Block. NL If the enemy is Weak, deal an additional !D! damage.",
