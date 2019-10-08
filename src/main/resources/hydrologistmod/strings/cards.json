@@ -164,6 +164,11 @@
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:IcyFloe": {
+    "NAME": "Icy Floe",
+    "DESCRIPTION": "Whenever you hydrologistmod:Flow, draw a card for each card discarded.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:LaminarFlow": {
     "NAME": "Laminar Flow",
     "DESCRIPTION": "At the end of your turn, gain 3(4) Block. NL hydrologistmod:Swappable.",

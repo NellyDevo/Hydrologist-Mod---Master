@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import hydrologistmod.interfaces.FlowAffectingPower;
 import hydrologistmod.powers.FlowPower;
 
 public class FlowAction extends AbstractGameAction {
@@ -50,6 +52,11 @@ public class FlowAction extends AbstractGameAction {
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             if (followup != null) {
                 followup.doActions(cardsDiscarded);
+            }
+            for (AbstractPower p : AbstractDungeon.player.powers) {
+                if (p instanceof FlowAffectingPower) {
+                    ((FlowAffectingPower)p).onFlow(cardsDiscarded);
+                }
             }
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FlowPower(AbstractDungeon.player, cardsDiscarded)));
         }
