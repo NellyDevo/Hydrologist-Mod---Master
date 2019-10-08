@@ -73,7 +73,7 @@ public class SwapperHelper {
     }
 
     public static boolean isCardRegistered(AbstractCard card) {
-        return cardPairs.containsKey(card) || masterDeckPairs.containsKey(card) || masterDeckChains.containsKey(card);
+        return cardPairs.containsKey(card);
     }
 
     public static AbstractCard getPairedCard(AbstractCard card) {
@@ -88,8 +88,20 @@ public class SwapperHelper {
         }
     }
 
+    public static boolean isCardRegisteredAsMasterDeckPair(AbstractCard card) {
+         return masterDeckPairs.containsKey(card);
+    }
+
+    public static boolean isCardRegisteredAsMasterDeckChain(AbstractCard card) {
+        return masterDeckChains.containsKey(card);
+    }
+
     public static AbstractCard getMasterDeckPair(AbstractCard card) {
         return masterDeckPairs.get(card);
+    }
+
+    public static ArrayList<AbstractCard> getMasterDeckChain(AbstractCard card) {
+        return masterDeckChains.get(card);
     }
 
     public static void initializeCombatList() {
@@ -140,6 +152,37 @@ public class SwapperHelper {
             }
         }
         System.out.println("SwapperHelper: pre-combat swapper pairings initialized");
+    }
+
+    public static void upgrade(AbstractCard source) {
+        if (isCardRegistered(source)) {
+            if (!preventUpgradeLoop) {
+                preventUpgradeLoop = true;
+                AbstractCard bufferCard = getPairedCard(source);
+                bufferCard.upgrade();
+                while (getPairedCard(bufferCard) != source) {
+                    bufferCard = getPairedCard(bufferCard);
+                    bufferCard.upgrade();
+                }
+                preventUpgradeLoop = false;
+            }
+        }
+        if (isCardRegisteredAsMasterDeckPair(source)) {
+            if (!preventUpgradeLoop) {
+                preventUpgradeLoop = true;
+                getMasterDeckPair(source).upgrade();
+                preventUpgradeLoop = false;
+            }
+        }
+        if (isCardRegisteredAsMasterDeckChain(source)) {
+            if (!preventUpgradeLoop) {
+                preventUpgradeLoop = true;
+                for (AbstractCard card : getMasterDeckChain(source)) {
+                    card.upgrade();
+                }
+                preventUpgradeLoop = false;
+            }
+        }
     }
 
     private static boolean justPressedButtonLast = false;
