@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import helpers.SwapperHelper;
 import hydrologistmod.actions.FlowAction;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
@@ -42,6 +43,7 @@ public class HighTide extends AbstractHydrologistCard implements SwappableCard {
 
     @Override
     public void upgrade() {
+        SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
         }

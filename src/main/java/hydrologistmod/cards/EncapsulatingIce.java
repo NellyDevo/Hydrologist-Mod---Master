@@ -38,6 +38,7 @@ public class EncapsulatingIce extends AbstractHydrologistCard {
 
     @Override
     public void upgrade() {
+        SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
         }

@@ -55,6 +55,7 @@ public class SoothingWater extends AbstractHydrologistCard implements SwappableC
 
     @Override
     public void upgrade() {
+        SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
         }

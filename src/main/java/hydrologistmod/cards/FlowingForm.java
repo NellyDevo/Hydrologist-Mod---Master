@@ -47,6 +47,7 @@ public class FlowingForm extends AbstractHydrologistCard implements SwappableCar
 
     @Override
     public void upgrade() {
+        SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_CARD_DRAW);

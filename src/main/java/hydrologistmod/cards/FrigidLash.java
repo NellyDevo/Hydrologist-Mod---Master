@@ -50,6 +50,7 @@ public class FrigidLash extends AbstractHydrologistCard {
 
     @Override
     public void upgrade() {
+        SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_INCREASE);

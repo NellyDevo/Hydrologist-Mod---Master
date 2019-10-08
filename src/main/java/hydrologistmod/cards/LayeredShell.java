@@ -47,6 +47,7 @@ public class LayeredShell extends AbstractHydrologistCard implements SwappableCa
 
     @Override
     public void upgrade() {
+        SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
