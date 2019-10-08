@@ -189,6 +189,11 @@
     "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Pneumatics": {
+    "NAME": "Pneumatics",
+    "DESCRIPTION": "hydrologistmod:Flow. NL At the start of the next !M! turns, hydrologistmod:Flow. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:PressureBlast": {
     "NAME": "Pressure Blast",
     "DESCRIPTION": "Deal !D! damage X+ !M! times. NL hydrologistmod:Swappable.",
