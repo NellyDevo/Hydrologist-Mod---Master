@@ -99,6 +99,11 @@
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Freeze": {
+    "NAME": "Freeze",
+    "DESCRIPTION": "Deal !D! damage. NL If this kills an enemy that is Weak, Upgrade a random card in your deck. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:FrigidForm": {
     "NAME": "Frigid Form",
     "DESCRIPTION": "Whenever you play an Ice card, gain !M! block. NL hydrologistmod:Swaps to *Flowing *Form.",
