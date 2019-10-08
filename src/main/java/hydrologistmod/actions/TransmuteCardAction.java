@@ -19,15 +19,29 @@ public class TransmuteCardAction extends AbstractGameAction {
     public int choices = 1;
     public int cards = 1;
     private boolean anyNumber;
+    private AfterTransmute followup;
 
-    public TransmuteCardAction(boolean anyNumber) {
+    public TransmuteCardAction(boolean anyNumber, AfterTransmute followup) {
         this.duration = DURATION;
         for (AbstractPower power : AbstractDungeon.player.powers) {
             if (power instanceof TransmutableAffectingPower) {
                 ((TransmutableAffectingPower)power).onTransmute(this);
             }
         }
+        this.followup = followup;
         this.anyNumber = anyNumber;
+    }
+
+    public TransmuteCardAction() {
+        this(false, null);
+    }
+
+    public TransmuteCardAction(boolean anyNumber) {
+        this(anyNumber, null);
+    }
+
+    public TransmuteCardAction(AfterTransmute followup) {
+        this(false, followup);
     }
 
     public void update() {
@@ -52,6 +66,9 @@ public class TransmuteCardAction extends AbstractGameAction {
             } else if (choices == 1) {
                 AbstractCard newCard = getTransmutationResult().makeCopy();
                 UnlockTracker.markCardAsSeen(newCard.cardID);
+                if (followup != null) {
+                    followup.doActions(newCard);
+                }
                 AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(newCard));
                 AbstractDungeon.handCardSelectScreen.selectedCards.group.remove(oldCard);
                 if (AbstractDungeon.handCardSelectScreen.selectedCards.group.isEmpty()) {
@@ -75,7 +92,11 @@ public class TransmuteCardAction extends AbstractGameAction {
             }
         }
         if (AbstractDungeon.gridSelectScreen.selectedCards.size() != 0) {
-            AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(AbstractDungeon.gridSelectScreen.selectedCards.get(0)));
+            AbstractCard newCard = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
+            if (followup != null) {
+                followup.doActions(newCard);
+            }
+            AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(newCard));
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
             AbstractDungeon.handCardSelectScreen.selectedCards.group.remove(0);
             if (!AbstractDungeon.handCardSelectScreen.selectedCards.group.isEmpty()) {
@@ -104,5 +125,9 @@ public class TransmuteCardAction extends AbstractGameAction {
             }
         }
         return targets.get(AbstractDungeon.cardRandomRng.random(targets.size()-1));
+    }
+
+    public interface AfterTransmute {
+        void doActions(AbstractCard newCard);
     }
 }

@@ -24,6 +24,11 @@
     "DESCRIPTION": "Block is not removed at the start of your turn. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:CrystalLattice": {
+    "NAME": "Crystal Lattice",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand. Fill your hand with copies of the new card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:DebilitatingExplosion": {
     "NAME": "Debilitating Explosion",
     "DESCRIPTION": "Apply !M! Weak and Vulnerable to ALL enemies. NL Exhaust.",
