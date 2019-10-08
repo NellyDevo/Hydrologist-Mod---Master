@@ -9,11 +9,14 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import helpers.SwapperHelper;
 import hydrologistmod.CardIgnore;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.FlowingFormPower;
 
-public class FlowingForm extends AbstractHydrologistCard {
+import java.util.ArrayList;
+
+public class FlowingForm extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:FlowingForm";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -23,37 +26,18 @@ public class FlowingForm extends AbstractHydrologistCard {
     private static final int COST = 3;
     private static final int CARD_DRAW = 1;
     private static final int UPGRADE_CARD_DRAW = 1;
-    private FleetingForm nextCard;
 
     public FlowingForm() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.NONE);
         tags.add(HydrologistTags.WATER);
-        nextCard = new FleetingForm(this);
-        magicNumber = baseMagicNumber = 1;
+        magicNumber = baseMagicNumber = CARD_DRAW;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new FlowingFormPower(p, magicNumber)));
-    }
-
-    @Override
-    public AbstractCard makeSameInstanceOf() {
-        if (AbstractDungeon.player.masterDeck.contains(this)) {
-            FlowingForm card1 = (FlowingForm)super.makeSameInstanceOf();
-            FleetingForm card2 = (FleetingForm)nextCard.makeSameInstanceOf();
-            FrigidForm card3 = (FrigidForm)nextCard.nextCard.makeSameInstanceOf();
-            card1.nextCard = card2;
-            card2.nextCard = card3;
-            card3.nextCard = card1;
-            SwapperHelper.registerOneWayPair(card1, card2);
-            SwapperHelper.registerOneWayPair(card2, card3);
-            SwapperHelper.registerOneWayPair(card3, card1);
-            return card1;
-        }
-        return super.makeSameInstanceOf();
     }
 
     @Override
@@ -67,5 +51,18 @@ public class FlowingForm extends AbstractHydrologistCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_CARD_DRAW);
         }
+    }
+
+    @Override
+    public boolean isChainSwapper() {
+        return true;
+    }
+
+    @Override
+    public ArrayList<AbstractCard> createChain() {
+        ArrayList<AbstractCard> result = new ArrayList<>();
+        result.add(new FleetingForm());
+        result.add(new FrigidForm());
+        return result;
     }
 }

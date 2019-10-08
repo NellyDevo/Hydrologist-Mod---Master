@@ -22,7 +22,6 @@ public class FleetingForm extends AbstractHydrologistCard {
     private static final int COST = 3;
     private static final int DAMAGE_AMT = 6;
     private static final int UPGRADE_DAMAGE = 3;
-    FrigidForm nextCard;
 
     public FleetingForm() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -30,11 +29,6 @@ public class FleetingForm extends AbstractHydrologistCard {
                 CardRarity.SPECIAL, CardTarget.NONE);
         tags.add(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = DAMAGE_AMT;
-    }
-
-    public FleetingForm(FlowingForm previousCard) {
-        this();
-        nextCard = new FrigidForm(previousCard);
     }
 
     @Override

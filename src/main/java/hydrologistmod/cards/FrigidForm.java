@@ -22,7 +22,6 @@ public class FrigidForm extends AbstractHydrologistCard {
     private static final int COST = 3;
     private static final int BLOCK_AMT = 5;
     private static final int UPGRADE_BLOCK_AMT = 3;
-    FlowingForm nextCard;
 
     public FrigidForm() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -30,11 +29,6 @@ public class FrigidForm extends AbstractHydrologistCard {
                 CardRarity.SPECIAL, CardTarget.NONE);
         tags.add(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = BLOCK_AMT;
-    }
-
-    public FrigidForm(FlowingForm nextCard) {
-        this();
-        this.nextCard = nextCard;
     }
 
     @Override

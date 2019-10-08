@@ -9,6 +9,8 @@ import helpers.SwapperHelper;
 import hydrologistmod.actions.SwapCardAction;
 import hydrologistmod.interfaces.SwappableCard;
 
+import java.util.ArrayList;
+
 public class SwapperCardPatch {
 
     @SpirePatch(
@@ -67,9 +69,42 @@ public class SwapperCardPatch {
 
         public static AbstractCard Postfix(AbstractCard __result, AbstractCard __instance) {
             if (SwapperHelper.isCardRegistered(__instance)) {
-                AbstractCard card = SwapperHelper.getPairedCard(__instance).makeStatEquivalentCopy();
-                card.uuid = __result.uuid;
-                SwapperHelper.registerPair(__result, card);
+                AbstractCard bufferCard = SwapperHelper.getPairedCard(__instance);
+                ArrayList<AbstractCard> listBuffer = new ArrayList<>();
+                listBuffer.add(__instance.makeSameInstanceOf());
+                listBuffer.add(bufferCard.makeSameInstanceOf());
+                while (SwapperHelper.getPairedCard(bufferCard) != __instance) {
+                    bufferCard = SwapperHelper.getPairedCard(bufferCard);
+                    listBuffer.add(bufferCard);
+                }
+                for (int i = 0; i < listBuffer.size(); ++i) {
+                    SwapperHelper.registerOneWayPair(listBuffer.get(i), listBuffer.get((i+1)%listBuffer.size()));
+                }
+                System.out.println("Swapper card detected as duplicated by make same instance of: duplicate pairing created");
+            }
+            return __result;
+        }
+    }
+
+    @SpirePatch(
+            clz = AbstractCard.class,
+            method = "makeStatEquivalentCopy"
+    )
+    public static class AbstractCardMakeStatEquivalentCopyPatch {
+
+        public static AbstractCard Postfix(AbstractCard __result, AbstractCard __instance) {
+            if (SwapperHelper.isCardRegistered(__instance)) {
+                AbstractCard bufferCard = SwapperHelper.getPairedCard(__instance);
+                ArrayList<AbstractCard> listBuffer = new ArrayList<>();
+                listBuffer.add(__instance.makeStatEquivalentCopy());
+                listBuffer.add(bufferCard.makeStatEquivalentCopy());
+                while (SwapperHelper.getPairedCard(bufferCard) != __instance) {
+                    bufferCard = SwapperHelper.getPairedCard(bufferCard);
+                    listBuffer.add(bufferCard);
+                }
+                for (int i = 0; i < listBuffer.size(); ++i) {
+                    SwapperHelper.registerOneWayPair(listBuffer.get(i), listBuffer.get((i+1)%listBuffer.size()));
+                }
                 System.out.println("Swapper card detected as duplicated by make same instance of: duplicate pairing created");
             }
             return __result;
@@ -90,6 +125,10 @@ public class SwapperCardPatch {
                     if (swappableCard.hasDefaultPair()) {
                         System.out.println(card + " is a pre-fab swappable. Generating master deck pair");
                         SwapperHelper.registerMasterDeckPair(card, swappableCard.createDefaultPair());
+                    }
+                    if (swappableCard.isChainSwapper()) {
+                        System.out.println(card + " is a pre-fab chain-swappable. Generating master deck chain");
+                        SwapperHelper.registerMasterDeckChain(card, swappableCard.createChain());
                     }
                 }
             }

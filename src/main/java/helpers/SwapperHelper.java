@@ -9,7 +9,8 @@ import java.util.HashMap;
 public class SwapperHelper {
     private static HashMap<AbstractCard, AbstractCard> cardPairs = new HashMap<>(); //any swappable pairings in combat
     private static HashMap<AbstractCard, AbstractCard> masterDeckPairs = new HashMap<>(); //only to store in the format of <card in master deck, card it swaps to>
-    public static boolean upgradeLoopBoolean = false;
+    private static HashMap<AbstractCard, ArrayList<AbstractCard>> masterDeckChains = new HashMap<>(); //<card in deck, list of cards in swap order before going back to card in deck>
+    public static boolean preventUpgradeLoop = false;
 
     public static void registerPair(AbstractCard card1, AbstractCard card2) {
         registerPair(card1, card2, false);
@@ -67,8 +68,12 @@ public class SwapperHelper {
         }
     }
 
+    public static void registerMasterDeckChain(AbstractCard mainCard, ArrayList<AbstractCard> otherCards) {
+        masterDeckChains.put(mainCard, otherCards);
+    }
+
     public static boolean isCardRegistered(AbstractCard card) {
-        return cardPairs.containsKey(card);
+        return cardPairs.containsKey(card) || masterDeckPairs.containsKey(card) || masterDeckChains.containsKey(card);
     }
 
     public static AbstractCard getPairedCard(AbstractCard card) {
@@ -83,10 +88,6 @@ public class SwapperHelper {
         }
     }
 
-    public static boolean isCardRegisteredAsMasterPair(AbstractCard card) {
-        return masterDeckPairs.containsKey(card);
-    }
-
     public static AbstractCard getMasterDeckPair(AbstractCard card) {
         return masterDeckPairs.get(card);
     }
@@ -94,39 +95,51 @@ public class SwapperHelper {
     public static void initializeCombatList() {
         cardPairs.clear();
         ArrayList<AbstractCard> cleanup = new ArrayList<>();
+        ArrayList<AbstractCard> chainCleanup = new ArrayList<>();
         for (AbstractCard key : masterDeckPairs.keySet()) {
             if (!AbstractDungeon.player.masterDeck.contains(key)) {
                 cleanup.add(key);
                 System.out.println("SwapperHelper: " + key + " is no longer in the master deck. Removing master deck pairing of " + key + " and " + masterDeckPairs.get(key) + ".");
             }
         }
+        for (AbstractCard key : masterDeckChains.keySet()) {
+            if (!AbstractDungeon.player.masterDeck.contains(key)) {
+                chainCleanup.add(key);
+                System.out.println("SwapperHelper: " + key + " is no longer in the master deck. Removing master deck pairing of " + key + " and " + masterDeckChains.get(key) + ".");
+            }
+        }
         for (AbstractCard removedCard : cleanup) {
             masterDeckPairs.remove(removedCard);
+        }
+        for (AbstractCard removedCard : chainCleanup) {
+            masterDeckChains.remove(removedCard);
         }
         //find cards in draw pile with same UUID as cards in masterDeckPairs.keySet, then register pairings with sameCard and key.get.makeStatEquivalentCopy();
         for (AbstractCard key : masterDeckPairs.keySet()) {
             for (AbstractCard drawPileCard : AbstractDungeon.player.drawPile.group) {
                 if (drawPileCard.uuid.equals(key.uuid)) {
                     registerPair(drawPileCard, masterDeckPairs.get(key).makeStatEquivalentCopy());
+                    break;
+                }
+            }
+        }
+        //repeat the above process for chains
+        for (AbstractCard key : masterDeckChains.keySet()) {
+            for (AbstractCard drawPileCard : AbstractDungeon.player.drawPile.group) {
+                if (drawPileCard.uuid.equals(key.uuid)) {
+                    ArrayList<AbstractCard> pairingsBuffer = new ArrayList<>();
+                    pairingsBuffer.add(drawPileCard);
+                    for (AbstractCard card : masterDeckChains.get(key)) {
+                        pairingsBuffer.add(card.makeSameInstanceOf());
+                    }
+                    for (int i = 0; i < pairingsBuffer.size(); ++i) {
+                        registerOneWayPair(pairingsBuffer.get(i), pairingsBuffer.get((i+1)%pairingsBuffer.size())); //Johnny power!
+                    }
+                    break;
                 }
             }
         }
         System.out.println("SwapperHelper: pre-combat swapper pairings initialized");
-    }
-
-    public static void upgradePairing(AbstractCard card) {
-        if (!upgradeLoopBoolean) {
-            if (isCardRegistered(card)) {
-                upgradeLoopBoolean = true;
-                getPairedCard(card).upgrade();
-                upgradeLoopBoolean = false;
-            }
-            if (SwapperHelper.isCardRegisteredAsMasterPair(card)) {
-                upgradeLoopBoolean = true;
-                getMasterDeckPair(card).upgrade();
-                upgradeLoopBoolean = false;
-            }
-        }
     }
 
     private static boolean justPressedButtonLast = false;
