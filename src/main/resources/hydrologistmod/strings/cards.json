@@ -204,6 +204,11 @@
     "DESCRIPTION": "The next Ice, Water, and Steam cards you play this combat are played twice. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:PersonalRaincloud": {
+    "NAME": "Personal Raincloud",
+    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL Create a *Raincloud and *Pair it with a card in your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:Pneumatics": {
     "NAME": "Pneumatics",
     "DESCRIPTION": "hydrologistmod:Flow. NL At the start of the next !M! turns, hydrologistmod:Flow. NL Exhaust.",
@@ -232,6 +237,11 @@
   "hydrologistmod:PurifyingSteam": {
     "NAME": "Purifying Steam",
     "DESCRIPTION": "Deal !D! damage. NL Swappable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:Raincloud": {
+    "NAME": "Raincloud",
+    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:ReleaseValve": {

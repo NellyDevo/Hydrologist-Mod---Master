@@ -29,11 +29,4 @@ public class CardProxyHelper {
 //                return proceed.invoke(self, args);  // execute the original method.
 //            }
 //        };
-
-//     f.setFilter(new MethodFilter() {
-//        public boolean isHandled(Method m) {
-//            // ignore finalize()
-//            return !m.getName().equals("finalize");
-//        }
-//    });
 }
