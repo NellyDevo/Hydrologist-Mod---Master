@@ -297,6 +297,14 @@
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL hydrologistmod:On_Swap: Gain [E].",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:SteamPower": {
+    "NAME": "Steam Power",
+    "DESCRIPTION": "Unplayable. NL When hydrologistmod:Transmuted, draw !M! cards.",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "I can't play this card."
+    ]
+  },
   "hydrologistmod:Strike_Hydrologist": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage.",
