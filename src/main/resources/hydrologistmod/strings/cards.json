@@ -92,6 +92,14 @@
     "DESCRIPTION": "Deal !D! damage. NL Exhaust. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:FlashFlood": {
+    "NAME": "Flash Flood",
+    "DESCRIPTION": "Unplayable. NL When hydrologistmod:Transmuted, deal !M! damage to ALL enemies.",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "I can't play this card."
+    ]
+  },
   "hydrologistmod:FleetingForm": {
     "NAME": "Fleeting Form",
     "DESCRIPTION": "Whenever you play a Steam card, deal !M! damage to a random enemy. NL hydrologistmod:Swaps to *Frigid *Form.",
