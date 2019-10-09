@@ -58,6 +58,8 @@ public class Cryogenics extends AbstractHydrologistCard implements TransmutableC
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_COPIES);
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 
