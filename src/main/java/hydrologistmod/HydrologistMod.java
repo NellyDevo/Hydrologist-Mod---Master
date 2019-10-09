@@ -151,7 +151,7 @@ public class HydrologistMod implements EditCardsSubscriber, EditCharactersSubscr
         String keywordStrings = Gdx.files.internal("hydrologistmod/strings/keywords.json").readString(String.valueOf(StandardCharsets.UTF_8));
         Type typeToken = new TypeToken<Map<String, com.evacipated.cardcrawl.mod.stslib.Keyword>>() {}.getType();
 
-        Map<String, Keyword> keywords = (Map)gson.fromJson(keywordStrings, typeToken);
+        Map<String, Keyword> keywords = gson.fromJson(keywordStrings, typeToken);
 
         keywords.forEach((k,v)->{
             // Keyword word = (Keyword)v;

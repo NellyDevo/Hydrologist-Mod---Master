@@ -15,11 +15,11 @@ import java.util.ArrayList;
 
 public class TransmuteCardAction extends AbstractGameAction {
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
-    private boolean retrieveCard = false;
     public int choices = 1;
     public int cards = 1;
     private boolean anyNumber;
     private AfterTransmute followup;
+    private AbstractCard storedOldCard;
 
     public TransmuteCardAction(boolean anyNumber, AfterTransmute followup) {
         this.duration = DURATION;
@@ -56,9 +56,6 @@ public class TransmuteCardAction extends AbstractGameAction {
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             AbstractCard oldCard = AbstractDungeon.handCardSelectScreen.selectedCards.group.get(0);
             AbstractDungeon.player.hand.group.remove(oldCard);
-            if (oldCard instanceof TransmutableCard) {
-                ((TransmutableCard) oldCard).onTransmuted();
-            }
             if (choices == 0) {
                 isDone = true;
                 System.out.println("TRANSMUTECARDACTION: Make 0 choices? How did this happen?");
@@ -68,6 +65,9 @@ public class TransmuteCardAction extends AbstractGameAction {
                 UnlockTracker.markCardAsSeen(newCard.cardID);
                 if (followup != null) {
                     followup.doActions(newCard);
+                }
+                if (oldCard instanceof TransmutableCard) {
+                    ((TransmutableCard)oldCard).onTransmuted(newCard);
                 }
                 AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(newCard));
                 AbstractDungeon.handCardSelectScreen.selectedCards.group.remove(oldCard);
@@ -87,6 +87,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                     }
                 }
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
+                storedOldCard = oldCard;
                 AbstractDungeon.gridSelectScreen.open(tmp, 1, "Choose your new card", false);
                 return;
             }
@@ -95,6 +96,9 @@ public class TransmuteCardAction extends AbstractGameAction {
             AbstractCard newCard = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
             if (followup != null) {
                 followup.doActions(newCard);
+            }
+            if (storedOldCard instanceof TransmutableCard) {
+                ((TransmutableCard)storedOldCard).onTransmuted(newCard);
             }
             AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(newCard));
             AbstractDungeon.gridSelectScreen.selectedCards.clear();

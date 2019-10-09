@@ -52,7 +52,7 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
     }
 
     @Override
-    public void onTransmuted() {
+    public void onTransmuted(AbstractCard newCard) {
         addToBot(new FlowAction());
     }
 }

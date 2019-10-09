@@ -49,7 +49,7 @@ public class PureIce extends AbstractHydrologistCard implements TransmutableCard
     }
 
     @Override
-    public void onTransmuted() {
+    public void onTransmuted(AbstractCard newCard) {
         addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
     }
 }

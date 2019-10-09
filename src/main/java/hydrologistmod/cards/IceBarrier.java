@@ -55,7 +55,7 @@ public class IceBarrier extends AbstractHydrologistCard implements TransmutableC
     }
 
     @Override
-    public void onTransmuted() {
+    public void onTransmuted(AbstractCard newCard) {
         int[] array = new int[AbstractDungeon.getMonsters().monsters.size()];
         for (int i = 0; i < array.length; ++i) {
             array[i] = magicNumber;
