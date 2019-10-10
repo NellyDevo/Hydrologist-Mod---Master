@@ -353,6 +353,11 @@
     "DESCRIPTION": "Deal !D! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Sublimation": {
+    "NAME": "Sublimation",
+    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a Steam card, deal !M! damage to ALL enemies.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:SwelteringStrike": {
     "NAME": "Sweltering Strike",
     "DESCRIPTION": "Deal !D! damage.",
