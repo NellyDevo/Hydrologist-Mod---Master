@@ -320,6 +320,11 @@
     "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL hydrologistmod:Transmute a card into a Water card.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Solidification": {
+    "NAME": "Solidification",
+    "DESCRIPTION": "Deal !D! damage. NL Draw a Card. NL If your next card played is an Ice card, gain !M! Block.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:SoothingWater": {
     "NAME": "Soothing Water",
     "DESCRIPTION": "Heal !M! HP. NL Fleeting. NL hydrologistmod:On_Swap: permanently increase this card's healing by 4 and Exhaust. NL hydrologistmod:Swappable.",
