@@ -323,6 +323,11 @@
     "DESCRIPTION": "Deal !D! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:SwelteringSynthesis": {
+    "NAME": "Sweltering Synthesis",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card into a Steam card.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:TidalWave": {
     "NAME": "Tidal Wave",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL hydrologistmod:Swappable.",
