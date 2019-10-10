@@ -20,8 +20,9 @@ public class TransmuteCardAction extends AbstractGameAction {
     private boolean anyNumber;
     private AfterTransmute followup;
     private AbstractCard storedOldCard;
+    private Conditionals conditions;
 
-    public TransmuteCardAction(boolean anyNumber, AfterTransmute followup) {
+    public TransmuteCardAction(boolean anyNumber, AfterTransmute followup, Conditionals conditions) {
         this.duration = DURATION;
         for (AbstractPower power : AbstractDungeon.player.powers) {
             if (power instanceof TransmutableAffectingPower) {
@@ -30,18 +31,23 @@ public class TransmuteCardAction extends AbstractGameAction {
         }
         this.followup = followup;
         this.anyNumber = anyNumber;
+        this.conditions = conditions;
     }
 
     public TransmuteCardAction() {
-        this(false, null);
+        this(false, null, null);
     }
 
     public TransmuteCardAction(boolean anyNumber) {
-        this(anyNumber, null);
+        this(anyNumber, null, null);
     }
 
     public TransmuteCardAction(AfterTransmute followup) {
-        this(false, followup);
+        this(false, followup, null);
+    }
+
+    public TransmuteCardAction(Conditionals conditions) {
+        this(false, null, conditions);
     }
 
     public void update() {
@@ -128,10 +134,20 @@ public class TransmuteCardAction extends AbstractGameAction {
                 targets.add(candidate);
             }
         }
-        return targets.get(AbstractDungeon.cardRandomRng.random(targets.size()-1));
+        AbstractCard result = targets.get(AbstractDungeon.cardRandomRng.random(targets.size()-1));
+        if (conditions != null) {
+            while (!conditions.filter(result)) {
+                result = targets.get(AbstractDungeon.cardRandomRng.random(targets.size()-1));
+            }
+        }
+        return result;
     }
 
     public interface AfterTransmute {
         void doActions(AbstractCard newCard);
+    }
+
+    public interface Conditionals {
+        boolean filter(AbstractCard potentialCard);
     }
 }
