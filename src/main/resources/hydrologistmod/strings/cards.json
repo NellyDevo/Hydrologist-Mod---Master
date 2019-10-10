@@ -200,6 +200,11 @@
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Flow. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:HotSprings": {
+    "NAME": "Hot Springs",
+    "DESCRIPTION": "Whenever you apply a debuff to any enemy, remove the same debuff from yourself.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you apply a debuff to any enemy, remove the same debuff from yourself."
+  },
   "hydrologistmod:Hydraulics": {
     "NAME": "Hydraulics",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy intends to attack, hydrologistmod:Flow.",
