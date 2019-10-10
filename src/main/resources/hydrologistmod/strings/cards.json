@@ -150,6 +150,11 @@
     "DESCRIPTION": "Deal !D! damage. NL If the enemy is Vulnerable, gain !B! Block. NL If the enemy is Weak, deal an additional !D! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:GlacialSynthesis": {
+    "NAME": "Glacial Synthesis",
+    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute a card into an Ice card.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:GlacierBash": {
     "NAME": "Glacier Bash",
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:On_Swap: Reduce this card's cost by [E] for this combat. NL hydrologistmod:Swappable.",
