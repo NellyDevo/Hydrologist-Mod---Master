@@ -230,6 +230,11 @@
     "DESCRIPTION": "Gain !B! Block. NL Increase the damage dealt by the *Paired card by !M! this combat. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Liquidation": {
+    "NAME": "Liquidation",
+    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is a Water card, apply !M! Weak to ALL enemies.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:OccludingMist": {
     "NAME": "Occluding Mist",
     "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",
