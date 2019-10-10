@@ -300,6 +300,11 @@
     "DESCRIPTION": "Innate, Ethereal. NL hydrologistmod:On_Swap: lose [E] [E] and discard this card. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": "Innate, Ethereal. NL hydrologistmod:On_Swap: lose [E] and discard this card. NL hydrologistmod:Swappable."
   },
+  "hydrologistmod:ResonantCrystal": {
+    "NAME": "Resonant Crystal",
+    "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, the new card is Upgraded.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:Ripcurrent": {
     "NAME": "Ripcurrent",
     "DESCRIPTION": "Double the enemy's Weak amount. NL Exhaust. NL hydrologistmod:Swappable.",

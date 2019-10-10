@@ -69,6 +69,11 @@ public class TransmuteCardAction extends AbstractGameAction {
             } else if (choices == 1) {
                 AbstractCard newCard = getTransmutationResult().makeCopy();
                 UnlockTracker.markCardAsSeen(newCard.cardID);
+                for (AbstractPower power : AbstractDungeon.player.powers) {
+                    if (power instanceof TransmutableAffectingPower) {
+                        ((TransmutableAffectingPower)power).affectTransmutedCard(newCard);
+                    }
+                }
                 if (followup != null) {
                     followup.doActions(newCard);
                 }
@@ -100,6 +105,11 @@ public class TransmuteCardAction extends AbstractGameAction {
         }
         if (AbstractDungeon.gridSelectScreen.selectedCards.size() != 0) {
             AbstractCard newCard = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
+            for (AbstractPower power : AbstractDungeon.player.powers) {
+                if (power instanceof TransmutableAffectingPower) {
+                    ((TransmutableAffectingPower)power).affectTransmutedCard(newCard);
+                }
+            }
             if (followup != null) {
                 followup.doActions(newCard);
             }
