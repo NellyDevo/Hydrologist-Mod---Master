@@ -220,6 +220,11 @@
     "DESCRIPTION": "Whenever you hydrologistmod:Flow, draw a card for each card discarded.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:JetPropulsion": {
+    "NAME": "Jet Propulsion",
+    "DESCRIPTION": "Apply !M! Vulnerable. If the enemy does NOT intend to attack, draw !M! cards.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:LaminarFlow": {
     "NAME": "Laminar Flow",
     "DESCRIPTION": "At the end of your turn, gain 3(4) Block. NL hydrologistmod:Swappable.",
