@@ -24,5 +24,6 @@ public class HydraulicsAction extends AbstractGameAction {
         if (monster != null && monster.getIntentBaseDmg() >= 0) {
             AbstractDungeon.actionManager.addToTop(new FlowAction());
         }
+        isDone = true;
     }
 }
