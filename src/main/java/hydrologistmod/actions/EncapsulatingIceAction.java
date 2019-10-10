@@ -46,5 +46,6 @@ public class EncapsulatingIceAction extends AbstractGameAction {
                 AbstractDungeon.player.energy.use(EnergyPanel.totalCount);
             }
         }
+        isDone = true;
     }
 }

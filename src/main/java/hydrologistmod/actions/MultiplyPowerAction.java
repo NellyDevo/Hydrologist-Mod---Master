@@ -37,5 +37,6 @@ public class MultiplyPowerAction extends AbstractGameAction {
         } else {
             System.out.println("ERROR: " + power + " is not cloneable!");
         }
+        isDone = true;
     }
 }

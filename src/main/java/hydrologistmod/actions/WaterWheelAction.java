@@ -45,5 +45,6 @@ public class WaterWheelAction extends AbstractGameAction {
                 AbstractDungeon.player.energy.use(EnergyPanel.totalCount);
             }
         }
+        isDone = true;
     }
 }
