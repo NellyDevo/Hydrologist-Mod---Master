@@ -413,6 +413,11 @@
     "DESCRIPTION": "hydrologistmod:Flow. NL Next turn, gain [E] equal to the number of cards discarded this way. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:WaterWheel": {
+    "NAME": "Water Wheel",
+    "DESCRIPTION": "hydrologistmod:Flow. NL At the start of next turn, gain X [E] . NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "hydrologistmod:Flow. NL At the start of next turn, gain X+1 [E] . NL Exhaust."
+  },
   "hydrologistmod:WaterWhip": {
     "NAME": "Water Whip",
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL hydrologistmod:On_Swap: Lose [E].",
