@@ -290,6 +290,11 @@
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:SoggySynthesis": {
+    "NAME": "Soggy Synthesis",
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL hydrologistmod:Transmute a card into a Water card.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:SoothingWater": {
     "NAME": "Soothing Water",
     "DESCRIPTION": "Heal !M! HP. NL Fleeting. NL hydrologistmod:On_Swap: permanently increase this card's healing by 4 and Exhaust. NL hydrologistmod:Swappable.",
