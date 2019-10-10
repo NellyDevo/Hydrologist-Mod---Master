@@ -19,6 +19,11 @@
     "DESCRIPTION": "hydrologistmod:Flow. NL Gain !B! Block for each card discarded this way.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Condensation": {
+    "NAME": "Condensation",
+    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a Water card, draw a card.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a Water card, draw 2 cards."
+  },
   "hydrologistmod:Cryogenics": {
     "NAME": "Cryogenics",
     "DESCRIPTION": "Unplayable. NL When hydrologistmod:Transmuted, add an additional copy of the new card to your hand. It costs 0 this turn.",
