@@ -160,6 +160,11 @@
     "DESCRIPTION": "hydrologistmod:Flow. NL if you discarded !M! cards this way, gain 1 Intangible.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Giraffe": {
+    "NAME": "Giraffe",
+    "DESCRIPTION": "At the end of your turn, Retain up to !M! hydrologistmod:Corporeal cards.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:GlacialStrike": {
     "NAME": "Glacial Strike",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy is Vulnerable, gain !B! Block. NL If the enemy is Weak, deal an additional !D! damage.",
