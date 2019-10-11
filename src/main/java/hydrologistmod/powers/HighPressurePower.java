@@ -8,10 +8,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hydrologistmod.interfaces.HydrologistSubtypeAffectingPower;
+import hydrologistmod.interfaces.ApplyPowersForHydrologistPower;
 import hydrologistmod.patches.HydrologistTags;
 
-public class HighPressurePower extends AbstractPower implements HydrologistSubtypeAffectingPower, CloneablePowerInterface {
+public class HighPressurePower extends AbstractPower implements ApplyPowersForHydrologistPower, CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:HighPressurePower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;

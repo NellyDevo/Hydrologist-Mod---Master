@@ -245,6 +245,11 @@
     "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is a Water card, apply !M! Weak to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Manifestation": {
+    "NAME": "Manifestation",
+    "DESCRIPTION": "hydrologistmod:Corporeal cards deal !M! additional damage and gain !M! additional Block.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:OccludingMist": {
     "NAME": "Occluding Mist",
     "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",
