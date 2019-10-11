@@ -270,6 +270,11 @@
     "DESCRIPTION": "Deal !D! damage X+ !M! times. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:PressureBuildup": {
+    "NAME": "Pressure Buildup",
+    "DESCRIPTION": "Every time you play 10 hydrologistmod:Corporeal cards, deal !M! damage to ALL enemies.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:PureIce": {
     "NAME": "Pure Ice",
     "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, gain !B! Block.",
