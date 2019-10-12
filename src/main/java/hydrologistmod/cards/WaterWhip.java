@@ -11,12 +11,10 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import helpers.SwapperHelper;
-import hydrologistmod.CardIgnore;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-@CardIgnore
 public class WaterWhip extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:WaterWhip";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);

@@ -10,10 +10,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import helpers.SwapperHelper;
+import hydrologistmod.CardIgnore;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+@CardIgnore
 public class SteamLash extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:SteamLash";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -29,7 +31,7 @@ public class SteamLash extends AbstractHydrologistCard implements SwappableCard 
     public SteamLash() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 AbstractCard.CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
-                AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY);
+                AbstractCard.CardRarity.SPECIAL, AbstractCard.CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         magicNumber = baseMagicNumber = ENERGY_GAIN_ON_SWAP;
         tags.add(HydrologistTags.STEAM);

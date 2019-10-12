@@ -7,9 +7,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import helpers.SwapperHelper;
-import hydrologistmod.interfaces.SwappableCard;
+import hydrologistmod.CardIgnore;
 import hydrologistmod.patches.AbstractCardEnum;
 
+@CardIgnore
 public class UnstableDefend extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:UnstableDefend";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
