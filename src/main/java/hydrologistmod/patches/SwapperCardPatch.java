@@ -66,21 +66,26 @@ public class SwapperCardPatch {
             method = "makeSameInstanceOf"
     )
     public static class AbstractCardMakeSameInstanceOfPatch {
+        private static boolean disableLoop = false;
 
         public static AbstractCard Postfix(AbstractCard __result, AbstractCard __instance) {
             if (SwapperHelper.isCardRegistered(__instance)) {
-                AbstractCard bufferCard = SwapperHelper.getPairedCard(__instance);
-                ArrayList<AbstractCard> listBuffer = new ArrayList<>();
-                listBuffer.add(__instance.makeSameInstanceOf());
-                listBuffer.add(bufferCard.makeSameInstanceOf());
-                while (SwapperHelper.getPairedCard(bufferCard) != __instance) {
-                    bufferCard = SwapperHelper.getPairedCard(bufferCard);
-                    listBuffer.add(bufferCard);
+                if (!disableLoop) {
+                    disableLoop = true;
+                    AbstractCard bufferCard = SwapperHelper.getPairedCard(__instance);
+                    ArrayList<AbstractCard> listBuffer = new ArrayList<>();
+                    listBuffer.add(__instance.makeSameInstanceOf());
+                    listBuffer.add(bufferCard.makeSameInstanceOf());
+                    while (SwapperHelper.getPairedCard(bufferCard) != __instance) {
+                        bufferCard = SwapperHelper.getPairedCard(bufferCard);
+                        listBuffer.add(bufferCard);
+                    }
+                    for (int i = 0; i < listBuffer.size(); ++i) {
+                        SwapperHelper.registerOneWayPair(listBuffer.get(i), listBuffer.get((i + 1) % listBuffer.size()));
+                    }
+                    System.out.println("Swapper card detected as duplicated by make same instance of: duplicate pairing created");
+                    disableLoop = false;
                 }
-                for (int i = 0; i < listBuffer.size(); ++i) {
-                    SwapperHelper.registerOneWayPair(listBuffer.get(i), listBuffer.get((i+1)%listBuffer.size()));
-                }
-                System.out.println("Swapper card detected as duplicated by make same instance of: duplicate pairing created");
             }
             return __result;
         }
