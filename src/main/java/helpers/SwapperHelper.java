@@ -33,6 +33,8 @@ public class SwapperHelper {
             } else {
                 cardPairs.put(card1, card2);
                 cardPairs.put(card2, card1);
+                card1.cardsToPreview = card2;
+                card2.cardsToPreview = card1;
                 System.out.println("SwapperHelper: card pairing between " + card1 + " and " + card2 + " successfully registered.");
             }
         } else {
