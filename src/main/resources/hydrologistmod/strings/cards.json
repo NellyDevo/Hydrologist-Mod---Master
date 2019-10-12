@@ -155,6 +155,11 @@
     "DESCRIPTION": "Deal !D! damage. NL Increase the Block gained by the *Paired card by !M! this combat. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:FrozenCapsule": {
+    "NAME": "Frozen Capsule",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute this card. The new card costs 0 this combat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute this card. The new card costs 0 this combat and is Upgraded."
+  },
   "hydrologistmod:GhostlyMist": {
     "NAME": "Ghostly Mist",
     "DESCRIPTION": "Deal !D! damage. NL If you played a hydrologistmod:Corporeal card this turn, deal !D! damage again.",
