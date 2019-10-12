@@ -29,6 +29,7 @@ public class DeepFreeze extends AbstractHydrologistCard implements SwappableCard
                 CardRarity.UNCOMMON, CardTarget.NONE);
         tags.add(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = POWER_AMT;
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

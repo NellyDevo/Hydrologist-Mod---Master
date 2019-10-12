@@ -30,6 +30,7 @@ public class EverflowingCurrents extends AbstractHydrologistCard implements Swap
                 CardRarity.UNCOMMON, CardTarget.SELF);
         tags.add(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = DRAW;
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

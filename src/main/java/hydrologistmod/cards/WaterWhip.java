@@ -38,6 +38,7 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
         damage = baseDamage = ATTACK_DMG;
         magicNumber = baseMagicNumber = ENERGY_LOSS_ON_SWAP;
         tags.add(HydrologistTags.WATER);
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

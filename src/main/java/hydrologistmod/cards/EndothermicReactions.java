@@ -29,6 +29,7 @@ public class EndothermicReactions extends AbstractHydrologistCard implements Swa
                 CardRarity.UNCOMMON, CardTarget.NONE);
         tags.add(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = AMOUNT;
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

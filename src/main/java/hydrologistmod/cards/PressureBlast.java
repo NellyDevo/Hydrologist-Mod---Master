@@ -29,6 +29,7 @@ public class PressureBlast extends AbstractHydrologistCard implements SwappableC
         tags.add(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = 0;
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

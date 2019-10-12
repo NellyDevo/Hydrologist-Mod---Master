@@ -32,6 +32,7 @@ public class Reservoir extends AbstractHydrologistCard implements SwappableCard 
         isInnate = true;
         isEthereal = true;
         magicNumber = baseMagicNumber = ENERGY_LOSS;
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

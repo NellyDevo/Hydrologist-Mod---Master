@@ -28,6 +28,7 @@ public class HighTide extends AbstractHydrologistCard implements SwappableCard {
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         tags.add(HydrologistTags.WATER);
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

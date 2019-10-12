@@ -27,6 +27,7 @@ public class CrystalIce extends AbstractHydrologistCard implements SwappableCard
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.NONE);
         tags.add(HydrologistTags.ICE);
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

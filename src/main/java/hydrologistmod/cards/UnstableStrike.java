@@ -29,6 +29,7 @@ public class UnstableStrike extends AbstractHydrologistCard implements Swappable
                 CardRarity.BASIC, CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         tags.add(CardTags.STRIKE);
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

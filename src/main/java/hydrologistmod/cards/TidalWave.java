@@ -31,6 +31,7 @@ public class TidalWave extends AbstractHydrologistCard implements SwappableCard 
         tags.add(HydrologistTags.WATER);
         isMultiDamage = true;
         baseDamage = DAMAGE_AMT;
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

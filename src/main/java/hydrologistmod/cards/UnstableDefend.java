@@ -10,7 +10,7 @@ import helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 
-public class UnstableDefend extends AbstractHydrologistCard implements SwappableCard {
+public class UnstableDefend extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:UnstableDefend";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -45,15 +45,5 @@ public class UnstableDefend extends AbstractHydrologistCard implements Swappable
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_BLOCK);
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new UnstableStrike();
     }
 }

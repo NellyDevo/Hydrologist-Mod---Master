@@ -28,6 +28,7 @@ public class OccludingMist extends AbstractHydrologistCard implements SwappableC
                 CardRarity.COMMON, CardTarget.SELF);
         tags.add(HydrologistTags.STEAM);
         block = baseBlock = BLOCK_AMT;
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

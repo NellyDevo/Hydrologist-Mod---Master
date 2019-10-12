@@ -32,6 +32,7 @@ public class LayeredShell extends AbstractHydrologistCard implements SwappableCa
         tags.add(HydrologistTags.ICE);
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = DAMAGE_INCREASE;
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override

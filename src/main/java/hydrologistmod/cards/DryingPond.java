@@ -27,6 +27,7 @@ public class DryingPond extends AbstractHydrologistCard implements SwappableCard
                 CardRarity.UNCOMMON, CardTarget.NONE);
         tags.add(HydrologistTags.WATER);
         exhaust = true;
+        SwapperHelper.registerPair(this, createDefaultPair());
     }
 
     @Override
