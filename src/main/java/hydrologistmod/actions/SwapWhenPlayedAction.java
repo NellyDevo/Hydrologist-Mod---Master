@@ -16,9 +16,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import java.lang.reflect.Field;
 
 public class SwapWhenPlayedAction extends AbstractGameAction {
-    private static final String ID = "hydrologistmod:SwapWhenPlayedAction";
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-    public static final String[] TEXT = uiStrings.TEXT;
+//    private static final String ID = "hydrologistmod:SwapWhenPlayedAction";
+//    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+//    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private AbstractCard card1;
     private AbstractCard card2;

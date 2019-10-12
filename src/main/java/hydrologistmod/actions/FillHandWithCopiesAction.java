@@ -10,9 +10,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
 public class FillHandWithCopiesAction extends AbstractGameAction {
-    private static final String ID = "hydrologistmod:FillHandWithCopiesAction";
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-    public static final String[] TEXT = uiStrings.TEXT;
+//    private static final String ID = "hydrologistmod:FillHandWithCopiesAction";
+//    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+//    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private AbstractCard card;
 

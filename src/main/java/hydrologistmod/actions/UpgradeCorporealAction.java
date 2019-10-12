@@ -3,18 +3,13 @@ package hydrologistmod.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.UIStrings;
 import hydrologistmod.HydrologistMod;
 
 import java.util.ArrayList;
 
 public class UpgradeCorporealAction extends AbstractGameAction {
-    private static final String ID = "hydrologistmod:UpgradeCorporealAction";
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private AbstractPlayer p;
     private boolean upgraded;
@@ -60,7 +55,7 @@ public class UpgradeCorporealAction extends AbstractGameAction {
             }
             p.hand.group.removeAll(cannotUpgrade);
             if (p.hand.group.size() > 1) {
-                AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, false, false, false, true);
+                AbstractDungeon.handCardSelectScreen.open("Choose a card to upgrade", 1, false, false, false, true);
                 tickDuration();
                 return;
             } else if (p.hand.group.size() == 1) {

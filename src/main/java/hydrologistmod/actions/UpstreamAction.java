@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class UpstreamAction extends AbstractGameAction {
-    private static final String ID = "hydrologistmod:HydraulicsAction";
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-    public static final String[] TEXT = uiStrings.TEXT;
+//    private static final String ID = "hydrologistmod:HydraulicsAction";
+//    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+//    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private AbstractMonster monster;
     private int blockAmt;

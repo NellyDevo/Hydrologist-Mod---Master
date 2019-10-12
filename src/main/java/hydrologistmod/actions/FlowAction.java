@@ -14,9 +14,9 @@ import hydrologistmod.interfaces.FlowAffectingPower;
 import hydrologistmod.powers.FlowPower;
 
 public class FlowAction extends AbstractGameAction {
-    private static final String ID = "hydrologistmod:FlowAction";
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-    public static final String[] TEXT = uiStrings.TEXT;
+//    private static final String ID = "hydrologistmod:FlowAction";
+//    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+//    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private AfterDiscard followup;
 
@@ -37,7 +37,7 @@ public class FlowAction extends AbstractGameAction {
                 this.isDone = true;
                 return;
             }
-            AbstractDungeon.handCardSelectScreen.open(TEXT[0], 99, true, true);
+            AbstractDungeon.handCardSelectScreen.open("Choose any number of cards to discard.", 99, true, true);
             AbstractDungeon.player.hand.applyPowers();
             tickDuration();
             return;

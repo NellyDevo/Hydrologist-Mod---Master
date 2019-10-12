@@ -7,8 +7,7 @@ import com.megacrit.cardcrawl.cards.*;
 import com.megacrit.cardcrawl.helpers.*;
 import java.util.*;
 
-public class SkeletalIncreaseMiscAction extends AbstractGameAction
-{
+public class SkeletalIncreaseMiscAction extends AbstractGameAction {
     private int miscIncrease;
     private UUID uuid;
 

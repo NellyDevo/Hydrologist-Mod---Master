@@ -7,9 +7,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
 public class IncreasePairCardStatsAction extends AbstractGameAction {
-    private static final String ID = "hydrologistmod:IncreasePairCardStatsAction";
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-    public static final String[] TEXT = uiStrings.TEXT;
+//    private static final String ID = "hydrologistmod:IncreasePairCardStatsAction";
+//    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+//    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private AbstractCard card;
     private AbstractCard pairCard;

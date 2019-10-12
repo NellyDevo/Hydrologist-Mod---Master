@@ -71,6 +71,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                     AbstractDungeon.handCardSelectScreen.open("Choose any number of cards to Transmute", 99, true, true);
                 } else {
                     AbstractDungeon.handCardSelectScreen.open("Choose a card to Transmute", cards, false, false);
+                    tickDuration();
                     return;
                 }
             } else {

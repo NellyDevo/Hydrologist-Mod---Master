@@ -11,9 +11,9 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import java.util.ArrayList;
 
 public class RetainFilteredCardAction extends AbstractGameAction {
-    private static final String ID = "hydrologistmod:RetainFilteredCardAction";
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-    public static final String[] TEXT = uiStrings.TEXT;
+//    private static final String ID = "hydrologistmod:RetainFilteredCardAction";
+//    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+//    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private FilterCards cardFilter;
     private ArrayList<AbstractCard> cannotRetain;
@@ -51,7 +51,7 @@ public class RetainFilteredCardAction extends AbstractGameAction {
             }
             p.hand.group.removeAll(cannotRetain);
             if (p.hand.group.size() > retainAmount) {
-                AbstractDungeon.handCardSelectScreen.open(TEXT[0], retainAmount, true, true, false, false);
+                AbstractDungeon.handCardSelectScreen.open("Choose a card to retain", retainAmount, true, true, false, false);
                 tickDuration();
                 return;
             } else if (p.hand.group.size() > 0) {
