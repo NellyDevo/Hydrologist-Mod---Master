@@ -58,6 +58,8 @@ public class SwapperHelper {
             }
             cardPairs.put(card1, card2);
             cardPairs.put(card2, card1);
+            card1.cardsToPreview = card2;
+            card2.cardsToPreview = card1;
             System.out.println("SwapperHelper: card pairing between " + card1 + " and " + card2 + " successfully registered.");
         }
     }
@@ -65,6 +67,7 @@ public class SwapperHelper {
     public static void registerOneWayPair(AbstractCard card1, AbstractCard card2) { //for creating chains, trios, etc.
         if (!isCardRegistered(card1) && (!isCardRegistered(card2))) {
             cardPairs.put(card1, card2);
+            card1.cardsToPreview = card2;
         }
     }
 
@@ -83,6 +86,8 @@ public class SwapperHelper {
     public static void registerMasterDeckPair(AbstractCard card1, AbstractCard card2) {
         if (!masterDeckPairs.containsKey(card1) && !masterDeckPairs.containsKey(card2)) {
             masterDeckPairs.put(card1, card2);
+            card1.cardsToPreview = card2;
+            card2.cardsToPreview = card1;
         } else {
             System.out.println("SwapperHelper: ERROR: card already has a pair, pairing not made.");
         }
