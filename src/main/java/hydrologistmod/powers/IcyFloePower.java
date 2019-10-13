@@ -30,7 +30,11 @@ public class IcyFloePower extends AbstractPower implements FlowAffectingPower, C
 
     @Override
     public void updateDescription() {
-
+        if (amount == 1) {
+            description = DESCRIPTIONS[0] + DESCRIPTIONS[3];
+        } else {
+            description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        }
     }
 
     @Override
@@ -40,6 +44,6 @@ public class IcyFloePower extends AbstractPower implements FlowAffectingPower, C
 
     @Override
     public void onFlow(int cardsDiscarded) {
-        AbstractDungeon.actionManager.addToTop(new DrawCardAction(owner, cardsDiscarded));
+        AbstractDungeon.actionManager.addToTop(new DrawCardAction(owner, cardsDiscarded * amount));
     }
 }

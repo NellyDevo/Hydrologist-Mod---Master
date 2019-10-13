@@ -29,7 +29,7 @@ public class ResonantCrystalPower extends AbstractPower implements TransmutableA
 
     @Override
     public void updateDescription() {
-
+        description = DESCRIPTIONS[0];
     }
 
     @Override

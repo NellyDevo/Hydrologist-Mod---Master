@@ -36,7 +36,7 @@ public class LiquidationPower extends AbstractPower implements NonStackablePower
 
     @Override
     public void updateDescription() {
-
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override

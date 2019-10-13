@@ -30,7 +30,7 @@ public class HotSpringsPower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public void updateDescription() {
-
+        description = DESCRIPTIONS[0];
     }
 
     @Override

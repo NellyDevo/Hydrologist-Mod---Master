@@ -31,7 +31,11 @@ public class FlowPower extends AbstractPower implements NonStackablePower, Clone
 
     @Override
     public void updateDescription() {
-
+        if (amount == 1) {
+            description = DESCRIPTIONS[0] + DESCRIPTIONS[3];
+        } else {
+            description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        }
     }
 
     @Override

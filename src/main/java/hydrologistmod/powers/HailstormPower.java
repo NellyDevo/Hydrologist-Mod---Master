@@ -33,7 +33,7 @@ public class HailstormPower extends AbstractPower implements CloneablePowerInter
 
     @Override
     public void updateDescription() {
-
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override

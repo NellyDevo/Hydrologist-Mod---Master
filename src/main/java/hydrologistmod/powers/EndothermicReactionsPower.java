@@ -31,7 +31,7 @@ public class EndothermicReactionsPower extends AbstractPower implements Transmut
 
     @Override
     public void updateDescription() {
-
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override

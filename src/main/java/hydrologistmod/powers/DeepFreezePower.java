@@ -30,7 +30,7 @@ public class DeepFreezePower extends AbstractPower implements ApplyPowersForHydr
 
     @Override
     public void updateDescription() {
-
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override

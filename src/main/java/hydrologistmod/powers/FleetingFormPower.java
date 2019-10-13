@@ -36,7 +36,7 @@ public class FleetingFormPower extends AbstractPower implements CloneablePowerIn
 
     @Override
     public void updateDescription() {
-
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override

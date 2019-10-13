@@ -33,8 +33,8 @@ public class ExothermicReactionsPower extends AbstractPower implements Transmuta
     }
 
     @Override
-    public void updateDescription() { //TODO note: go over all power strings
-
+    public void updateDescription() {
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override

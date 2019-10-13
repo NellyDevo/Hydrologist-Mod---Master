@@ -36,7 +36,12 @@ public class PressureBuildupPower extends TwoAmountPower implements CloneablePow
 
     @Override
     public void updateDescription() {
-
+        int tmp = 10 - amount2;
+        if (tmp == 1) {
+            description = DESCRIPTIONS[0] + tmp + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        } else {
+            description = DESCRIPTIONS[0] + tmp + DESCRIPTIONS[3] + amount + DESCRIPTIONS[2];
+        }
     }
 
     @Override

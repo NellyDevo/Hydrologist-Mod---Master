@@ -35,7 +35,11 @@ public class PackedWaterPower extends AbstractPower implements CloneablePowerInt
 
     @Override
     public void updateDescription() {
-
+        if (amount == 1) {
+            description = DESCRIPTIONS[0];
+        } else {
+            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        }
     }
 
     @Override

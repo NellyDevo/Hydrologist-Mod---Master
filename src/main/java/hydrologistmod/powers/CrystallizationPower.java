@@ -35,7 +35,7 @@ public class CrystallizationPower extends AbstractPower implements NonStackableP
 
     @Override
     public void updateDescription() {
-
+        description = DESCRIPTIONS[0];
     }
 
     @Override

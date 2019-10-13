@@ -7,16 +7,116 @@
     "NAME": "Branching Creeks",
     "DESCRIPTIONS": ["Whenever you #yTransmute a card, choose between it and ", " additional card.", " additional cards."]
   },
+  "hydrologistmod:CondensationPower": {
+    "NAME": "Condensation",
+    "DESCRIPTIONS": ["If your next card played is a #yWater card, draw #b", " cards."]
+  },
+  "hydrologistmod:CrystallizationPower": {
+    "NAME": "Crystallization",
+    "DESCRIPTIONS": ["If your next card played is an #yIce card, transmute a card in your hand."]
+  },
+  "hydrologistmod:DeepFreezePower": {
+    "NAME": "Deep Freeze",
+    "DESCRIPTIONS": ["Your #yIce cards that gain #yBlock gain #b", " additional #yBlock."]
+  },
+  "hydrologistmod:EndothermicReactionsPower": {
+    "NAME": "Endothermic Reactions",
+    "DESCRIPTIONS": ["Whenever you #yTransmute a card, gain #b", " #yBlock."]
+  },
+  "hydrologistmod:EvaporationPower": {
+    "NAME": "Evaporation",
+    "DESCRIPTIONS": ["If your next card played is a #ySteam card, apply #b", " #yVulnerable to ALL enemies."]
+  },
+  "hydrologistmod:ExothermicReactionsPower": {
+    "NAME": "Exothermic Reactions",
+    "DESCRIPTIONS": ["Whenever you #yTransmute a card, deal #b", " damage to a random enemy."]
+  },
+  "hydrologistmod:FleetingFormPower": {
+    "NAME": "Fleeting Form",
+    "DESCRIPTIONS": ["Whenever you play a #ySteam card, deal #b", " damage to a random enemy."]
+  },
+  "hydrologistmod:FlowingFormPower": {
+    "NAME": "Flowing Form",
+    "DESCRIPTIONS": ["Whenever you play a #yWater card, you may discard a card.", " If you do, draw #b", " cards.", " If you do, draw a card."]
+  },
   "hydrologistmod:FlowPower": {
     "NAME": "Flowing",
-    "DESCRIPTIONS": ["At the start of your next turn, draw #b", " cards."]
+    "DESCRIPTIONS": ["At the start of your next turn, ", "draw #b", " cards.", "draw a card."]
+  },
+  "hydrologistmod:FrigidFormPower": {
+    "NAME": "Frigid Form",
+    "DESCRIPTIONS": ["Whenever you play an #yIce card, gain #b", " #yBlock."]
+  },
+  "hydrologistmod:GiraffePower": {
+    "NAME": "Giraffe",
+    "DESCRIPTIONS": ["At the end of your turn, #yRetain up to #b", " #yCorporeal cards."]
   },
   "hydrologistmod:HailstormPower": {
-    "NAME": "River Of Time",
+    "NAME": "Hailstorm",
     "DESCRIPTIONS": ["Whenever you play an #yIce card, this enemy takes #b", " damage."]
+  },
+  "hydrologistmod:HighPressurePower": {
+    "NAME": "High Pressure",
+    "DESCRIPTIONS": ["Your #ySteam cards that deal damage deal #b", " additional damage."]
+  },
+  "hydrologistmod:HotSpringsPower": {
+    "NAME": "Hot Springs",
+    "DESCRIPTIONS": ["Whenever you apply a debuff to any enemy, remove the same debuff from yourself."]
+  },
+  "hydrologistmod:IcyFloePower": {
+    "NAME": "Icy Floe",
+    "DESCRIPTIONS": ["Whenever you #yFlow, ", "draw #b", " cards for each card discarded this way.", "draw a card for each card discarded this way"]
+  },
+  "hydrologistmod:LiquidationPower": {
+    "NAME": "Liquidation",
+    "DESCRIPTIONS": ["If your next card played is a #y Water card, apply #b", " #yWeak to ALL enemies."]
+  },
+  "hydrologistmod:ManifestationPower": {
+    "NAME": "Manifestation",
+    "DESCRIPTIONS": ["#yCorporeal cards that deal damage deal #b", " additional damage. #yCorporeal cards that gain #yBlock gain #b", " additional #yBlock."]
+  },
+  "hydrologistmod:PackedIcePower": {
+    "NAME": "Packed Ice",
+    "DESCRIPTIONS": ["The next #yIce card you play this combat is played twice.", "The next #b", " #yIce cards you play this combat are played twice."]
+  },
+  "hydrologistmod:PackedWaterPower": {
+    "NAME": "Packed Water",
+    "DESCRIPTIONS": ["The next #yWater card you play this combat is played twice.", "The next #b", " #yWater cards you play this combat are played twice."]
+  },
+  "hydrologistmod:PackedSteamPower": {
+    "NAME": "Packed Steam",
+    "DESCRIPTIONS": ["The next #ySteam card you play this combat is played twice.", "The next #b", " #ySteam cards you play this combat are played twice."]
+  },
+  "hydrologistmod:PneumaticsPower": {
+    "NAME": "Pneumatics",
+    "DESCRIPTIONS": ["At the start of next turn, #yFlow.", "At the start of the next #b", " turns, #yFlow."]
+  },
+  "hydrologistmod:PressureBuildupPower": {
+    "NAME": "Pressure Buildup",
+    "DESCRIPTIONS": ["When you play #b", " more #yCorporeal card, deal #b", " damage to ALL enemies.", " more #yCorporeal cards, deal #b"]
+  },
+  "hydrologistmod:ReleaseValvePower": {
+    "NAME": "Release Valve",
+    "DESCRIPTIONS": ["When you play #yFlow, this enemy takes #b", " damage for each card discarded."]
+  },
+  "hydrologistmod:ResonantCrystalPower": {
+    "NAME": "Resonant Crystal",
+    "DESCRIPTIONS": ["Whenever you #yTransmute, the new card is #yUpgraded."]
   },
   "hydrologistmod:RiverOfTimePower": {
     "NAME": "River Of Time",
     "DESCRIPTIONS": ["Your next #ySwappable card is also played Swapped.", "Your next ", " #ySwappable cards are also played Swapped."]
+  },
+  "hydrologistmod:SolidificationPower": {
+    "NAME": "Solidification",
+    "DESCRIPTIONS": ["If your next card played is an #yIce card, gain #b", " #yBlock."]
+  },
+  "hydrologistmod:SteamEnginePower": {
+    "NAME": "Steam Engine",
+    "DESCRIPTIONS": ["The first #yCorporeal card you play each turn is played twice.", "The first #b", " #yCorporeal cards you play each turn are played twice."]
+  },
+  "hydrologistmod:SublimationPower": {
+    "NAME": "Sublimation",
+    "DESCRIPTIONS": ["If your next card played is a #ySteam card, deal #b", " damage to ALL enemies."]
   }
 }

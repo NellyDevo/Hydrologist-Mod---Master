@@ -35,7 +35,7 @@ public class AqueductsPower extends AbstractPower implements OnCardDrawPower, Cl
 
     @Override
     public void updateDescription() {
-
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override
