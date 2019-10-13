@@ -12,18 +12,18 @@ import hydrologistmod.actions.UpgradeCorporealAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class ExtradimensionalIcicles extends AbstractHydrologistCard {
-    public static final String ID = "hydrologistmod:ExtradimensionalIcicles";
+public class DimensionalIcicles extends AbstractHydrologistCard {
+    public static final String ID = "hydrologistmod:DimensionalIcicles";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/ExtradimensionalIcicles.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/DimensionalIcicles.png";
     private static final int COST = 1;
     private static final int DAMAGE_AMT = 6;
     private static final int UPGRADE_DAMAGE = 3;
 
-    public ExtradimensionalIcicles() {
+    public DimensionalIcicles() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
@@ -39,7 +39,7 @@ public class ExtradimensionalIcicles extends AbstractHydrologistCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new ExtradimensionalIcicles();
+        return new DimensionalIcicles();
     }
 
     @Override
