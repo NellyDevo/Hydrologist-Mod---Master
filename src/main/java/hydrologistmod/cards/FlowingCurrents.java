@@ -13,18 +13,18 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class EverflowingCurrents extends AbstractHydrologistCard implements SwappableCard {
-    public static final String ID = "hydrologistmod:EverflowingCurrents";
+public class FlowingCurrents extends AbstractHydrologistCard implements SwappableCard {
+    public static final String ID = "hydrologistmod:FlowingCurrents";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/EverflowingCurrents.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/FlowingCurrents.png";
     private static final int COST = 0;
     private static final int DRAW = 1;
     private int lastTurnSwapped = -1;
 
-    public EverflowingCurrents() {
+    public FlowingCurrents() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.SELF);
@@ -43,7 +43,7 @@ public class EverflowingCurrents extends AbstractHydrologistCard implements Swap
 
     @Override
     public AbstractCard makeCopy() {
-        return new EverflowingCurrents();
+        return new FlowingCurrents();
     }
 
     @Override

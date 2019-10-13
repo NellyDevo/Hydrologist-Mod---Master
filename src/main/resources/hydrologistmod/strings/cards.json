@@ -92,11 +92,6 @@
     "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is a Steam card, apply !M! Vulnerable to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:EverflowingCurrents": {
-    "NAME": "Everflowing Currents",
-    "DESCRIPTION": "hydrologistmod:Flow. NL hydrologistmod:On_Swap: you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Draw a card, then hydrologistmod:Flow. NL hydrologistmod:On_Swap: you cannot swap away from this card again this turn. NL hydrologistmod:Swappable."
-  },
   "hydrologistmod:ExothermicReactions": {
     "NAME": "Exothermic Reactions",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, deal !M! damage to a random enemy. NL hydrologistmod:Swappable.",
@@ -124,6 +119,11 @@
     "NAME": "Fleeting Form",
     "DESCRIPTION": "Whenever you play a Steam card, deal !M! damage to a random enemy. NL hydrologistmod:Swaps to *Frigid *Form.",
     "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:FlowingCurrents": {
+    "NAME": "Flowing Currents",
+    "DESCRIPTION": "hydrologistmod:Flow. NL hydrologistmod:On_Swap: you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Draw a card, then hydrologistmod:Flow. NL hydrologistmod:On_Swap: you cannot swap away from this card again this turn. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:FlowingForm": {
     "NAME": "Flowing Form",
