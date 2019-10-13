@@ -6,25 +6,25 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.CardIgnore;
+import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.ExothermicReactionsPower;
 
 @CardIgnore
-public class ExothermicReactions extends AbstractHydrologistCard {
-    public static final String ID = "hydrologistmod:ExothermicReactions";
+public class Exothermodynamics extends AbstractHydrologistCard {
+    public static final String ID = "hydrologistmod:Exothermodynamics";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/ExothermicReactions.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/Exothermodynamics.png";
     private static final int COST = 1;
     private static final int AMOUNT = 6;
     private static final int UPGRADE_AMOUNT = 3;
 
-    public ExothermicReactions() {
+    public Exothermodynamics() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.SPECIAL, CardTarget.NONE);
@@ -39,7 +39,7 @@ public class ExothermicReactions extends AbstractHydrologistCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new ExothermicReactions();
+        return new Exothermodynamics();
     }
 
     @Override

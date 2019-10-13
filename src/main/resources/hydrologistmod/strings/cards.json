@@ -82,8 +82,8 @@
     "DESCRIPTION": "Your next *Pressure *Blast triggers an additional X times. hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": "Your next *Pressure *Blast triggers an additional X+1 times. hydrologistmod:Swappable."
   },
-  "hydrologistmod:EndothermicReactions": {
-    "NAME": "Endothermic Reactions",
+  "hydrologistmod:Endothermodynamics": {
+    "NAME": "Endothermodynamics",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, gain !M! Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },

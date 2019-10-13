@@ -12,18 +12,18 @@ import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.EndothermicReactionsPower;
 
-public class EndothermicReactions extends AbstractHydrologistCard implements SwappableCard {
-    public static final String ID = "hydrologistmod:EndothermicReactions";
+public class Endothermodynamics extends AbstractHydrologistCard implements SwappableCard {
+    public static final String ID = "hydrologistmod:Endothermodynamics";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/EndothermicReactions.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/Endothermodynamics.png";
     private static final int COST = 1;
     private static final int AMOUNT = 4;
     private static final int UPGRADE_AMOUNT = 2;
 
-    public EndothermicReactions() {
+    public Endothermodynamics() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
@@ -39,7 +39,7 @@ public class EndothermicReactions extends AbstractHydrologistCard implements Swa
 
     @Override
     public AbstractCard makeCopy() {
-        return new EndothermicReactions();
+        return new Endothermodynamics();
     }
 
     @Override
@@ -58,6 +58,6 @@ public class EndothermicReactions extends AbstractHydrologistCard implements Swa
 
     @Override
     public AbstractCard createDefaultPair() {
-        return new ExothermicReactions();
+        return new Exothermodynamics();
     }
 }
