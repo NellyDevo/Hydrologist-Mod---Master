@@ -127,8 +127,8 @@
   },
   "hydrologistmod:FlowingCurrents": {
     "NAME": "Flowing Currents",
-    "DESCRIPTION": "hydrologistmod:Flow. NL hydrologistmod:On_Swap: you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Draw a card, then hydrologistmod:Flow. NL hydrologistmod:On_Swap: you cannot swap away from this card again this turn. NL hydrologistmod:Swappable."
+    "DESCRIPTION": "hydrologistmod:Flow. NL when hydrologistmod:Swapped, you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Draw a card, then hydrologistmod:Flow. NL when hydrologistmod:Swapped, you cannot swap away from this card again this turn. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:FlowingForm": {
     "NAME": "Flowing Form",
@@ -192,7 +192,7 @@
   },
   "hydrologistmod:GlacierBash": {
     "NAME": "Glacier Bash",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:On_Swap: Reduce this card's cost by [E] for this combat. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Deal !D! damage. NL when hydrologistmod:Swapped, reduce this card's cost by [E] for this combat. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Hail": {
@@ -337,8 +337,8 @@
   },
   "hydrologistmod:Reservoir": {
     "NAME": "Reservoir",
-    "DESCRIPTION": "Innate, Ethereal. NL hydrologistmod:On_Swap: lose [E] [E] and discard this card. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Innate, Ethereal. NL hydrologistmod:On_Swap: lose [E] and discard this card. NL hydrologistmod:Swappable."
+    "DESCRIPTION": "Innate, Ethereal. NL When hydrologistmod:Swapped, lose [E] [E] and discard this card. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Innate, Ethereal. NL When hydrologistmod:Swapped, lose [E] and discard this card. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:ResonantCrystal": {
     "NAME": "Resonant Crystal",
@@ -382,8 +382,8 @@
   },
   "hydrologistmod:SoothingWater": {
     "NAME": "Soothing Water",
-    "DESCRIPTION": "Heal !M! HP. NL Fleeting. NL hydrologistmod:On_Swap: permanently increase this card's healing by 4 and Exhaust. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Heal !M! HP. NL Fleeting. NL hydrologistmod:On_Swap: permanently increase this card's healing by 6 and Exhaust. NL hydrologistmod:Swappable."
+    "DESCRIPTION": "Heal !M! HP. NL Fleeting. NL when hydrologistmod:Swapped, permanently increase this card's healing by 4 and Exhaust. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Heal !M! HP. NL Fleeting. NL when hydrologistmod:Swapped, permanently increase this card's healing by 6 and Exhaust. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:SteadyTide": {
     "NAME": "Steady Tide",
@@ -397,7 +397,7 @@
   },
   "hydrologistmod:SteamLash": {
     "NAME": "Steam Lash",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL hydrologistmod:On_Swap: Gain [E].",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL when hydrologistmod:Swapped, gain [E].",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SteamPower": {
@@ -470,7 +470,7 @@
   },
   "hydrologistmod:WaterWhip": {
     "NAME": "Water Whip",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL hydrologistmod:On_Swap: Lose [E].",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL when hydrologistmod:Swapped, lose [E].",
     "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
       "I don't have enough Energy!"

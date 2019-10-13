@@ -4,7 +4,7 @@
     "NAMES": [
       "corporeal"
     ],
-    "DESCRIPTION": "Any card that did not start the turn in your hand, draw pile, or discard pile."
+    "DESCRIPTION": "A Corporeal card is any card that did not start the turn in your hand, draw pile, or discard pile."
   },
   "FLOW": {
     "PROPER_NAME": "Flow",
@@ -13,20 +13,14 @@
     ],
     "DESCRIPTION": "When you Flow, you may discard any number of cards. You draw that many at the start of your next turn."
   },
-  "ON_SWAP": {
-    "PROPER_NAME": "On Swap",
-    "NAMES": [
-      "on swap",
-      "on_swap"
-    ],
-    "DESCRIPTION": "Has a special effect when the card is swapped out."
-  },
   "SWAPPABLE": {
     "PROPER_NAME": "Swappable",
     "NAMES": [
-      "swappable"
+      "swappable",
+      "swapped",
+      "swap"
     ],
-    "DESCRIPTION": "Is tied to another card and can be freely Swapped between the two."
+    "DESCRIPTION": "A Swappable card is tied to another card and can be freely 'Swapped' between the two."
   },
   "TRANSMUTE": {
     "PROPER_NAME": "Transmute",
