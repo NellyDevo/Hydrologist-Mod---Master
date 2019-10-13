@@ -97,8 +97,8 @@
     "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is a Steam card, apply !M! Vulnerable to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:ExothermicReactions": {
-    "NAME": "Exothermic Reactions",
+  "hydrologistmod:Exothermodynamics": {
+    "NAME": "Exothermodynamics",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, deal !M! damage to a random enemy. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
