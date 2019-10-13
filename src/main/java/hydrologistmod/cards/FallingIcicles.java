@@ -9,9 +9,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import helpers.SwapperHelper;
+import hydrologistmod.CardIgnore;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+@CardIgnore
 public class FallingIcicles extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:FallingIcicles";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
