@@ -1,4 +1,18 @@
 {
+  "CORPOREAL": {
+    "PROPER_NAME": "Corporeal",
+    "NAMES": [
+      "corporeal"
+    ],
+    "DESCRIPTION": "Any card that did not start the turn in your hand, draw pile, or discard pile."
+  },
+  "FLOW": {
+    "PROPER_NAME": "Flow",
+    "NAMES": [
+      "flow"
+    ],
+    "DESCRIPTION": "When you Flow, you may discard any number of cards. You draw that many at the start of your next turn."
+  },
   "ON_SWAP": {
     "PROPER_NAME": "On Swap",
     "NAMES": [
@@ -21,12 +35,5 @@
       "transmuted"
     ],
     "DESCRIPTION": "Transforms a card in combat into any card available to your current run."
-  },
-  "CORPOREAL": {
-    "PROPER_NAME": "Corporeal",
-    "NAMES": [
-      "corporeal"
-    ],
-    "DESCRIPTION": "Any permanent card that did not start the turn in your hand, draw pile, or discard pile."
   }
 }
