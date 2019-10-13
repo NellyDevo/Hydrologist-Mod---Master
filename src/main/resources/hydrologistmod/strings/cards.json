@@ -280,8 +280,8 @@
     "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:PackedIce": {
-    "NAME": "Packed Ice",
+  "hydrologistmod:PackedSnow": {
+    "NAME": "Packed Snow",
     "DESCRIPTION": "The next Ice, Water, and Steam cards you play this combat are played twice. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
