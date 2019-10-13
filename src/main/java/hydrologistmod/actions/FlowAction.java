@@ -37,7 +37,12 @@ public class FlowAction extends AbstractGameAction {
                 this.isDone = true;
                 return;
             }
-            AbstractDungeon.handCardSelectScreen.open("Choose any number of cards to discard.", 99, true, true);
+            if (AbstractDungeon.player.hand.size() < 1) {
+                isDone = true;
+                return;
+            } else {
+                AbstractDungeon.handCardSelectScreen.open("Choose any number of cards to discard.", 99, true, true);
+            }
             AbstractDungeon.player.hand.applyPowers();
             tickDuration();
             return;
