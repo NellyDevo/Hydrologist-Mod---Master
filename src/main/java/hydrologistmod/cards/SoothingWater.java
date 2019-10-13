@@ -34,13 +34,17 @@ public class SoothingWater extends AbstractHydrologistCard implements SwappableC
                 CardRarity.SPECIAL, CardTarget.SELF);
         magicNumber = baseMagicNumber = BASE_HEAL + misc;
         tags.add(HydrologistTags.WATER);
+        tags.add(CardTags.HEALING);
         FleetingField.fleeting.set(this, true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HealAction(p, p, magicNumber));
-        p.masterDeck.removeCard(StSLib.getMasterDeckEquivalent(SwapperHelper.getPairedCard(this)));
+        AbstractCard pair = SwapperHelper.getPairedCard(this);
+        if (StSLib.getMasterDeckEquivalent(pair) != null) {
+            p.masterDeck.removeCard(StSLib.getMasterDeckEquivalent(pair));
+        }
     }
 
     @Override
