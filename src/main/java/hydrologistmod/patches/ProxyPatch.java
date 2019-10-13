@@ -4,7 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.ByRef;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import helpers.CardProxyHelper;
+import hydrologistmod.helpers.CardProxyHelper;
 import javassist.util.proxy.ProxyFactory;
 
 import java.lang.reflect.InvocationTargetException;

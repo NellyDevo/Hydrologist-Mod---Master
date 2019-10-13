@@ -2,7 +2,7 @@ package hydrologistmod.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.helpers.input.InputActionSet;
-import helpers.SwapperInputActionSet;
+import hydrologistmod.helpers.SwapperInputActionSet;
 
 public class HotkeysPatch
 {

@@ -1,4 +1,4 @@
-package helpers;
+package hydrologistmod.helpers;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import javassist.util.proxy.MethodFilter;

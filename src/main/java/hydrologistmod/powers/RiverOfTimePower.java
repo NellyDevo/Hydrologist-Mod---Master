@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import helpers.SwapperHelper;
+import hydrologistmod.helpers.SwapperHelper;
 
 public class RiverOfTimePower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:RiverOfTimePower";

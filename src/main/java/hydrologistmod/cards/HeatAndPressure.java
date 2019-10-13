@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import helpers.SwapperHelper;
+import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.CardIgnore;
 import hydrologistmod.actions.MultiplyPowerAction;
 import hydrologistmod.patches.AbstractCardEnum;

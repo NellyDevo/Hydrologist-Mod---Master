@@ -1,4 +1,4 @@
-package helpers;
+package hydrologistmod.helpers;
 
 import com.badlogic.gdx.Input;
 import com.megacrit.cardcrawl.helpers.input.InputAction;

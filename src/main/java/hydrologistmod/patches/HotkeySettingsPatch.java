@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.screens.options.InputSettingsScreen;
 import com.megacrit.cardcrawl.screens.options.RemapInputElement;
-import helpers.SwapperInputActionSet;
+import hydrologistmod.helpers.SwapperInputActionSet;
 import javassist.CtBehavior;
 
 import java.util.ArrayList;
