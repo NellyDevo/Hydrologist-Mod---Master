@@ -26,24 +26,37 @@ public class PersonalRaincloudAction extends AbstractGameAction {
     @Override
     public void update() {
         if (duration == DURATION) {
-            AbstractDungeon.handCardSelectScreen.open("Choose a card to Transmute", 1, false, false);
-            tickDuration();
+            if (AbstractDungeon.player.hand.size() < 1) {
+                AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(new Raincloud()));
+                isDone = true;
+            } else if (AbstractDungeon.player.hand.size() == 1) {
+                pairWithRaincloud(AbstractDungeon.player.hand.getTopCard());
+                isDone = true;
+            } else {
+                AbstractDungeon.handCardSelectScreen.open("Choose a card to Transmute", 1, false, false);
+                tickDuration();
+            }
             return;
         }
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             AbstractCard oldCard = AbstractDungeon.handCardSelectScreen.selectedCards.group.get(0);
-            MethodHandler newBehaviour = (Object self, Method m, Method proceed, Object[] args) -> {
-                    SwapperHelper.upgrade((AbstractCard)self);
-                    return proceed.invoke(self, args);
-                };
-            MethodFilter filter = (Method m) -> m.getName().equals("upgrade");
-            AbstractCard newCard = CardProxyHelper.createSameInstanceProxy(oldCard, filter, newBehaviour);
-            AbstractDungeon.player.hand.removeCard(oldCard);
-            AbstractCard raincloud = new Raincloud();
-            AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(raincloud));
-            SwapperHelper.registerPair(raincloud, newCard);
+            pairWithRaincloud(oldCard);
+            isDone = true;
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
         }
         tickDuration();
+    }
+
+    private void pairWithRaincloud(AbstractCard oldCard) {
+        MethodHandler newBehaviour = (Object self, Method m, Method proceed, Object[] args) -> {
+            SwapperHelper.upgrade((AbstractCard)self);
+            return proceed.invoke(self, args);
+        };
+        MethodFilter filter = (Method m) -> m.getName().equals("upgrade");
+        AbstractCard newCard = CardProxyHelper.createSameInstanceProxy(oldCard, filter, newBehaviour);
+        AbstractDungeon.player.hand.removeCard(oldCard);
+        AbstractCard raincloud = new Raincloud();
+        AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(raincloud));
+        SwapperHelper.registerPair(raincloud, newCard);
     }
 }
