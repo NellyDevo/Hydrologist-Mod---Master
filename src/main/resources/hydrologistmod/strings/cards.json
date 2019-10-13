@@ -78,7 +78,7 @@
     "UPGRADE_DESCRIPTION": "Draw a card, then choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:EncapsulatingIce": {
-    "NAME": "EncapsulatingIce",
+    "NAME": "Encapsulating Ice",
     "DESCRIPTION": "Your next *Pressure *Blast triggers an additional X times. hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": "Your next *Pressure *Blast triggers an additional X+1 times. hydrologistmod:Swappable."
   },
