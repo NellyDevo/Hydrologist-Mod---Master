@@ -18,6 +18,7 @@
     "NAMES": [
       "swappable",
       "swapped",
+      "swaps",
       "swap"
     ],
     "DESCRIPTION": "A Swappable card is tied to another card and can be freely 'Swapped' between the two."
