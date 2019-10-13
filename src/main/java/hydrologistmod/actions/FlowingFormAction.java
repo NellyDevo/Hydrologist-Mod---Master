@@ -27,6 +27,7 @@ public class FlowingFormAction extends AbstractGameAction {
             } else {
                 AbstractDungeon.handCardSelectScreen.open("Choose a card to Transmute", 1, true, true);
             }
+            tickDuration();
             return;
         }
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
