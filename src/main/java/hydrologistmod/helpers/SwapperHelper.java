@@ -13,64 +13,16 @@ public class SwapperHelper {
     public static boolean preventUpgradeLoop = false;
 
     public static void registerPair(AbstractCard card1, AbstractCard card2) {
-        registerPair(card1, card2, false);
-    }
-
-    public static void registerPair(AbstractCard card1, AbstractCard card2, boolean shouldOverride) {
-        if (!shouldOverride) {
-            boolean card1Found = false;
-            boolean card2Found = false;
-            if (isCardRegistered(card1)) {
-                card1Found = true;
-                System.out.println("SwapperHelper: ERROR: card1," + card1 + " is already paired with " + cardPairs.get(card1));
-            }
-            if (isCardRegistered(card2)) {
-                card2Found = true;
-                System.out.println("SwapperHelper: ERROR: card2," + card2 + " is already paired with " + cardPairs.get(card2));
-            }
-            if (card1Found || card2Found) {
-                System.out.println("SwapperHelper: WARNING: card pairing NOT registered.");
-            } else {
-                cardPairs.put(card1, card2);
-                cardPairs.put(card2, card1);
-                card1.cardsToPreview = card2;
-                card2.cardsToPreview = card1;
-                System.out.println("SwapperHelper: card pairing between " + card1 + " and " + card2 + " successfully registered.");
-            }
-        } else {
-            AbstractCard existingPair1 = null;
-            AbstractCard existingPair2 = null;
-            if (cardPairs.get(card1) != null) {
-                existingPair1 = cardPairs.get(card1);
-                System.out.println("SwapperHelper: WARNING: card1, " + card1 + " is already paired with " + existingPair1);
-            }
-            if (cardPairs.get(card2) != null) {
-                existingPair2 = cardPairs.get(card2);
-                System.out.println("SwapperHelper: WARNING: card2, " + card2 + " is already paired with " + existingPair2);
-            }
-            if (existingPair1 != null) {
-                cardPairs.remove(card1);
-                cardPairs.remove(existingPair1);
-                System.out.println("SwapperHelper: existing pairing between " + card1 + " and " + existingPair1 + " removed.");
-            }
-            if (existingPair2 != null) {
-                cardPairs.remove(card2);
-                cardPairs.remove(existingPair2);
-                System.out.println("SwapperHelper: existing pairing between " + card2 + " and " + existingPair2 + " removed.");
-            }
-            cardPairs.put(card1, card2);
-            cardPairs.put(card2, card1);
-            card1.cardsToPreview = card2;
-            card2.cardsToPreview = card1;
-            System.out.println("SwapperHelper: card pairing between " + card1 + " and " + card2 + " successfully registered.");
-        }
+        cardPairs.put(card1, card2);
+        cardPairs.put(card2, card1);
+        card1.cardsToPreview = card2;
+        card2.cardsToPreview = card1;
+        System.out.println("SwapperHelper: card pairing between " + card1 + " and " + card2 + " successfully registered.");
     }
 
     public static void registerOneWayPair(AbstractCard card1, AbstractCard card2) { //for creating chains, trios, etc.
-        if (!isCardRegistered(card1) && (!isCardRegistered(card2))) {
-            cardPairs.put(card1, card2);
-            card1.cardsToPreview = card2;
-        }
+        cardPairs.put(card1, card2);
+        card1.cardsToPreview = card2;
     }
 
     public static void registerMasterDeckChain(AbstractCard mainCard, ArrayList<AbstractCard> otherCards) {
