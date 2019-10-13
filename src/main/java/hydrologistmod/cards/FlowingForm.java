@@ -31,6 +31,11 @@ public class FlowingForm extends AbstractHydrologistCard implements SwappableCar
                 CardRarity.RARE, CardTarget.NONE);
         tags.add(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = CARD_DRAW;
+        AbstractCard card2 = new FleetingForm();
+        AbstractCard card3 = new FrigidForm();
+        SwapperHelper.registerOneWayPair(this, card2);
+        SwapperHelper.registerOneWayPair(card2, card3);
+        SwapperHelper.registerOneWayPair(card3, this);
     }
 
     @Override
