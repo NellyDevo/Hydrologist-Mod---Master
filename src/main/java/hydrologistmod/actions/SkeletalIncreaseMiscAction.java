@@ -1,11 +1,12 @@
 package hydrologistmod.actions;
 
 
-import com.megacrit.cardcrawl.actions.*;
-import com.megacrit.cardcrawl.dungeons.*;
-import com.megacrit.cardcrawl.cards.*;
-import com.megacrit.cardcrawl.helpers.*;
-import java.util.*;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
+
+import java.util.UUID;
 
 public class SkeletalIncreaseMiscAction extends AbstractGameAction {
     private int miscIncrease;

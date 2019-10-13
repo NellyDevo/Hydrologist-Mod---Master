@@ -15,7 +15,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import hydrologistmod.actions.TransmuteCardAction;
 import hydrologistmod.patches.HydrologistTags;
 
 public class EvaporationPower extends AbstractPower implements NonStackablePower, CloneablePowerInterface {
