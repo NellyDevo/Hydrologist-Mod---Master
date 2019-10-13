@@ -20,12 +20,15 @@ public class ExtradimensionalIcicles extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/ExtradimensionalIcicles.png";
     private static final int COST = 1;
+    private static final int DAMAGE_AMT = 6;
+    private static final int UPGRADE_DAMAGE = 3;
 
     public ExtradimensionalIcicles() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         tags.add(HydrologistTags.ICE);
+        damage = baseDamage = DAMAGE_AMT;
     }
 
     @Override
@@ -43,6 +46,7 @@ public class ExtradimensionalIcicles extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeDamage(UPGRADE_DAMAGE);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
