@@ -48,6 +48,7 @@ public class LargeCardFramePatch {
                     } else if (reflectedCard.hasTag(HydrologistTags.STEAM)) {
                         tmpImg[0] = AbstractHydrologistCard.STEAM_LARGE_ATTACK_FRAME;
                     }
+                    break;
                 case SKILL:
                     if (reflectedCard.hasTag(HydrologistTags.ICE)) {
                         tmpImg[0] = AbstractHydrologistCard.ICE_LARGE_SKILL_FRAME;
@@ -56,6 +57,7 @@ public class LargeCardFramePatch {
                     } else if (reflectedCard.hasTag(HydrologistTags.STEAM)) {
                         tmpImg[0] = AbstractHydrologistCard.STEAM_LARGE_SKILL_FRAME;
                     }
+                    break;
                 case POWER:
                     if (reflectedCard.hasTag(HydrologistTags.ICE)) {
                         tmpImg[0] = AbstractHydrologistCard.ICE_LARGE_POWER_FRAME;
@@ -64,6 +66,7 @@ public class LargeCardFramePatch {
                     } else if (reflectedCard.hasTag(HydrologistTags.STEAM)) {
                         tmpImg[0] = AbstractHydrologistCard.STEAM_LARGE_POWER_FRAME;
                     }
+                    break;
                 default:
             }
         } catch (IllegalAccessException e) {
