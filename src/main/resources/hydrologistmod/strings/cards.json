@@ -338,7 +338,10 @@
   "hydrologistmod:Reservoir": {
     "NAME": "Reservoir",
     "DESCRIPTION": "Innate, Ethereal. NL When hydrologistmod:Swapped, lose [E] [E] and discard this card. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Innate, Ethereal. NL When hydrologistmod:Swapped, lose [E] and discard this card. NL hydrologistmod:Swappable."
+    "UPGRADE_DESCRIPTION": "Innate, Ethereal. NL When hydrologistmod:Swapped, lose [E] and discard this card. NL hydrologistmod:Swappable.",
+    "EXTENDED_DESCRIPTION": [
+      "I don't have enough Energy!"
+    ]
   },
   "hydrologistmod:ResonantCrystal": {
     "NAME": "Resonant Crystal",
@@ -479,9 +482,6 @@
   "hydrologistmod:YawningAbyss": {
     "NAME": "Yawning Abyss",
     "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage an additional time for each stack of Weak on the enemy. NL Apply !M! Weak.",
-    "UPGRADE_DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": [
-      "I don't have enough Energy!"
-    ]
+    "UPGRADE_DESCRIPTION": ""
   }
 }
