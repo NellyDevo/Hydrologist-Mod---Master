@@ -13,6 +13,7 @@ public class Distillery extends CustomRelic {
 
     public Distillery() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
+        counter = 0;
     }
 
     @Override
@@ -22,7 +23,11 @@ public class Distillery extends CustomRelic {
 
     @Override
     public void atTurnStartPostDraw() {
-        AbstractDungeon.actionManager.addToBottom(new TransmuteCardAction());
+        ++counter;
+        if (counter == 3) {
+            AbstractDungeon.actionManager.addToBottom(new TransmuteCardAction());
+            counter = 0;
+        }
     }
 
     @Override
