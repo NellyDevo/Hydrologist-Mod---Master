@@ -53,23 +53,25 @@ public class FlowAction extends AbstractGameAction {
                 GameActionManager.incrementDiscard(false);
                 ++cardsDiscarded;
             }
-            AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
-            if (followup != null) {
-                followup.doActions(cardsDiscarded);
-            }
-            for (AbstractPower p : AbstractDungeon.player.powers) {
-                if (p instanceof FlowAffectingPower) {
-                    ((FlowAffectingPower)p).onFlow(cardsDiscarded);
+            if (cardsDiscarded > 0) {
+                AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
+                if (followup != null) {
+                    followup.doActions(cardsDiscarded);
                 }
-            }
-            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                for (AbstractPower p : m.powers) {
+                for (AbstractPower p : AbstractDungeon.player.powers) {
                     if (p instanceof FlowAffectingPower) {
-                        ((FlowAffectingPower)p).onFlow(cardsDiscarded);
+                        ((FlowAffectingPower) p).onFlow(cardsDiscarded);
                     }
                 }
+                for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                    for (AbstractPower p : m.powers) {
+                        if (p instanceof FlowAffectingPower) {
+                            ((FlowAffectingPower) p).onFlow(cardsDiscarded);
+                        }
+                    }
+                }
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FlowPower(AbstractDungeon.player, cardsDiscarded)));
             }
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FlowPower(AbstractDungeon.player, cardsDiscarded)));
         }
         tickDuration();
     }
