@@ -128,7 +128,10 @@
   "hydrologistmod:FlowingCurrents": {
     "NAME": "Flowing Currents",
     "DESCRIPTION": "hydrologistmod:Flow. NL when hydrologistmod:Swapped, you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Draw a card, then hydrologistmod:Flow. NL when hydrologistmod:Swapped, you cannot swap away from this card again this turn. NL hydrologistmod:Swappable."
+    "UPGRADE_DESCRIPTION": "Draw a card, then hydrologistmod:Flow. NL when hydrologistmod:Swapped, you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
+    "EXTENDED_DESCRIPTION": [
+      "This card can't be swapped again this turn!"
+    ]
   },
   "hydrologistmod:FlowingForm": {
     "NAME": "Flowing Form",

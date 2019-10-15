@@ -19,10 +19,12 @@ public class FlowingCurrents extends AbstractHydrologistCard implements Swappabl
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/FlowingCurrents.png";
     private static final int COST = 0;
     private static final int DRAW = 1;
     private int lastTurnSwapped = -1;
+    private String cantSwapMessage = EXTENDED_DESCRIPTION[0];
 
     public FlowingCurrents() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -59,6 +61,11 @@ public class FlowingCurrents extends AbstractHydrologistCard implements Swappabl
     @Override
     public boolean canSwap() {
         return GameActionManager.turn > lastTurnSwapped;
+    }
+
+    @Override
+    public String getUnableToSwapString() {
+        return cantSwapMessage;
     }
 
     @Override
