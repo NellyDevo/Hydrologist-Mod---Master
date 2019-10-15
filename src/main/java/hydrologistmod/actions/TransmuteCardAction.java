@@ -114,8 +114,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                 isDone = true;
                 return;
             }
-        }
-        if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
+        } else if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             AbstractCard oldCard = AbstractDungeon.handCardSelectScreen.selectedCards.group.get(0);
             AbstractDungeon.player.hand.group.remove(oldCard);
             if (choices == 0) {
@@ -148,8 +147,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                 AbstractDungeon.gridSelectScreen.open(tmp, 1, "Choose your new card", false);
                 return;
             }
-        }
-        if (AbstractDungeon.gridSelectScreen.selectedCards.size() != 0) {
+        } else if (AbstractDungeon.gridSelectScreen.selectedCards.size() != 0) {
             AbstractCard newCard = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
             modifyNewCard(storedOldCard, newCard);
             AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(newCard));
