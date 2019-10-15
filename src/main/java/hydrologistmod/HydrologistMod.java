@@ -46,11 +46,11 @@ public class HydrologistMod implements EditCardsSubscriber, EditCharactersSubscr
     private static final String attackCard = "hydrologistmod/images/512/bg_attack_hydrologist.png";
     private static final String skillCard = "hydrologistmod/images/512/bg_skill_hydrologist.png";
     private static final String powerCard = "hydrologistmod/images/512/bg_power_hydrologist.png";
-    private static final String energyOrb = "hydrologistmod/images/512/card_mystic_orb.png";
+    private static final String energyOrb = "hydrologistmod/images/512/card_hydrologist_orb_default_small.png";
     private static final String attackCardPortrait = "hydrologistmod/images/1024/bg_attack_hydrologist.png";
     private static final String skillCardPortrait = "hydrologistmod/images/1024/bg_skill_hydrologist.png";
     private static final String powerCardPortrait = "hydrologistmod/images/1024/bg_power_hydrologist.png";
-    private static final String energyOrbPortrait = "hydrologistmod/images/1024/card_mystic_orb.png";
+    private static final String energyOrbPortrait = "hydrologistmod/images/1024/card_hydrologist_default_orb.png";
     private static final String charButton = "hydrologistmod/images/charSelect/button.png";
     private static final String charPortrait = "hydrologistmod/images/charSelect/portrait.png";
     private static final String miniManaSymbol = "hydrologistmod/images/manaSymbol.png";
