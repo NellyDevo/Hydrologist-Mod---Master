@@ -28,6 +28,7 @@ public class PersonalRaincloud extends AbstractHydrologistCard {
                 CardRarity.RARE, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         block = baseBlock = BLOCK_AMT;
+        cardsToPreview = new Raincloud();
     }
 
     @Override
