@@ -26,7 +26,7 @@ public class BranchingCreeks extends AbstractHydrologistCard {
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.NONE);
         magicNumber = baseMagicNumber = POWER_AMOUNT;
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
     }
 
     @Override

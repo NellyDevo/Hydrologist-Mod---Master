@@ -28,7 +28,7 @@ public class HeatAndPressure extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.SPECIAL, CardTarget.ENEMY);
-        tags.add(HydrologistTags.STEAM);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = MULTIPLIER;
     }
 

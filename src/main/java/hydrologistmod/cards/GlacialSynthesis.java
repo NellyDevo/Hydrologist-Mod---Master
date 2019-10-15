@@ -25,7 +25,7 @@ public class GlacialSynthesis extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.SELF);
-        tags.add(HydrologistTags.ICE);
+        assignHydrologistSubtype(HydrologistTags.ICE);
         block = baseBlock = BLOCK_AMT;
     }
 

@@ -26,7 +26,7 @@ public class Raincloud extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, CardColor.COLORLESS,
                 CardRarity.SPECIAL, CardTarget.SELF);
-        tags.add(HydrologistTags.STEAM);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
         block = baseBlock = BLOCK_AMT;
     }
 

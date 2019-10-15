@@ -27,7 +27,7 @@ public class Aqueducts extends AbstractHydrologistCard {
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         magicNumber = baseMagicNumber = POWER_AMOUNT;
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
     }
 
     @Override

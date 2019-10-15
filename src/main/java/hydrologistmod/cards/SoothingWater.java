@@ -33,7 +33,7 @@ public class SoothingWater extends AbstractHydrologistCard implements SwappableC
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.SPECIAL, CardTarget.SELF);
         magicNumber = baseMagicNumber = BASE_HEAL + misc;
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
         tags.add(CardTags.HEALING);
         FleetingField.fleeting.set(this, true);
     }

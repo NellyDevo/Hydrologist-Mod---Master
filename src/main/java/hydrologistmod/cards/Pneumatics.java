@@ -26,7 +26,7 @@ public class Pneumatics extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.SELF);
-        tags.add(HydrologistTags.STEAM);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = TURN_COUNT;
         exhaust = true;
     }

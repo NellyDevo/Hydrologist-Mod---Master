@@ -33,7 +33,7 @@ public class IceBarrier extends AbstractHydrologistCard implements TransmutableC
                 AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF);
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = DAMAGE_AMT;
-        tags.add(HydrologistTags.ICE);
+        assignHydrologistSubtype(HydrologistTags.ICE);
     }
 
     @Override

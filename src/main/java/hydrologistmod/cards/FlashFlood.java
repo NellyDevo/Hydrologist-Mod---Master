@@ -29,7 +29,7 @@ public class FlashFlood extends AbstractHydrologistCard implements TransmutableC
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = DAMAGE_AMT;
     }
 

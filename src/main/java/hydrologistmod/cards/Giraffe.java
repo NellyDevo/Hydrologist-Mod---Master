@@ -25,7 +25,7 @@ public class Giraffe extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
-        tags.add(HydrologistTags.STEAM);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = RETAINED_CARDS;
     }
 

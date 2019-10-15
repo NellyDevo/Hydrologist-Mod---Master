@@ -25,7 +25,7 @@ public class IcyFloe extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.NONE);
-        tags.add(HydrologistTags.ICE);
+        assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = CARD_DRAW;
     }
 

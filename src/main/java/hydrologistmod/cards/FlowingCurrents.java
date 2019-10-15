@@ -28,7 +28,7 @@ public class FlowingCurrents extends AbstractHydrologistCard implements Swappabl
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.SELF);
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = DRAW;
         SwapperHelper.registerPair(this, createDefaultPair());
     }

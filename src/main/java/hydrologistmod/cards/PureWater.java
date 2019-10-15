@@ -25,7 +25,7 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.SELF);
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = DRAW_AMT;
     }
 

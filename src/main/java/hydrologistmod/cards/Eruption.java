@@ -34,7 +34,7 @@ public class Eruption extends AbstractHydrologistCard implements SwappableCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.SPECIAL, CardTarget.ENEMY);
-        tags.add(HydrologistTags.STEAM);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = ENERGY_GAIN;
     }

@@ -25,7 +25,7 @@ public class SteadyTide extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.SELF);
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
         block = baseBlock = BLOCK_AMT;
     }
 

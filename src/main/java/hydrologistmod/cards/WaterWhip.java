@@ -35,7 +35,7 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
                 AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         magicNumber = baseMagicNumber = ENERGY_LOSS_ON_SWAP;
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
         SwapperHelper.registerPair(this, createDefaultPair());
     }
 

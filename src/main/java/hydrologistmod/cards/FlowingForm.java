@@ -29,7 +29,7 @@ public class FlowingForm extends AbstractHydrologistCard implements SwappableCar
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.NONE);
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = CARD_DRAW;
         AbstractCard card2 = new FleetingForm();
         AbstractCard card3 = new FrigidForm();

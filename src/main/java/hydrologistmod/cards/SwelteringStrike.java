@@ -26,7 +26,7 @@ public class SwelteringStrike extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.ENEMY);
-        tags.add(HydrologistTags.STEAM);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
         tags.add(CardTags.STRIKE);
         damage = baseDamage = DAMAGE_AMT;
     }

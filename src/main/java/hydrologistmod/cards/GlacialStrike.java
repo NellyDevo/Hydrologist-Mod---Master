@@ -31,7 +31,7 @@ public class GlacialStrike extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.ENEMY);
-        tags.add(HydrologistTags.ICE);
+        assignHydrologistSubtype(HydrologistTags.ICE);
         tags.add(CardTags.STRIKE);
         damage = baseDamage = DAMAGE_AMT;
         block = baseBlock = BLOCK_AMT;

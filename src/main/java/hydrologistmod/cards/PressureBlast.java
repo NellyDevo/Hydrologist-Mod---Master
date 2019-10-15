@@ -26,7 +26,7 @@ public class PressureBlast extends AbstractHydrologistCard implements SwappableC
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.ENEMY);
-        tags.add(HydrologistTags.STEAM);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = 0;
         SwapperHelper.registerPair(this, createDefaultPair());

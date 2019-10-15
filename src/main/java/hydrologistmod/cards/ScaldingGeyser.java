@@ -32,7 +32,7 @@ public class ScaldingGeyser extends AbstractHydrologistCard {
                 CardRarity.RARE, CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         magicNumber = baseMagicNumber = VULNERABLE_AMOUNT;
-        tags.add(HydrologistTags.STEAM);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
         isInnate = true;
         exhaust = true;
     }

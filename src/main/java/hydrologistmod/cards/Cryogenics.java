@@ -31,7 +31,7 @@ public class Cryogenics extends AbstractHydrologistCard implements TransmutableC
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
-        tags.add(HydrologistTags.ICE);
+        assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = NEW_COPIES;
     }
 

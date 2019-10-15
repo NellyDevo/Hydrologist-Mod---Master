@@ -26,7 +26,7 @@ public class RiverOfTime extends AbstractHydrologistCard {
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.SELF);
         magicNumber = baseMagicNumber = POWER_AMOUNT;
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
     }
 
     @Override

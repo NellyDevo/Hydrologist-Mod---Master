@@ -29,7 +29,7 @@ public class Hail extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.ENEMY);
-        tags.add(HydrologistTags.ICE);
+        assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = INCREASE_AMT;
     }

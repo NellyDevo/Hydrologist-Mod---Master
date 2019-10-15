@@ -31,7 +31,7 @@ public class PurifyingSteam extends AbstractHydrologistCard implements Swappable
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
-        tags.add(HydrologistTags.STEAM);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
         tags.add(CardTags.HEALING);
         SwapperHelper.registerPair(this, createDefaultPair());
     }

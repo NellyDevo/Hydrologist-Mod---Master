@@ -34,7 +34,7 @@ public class SteamLash extends AbstractHydrologistCard implements SwappableCard 
                 AbstractCard.CardRarity.SPECIAL, AbstractCard.CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         magicNumber = baseMagicNumber = ENERGY_GAIN_ON_SWAP;
-        tags.add(HydrologistTags.STEAM);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
     }
 
     @Override

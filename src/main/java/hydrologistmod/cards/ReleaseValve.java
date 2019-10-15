@@ -25,7 +25,7 @@ public class ReleaseValve extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.ENEMY);
-        tags.add(HydrologistTags.STEAM);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = DAMAGE_AMT;
         exhaust = true;
     }

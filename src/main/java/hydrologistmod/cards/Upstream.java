@@ -28,7 +28,7 @@ public class Upstream extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = WEAK_AMT;
         block = baseBlock = BLOCK_AMT;
     }

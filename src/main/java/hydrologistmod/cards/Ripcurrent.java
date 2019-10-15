@@ -27,7 +27,7 @@ public class Ripcurrent extends AbstractHydrologistCard implements SwappableCard
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
-        tags.add(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = MULTIPLIER;
         SwapperHelper.registerPair(this, createDefaultPair());
     }
