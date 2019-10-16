@@ -35,7 +35,7 @@ public class FlowingCurrents extends AbstractHydrologistCard implements Swappabl
                 CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = DRAW;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new FlowingCurrents())));
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new GlacierBash())));
     }
 
     @Override
