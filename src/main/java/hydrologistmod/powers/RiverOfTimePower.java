@@ -75,6 +75,13 @@ public class RiverOfTimePower extends AbstractPower implements CloneablePowerInt
     }
 
     @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        if (isPlayer) {
+            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        }
+    }
+
+    @Override
     public AbstractPower makeCopy() {
         return new RiverOfTimePower(owner, amount);
     }
