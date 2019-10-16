@@ -10,9 +10,12 @@ import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.FleetingFormPower;
 import hydrologistmod.powers.FlowingFormPower;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 
 public class FlowingForm extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:FlowingForm";
@@ -31,11 +34,7 @@ public class FlowingForm extends AbstractHydrologistCard implements SwappableCar
                 CardRarity.RARE, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = CARD_DRAW;
-        AbstractCard card2 = new FleetingForm();
-        AbstractCard card3 = new FrigidForm();
-        SwapperHelper.registerOneWayPair(this, card2);
-        SwapperHelper.registerOneWayPair(card2, card3);
-        SwapperHelper.registerOneWayPair(card3, this);
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new FleetingForm(), new FrigidForm())));
     }
 
     @Override
@@ -55,18 +54,5 @@ public class FlowingForm extends AbstractHydrologistCard implements SwappableCar
             upgradeName();
             upgradeMagicNumber(UPGRADE_CARD_DRAW);
         }
-    }
-
-    @Override
-    public boolean isChainSwapper() {
-        return true;
-    }
-
-    @Override
-    public ArrayList<AbstractCard> createChain() {
-        ArrayList<AbstractCard> result = new ArrayList<>();
-        result.add(new FleetingForm());
-        result.add(new FrigidForm());
-        return result;
     }
 }

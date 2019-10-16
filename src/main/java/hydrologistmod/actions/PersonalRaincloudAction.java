@@ -12,6 +12,8 @@ import javassist.util.proxy.MethodFilter;
 import javassist.util.proxy.MethodHandler;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.LinkedList;
 
 public class PersonalRaincloudAction extends AbstractGameAction {
 //    private static final String ID = "hydrologistmod:PersonalRaincloudAction";
@@ -57,6 +59,6 @@ public class PersonalRaincloudAction extends AbstractGameAction {
         AbstractDungeon.player.hand.removeCard(oldCard);
         AbstractCard raincloud = new Raincloud();
         AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(raincloud));
-        SwapperHelper.registerPair(raincloud, newCard);
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(raincloud, newCard)));
     }
 }

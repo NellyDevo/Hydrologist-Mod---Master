@@ -12,7 +12,10 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class DryingPond extends AbstractHydrologistCard implements SwappableCard {
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class DryingPond extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:DryingPond";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -27,7 +30,7 @@ public class DryingPond extends AbstractHydrologistCard implements SwappableCard
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.WATER);
         exhaust = true;
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new FallingIcicles())));
     }
 
     @Override
@@ -49,15 +52,5 @@ public class DryingPond extends AbstractHydrologistCard implements SwappableCard
         if (!upgraded) {
             upgradeName();
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new FallingIcicles();
     }
 }

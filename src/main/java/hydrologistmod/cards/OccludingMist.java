@@ -11,7 +11,10 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class OccludingMist extends AbstractHydrologistCard implements SwappableCard {
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class OccludingMist extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:OccludingMist";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -28,7 +31,7 @@ public class OccludingMist extends AbstractHydrologistCard implements SwappableC
                 CardRarity.COMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         block = baseBlock = BLOCK_AMT;
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new WallOfIce())));
     }
 
     @Override
@@ -48,15 +51,5 @@ public class OccludingMist extends AbstractHydrologistCard implements SwappableC
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK_AMT);
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new WallOfIce();
     }
 }

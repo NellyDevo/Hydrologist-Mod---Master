@@ -13,6 +13,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class FlowingCurrents extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:FlowingCurrents";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -32,7 +35,7 @@ public class FlowingCurrents extends AbstractHydrologistCard implements Swappabl
                 CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = DRAW;
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new FlowingCurrents())));
     }
 
     @Override
@@ -71,15 +74,5 @@ public class FlowingCurrents extends AbstractHydrologistCard implements Swappabl
     @Override
     public void onSwapOut() {
         lastTurnSwapped = GameActionManager.turn;
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new GlacierBash();
     }
 }

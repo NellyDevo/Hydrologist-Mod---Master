@@ -12,7 +12,10 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class Ripcurrent extends AbstractHydrologistCard implements SwappableCard {
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class Ripcurrent extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:Ripcurrent";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -29,7 +32,7 @@ public class Ripcurrent extends AbstractHydrologistCard implements SwappableCard
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = MULTIPLIER;
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new HeatAndPressure())));
     }
 
     @Override
@@ -53,15 +56,5 @@ public class Ripcurrent extends AbstractHydrologistCard implements SwappableCard
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new HeatAndPressure();
     }
 }

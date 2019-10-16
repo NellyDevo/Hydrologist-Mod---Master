@@ -22,8 +22,8 @@ public class SwapWhenPlayedAction extends AbstractGameAction {
     public SwapWhenPlayedAction(AbstractCard card) {
         this.duration = DURATION;
         card1 = card;
-        if (SwapperHelper.isCardRegistered(card)) {
-            card2 = SwapperHelper.getPairedCard(card);
+        if (SwapperHelper.isCardSwappable(card)) {
+            card2 = SwapperHelper.getNextCard(card);
         } else {
             isDone = true;
             System.out.println("ERROR: why is SwapWhenPlayedAction being created on a non-paired card?");

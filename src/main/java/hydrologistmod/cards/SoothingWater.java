@@ -41,7 +41,7 @@ public class SoothingWater extends AbstractHydrologistCard implements SwappableC
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HealAction(p, p, magicNumber));
-        AbstractCard pair = SwapperHelper.getPairedCard(this);
+        AbstractCard pair = SwapperHelper.getNextCard(this);
         if (StSLib.getMasterDeckEquivalent(pair) != null) {
             p.masterDeck.removeCard(StSLib.getMasterDeckEquivalent(pair));
         }
@@ -67,6 +67,6 @@ public class SoothingWater extends AbstractHydrologistCard implements SwappableC
 
     @Override
     public void onSwapOut() {
-        addToBot(new IncreasePairedMiscAction(SwapperHelper.getPairedCard(this).uuid, upgraded ? UPGRADED_HEAL_INCREASE : HEAL_INCREASE));
+        addToBot(new IncreasePairedMiscAction(SwapperHelper.getNextCard(this).uuid, upgraded ? UPGRADED_HEAL_INCREASE : HEAL_INCREASE));
     }
 }

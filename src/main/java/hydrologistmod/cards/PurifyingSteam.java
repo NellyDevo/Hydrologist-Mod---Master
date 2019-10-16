@@ -15,6 +15,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class PurifyingSteam extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:PurifyingSteam";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -33,7 +36,7 @@ public class PurifyingSteam extends AbstractHydrologistCard implements Swappable
         damage = baseDamage = ATTACK_DMG;
         assignHydrologistSubtype(HydrologistTags.STEAM);
         tags.add(CardTags.HEALING);
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SoothingWater())));
     }
 
     @Override
@@ -53,16 +56,6 @@ public class PurifyingSteam extends AbstractHydrologistCard implements Swappable
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new SoothingWater();
     }
 
     @Override

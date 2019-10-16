@@ -40,7 +40,7 @@ public class FrigidLash extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-        addToBot(new IncreasePairCardStatsAction(this, SwapperHelper.getPairedCard(this), 0, magicNumber));
+        addToBot(new IncreasePairCardStatsAction(this, SwapperHelper.getNextCard(this), 0, magicNumber));
     }
 
     @Override

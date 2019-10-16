@@ -12,7 +12,10 @@ import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.EndothermicReactionsPower;
 
-public class Endothermodynamics extends AbstractHydrologistCard implements SwappableCard {
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class Endothermodynamics extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:Endothermodynamics";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -29,7 +32,7 @@ public class Endothermodynamics extends AbstractHydrologistCard implements Swapp
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = AMOUNT;
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Exothermodynamics())));
     }
 
     @Override
@@ -49,15 +52,5 @@ public class Endothermodynamics extends AbstractHydrologistCard implements Swapp
             upgradeName();
             upgradeMagicNumber(UPGRADE_AMOUNT);
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new Exothermodynamics();
     }
 }

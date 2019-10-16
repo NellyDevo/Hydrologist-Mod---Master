@@ -11,7 +11,10 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class PressureBlast extends AbstractHydrologistCard implements SwappableCard {
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class PressureBlast extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:PressureBlast";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -29,7 +32,7 @@ public class PressureBlast extends AbstractHydrologistCard implements SwappableC
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = 0;
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new EncapsulatingIce())));
     }
 
     @Override
@@ -64,15 +67,5 @@ public class PressureBlast extends AbstractHydrologistCard implements SwappableC
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new EncapsulatingIce();
     }
 }

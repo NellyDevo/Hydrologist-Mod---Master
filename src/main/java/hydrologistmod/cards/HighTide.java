@@ -14,7 +14,10 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class HighTide extends AbstractHydrologistCard implements SwappableCard {
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class HighTide extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:HighTide";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -31,7 +34,7 @@ public class HighTide extends AbstractHydrologistCard implements SwappableCard {
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SeaFoam())));
     }
 
     @Override
@@ -52,15 +55,5 @@ public class HighTide extends AbstractHydrologistCard implements SwappableCard {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new SeaFoam();
     }
 }

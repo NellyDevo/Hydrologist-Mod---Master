@@ -12,7 +12,10 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class LayeredShell extends AbstractHydrologistCard implements SwappableCard {
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class LayeredShell extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:LayeredShell";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -32,13 +35,13 @@ public class LayeredShell extends AbstractHydrologistCard implements SwappableCa
         assignHydrologistSubtype(HydrologistTags.ICE);
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = DAMAGE_INCREASE;
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new FrigidLash())));
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new IncreasePairCardStatsAction(this, SwapperHelper.getPairedCard(this), magicNumber, 0));
+        addToBot(new IncreasePairCardStatsAction(this, SwapperHelper.getNextCard(this), magicNumber, 0));
     }
 
     @Override
@@ -54,14 +57,5 @@ public class LayeredShell extends AbstractHydrologistCard implements SwappableCa
             upgradeBlock(UPGRADE_BLOCK);
             upgradeMagicNumber(UPGRADE_DAMAGE_INC);
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    public AbstractCard createDefaultPair() {
-        return new FrigidLash();
     }
 }

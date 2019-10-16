@@ -44,13 +44,13 @@ public class RiverOfTimePower extends AbstractPower implements CloneablePowerInt
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (!card.purgeOnUse && SwapperHelper.isCardRegistered(card) && this.amount > 0) {
+        if (!card.purgeOnUse && SwapperHelper.isCardSwappable(card) && this.amount > 0) {
             this.flash();
             AbstractMonster m = null;
             if (action.target != null) {
                 m = (AbstractMonster)action.target;
             }
-            final AbstractCard tmp = SwapperHelper.getPairedCard(card).makeSameInstanceOf();
+            final AbstractCard tmp = SwapperHelper.getNextCard(card).makeSameInstanceOf();
             AbstractDungeon.player.limbo.addToBottom(tmp);
             tmp.current_x = card.current_x;
             tmp.current_y = card.current_y;

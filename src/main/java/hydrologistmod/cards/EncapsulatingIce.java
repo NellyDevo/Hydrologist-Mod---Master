@@ -30,7 +30,7 @@ public class EncapsulatingIce extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new EncapsulatingIceAction(SwapperHelper.getPairedCard(this), energyOnUse, upgraded, freeToPlayOnce));
+        addToBot(new EncapsulatingIceAction(SwapperHelper.getNextCard(this), energyOnUse, upgraded, freeToPlayOnce));
     }
 
     @Override

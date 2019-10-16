@@ -13,7 +13,10 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class TidalWave extends AbstractHydrologistCard implements SwappableCard {
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class TidalWave extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:TidalWave";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -31,7 +34,7 @@ public class TidalWave extends AbstractHydrologistCard implements SwappableCard 
         assignHydrologistSubtype(HydrologistTags.WATER);
         isMultiDamage = true;
         baseDamage = DAMAGE_AMT;
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new IceSpike())));
     }
 
     @Override
@@ -51,15 +54,5 @@ public class TidalWave extends AbstractHydrologistCard implements SwappableCard 
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE_AMT);
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new IceSpike();
     }
 }

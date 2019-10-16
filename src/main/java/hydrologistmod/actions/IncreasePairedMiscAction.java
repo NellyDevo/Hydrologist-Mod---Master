@@ -24,12 +24,12 @@ public class IncreasePairedMiscAction extends AbstractGameAction {
             if (!c.uuid.equals(this.uuid)) {
                 continue;
             }
-            SwapperHelper.getMasterDeckPair(c).misc += this.miscIncrease;
-            SwapperHelper.getMasterDeckPair(c).applyPowers();
+            SwapperHelper.getNextCard(c).misc += this.miscIncrease;
+            SwapperHelper.getNextCard(c).applyPowers();
         }
         for (AbstractCard c : GetAllInBattleInstances.get(this.uuid)) {
-            SwapperHelper.getPairedCard(c).misc += this.miscIncrease;
-            SwapperHelper.getPairedCard(c).applyPowers();
+            SwapperHelper.getNextCard(c).misc += this.miscIncrease;
+            SwapperHelper.getNextCard(c).applyPowers();
         }
         this.isDone = true;
     }

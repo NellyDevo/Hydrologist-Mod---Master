@@ -12,7 +12,10 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class CrystalIce extends AbstractHydrologistCard implements SwappableCard {
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class CrystalIce extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:CrystalIce";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -27,7 +30,7 @@ public class CrystalIce extends AbstractHydrologistCard implements SwappableCard
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new LaminarFlow())));
     }
 
     @Override
@@ -47,15 +50,5 @@ public class CrystalIce extends AbstractHydrologistCard implements SwappableCard
             upgradeName();
             upgradeBaseCost(UPGRADED_COST);
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new LaminarFlow();
     }
 }

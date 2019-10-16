@@ -15,6 +15,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class WaterWhip extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:WaterWhip";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -36,7 +39,7 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
         damage = baseDamage = ATTACK_DMG;
         magicNumber = baseMagicNumber = ENERGY_LOSS_ON_SWAP;
         assignHydrologistSubtype(HydrologistTags.WATER);
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SteamLash())));
     }
 
     @Override
@@ -56,16 +59,6 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new SteamLash();
     }
 
     @Override

@@ -12,7 +12,10 @@ import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.DeepFreezePower;
 
-public class DeepFreeze extends AbstractHydrologistCard implements SwappableCard {
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class DeepFreeze extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:DeepFreeze";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -29,7 +32,7 @@ public class DeepFreeze extends AbstractHydrologistCard implements SwappableCard
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = POWER_AMT;
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new HighPressure())));
     }
 
     @Override
@@ -49,15 +52,5 @@ public class DeepFreeze extends AbstractHydrologistCard implements SwappableCard
             upgradeName();
             upgradeMagicNumber(UPGRADE_POWER);
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new HighPressure();
     }
 }

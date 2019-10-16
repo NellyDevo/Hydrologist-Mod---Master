@@ -12,6 +12,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class Reservoir extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:Reservoir";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -34,7 +37,7 @@ public class Reservoir extends AbstractHydrologistCard implements SwappableCard 
         isInnate = true;
         isEthereal = true;
         magicNumber = baseMagicNumber = ENERGY_LOSS;
-        SwapperHelper.registerPair(this, createDefaultPair());
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Eruption())));
     }
 
     @Override
@@ -57,16 +60,6 @@ public class Reservoir extends AbstractHydrologistCard implements SwappableCard 
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
-    }
-
-    @Override
-    public boolean hasDefaultPair() {
-        return true;
-    }
-
-    @Override
-    public AbstractCard createDefaultPair() {
-        return new Eruption();
     }
 
     @Override
