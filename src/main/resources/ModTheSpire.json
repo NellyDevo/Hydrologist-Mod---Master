@@ -1,7 +1,7 @@
 {
   "modid": "HydrologistMod",
   "name": "The Hydrologist",
-  "author_list": ["Johnny Devo"],
+  "author_list": ["JohnnyDevo"],
   "description": "Adds a new character: The Hydrologist.",
   "dependencies": ["basemod"],
   "credits": "",
