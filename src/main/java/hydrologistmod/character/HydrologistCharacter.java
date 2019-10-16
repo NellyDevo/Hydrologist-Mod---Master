@@ -157,10 +157,10 @@ public class HydrologistCharacter extends CustomPlayer {
         retVal.add(StrikeHydrologist.ID);
         retVal.add(StrikeHydrologist.ID);
         retVal.add(UnstableStrike.ID);
-        retVal.add(DefendHydrologist.ID);
-        retVal.add(DefendHydrologist.ID);
-        retVal.add(DefendHydrologist.ID);
         retVal.add(UnstableStrike.ID);
+        retVal.add(DefendHydrologist.ID);
+        retVal.add(DefendHydrologist.ID);
+        retVal.add(DefendHydrologist.ID);
         retVal.add(WaterWhip.ID);
         retVal.add(IceBarrier.ID);
         return retVal;
