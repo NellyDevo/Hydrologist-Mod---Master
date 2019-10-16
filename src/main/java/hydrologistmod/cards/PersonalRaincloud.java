@@ -31,6 +31,7 @@ public class PersonalRaincloud extends AbstractHydrologistCard {
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = DRAW_AMT;
         cardsToPreview = new Raincloud();
+        exhaust = true;
     }
 
     @Override
