@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.EncapsulatingIceAction;
 import hydrologistmod.actions.FlowAction;
+import hydrologistmod.actions.WaterWheelAction;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -30,7 +31,7 @@ public class WaterWheel extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new FlowAction());
-        addToBot(new EncapsulatingIceAction(SwapperHelper.getPairedCard(this), energyOnUse, upgraded, freeToPlayOnce));
+        addToBot(new WaterWheelAction(energyOnUse, upgraded, freeToPlayOnce));
     }
 
     @Override
