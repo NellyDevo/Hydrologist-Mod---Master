@@ -48,7 +48,7 @@ public class ExothermicReactionsPower extends AbstractPower implements Transmuta
         AbstractPlayer p = AbstractDungeon.player;
         AbstractMonster m = AbstractDungeon.getMonsters().getRandomMonster(true);
         if (m != null) {
-            AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, amount, DamageInfo.DamageType.THORNS)));
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, amount, DamageInfo.DamageType.THORNS)));
         }
     }
 }
