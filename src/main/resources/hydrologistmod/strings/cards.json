@@ -21,8 +21,8 @@
   },
   "hydrologistmod:Condensation": {
     "NAME": "Condensation",
-    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a Water card, draw a card.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a Water card, draw 2 cards."
+    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a *Water card, draw a card.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a *Water card, draw 2 cards."
   },
   "hydrologistmod:Cryogenics": {
     "NAME": "Cryogenics",
@@ -44,7 +44,7 @@
   },
   "hydrologistmod:Crystallization": {
     "NAME": "Crystallization",
-    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is an Ice card, hydrologistmod:Transmute a card in your hand.",
+    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is an *Ice card, hydrologistmod:Transmute a card in your hand.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:DebilitatingExplosion": {
@@ -54,7 +54,7 @@
   },
   "hydrologistmod:DeepFreeze": {
     "NAME": "Deep Freeze",
-    "DESCRIPTION": "Your Ice cards that gain Block gain !M! additional Block. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Your *Ice cards that gain Block gain !M! additional Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Defend_Hydrologist": {
@@ -94,7 +94,7 @@
   },
   "hydrologistmod:Evaporation": {
     "NAME": "Evaporation",
-    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is a Steam card, apply !M! Vulnerable to ALL enemies.",
+    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is a *Steam card, apply !M! Vulnerable to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Exothermodynamics": {
@@ -122,7 +122,7 @@
   },
   "hydrologistmod:FleetingForm": {
     "NAME": "Fleeting Form",
-    "DESCRIPTION": "Whenever you play a Steam card, deal !M! damage to a random enemy. NL hydrologistmod:Swaps to *Frigid *Form.",
+    "DESCRIPTION": "Whenever you play a *Steam card, deal !M! damage to a random enemy. NL hydrologistmod:Swaps to *Frigid *Form.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FlowingCurrents": {
@@ -135,7 +135,7 @@
   },
   "hydrologistmod:FlowingForm": {
     "NAME": "Flowing Form",
-    "DESCRIPTION": "Whenever you play a Water card, you may discard a card. If you do, draw !M! cards. NL hydrologistmod:Swaps to *Fleeting *Form.",
+    "DESCRIPTION": "Whenever you play a *Water card, you may discard a card. If you do, draw !M! cards. NL hydrologistmod:Swaps to *Fleeting *Form.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FogOfWar": {
@@ -155,7 +155,7 @@
   },
   "hydrologistmod:FrigidForm": {
     "NAME": "Frigid Form",
-    "DESCRIPTION": "Whenever you play an Ice card, gain !M! block. NL hydrologistmod:Swaps to *Flowing *Form.",
+    "DESCRIPTION": "Whenever you play an *Ice card, gain !M! block. NL hydrologistmod:Swaps to *Flowing *Form.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FrigidLash": {
@@ -200,12 +200,12 @@
   },
   "hydrologistmod:Hail": {
     "NAME": "Hail",
-    "DESCRIPTION": "Deal !D! damage. NL Increase the damage of ALL Ice cards by !M! this combat.",
+    "DESCRIPTION": "Deal !D! damage. NL Increase the damage of ALL *Ice cards by !M! this combat.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Hailstorm": {
     "NAME": "Hailstorm",
-    "DESCRIPTION": "Gain !B! Block. NL Whenever you play an Ice card, the enemy takes !M! damage.",
+    "DESCRIPTION": "Gain !B! Block. NL Whenever you play an *Ice card, the enemy takes !M! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:HeatAndPressure": {
@@ -220,7 +220,7 @@
   },
   "hydrologistmod:HighPressure": {
     "NAME": "High Pressure",
-    "DESCRIPTION": "Your Steam cards that deal damage deal !M! additional damage. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Your *Steam cards that deal damage deal !M! additional damage. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:HighTide": {
@@ -270,7 +270,7 @@
   },
   "hydrologistmod:Liquidation": {
     "NAME": "Liquidation",
-    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is a Water card, apply !M! Weak to ALL enemies.",
+    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is a *Water card, apply !M! Weak to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Manifestation": {
@@ -285,7 +285,7 @@
   },
   "hydrologistmod:PackedSnow": {
     "NAME": "Packed Snow",
-    "DESCRIPTION": "The next Ice, Water, and Steam cards you play this combat are played twice. NL Exhaust.",
+    "DESCRIPTION": "The next *Ice, *Water, and *Steam cards you play this combat are played twice. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:PersonalRaincloud": {
@@ -378,12 +378,12 @@
   },
   "hydrologistmod:SoggySynthesis": {
     "NAME": "Soggy Synthesis",
-    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL hydrologistmod:Transmute a card into a Water card.",
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL hydrologistmod:Transmute a card into a *Water card.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Solidification": {
     "NAME": "Solidification",
-    "DESCRIPTION": "Deal !D! damage. NL Draw a Card. NL If your next card played is an Ice card, gain !M! Block.",
+    "DESCRIPTION": "Deal !D! damage. NL Draw a Card. NL If your next card played is an *Ice card, gain !M! Block.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SoothingWater": {
@@ -421,7 +421,7 @@
   },
   "hydrologistmod:Sublimation": {
     "NAME": "Sublimation",
-    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a Steam card, deal !M! damage to ALL enemies.",
+    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a *Steam card, deal !M! damage to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SwelteringStrike": {
@@ -431,7 +431,7 @@
   },
   "hydrologistmod:SwelteringSynthesis": {
     "NAME": "Sweltering Synthesis",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card into a Steam card.",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card into a *Steam card.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:TidalWave": {
