@@ -49,7 +49,7 @@ public class RetainFilteredCardAction extends AbstractGameAction {
             }
             p.hand.group.removeAll(cannotRetain);
             if (p.hand.group.size() > retainAmount) {
-                AbstractDungeon.handCardSelectScreen.open("Choose a card to retain", retainAmount, true, true, false, false);
+                AbstractDungeon.handCardSelectScreen.open("retain", retainAmount, true, true, false, false);
                 tickDuration();
                 return;
             } else if (p.hand.group.size() > 0) {

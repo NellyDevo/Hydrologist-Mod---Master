@@ -72,12 +72,12 @@ public class TransmuteCardAction extends AbstractGameAction {
                     return;
                 } else {
                     if (anyNumber) {
-                        AbstractDungeon.handCardSelectScreen.open("Choose any number of cards to Transmute", 99, true, true);
+                        AbstractDungeon.handCardSelectScreen.open("Transmute", 99, true, true);
                     } else {
                         if (AbstractDungeon.player.hand.size() > cards) {
-                            AbstractDungeon.handCardSelectScreen.open("Choose a card to Transmute", cards, false, false);
+                            AbstractDungeon.handCardSelectScreen.open("Transmute", cards, false, false);
                         } else {
-                            AbstractDungeon.handCardSelectScreen.open("Choose a card to Transmute", AbstractDungeon.player.hand.size(), false, false);
+                            AbstractDungeon.handCardSelectScreen.open("Transmute", AbstractDungeon.player.hand.size(), false, false);
                         }
                         tickDuration();
                         return;

@@ -55,7 +55,7 @@ public class UpgradeCorporealAction extends AbstractGameAction {
             }
             p.hand.group.removeAll(cannotUpgrade);
             if (p.hand.group.size() > 1) {
-                AbstractDungeon.handCardSelectScreen.open("Choose a card to upgrade", 1, false, false, false, true);
+                AbstractDungeon.handCardSelectScreen.open("upgrade", 1, false, false, false, true);
                 tickDuration();
                 return;
             } else if (p.hand.group.size() == 1) {
