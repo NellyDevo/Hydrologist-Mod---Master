@@ -4,18 +4,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
-import com.megacrit.cardcrawl.screens.options.InputSettingsScreen;
-import com.megacrit.cardcrawl.screens.options.RemapInputElement;
 import hydrologistmod.cards.AbstractHydrologistCard;
-import hydrologistmod.helpers.SwapperInputActionSet;
 import javassist.CtBehavior;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 @SpirePatch(
         clz= SingleCardViewPopup.class,

@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import hydrologistmod.interfaces.FlowAffectingPower;
-import hydrologistmod.powers.FlowPower;
 
 public class FlowAction extends AbstractGameAction {
 //    private static final String ID = "hydrologistmod:FlowAction";
