@@ -39,7 +39,7 @@ public class FlowAction extends AbstractGameAction {
                 isDone = true;
                 return;
             } else {
-                AbstractDungeon.handCardSelectScreen.open("discard", 99, true, true);
+                AbstractDungeon.handCardSelectScreen.open("discard.", 99, true, true);
             }
             AbstractDungeon.player.hand.applyPowers();
             tickDuration();

@@ -33,7 +33,7 @@ public class PersonalRaincloudAction extends AbstractGameAction {
                 pairWithRaincloud(AbstractDungeon.player.hand.getTopCard());
                 isDone = true;
             } else {
-                AbstractDungeon.handCardSelectScreen.open("Transmute", 1, false, false);
+                AbstractDungeon.handCardSelectScreen.open("pair with your Raincloud.", 1, false, false);
                 tickDuration();
             }
             return;

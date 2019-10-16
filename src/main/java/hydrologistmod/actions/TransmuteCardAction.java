@@ -72,12 +72,12 @@ public class TransmuteCardAction extends AbstractGameAction {
                     return;
                 } else {
                     if (anyNumber) {
-                        AbstractDungeon.handCardSelectScreen.open("Transmute", 99, true, true);
+                        AbstractDungeon.handCardSelectScreen.open("transmute.", 99, true, true);
                     } else {
                         if (AbstractDungeon.player.hand.size() > cards) {
-                            AbstractDungeon.handCardSelectScreen.open("Transmute", cards, false, false);
+                            AbstractDungeon.handCardSelectScreen.open("transmute.", cards, false, false);
                         } else {
-                            AbstractDungeon.handCardSelectScreen.open("Transmute", AbstractDungeon.player.hand.size(), false, false);
+                            AbstractDungeon.handCardSelectScreen.open("transmute.", AbstractDungeon.player.hand.size(), false, false);
                         }
                         tickDuration();
                         return;
@@ -144,7 +144,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                 }
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
                 storedOldCard = oldCard;
-                AbstractDungeon.gridSelectScreen.open(tmp, 1, "Choose your new card", false);
+                AbstractDungeon.gridSelectScreen.open(tmp, 1, "Choose your new card.", false);
                 return;
             }
         } else if (AbstractDungeon.gridSelectScreen.selectedCards.size() != 0) {

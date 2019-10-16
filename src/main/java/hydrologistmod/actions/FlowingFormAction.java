@@ -25,7 +25,7 @@ public class FlowingFormAction extends AbstractGameAction {
             if (AbstractDungeon.player.hand.size() < 1) {
                 isDone = true;
             } else {
-                AbstractDungeon.handCardSelectScreen.open("Transmute", 1, true, true);
+                AbstractDungeon.handCardSelectScreen.open("discard.", 1, true, true);
             }
             tickDuration();
             return;
