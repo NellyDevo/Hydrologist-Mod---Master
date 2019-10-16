@@ -94,12 +94,12 @@
     </dependency>
   </dependencies>
   <properties>
-    <ModTheSpire.version>3.14.0</ModTheSpire.version>
+    <ModTheSpire.version>3.14.1</ModTheSpire.version>
     <BaseMod.version>5.15.1</BaseMod.version>
     <StSLib.version>1.17.1</StSLib.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <SlayTheSpire.version>07-17-2019</SlayTheSpire.version>
+    <SlayTheSpire.version>10-15-2019</SlayTheSpire.version>
   </properties>
 </project>
 
