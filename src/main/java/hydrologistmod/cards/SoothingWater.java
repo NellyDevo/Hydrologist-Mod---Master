@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.CardIgnore;
-import hydrologistmod.actions.SkeletalIncreaseMiscAction;
+import hydrologistmod.actions.IncreasePairedMiscAction;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
@@ -67,6 +67,6 @@ public class SoothingWater extends AbstractHydrologistCard implements SwappableC
 
     @Override
     public void onSwapOut() {
-        addToBot(new SkeletalIncreaseMiscAction(uuid, upgraded ? UPGRADED_HEAL_INCREASE : HEAL_INCREASE));
+        addToBot(new IncreasePairedMiscAction(SwapperHelper.getPairedCard(this).uuid, upgraded ? UPGRADED_HEAL_INCREASE : HEAL_INCREASE));
     }
 }

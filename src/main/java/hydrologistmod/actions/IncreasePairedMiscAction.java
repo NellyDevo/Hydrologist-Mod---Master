@@ -5,14 +5,15 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
+import hydrologistmod.helpers.SwapperHelper;
 
 import java.util.UUID;
 
-public class SkeletalIncreaseMiscAction extends AbstractGameAction {
+public class IncreasePairedMiscAction extends AbstractGameAction {
     private int miscIncrease;
     private UUID uuid;
 
-    public SkeletalIncreaseMiscAction(UUID targetUUID, final int miscIncrease) {
+    public IncreasePairedMiscAction(UUID targetUUID, final int miscIncrease) {
         this.miscIncrease = miscIncrease;
         this.uuid = targetUUID;
     }
@@ -23,12 +24,12 @@ public class SkeletalIncreaseMiscAction extends AbstractGameAction {
             if (!c.uuid.equals(this.uuid)) {
                 continue;
             }
-            c.misc += this.miscIncrease;
-            c.applyPowers();
+            SwapperHelper.getMasterDeckPair(c).misc += this.miscIncrease;
+            SwapperHelper.getMasterDeckPair(c).applyPowers();
         }
         for (AbstractCard c : GetAllInBattleInstances.get(this.uuid)) {
-            c.misc += this.miscIncrease;
-            c.applyPowers();
+            SwapperHelper.getPairedCard(c).misc += this.miscIncrease;
+            SwapperHelper.getPairedCard(c).applyPowers();
         }
         this.isDone = true;
     }
