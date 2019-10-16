@@ -128,7 +128,7 @@ public class SwapperCardPatch {
     public static class CardGroupAddToTopMasterDeckPatch {
 
         public static void Postfix(CardGroup __instance, AbstractCard card) {
-            if (__instance == AbstractDungeon.player.masterDeck) {
+            if (AbstractDungeon.player != null && __instance == AbstractDungeon.player.masterDeck) {
                 System.out.println("addToTop postfix: group is masterDeck");
                 if (card instanceof SwappableCard) {
                     SwappableCard swappableCard = (SwappableCard)card;
