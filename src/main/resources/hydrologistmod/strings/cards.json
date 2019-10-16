@@ -325,7 +325,7 @@
   },
   "hydrologistmod:PurifyingSteam": {
     "NAME": "Purifying Steam",
-    "DESCRIPTION": "Deal !D! damage. NL Swappable.",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Raincloud": {
