@@ -40,6 +40,7 @@ public class EncapsulatingIceAction extends AbstractGameAction {
         }
         if (effect > 0) {
             card.misc += effect;
+            card.applyPowers();
             if (!freeToPlayOnce) {// 60
                 AbstractDungeon.player.energy.use(EnergyPanel.totalCount);
             }
