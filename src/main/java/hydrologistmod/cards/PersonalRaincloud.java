@@ -21,6 +21,7 @@ public class PersonalRaincloud extends AbstractHydrologistCard {
     private static final int COST = 0;
     private static final int BLOCK_AMT = 4;
     private static final int UPGRADE_BLOCK = 3;
+    private static final int DRAW_AMT = 1;
 
     public PersonalRaincloud() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -28,6 +29,7 @@ public class PersonalRaincloud extends AbstractHydrologistCard {
                 CardRarity.RARE, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         block = baseBlock = BLOCK_AMT;
+        magicNumber = baseMagicNumber = DRAW_AMT;
         cardsToPreview = new Raincloud();
     }
 
