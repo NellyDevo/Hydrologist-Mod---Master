@@ -22,8 +22,9 @@ public class SwapperCardPatch {
     public static class AbstractCardUpdatePatch {
 
         public static void Prefix(AbstractCard __instance) {
-            if (AbstractDungeon.player != null && (AbstractDungeon.player.isDraggingCard || AbstractDungeon.player.inSingleTargetMode) && __instance == AbstractDungeon.player.hoveredCard && SwapperHelper.isCardSwappable(__instance) && AbstractDungeon.actionManager.isEmpty()) {
+            if (AbstractDungeon.player != null && __instance == AbstractDungeon.player.hoveredCard && SwapperHelper.isCardSwappable(__instance) && AbstractDungeon.actionManager.isEmpty()) {
                 boolean pressed = SwapperHelper.handleInput();
+                boolean selected = (AbstractDungeon.player.isDraggingCard || AbstractDungeon.player.inSingleTargetMode);
                 if (pressed) {
                     System.out.println("SWAPPER CARD CHECKPOINT REACHED");
                     System.out.println("CARD TO SWAP: " + __instance.name);
@@ -37,12 +38,12 @@ public class SwapperCardPatch {
                         if (__instance instanceof SwappableCard) {
                             SwappableCard swappableCard = (SwappableCard)__instance;
                             if (swappableCard.canSwap()) {
-                                AbstractDungeon.actionManager.addToBottom(new SwapCardAction(__instance, SwapperHelper.getNextCard(__instance), index));
+                                AbstractDungeon.actionManager.addToBottom(new SwapCardAction(__instance, SwapperHelper.getNextCard(__instance), index, selected));
                             } else {
                                 AbstractDungeon.effectList.add(new ThoughtBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, 3.0f, swappableCard.getUnableToSwapString(), true));
                             }
                         } else {
-                            AbstractDungeon.actionManager.addToBottom(new SwapCardAction(__instance, SwapperHelper.getNextCard(__instance), index));
+                            AbstractDungeon.actionManager.addToBottom(new SwapCardAction(__instance, SwapperHelper.getNextCard(__instance), index, selected));
                         }
                     } else {
                         System.out.println("How is clicked/hovered card not in hand?");
