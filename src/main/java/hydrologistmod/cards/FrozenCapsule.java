@@ -35,7 +35,11 @@ public class FrozenCapsule extends AbstractHydrologistCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
         addToBot(new TransmuteCardAction(this, (AbstractCard c) -> {
-            c.cost = 0;
+            if (c.cost > 0) {
+                c.cost = 0;
+                c.costForTurn = c.cost;
+                c.isCostModified = true;
+            }
             if (upgraded) {
                 c.upgrade();
             }
