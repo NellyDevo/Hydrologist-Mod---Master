@@ -2,6 +2,7 @@ package hydrologistmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
@@ -12,6 +13,7 @@ import javassist.util.proxy.MethodFilter;
 import javassist.util.proxy.MethodHandler;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -20,6 +22,7 @@ public class PersonalRaincloudAction extends AbstractGameAction {
 //    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
 //    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
+    private ArrayList<AbstractCard> cannotPair = new ArrayList<>();
 
     public PersonalRaincloudAction() {
         this.duration = DURATION;
@@ -27,24 +30,53 @@ public class PersonalRaincloudAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        if (duration == DURATION) {
-            if (AbstractDungeon.player.hand.size() < 1) {
+        AbstractPlayer p = AbstractDungeon.player;
+        if (duration == Settings.ACTION_DUR_FAST) {
+            for (AbstractCard c : p.hand.group) {
+                if (SwapperHelper.isCardSwappable(c)) {
+                    cannotPair.add(c);
+                }
+            }
+            if (cannotPair.size() == p.hand.group.size()) {
                 AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(new Raincloud()));
                 isDone = true;
-            } else if (AbstractDungeon.player.hand.size() == 1) {
-                pairWithRaincloud(AbstractDungeon.player.hand.getTopCard());
-                isDone = true;
-            } else {
-                AbstractDungeon.handCardSelectScreen.open("pair with your Raincloud.", 1, false, false);
-                tickDuration();
+                return;
+            } else if (p.hand.group.size() - cannotPair.size() == 1) {
+                for (AbstractCard c : p.hand.group) {
+                    if (!SwapperHelper.isCardSwappable(c)) {
+                        pairWithRaincloud(c);
+                        isDone = true;
+                        return;
+                    }
+                }
             }
+            p.hand.group.removeAll(cannotPair);
+            if (p.hand.group.size() > 1) {
+                AbstractDungeon.handCardSelectScreen.open("pair with your Raincloud.", 1, false, false, false, false);
+                tickDuration();
+                return;
+            } else if (p.hand.group.size() == 1) {
+                pairWithRaincloud(p.hand.getTopCard());
+                isDone = true;
+                return;
+            }
+            for (AbstractCard c : cannotPair) {
+                p.hand.addToTop(c);
+            }
+            p.hand.refreshHandLayout();
+            AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(new Raincloud()));
+            isDone = true;
             return;
         }
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
-            AbstractCard oldCard = AbstractDungeon.handCardSelectScreen.selectedCards.group.get(0);
-            pairWithRaincloud(oldCard);
-            isDone = true;
+            pairWithRaincloud(AbstractDungeon.handCardSelectScreen.selectedCards.group.get(0));
+            for (AbstractCard c : cannotPair) {
+                p.hand.addToTop(c);
+            }
+            p.hand.refreshHandLayout();
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
+            AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
+            isDone = true;
         }
         tickDuration();
     }
