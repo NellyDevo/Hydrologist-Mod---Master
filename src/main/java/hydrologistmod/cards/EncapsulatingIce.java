@@ -43,6 +43,8 @@ public class EncapsulatingIce extends AbstractHydrologistCard {
         SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }
