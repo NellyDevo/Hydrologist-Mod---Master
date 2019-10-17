@@ -47,6 +47,17 @@ public class GhostlyMist extends AbstractHydrologistCard {
     }
 
     @Override
+    public void triggerOnGlowCheck() {
+        for (AbstractCard card : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
+            if (HydrologistMod.isThisCorporeal(card)) {
+                glowColor = GOLD_BORDER_GLOW_COLOR.cpy();
+                return;
+            }
+        }
+        glowColor = BLUE_BORDER_GLOW_COLOR.cpy();
+    }
+
+    @Override
     public AbstractCard makeCopy() {
         return new GhostlyMist();
     }
