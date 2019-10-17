@@ -24,8 +24,8 @@ public class SwapperCardPatch {
         public static void Prefix(AbstractCard __instance) {
             if (AbstractDungeon.player != null && __instance == AbstractDungeon.player.hoveredCard && SwapperHelper.isCardSwappable(__instance) && AbstractDungeon.actionManager.isEmpty()) {
                 boolean pressed = SwapperHelper.handleInput();
-                boolean selected = (AbstractDungeon.player.isDraggingCard || AbstractDungeon.player.inSingleTargetMode);
                 if (pressed) {
+                    boolean selected = (AbstractDungeon.player.isDraggingCard || AbstractDungeon.player.inSingleTargetMode);
                     System.out.println("SWAPPER CARD CHECKPOINT REACHED");
                     System.out.println("CARD TO SWAP: " + __instance.name);
                     int index = -1;
