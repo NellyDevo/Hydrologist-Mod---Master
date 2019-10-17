@@ -18,7 +18,8 @@ public class WaterTurbine extends AbstractHydrologistCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/WaterTurbine.png";
-    private static final int COST = 0;
+    private static final int COST = 1;
+    private static final int UPGRADED_COST = 0;
 
     public WaterTurbine() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -42,7 +43,7 @@ public class WaterTurbine extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            exhaust = false;
+            upgradeBaseCost(UPGRADED_COST);
         }
     }
 }
