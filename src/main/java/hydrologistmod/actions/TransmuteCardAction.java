@@ -1,6 +1,7 @@
 package hydrologistmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import hydrologistmod.interfaces.TransmutableAffectingPower;
 import hydrologistmod.interfaces.TransmutableCard;
 
@@ -85,32 +87,40 @@ public class TransmuteCardAction extends AbstractGameAction {
                 }
             } else {
                 AbstractCard newCard = getTransmutationResult(playedCard).makeCopy();
-                UseCardAction useCardAction = null;
-                for (AbstractGameAction action : AbstractDungeon.actionManager.actions) {
-                    if (action instanceof UseCardAction) {
-                        useCardAction = (UseCardAction)action;
-                        break;
-                    }
-                }
-                if (useCardAction != null) {
-                    try {
-                        Field targetCardField = UseCardAction.class.getDeclaredField("targetCard");
-                        targetCardField.setAccessible(true);
-                        if (targetCardField.get(useCardAction) == playedCard && AbstractDungeon.player.cardInUse == playedCard) {
-                            targetCardField.set(useCardAction, newCard);
-                            AbstractDungeon.player.cardInUse = newCard;
-                            newCard.current_x = playedCard.current_x;
-                            newCard.current_y = playedCard.current_y;
-                            newCard.target_x = playedCard.target_x;
-                            newCard.target_y = playedCard.target_y;
-                            newCard.isGlowing = playedCard.isGlowing;
-                            playedCard.isGlowing = false;
-                        }
-                    } catch (NoSuchFieldException | IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                }
+//                UseCardAction useCardAction = null;
+//                for (AbstractGameAction action : AbstractDungeon.actionManager.actions) {
+//                    if (action instanceof UseCardAction) {
+//                        useCardAction = (UseCardAction)action;
+//                        break;
+//                    }
+//                }
+//                if (useCardAction != null) {
+//                    try {
+//                        Field targetCardField = UseCardAction.class.getDeclaredField("targetCard");
+//                        targetCardField.setAccessible(true);
+//                        if (targetCardField.get(useCardAction) == playedCard && AbstractDungeon.player.cardInUse == playedCard) {
+//                            targetCardField.set(useCardAction, newCard);
+//                            AbstractDungeon.player.cardInUse = newCard;
+//                            newCard.current_x = playedCard.current_x;
+//                            newCard.current_y = playedCard.current_y;
+//                            newCard.target_x = playedCard.target_x;
+//                            newCard.target_y = playedCard.target_y;
+//                            newCard.isGlowing = playedCard.isGlowing;
+//                            playedCard.isGlowing = false;
+//                        }
+//                    } catch (NoSuchFieldException | IllegalAccessException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+                playedCard.purgeOnUse = true;
                 modifyNewCard(playedCard, newCard);
+                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        AbstractDungeon.effectList.add(new ShowCardAndAddToDiscardEffect(newCard));
+                        isDone = true;
+                    }
+                });
                 isDone = true;
                 return;
             }
