@@ -37,7 +37,6 @@ public class Evaporation extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new DrawCardAction(p, 1));
         addToBot(new ApplyPowerAction(p, p, new EvaporationPower(p, magicNumber)));
     }
 

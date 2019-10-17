@@ -39,7 +39,6 @@ public class Sublimation extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-        addToBot(new DrawCardAction(p, 1));
         addToBot(new ApplyPowerAction(p, p, new SublimationPower(p, magicNumber)));
     }
 

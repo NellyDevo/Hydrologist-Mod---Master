@@ -21,8 +21,8 @@
   },
   "hydrologistmod:Condensation": {
     "NAME": "Condensation",
-    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a *Water card, draw a card.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a *Water card, draw 2 cards."
+    "DESCRIPTION": "Deal !D! damage. NL If your next card played is a *Water card, draw a card.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL If your next card played is a *Water card, draw 2 cards."
   },
   "hydrologistmod:Cryogenics": {
     "NAME": "Cryogenics",
@@ -44,7 +44,7 @@
   },
   "hydrologistmod:Crystallization": {
     "NAME": "Crystallization",
-    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is an *Ice card, hydrologistmod:Transmute a card in your hand.",
+    "DESCRIPTION": "Gain !B! Block. NL If your next card played is an *Ice card, hydrologistmod:Transmute a card in your hand.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:DebilitatingExplosion": {
@@ -94,7 +94,7 @@
   },
   "hydrologistmod:Evaporation": {
     "NAME": "Evaporation",
-    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is a *Steam card, apply !M! Vulnerable to ALL enemies.",
+    "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Steam card, apply !M! Vulnerable to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Exothermodynamics": {
@@ -270,7 +270,7 @@
   },
   "hydrologistmod:Liquidation": {
     "NAME": "Liquidation",
-    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL If your next card played is a *Water card, apply !M! Weak to ALL enemies.",
+    "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Water card, apply !M! Weak to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Manifestation": {
@@ -383,7 +383,7 @@
   },
   "hydrologistmod:Solidification": {
     "NAME": "Solidification",
-    "DESCRIPTION": "Deal !D! damage. NL Draw a Card. NL If your next card played is an *Ice card, gain !M! Block.",
+    "DESCRIPTION": "Deal !D! damage. NL If your next card played is an *Ice card, gain !M! Block.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SoothingWater": {
@@ -421,7 +421,7 @@
   },
   "hydrologistmod:Sublimation": {
     "NAME": "Sublimation",
-    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL If your next card played is a *Steam card, deal !M! damage to ALL enemies.",
+    "DESCRIPTION": "Deal !D! damage. NL If your next card played is a *Steam card, deal !M! damage to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SwelteringStrike": {
