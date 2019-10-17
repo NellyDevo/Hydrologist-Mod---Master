@@ -7,12 +7,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.interfaces.ApplyPowersForHydrologistPower;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 
 public abstract class AbstractHydrologistCard extends CustomCard {
@@ -127,11 +129,11 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     @SpireOverride
     protected void renderAttackPortrait(SpriteBatch sb, float x, float y) {
         if (hasTag(HydrologistTags.ICE)) {
-            renderHelper(sb, Color.WHITE.cpy(), ICE_SMALL_ATTACK_FRAME, x, y);
+            renderHelper(sb, getRenderColor(), ICE_SMALL_ATTACK_FRAME, x, y);
         } else if (hasTag(HydrologistTags.WATER)) {
-            renderHelper(sb, Color.WHITE.cpy(), WATER_SMALL_ATTACK_FRAME, x, y);
+            renderHelper(sb, getRenderColor(), WATER_SMALL_ATTACK_FRAME, x, y);
         } else if (hasTag(HydrologistTags.STEAM)) {
-            renderHelper(sb, Color.WHITE.cpy(), STEAM_SMALL_ATTACK_FRAME, x, y);
+            renderHelper(sb, getRenderColor(), STEAM_SMALL_ATTACK_FRAME, x, y);
         } else {
             SpireSuper.call(sb, x, y);
         }
@@ -140,11 +142,11 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     @SpireOverride
     protected void renderSkillPortrait(SpriteBatch sb, float x, float y) {
         if (hasTag(HydrologistTags.ICE)) {
-            renderHelper(sb, Color.WHITE.cpy(), ICE_SMALL_SKILL_FRAME, x, y);
+            renderHelper(sb, getRenderColor(), ICE_SMALL_SKILL_FRAME, x, y);
         } else if (hasTag(HydrologistTags.WATER)) {
-            renderHelper(sb, Color.WHITE.cpy(), WATER_SMALL_SKILL_FRAME, x, y);
+            renderHelper(sb, getRenderColor(), WATER_SMALL_SKILL_FRAME, x, y);
         } else if (hasTag(HydrologistTags.STEAM)) {
-            renderHelper(sb, Color.WHITE.cpy(), STEAM_SMALL_SKILL_FRAME, x, y);
+            renderHelper(sb, getRenderColor(), STEAM_SMALL_SKILL_FRAME, x, y);
         } else {
             SpireSuper.call(sb, x, y);
         }
@@ -153,11 +155,11 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     @SpireOverride
     protected void renderPowerPortrait(SpriteBatch sb, float x, float y) {
         if (hasTag(HydrologistTags.ICE)) {
-            renderHelper(sb, Color.WHITE.cpy(), ICE_SMALL_POWER_FRAME, x, y);
+            renderHelper(sb, getRenderColor(), ICE_SMALL_POWER_FRAME, x, y);
         } else if (hasTag(HydrologistTags.WATER)) {
-            renderHelper(sb, Color.WHITE.cpy(), WATER_SMALL_POWER_FRAME, x, y);
+            renderHelper(sb, getRenderColor(), WATER_SMALL_POWER_FRAME, x, y);
         } else if (hasTag(HydrologistTags.STEAM)) {
-            renderHelper(sb, Color.WHITE.cpy(), STEAM_SMALL_POWER_FRAME, x, y);
+            renderHelper(sb, getRenderColor(), STEAM_SMALL_POWER_FRAME, x, y);
         } else {
             SpireSuper.call(sb, x, y);
         }
@@ -166,6 +168,30 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     @SpireOverride
     protected void renderHelper(SpriteBatch sb, Color renderColor, TextureAtlas.AtlasRegion image, float x, float y) {
         SpireSuper.call(sb, renderColor, image, x, y);
+    }
+
+    private Field renderColorField = null;
+
+    private Color getRenderColor() {
+        Color reflectedColor = null;
+        if (renderColorField == null) {
+            try {
+                renderColorField = AbstractCard.class.getDeclaredField("renderColor");
+                renderColorField.setAccessible(true);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            reflectedColor = (Color)renderColorField.get(this);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        if (reflectedColor == null) {
+            return Color.WHITE.cpy();
+        } else {
+            return reflectedColor;
+        }
     }
 
 }
