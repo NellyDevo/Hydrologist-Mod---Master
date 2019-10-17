@@ -2,6 +2,7 @@ package hydrologistmod.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hydrologistmod.actions.TransmuteCardAction;
@@ -26,7 +27,13 @@ public class Distillery extends CustomRelic {
     public void atTurnStartPostDraw() {
         ++counter;
         if (counter == TURN_COUNT) {
-            AbstractDungeon.actionManager.addToBottom(new TransmuteCardAction());
+            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    AbstractDungeon.actionManager.addToBottom(new TransmuteCardAction());
+                    isDone = true;
+                }
+            });
             counter = 0;
         }
     }
