@@ -26,7 +26,7 @@ public class ReleaseValvePower extends AbstractPower implements FlowAffectingPow
         this.source = source;
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("hydrologistmod/images/powers/ReleaseValvePower84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("hydrologistmod/images/powers/ReleaseValvePower32.png"), 0, 0, 32, 32);
-        type = PowerType.BUFF;
+        type = PowerType.DEBUFF;
         this.amount = amount;
         updateDescription();
     }

@@ -26,7 +26,7 @@ public class HailstormPower extends AbstractPower implements CloneablePowerInter
         this.owner = owner;
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("hydrologistmod/images/powers/HailstormPower84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("hydrologistmod/images/powers/HailstormPower32.png"), 0, 0, 32, 32);
-        type = PowerType.BUFF;
+        type = PowerType.DEBUFF;
         this.amount = amount;
         updateDescription();
     }
