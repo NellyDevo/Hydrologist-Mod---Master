@@ -29,6 +29,6 @@
       "transmute",
       "transmuted"
     ],
-    "DESCRIPTION": "Transforms a card in combat into any card available to your current run."
+    "DESCRIPTION": "Transforms a card in combat into any card of the same rarity available to your current run."
   }
 }
