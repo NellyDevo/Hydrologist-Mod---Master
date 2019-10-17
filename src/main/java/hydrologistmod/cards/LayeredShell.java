@@ -23,7 +23,7 @@ public class LayeredShell extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/LayeredShell.png";
     private static final int COST = 1;
-    private static final int BLOCK_AMT = 4;
+    private static final int BLOCK_AMT = 9;
     private static final int UPGRADE_BLOCK = 2;
     private static final int DAMAGE_INCREASE = 4;
     private static final int UPGRADE_DAMAGE_INC = 3;
