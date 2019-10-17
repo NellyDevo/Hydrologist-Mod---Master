@@ -60,7 +60,7 @@ public class SwapCardAction extends AbstractGameAction {
             ((SwappableCard)card2).onSwapIn();
         }
         card2.isGlowing = card1.isGlowing;
-        card1.isGlowing = false;
+        card1.stopGlowing();
         card2.flash();
         card1.applyPowers();
         for (AbstractCard handCard : p.hand.group) {
