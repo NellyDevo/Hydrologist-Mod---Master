@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.HydrologistTags;
 
 public class HailAction extends AbstractGameAction {
@@ -27,21 +28,42 @@ public class HailAction extends AbstractGameAction {
             callingCard.baseDamage += amount;
             callingCard.applyPowers();
             for (AbstractCard c : p.discardPile.group) {
-                if (c.hasTag(HydrologistTags.ICE)) {
+                if (c.hasTag(HydrologistTags.ICE) && c.baseDamage > -1) {
                     c.baseDamage += amount;
                     c.applyPowers();
+                }
+                if (SwapperHelper.isCardSwappable(c)) {
+                    AbstractCard ca = SwapperHelper.getNextCard(c);
+                    if (ca.hasTag(HydrologistTags.ICE)) {
+                        ca.baseDamage += amount;
+                        ca.applyPowers();
+                    }
                 }
             }
             for (AbstractCard c : p.drawPile.group) {
-                if (c.hasTag(HydrologistTags.ICE)) {
+                if (c.hasTag(HydrologistTags.ICE) && c.baseDamage > -1) {
                     c.baseDamage += amount;
                     c.applyPowers();
                 }
+                if (SwapperHelper.isCardSwappable(c)) {
+                    AbstractCard ca = SwapperHelper.getNextCard(c);
+                    if (ca.hasTag(HydrologistTags.ICE)) {
+                        ca.baseDamage += amount;
+                        ca.applyPowers();
+                    }
+                }
             }
             for (AbstractCard c : p.hand.group) {
-                if (c.hasTag(HydrologistTags.ICE)) {
+                if (c.hasTag(HydrologistTags.ICE) && c.baseDamage > -1) {
                     c.baseDamage += amount;
                     c.applyPowers();
+                }
+                if (SwapperHelper.isCardSwappable(c)) {
+                    AbstractCard ca = SwapperHelper.getNextCard(c);
+                    if (ca.hasTag(HydrologistTags.ICE)) {
+                        ca.baseDamage += amount;
+                        ca.applyPowers();
+                    }
                 }
             }
         }
