@@ -55,6 +55,9 @@ public class SwapCardAction extends AbstractGameAction {
             card2.current_y = card1.current_y;
             card2.target_x = card1.target_x;
             card2.target_y = card1.target_y;
+            if (!card2.isHoveredInHand(card2.drawScale)) {
+                p.releaseCard();
+            }
         }
         if (card2 instanceof SwappableCard) {
             ((SwappableCard)card2).onSwapIn();
