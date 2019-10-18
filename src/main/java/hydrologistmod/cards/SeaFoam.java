@@ -29,7 +29,7 @@ public class SeaFoam extends AbstractHydrologistCard {
     public SeaFoam() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.SPECIAL, CardTarget.ENEMY);
+                CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
     }

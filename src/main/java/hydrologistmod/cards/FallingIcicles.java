@@ -28,7 +28,7 @@ public class FallingIcicles extends AbstractHydrologistCard {
     public FallingIcicles() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.SPECIAL, CardTarget.ENEMY);
+                CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE_AMT;
         exhaust = true;

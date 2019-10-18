@@ -28,7 +28,7 @@ public class IceSpike extends AbstractHydrologistCard {
     public IceSpike() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.SPECIAL, CardTarget.ENEMY);
+                CardRarity.COMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE_AMT;
     }

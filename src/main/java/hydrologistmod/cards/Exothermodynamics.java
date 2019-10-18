@@ -27,7 +27,7 @@ public class Exothermodynamics extends AbstractHydrologistCard {
     public Exothermodynamics() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.SPECIAL, CardTarget.NONE);
+                CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = AMOUNT;
     }

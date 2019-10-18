@@ -27,7 +27,7 @@ public class LaminarFlow extends AbstractHydrologistCard {
     public LaminarFlow() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.SPECIAL, CardTarget.NONE);
+                CardRarity.RARE, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = POWER_AMT;
     }

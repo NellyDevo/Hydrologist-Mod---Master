@@ -24,7 +24,7 @@ public class EncapsulatingIce extends AbstractHydrologistCard {
     public EncapsulatingIce() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.SPECIAL, CardTarget.SELF);
+                CardRarity.RARE, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.ICE);
     }
 

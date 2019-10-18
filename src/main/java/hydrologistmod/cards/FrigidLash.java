@@ -31,7 +31,7 @@ public class FrigidLash extends AbstractHydrologistCard {
     public FrigidLash() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.SPECIAL, CardTarget.ENEMY);
+                CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = INCREASE_BLOCK;

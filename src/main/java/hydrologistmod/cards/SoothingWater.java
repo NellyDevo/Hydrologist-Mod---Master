@@ -31,7 +31,7 @@ public class SoothingWater extends AbstractHydrologistCard implements SwappableC
     public SoothingWater() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.SPECIAL, CardTarget.SELF);
+                CardRarity.UNCOMMON, CardTarget.SELF);
         magicNumber = baseMagicNumber = BASE_HEAL + misc;
         assignHydrologistSubtype(HydrologistTags.WATER);
         tags.add(CardTags.HEALING);
