@@ -6,14 +6,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.CardIgnore;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.FleetingFormPower;
 
-@CardIgnore
-public class FleetingForm extends AbstractHydrologistCard {
+public class FleetingForm extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:FleetingForm";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -49,5 +48,10 @@ public class FleetingForm extends AbstractHydrologistCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_DAMAGE);
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

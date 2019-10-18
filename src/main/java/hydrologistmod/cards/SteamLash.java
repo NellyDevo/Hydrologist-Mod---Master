@@ -9,13 +9,11 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.CardIgnore;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-@CardIgnore
 public class SteamLash extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:SteamLash";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -59,5 +57,10 @@ public class SteamLash extends AbstractHydrologistCard implements SwappableCard 
     @Override
     public void onSwapOut() {
         addToBot(new GainEnergyAction(magicNumber));
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

@@ -7,13 +7,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
-import hydrologistmod.CardIgnore;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-@CardIgnore
-public class LaminarFlow extends AbstractHydrologistCard {
+public class LaminarFlow extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:LaminarFlow";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -49,5 +48,10 @@ public class LaminarFlow extends AbstractHydrologistCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_AMT);
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

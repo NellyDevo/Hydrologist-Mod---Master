@@ -5,14 +5,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.CardIgnore;
 import hydrologistmod.actions.EncapsulatingIceAction;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-@CardIgnore
-public class EncapsulatingIce extends AbstractHydrologistCard {
+public class EncapsulatingIce extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:EncapsulatingIce";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -46,5 +45,10 @@ public class EncapsulatingIce extends AbstractHydrologistCard {
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

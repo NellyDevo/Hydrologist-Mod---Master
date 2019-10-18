@@ -6,14 +6,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import hydrologistmod.CardIgnore;
 import hydrologistmod.actions.MultiplyPowerAction;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-@CardIgnore
-public class HeatAndPressure extends AbstractHydrologistCard {
+public class HeatAndPressure extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:HeatAndPressure";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -53,5 +52,10 @@ public class HeatAndPressure extends AbstractHydrologistCard {
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

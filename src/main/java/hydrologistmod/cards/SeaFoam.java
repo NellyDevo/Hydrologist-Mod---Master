@@ -8,14 +8,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.CardIgnore;
 import hydrologistmod.actions.TransmuteCardAction;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-@CardIgnore
-public class SeaFoam extends AbstractHydrologistCard {
+public class SeaFoam extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:SeaFoam";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -52,5 +51,10 @@ public class SeaFoam extends AbstractHydrologistCard {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

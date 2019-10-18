@@ -16,4 +16,8 @@ public interface SwappableCard {
     default void onSwapOut() {
 
     }
+
+    default boolean isPairCard() {
+        return false;
+    }
 }

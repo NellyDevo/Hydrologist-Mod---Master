@@ -6,14 +6,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.CardIgnore;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.HighPressurePower;
 
-@CardIgnore
-public class HighPressure extends AbstractHydrologistCard {
+public class HighPressure extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:HighPressure";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -49,5 +48,10 @@ public class HighPressure extends AbstractHydrologistCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_POWER);
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

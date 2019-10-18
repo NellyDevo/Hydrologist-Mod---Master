@@ -10,14 +10,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.CardIgnore;
 import hydrologistmod.actions.SwapWhenPlayedAction;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-@CardIgnore
 public class Eruption extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:Eruption";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -63,5 +61,10 @@ public class Eruption extends AbstractHydrologistCard implements SwappableCard {
     @Override
     public void onSwapIn() {
         addToBot(new DiscardSpecificCardAction(this));
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

@@ -8,13 +8,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.CardIgnore;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-@CardIgnore
-public class IceSpike extends AbstractHydrologistCard {
+public class IceSpike extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:IceSpike";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -50,5 +49,10 @@ public class IceSpike extends AbstractHydrologistCard {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE_AMT);
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

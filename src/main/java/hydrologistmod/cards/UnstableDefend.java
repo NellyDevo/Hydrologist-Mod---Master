@@ -6,12 +6,11 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.CardIgnore;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 
-@CardIgnore
-public class UnstableDefend extends AbstractHydrologistCard {
+public class UnstableDefend extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:UnstableDefend";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -46,5 +45,10 @@ public class UnstableDefend extends AbstractHydrologistCard {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_BLOCK);
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }
