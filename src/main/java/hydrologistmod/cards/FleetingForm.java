@@ -27,7 +27,7 @@ public class FleetingForm extends AbstractHydrologistCard {
     public FleetingForm() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.SPECIAL, CardTarget.NONE);
+                CardRarity.RARE, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = DAMAGE_AMT;
     }
