@@ -8,5 +8,5 @@
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
   "mts_version": "${ModTheSpire.version}",
-  "update_json": ""
+  "update_json": "https://api.github.com/repos/JohnnyDevo/Hydrologist-Mod---Master/releases/latest"
 }
