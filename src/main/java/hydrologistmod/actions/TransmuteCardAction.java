@@ -1,9 +1,7 @@
 package hydrologistmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
@@ -14,7 +12,6 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import hydrologistmod.interfaces.TransmutableAffectingPower;
 import hydrologistmod.interfaces.TransmutableCard;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class TransmuteCardAction extends AbstractGameAction {

@@ -10,10 +10,8 @@ import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
-import hydrologistmod.powers.FleetingFormPower;
 import hydrologistmod.powers.FlowingFormPower;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 

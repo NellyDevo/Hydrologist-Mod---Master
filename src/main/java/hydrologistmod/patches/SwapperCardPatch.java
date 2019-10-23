@@ -3,14 +3,12 @@ package hydrologistmod.patches;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import hydrologistmod.actions.SwapCardAction;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class SwapperCardPatch {
