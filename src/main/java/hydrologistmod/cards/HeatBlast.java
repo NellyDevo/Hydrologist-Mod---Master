@@ -42,18 +42,10 @@ public class HeatBlast extends AbstractHydrologistCard {
         addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
     }
 
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) { //TODO calculate this properly I guess
-        super.calculateCardDamage(mo);
-        if (mo.hasPower(VulnerablePower.POWER_ID)) {
-            float tmp = damage;
-            VulnerablePower power = (VulnerablePower)mo.getPower(VulnerablePower.POWER_ID);
-            for (int i = 1; i < power.amount; ++i) {
-                tmp = power.atDamageReceive(tmp, damageTypeForTurn);
-            }
-            damage = MathUtils.floor(tmp);
-        }
-    }
+    /*@Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        refer to HeatBlastApplyVulnerablePatch for accurate calculations
+    }*/
 
     @Override
     public AbstractCard makeCopy() {
