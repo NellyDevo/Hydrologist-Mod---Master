@@ -8,10 +8,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hydrologistmod.interfaces.ApplyPowersForHydrologistPower;
 import hydrologistmod.patches.HydrologistTags;
 
-public class DeepFreezePower extends AbstractPower implements ApplyPowersForHydrologistPower, CloneablePowerInterface {
+public class DeepFreezePower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:DeepFreezePower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -39,9 +38,10 @@ public class DeepFreezePower extends AbstractPower implements ApplyPowersForHydr
     }
 
     @Override
-    public void beforeApplyPowers(AbstractCard card) {
-        if (card.hasTag(HydrologistTags.ICE) && card.baseBlock > -1) {
-            card.baseBlock += amount;
+    public float modifyBlock(float block, AbstractCard card) {
+        if (card.hasTag(HydrologistTags.ICE)) {
+            block += amount;
         }
+        return block;
     }
 }

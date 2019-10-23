@@ -8,10 +8,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import hydrologistmod.interfaces.ApplyPowersForHydrologistPower;
 import hydrologistmod.patches.HydrologistTags;
 
 import java.lang.reflect.Field;
@@ -86,44 +82,6 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     protected void assignHydrologistSubtype(CardTags tag) {
         setOrbTexture(smallOrbMap.get(tag), largeOrbMap.get(tag));
         tags.add(tag);
-    }
-
-    @Override
-    public void applyPowers() { //TODO do this properly with a full patch, or wait for overload implementation
-        int damageHolder = baseDamage;
-        int blockHolder = baseBlock;
-        int magicHolder = baseMagicNumber;
-        for (AbstractPower p : AbstractDungeon.player.powers) {
-            if (p instanceof ApplyPowersForHydrologistPower) {
-                ((ApplyPowersForHydrologistPower)p).beforeApplyPowers(this);
-            }
-        }
-        super.applyPowers();
-        baseDamage = damageHolder;
-        baseBlock = blockHolder;
-        baseMagicNumber = magicHolder;
-        isDamageModified = baseDamage != damage;
-        isBlockModified = baseBlock != block;
-        isMagicNumberModified = baseMagicNumber != magicNumber;
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        int damageHolder = baseDamage;
-        int blockHolder = baseBlock;
-        int magicHolder = baseMagicNumber;
-        for (AbstractPower p : AbstractDungeon.player.powers) {
-            if (p instanceof ApplyPowersForHydrologistPower) {
-                ((ApplyPowersForHydrologistPower)p).beforeApplyPowers(this);
-            }
-        }
-        super.calculateCardDamage(mo);
-        baseDamage = damageHolder;
-        baseBlock = blockHolder;
-        baseMagicNumber = magicHolder;
-        isDamageModified = baseDamage != damage;
-        isBlockModified = baseBlock != block;
-        isMagicNumberModified = baseMagicNumber != magicNumber;
     }
 
     @SpireOverride

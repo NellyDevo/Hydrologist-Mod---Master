@@ -3,15 +3,15 @@ package hydrologistmod.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.HydrologistMod;
-import hydrologistmod.interfaces.ApplyPowersForHydrologistPower;
 
-public class ManifestationPower extends AbstractPower implements ApplyPowersForHydrologistPower, CloneablePowerInterface {
+public class ManifestationPower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:ManifestationPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -34,15 +34,19 @@ public class ManifestationPower extends AbstractPower implements ApplyPowersForH
     }
 
     @Override
-    public void beforeApplyPowers(AbstractCard card) {
+    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card) {
         if (HydrologistMod.isThisCorporeal(card)) {
-            if (card.baseDamage > -1) {
-                card.baseDamage += amount;
-            }
-            if (card.baseBlock > -1) {
-                card.baseBlock += amount;
-            }
+            damage += amount;
         }
+        return damage;
+    }
+
+    @Override
+    public float modifyBlock(float block, AbstractCard card) {
+        if (HydrologistMod.isThisCorporeal(card)) {
+            block += amount;
+        }
+        return block;
     }
 
     @Override
