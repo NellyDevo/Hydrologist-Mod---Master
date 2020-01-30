@@ -52,8 +52,14 @@ public class PureSteam extends AbstractHydrologistCard implements TransmutableCa
 
     @Override
     public void onTransmuted(AbstractCard newCard) {
-        AbstractMonster m = AbstractDungeon.getMonsters().getRandomMonster(true);
         AbstractPlayer p = AbstractDungeon.player;
+        AbstractMonster m;
+        m = AbstractDungeon.getMonsters().getRandomMonster(true);
+        if (m != null) {
+            calculateCardDamage(m);
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+        }
+        m = AbstractDungeon.getMonsters().getRandomMonster(true);
         if (m != null) {
             calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
