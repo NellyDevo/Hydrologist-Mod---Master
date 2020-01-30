@@ -472,7 +472,7 @@
   "hydrologistmod:WaterWheel": {
     "NAME": "Water Wheel",
     "DESCRIPTION": "hydrologistmod:Flow. NL At the start of next turn, gain X [E] . NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "hydrologistmod:Flow. NL At the start of next turn, gain X+1 [E] . NL Exhaust."
+    "UPGRADE_DESCRIPTION": "hydrologistmod:Flow. NL At the start of next turn, gain X [E] ."
   },
   "hydrologistmod:WaterWhip": {
     "NAME": "Water Whip",

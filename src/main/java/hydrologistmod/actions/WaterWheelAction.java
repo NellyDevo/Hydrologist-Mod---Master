@@ -15,12 +15,10 @@ public class WaterWheelAction extends AbstractGameAction {
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private int energyOnUse;
     private boolean freeToPlayOnce;
-    private boolean upgraded;
 
-    public WaterWheelAction(int energyOnUse, boolean upgraded, boolean freeToPlayOnce) {
+    public WaterWheelAction(int energyOnUse, boolean freeToPlayOnce) {
         this.duration = DURATION;
         this.energyOnUse = energyOnUse;
-        this.upgraded = upgraded;
         this.freeToPlayOnce = freeToPlayOnce;
     }
 
@@ -29,9 +27,6 @@ public class WaterWheelAction extends AbstractGameAction {
         int effect = EnergyPanel.totalCount;
         if (energyOnUse != -1) {
             effect = energyOnUse;
-        }
-        if (upgraded) {
-            ++effect;
         }
         if (AbstractDungeon.player.hasRelic(ChemicalX.ID)) {
             effect += 2;

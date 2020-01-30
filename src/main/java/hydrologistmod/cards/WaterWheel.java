@@ -25,12 +25,13 @@ public class WaterWheel extends AbstractHydrologistCard {
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.WATER);
+        exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new FlowAction());
-        addToBot(new WaterWheelAction(energyOnUse, upgraded, freeToPlayOnce));
+        addToBot(new WaterWheelAction(energyOnUse, freeToPlayOnce));
     }
 
     @Override
@@ -45,6 +46,7 @@ public class WaterWheel extends AbstractHydrologistCard {
             upgradeName();
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
+            exhaust = false;
         }
     }
 }
