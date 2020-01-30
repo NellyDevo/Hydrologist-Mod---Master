@@ -4,11 +4,13 @@ import com.megacrit.cardcrawl.actions.unique.SkewerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.EncapsulatingIcePower;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -37,21 +39,26 @@ public class PressureBlast extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SkewerAction(p, m, damage, damageTypeForTurn, freeToPlayOnce, energyOnUse + magicNumber));
-        misc = 0;
     }
 
     @Override
     public void applyPowers() {
         super.applyPowers();
-        magicNumber = baseMagicNumber + misc;
-        isMagicNumberModified = baseMagicNumber != magicNumber;
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p.hasPower(EncapsulatingIcePower.POWER_ID)) {
+            magicNumber = baseMagicNumber + p.getPower(EncapsulatingIcePower.POWER_ID).amount;
+            isMagicNumberModified = baseMagicNumber != magicNumber;
+        }
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         super.calculateCardDamage(mo);
-        magicNumber = baseMagicNumber + misc;
-        isMagicNumberModified = baseMagicNumber != magicNumber;
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p.hasPower(EncapsulatingIcePower.POWER_ID)) {
+            magicNumber = baseMagicNumber + p.getPower(EncapsulatingIcePower.POWER_ID).amount;
+            isMagicNumberModified = baseMagicNumber != magicNumber;
+        }
     }
 
     @Override

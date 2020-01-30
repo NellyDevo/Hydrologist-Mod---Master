@@ -79,8 +79,8 @@
   },
   "hydrologistmod:EncapsulatingIce": {
     "NAME": "Encapsulating Ice",
-    "DESCRIPTION": "Your next *Pressure *Blast triggers an additional X times. hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Your next *Pressure *Blast triggers an additional X+1 times. hydrologistmod:Swappable."
+    "DESCRIPTION": "Your *Pressure *Blasts this combat are played with X increased by X. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Your *Pressure *Blasts this combat are played with X increased by X+1. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:Endothermodynamics": {
     "NAME": "Endothermodynamics",
@@ -300,7 +300,7 @@
   },
   "hydrologistmod:PressureBlast": {
     "NAME": "Pressure Blast",
-    "DESCRIPTION": "Deal !D! damage X+ !M! times. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Deal !D! damage X (+ !M! ) times. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:PressureBuildup": {

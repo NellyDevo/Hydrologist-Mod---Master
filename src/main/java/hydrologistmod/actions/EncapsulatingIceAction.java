@@ -1,13 +1,16 @@
 package hydrologistmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.powers.EncapsulatingIcePower;
 
 import java.util.UUID;
 
@@ -16,16 +19,12 @@ public class EncapsulatingIceAction extends AbstractGameAction {
 //    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
 //    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
-    private UUID originalUuid;
-    private UUID pairedUuid;
     private int energyOnUse;
     private boolean freeToPlayOnce;
     private boolean upgraded;
 
-    public EncapsulatingIceAction(UUID originalUuid, UUID pairedUuid, int energyOnUse, boolean upgraded, boolean freeToPlayOnce) {
+    public EncapsulatingIceAction(int energyOnUse, boolean upgraded, boolean freeToPlayOnce) {
         this.duration = DURATION;
-        this.originalUuid = originalUuid;
-        this.pairedUuid = pairedUuid;
         this.energyOnUse = energyOnUse;
         this.upgraded = upgraded;
         this.freeToPlayOnce = freeToPlayOnce;
@@ -33,6 +32,7 @@ public class EncapsulatingIceAction extends AbstractGameAction {
 
     @Override
     public void update() {
+        AbstractPlayer p = AbstractDungeon.player;
         int effect = EnergyPanel.totalCount;
         if (energyOnUse != -1) {
             effect = energyOnUse;
@@ -40,21 +40,14 @@ public class EncapsulatingIceAction extends AbstractGameAction {
         if (upgraded) {
             ++effect;
         }
-        if (AbstractDungeon.player.hasRelic(ChemicalX.ID)) {
+        if (p.hasRelic(ChemicalX.ID)) {
             effect += 2;
-            AbstractDungeon.player.getRelic(ChemicalX.ID).flash();
+            p.getRelic(ChemicalX.ID).flash();
         }
         if (effect > 0) {
-            for (AbstractCard card : GetAllInBattleInstances.get(originalUuid)) {
-                SwapperHelper.getNextCard(card).misc += effect;
-                SwapperHelper.getNextCard(card).applyPowers();
-            }
-            for (AbstractCard card : GetAllInBattleInstances.get(pairedUuid)) {
-                card.misc += effect;
-                card.applyPowers();
-            }
+            addToTop(new ApplyPowerAction(p, p, new EncapsulatingIcePower(p, effect), effect));
             if (!freeToPlayOnce) {
-                AbstractDungeon.player.energy.use(EnergyPanel.totalCount);
+                p.energy.use(EnergyPanel.totalCount);
             }
         }
 

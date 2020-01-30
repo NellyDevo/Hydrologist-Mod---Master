@@ -19,6 +19,10 @@
     "NAME": "Deep Freeze",
     "DESCRIPTIONS": ["Your #yIce cards that gain #yBlock gain #b", " additional #yBlock."]
   },
+  "hydrologistmod:EncapsulatingIcePower": {
+    "NAME": "Encapsulating Ice",
+    "DESCRIPTIONS": ["Your #yPressure #yBlasts are played with X increased by #b", "."]
+  },
   "hydrologistmod:EndothermicReactionsPower": {
     "NAME": "Endothermic Reactions",
     "DESCRIPTIONS": ["Whenever you #yTransmute a card, gain #b", " #yBlock."]
