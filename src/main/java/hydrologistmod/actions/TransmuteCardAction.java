@@ -84,31 +84,6 @@ public class TransmuteCardAction extends AbstractGameAction {
                 }
             } else {
                 AbstractCard newCard = getTransmutationResult(playedCard).makeCopy();
-//                UseCardAction useCardAction = null;
-//                for (AbstractGameAction action : AbstractDungeon.actionManager.actions) {
-//                    if (action instanceof UseCardAction) {
-//                        useCardAction = (UseCardAction)action;
-//                        break;
-//                    }
-//                }
-//                if (useCardAction != null) {
-//                    try {
-//                        Field targetCardField = UseCardAction.class.getDeclaredField("targetCard");
-//                        targetCardField.setAccessible(true);
-//                        if (targetCardField.get(useCardAction) == playedCard && AbstractDungeon.player.cardInUse == playedCard) {
-//                            targetCardField.set(useCardAction, newCard);
-//                            AbstractDungeon.player.cardInUse = newCard;
-//                            newCard.current_x = playedCard.current_x;
-//                            newCard.current_y = playedCard.current_y;
-//                            newCard.target_x = playedCard.target_x;
-//                            newCard.target_y = playedCard.target_y;
-//                            newCard.isGlowing = playedCard.isGlowing;
-//                            playedCard.isGlowing = false;
-//                        }
-//                    } catch (NoSuchFieldException | IllegalAccessException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
                 playedCard.purgeOnUse = true;
                 modifyNewCard(playedCard, newCard);
                 AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
