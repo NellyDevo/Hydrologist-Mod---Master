@@ -22,6 +22,7 @@ public class DryingPond extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/DryingPond.png";
     private static final int COST = 1;
+    private static final int UPGRADED_COST = 0;
 
     public DryingPond() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -50,6 +51,7 @@ public class DryingPond extends AbstractHydrologistCard {
         SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
+            upgradeBaseCost(UPGRADED_COST);
         }
     }
 }
