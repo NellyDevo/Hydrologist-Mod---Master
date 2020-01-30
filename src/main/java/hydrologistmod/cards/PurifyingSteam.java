@@ -27,7 +27,7 @@ public class PurifyingSteam extends AbstractHydrologistCard implements Swappable
     public static final String IMG_PATH = "hydrologistmod/images/cards/PurifyingSteam.png";
     private static final int COST = 0;
     public static final int ATTACK_DMG = 4;
-    private static final int UPGRADE_PLUS_DMG = 6;
+    private static final int UPGRADE_PLUS_DMG = 3;
 
     public PurifyingSteam() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
