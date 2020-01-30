@@ -29,7 +29,7 @@ public class EncapsulatingIce extends AbstractHydrologistCard implements Swappab
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new EncapsulatingIceAction(this.uuid, SwapperHelper.getNextCard(this).uuid, energyOnUse, upgraded, freeToPlayOnce));
+        addToBot(new EncapsulatingIceAction(energyOnUse, upgraded, freeToPlayOnce));
     }
 
     @Override
