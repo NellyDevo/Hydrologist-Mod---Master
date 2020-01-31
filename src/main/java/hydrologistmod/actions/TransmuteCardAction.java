@@ -163,7 +163,7 @@ public class TransmuteCardAction extends AbstractGameAction {
             return;
         }
         if (AbstractDungeon.gridSelectScreen.selectedCards.isEmpty() && AbstractDungeon.handCardSelectScreen.selectedCards.group.isEmpty() && initialized) {
-            AbstractDungeon.effectList.add(new TransmuteCardEffect(transmutedPairs, CardGroup.CardGroupType.HAND, this, 0.5f));
+            AbstractDungeon.effectList.add(new TransmuteCardEffect(transmutedPairs, CardGroup.CardGroupType.HAND, this, 4.0f));
             completed = true;
         }
     }
