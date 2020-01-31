@@ -89,7 +89,9 @@ public class TransmuteCardEffect extends AbstractGameEffect {
 
     private void setCardAttributes(AbstractCard card) {
         card.current_x = 256.0f;
+        card.target_x = 256.0f;
         card.current_y = 256.0f;
+        card.target_y = 256.0f;
         card.drawScale = 1.0f;
         card.angle = 0.0f;
     }
@@ -108,8 +110,8 @@ public class TransmuteCardEffect extends AbstractGameEffect {
             for (AbstractCard card : transmutedPairs.keySet()) {
                 card.targetDrawScale = 1.0f;
                 card.setAngle(0.0f, true);
-                card.target_x = MathUtils.random(leftBound, rightBound);
-                card.target_y = MathUtils.random(downBound, upBound);
+                card.target_x = MathUtils.random(leftBound, rightBound) * Settings.WIDTH;
+                card.target_y = MathUtils.random(downBound, upBound) * Settings.HEIGHT;
             }
             duration -= Gdx.graphics.getDeltaTime();
         } else if (duration > 0.0f) {
