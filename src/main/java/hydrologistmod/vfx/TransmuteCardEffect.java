@@ -74,7 +74,9 @@ public class TransmuteCardEffect extends AbstractGameEffect {
             fb.end();
             sb.end();
 
-            textureMap.put(card, new TextureRegion(fb.getColorBufferTexture()));
+            TextureRegion img = new TextureRegion(fb.getColorBufferTexture());
+            img.flip(false, true);
+            textureMap.put(card, img);
             sb.begin();
         }
         //second, render the new textures to the key cards coordinates, angle, and scale. Iterate through limbo to make sure the masking cards have the same render order as the original cards.
@@ -119,27 +121,28 @@ public class TransmuteCardEffect extends AbstractGameEffect {
             if (targetGroup != null) {
                 switch (targetGroup) {
                     case HAND:
-                        for (AbstractCard card : transmutedPairs.values()) {
+                        for (AbstractCard card : transmutedPairs.keySet()) {
                             AbstractDungeon.player.limbo.removeCard(card);
-                            AbstractDungeon.player.limbo.moveToHand(card);
+                            AbstractDungeon.player.hand.addToHand(transmutedPairs.get(card));
                         }
+                        AbstractDungeon.player.hand.refreshHandLayout();
                         break;
                     case DRAW_PILE:
-                        for (AbstractCard card : transmutedPairs.values()) {
+                        for (AbstractCard card : transmutedPairs.keySet()) {
                             AbstractDungeon.player.limbo.removeCard(card);
-                            AbstractDungeon.player.limbo.moveToDeck(card, true);
+                            AbstractDungeon.player.drawPile.moveToDeck(transmutedPairs.get(card), true);
                         }
                         break;
                     case DISCARD_PILE:
-                        for (AbstractCard card : transmutedPairs.values()) {
+                        for (AbstractCard card : transmutedPairs.keySet()) {
                             AbstractDungeon.player.limbo.removeCard(card);
-                            AbstractDungeon.player.limbo.moveToDiscardPile(card);
+                            AbstractDungeon.player.discardPile.moveToDiscardPile(transmutedPairs.get(card));
                         }
                         break;
                     case EXHAUST_PILE:
-                        for (AbstractCard card : transmutedPairs.values()) {
+                        for (AbstractCard card : transmutedPairs.keySet()) {
                             AbstractDungeon.player.limbo.removeCard(card);
-                            AbstractDungeon.player.limbo.moveToExhaustPile(card);
+                            AbstractDungeon.player.exhaustPile.moveToExhaustPile(transmutedPairs.get(card));
                         }
                         break;
                     default:
