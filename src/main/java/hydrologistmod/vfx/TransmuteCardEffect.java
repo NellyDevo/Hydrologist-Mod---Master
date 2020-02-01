@@ -172,27 +172,35 @@ public class TransmuteCardEffect extends AbstractGameEffect {
                 switch (targetGroup) {
                     case HAND:
                         for (AbstractCard card : transmutedPairs.keySet()) {
+                            AbstractCard newCard = transmutedPairs.get(card);
+                            copyCardPosition(card, newCard);
                             AbstractDungeon.player.limbo.removeCard(card);
-                            AbstractDungeon.player.hand.addToHand(transmutedPairs.get(card));
+                            AbstractDungeon.player.hand.addToHand(newCard);
                         }
                         AbstractDungeon.player.hand.refreshHandLayout();
                         break;
                     case DRAW_PILE:
                         for (AbstractCard card : transmutedPairs.keySet()) {
+                            AbstractCard newCard = transmutedPairs.get(card);
+                            copyCardPosition(card, newCard);
                             AbstractDungeon.player.limbo.removeCard(card);
-                            AbstractDungeon.player.drawPile.moveToDeck(transmutedPairs.get(card), true);
+                            AbstractDungeon.player.drawPile.moveToDeck(newCard, true);
                         }
                         break;
                     case DISCARD_PILE:
                         for (AbstractCard card : transmutedPairs.keySet()) {
+                            AbstractCard newCard = transmutedPairs.get(card);
+                            copyCardPosition(card, newCard);
                             AbstractDungeon.player.limbo.removeCard(card);
-                            AbstractDungeon.player.discardPile.moveToDiscardPile(transmutedPairs.get(card));
+                            AbstractDungeon.player.discardPile.moveToDiscardPile(newCard);
                         }
                         break;
                     case EXHAUST_PILE:
                         for (AbstractCard card : transmutedPairs.keySet()) {
+                            AbstractCard newCard = transmutedPairs.get(card);
+                            copyCardPosition(card, newCard);
                             AbstractDungeon.player.limbo.removeCard(card);
-                            AbstractDungeon.player.exhaustPile.moveToExhaustPile(transmutedPairs.get(card));
+                            AbstractDungeon.player.exhaustPile.moveToExhaustPile(newCard);
                         }
                         break;
                     default:
@@ -203,6 +211,19 @@ public class TransmuteCardEffect extends AbstractGameEffect {
             action.isDone = true;
             isDone = true;
         }
+    }
+
+    public static void copyCardPosition(AbstractCard original, AbstractCard target) {
+        target.current_x = original.current_x;
+        target.current_y = original.current_y;
+        target.target_x = original.target_x;
+        target.target_y = original.target_y;
+        target.drawScale = original.drawScale;
+        target.targetDrawScale = original.targetDrawScale;
+        target.angle = original.angle;
+        target.targetAngle = original.targetAngle;
+        target.transparency = original.transparency;
+        target.targetTransparency = original.targetTransparency;
     }
 
     @Override

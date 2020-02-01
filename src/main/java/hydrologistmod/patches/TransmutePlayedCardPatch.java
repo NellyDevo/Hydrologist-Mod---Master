@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hydrologistmod.vfx.TransmuteCardEffect;
 import javassist.CtBehavior;
 
 import java.lang.reflect.Field;
@@ -27,6 +28,7 @@ public class TransmutePlayedCardPatch {
         )
         public static SpireReturn Insert(UseCardAction __instance) {
             if (UseCardActionField.transmuteTargetCard.get(__instance) != null) {
+                AbstractCard newCard = UseCardActionField.transmuteTargetCard.get(__instance);
                 AbstractDungeon.player.cardInUse = null;
                 try {
                     Field targetCardField = UseCardAction.class.getDeclaredField("targetCard");
@@ -36,12 +38,13 @@ public class TransmutePlayedCardPatch {
                     card.isInAutoplay = false;
                     card.exhaustOnUseOnce = false;
                     card.dontTriggerOnUseCard = false;
+                    TransmuteCardEffect.copyCardPosition(card, newCard);
                     AbstractDungeon.player.hand.removeCard(card);
                     AbstractDungeon.player.limbo.removeCard(card);
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
-                AbstractDungeon.player.hand.moveToDiscardPile(UseCardActionField.transmuteTargetCard.get(__instance));
+                AbstractDungeon.player.hand.moveToDiscardPile(newCard);
                 __instance.isDone = true;
                 return SpireReturn.Return(null);
             } else {
