@@ -72,8 +72,8 @@ public class TransmuteCardEffect extends AbstractGameEffect {
             sb.draw(line, 0f, 0f - (512f * offsetPercent));
             //
 
-            fb.end();
             sb.end();
+            fb.end();
 
             TextureRegion img = new TextureRegion(fb.getColorBufferTexture());
             img.flip(false, true);
