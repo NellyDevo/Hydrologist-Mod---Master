@@ -41,6 +41,7 @@ public class TransmutePlayedCardPatch {
                     e.printStackTrace();
                 }
                 AbstractDungeon.player.hand.moveToDiscardPile(UseCardActionField.transmuteTargetCard.get(__instance));
+                __instance.isDone = true;
                 return SpireReturn.Return(null);
             } else {
                 return SpireReturn.Continue();
