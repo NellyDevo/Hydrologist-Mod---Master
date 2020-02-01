@@ -37,6 +37,7 @@ public class TransmutePlayedCardPatch {
                     card.exhaustOnUseOnce = false;
                     card.dontTriggerOnUseCard = false;
                     AbstractDungeon.player.hand.removeCard(card);
+                    AbstractDungeon.player.limbo.removeCard(card);
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
