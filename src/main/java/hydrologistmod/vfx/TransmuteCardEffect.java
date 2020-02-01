@@ -30,8 +30,9 @@ public class TransmuteCardEffect extends AbstractGameEffect {
     private static final float MAX_DOWN_BOUND = 0.2f;
     private static final float MAX_UP_BOUND = 0.8f;
     private HashMap<AbstractCard, TextureRegion> textureMap = new HashMap<>();
-    private static TextureRegion mask = new TextureRegion(new Texture("hydrologistmod/images/vfx/TransmuteMask.png"), 512, 512);
-    private static TextureRegion line = new TextureRegion(new Texture("hydrologistmod/images/vfx/TransmuteLine.png"), 512, 512);
+    private static TextureRegion mask = new TextureRegion(new Texture("hydrologistmod/images/vfx/TransmuteMask.png"), 512, 1024);
+    private static TextureRegion line = new TextureRegion(new Texture("hydrologistmod/images/vfx/TransmuteLine.png"), 512, 1024);
+    private FrameBuffer fb;
 
     public TransmuteCardEffect(HashMap<AbstractCard, AbstractCard> transmutedPairs, CardGroup.CardGroupType targetGroup, TransmuteCardAction action, float duration) {
         this.transmutedPairs = transmutedPairs;
@@ -39,6 +40,7 @@ public class TransmuteCardEffect extends AbstractGameEffect {
         this.targetGroup = targetGroup;
         this.duration = duration;
         this.startingDuration = duration;
+        fb = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false, false);
     }
 
     @Override
@@ -48,7 +50,6 @@ public class TransmuteCardEffect extends AbstractGameEffect {
         for (AbstractCard card : transmutedPairs.values()) {
             sb.end();
 
-            FrameBuffer fb = new FrameBuffer(Pixmap.Format.RGBA8888, 512, 512, false, false);
             fb.begin();
             Gdx.gl.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
@@ -63,12 +64,12 @@ public class TransmuteCardEffect extends AbstractGameEffect {
             //render the mask at offset
             sb.setBlendFunction(0, GL20.GL_SRC_ALPHA);
             sb.setColor(new Color(1,1,1,1));
-            sb.draw(mask, 0f, 0f - (512f * offsetPercent), 256f, 256f - (512f * offsetPercent), 512f, 512f, 1f, 1f, 0.0f);
+            sb.draw(mask, 0f, 0f - (512f * offsetPercent));
 
             //render the "water line" and "water effects" at offset
             sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
             sb.setColor(Color.WHITE);
-            sb.draw(line, 0f, 0f - (512f * offsetPercent), 256f, 256f - (512f * offsetPercent), 512f, 512f, 1f, 1f, 0.0f);
+            sb.draw(line, 0f, 0f - (512f * offsetPercent));
             //
 
             fb.end();
@@ -82,7 +83,8 @@ public class TransmuteCardEffect extends AbstractGameEffect {
         //second, render the new textures to the key cards coordinates, angle, and scale. Iterate through limbo to make sure the masking cards have the same render order as the original cards.
         for (AbstractCard card : AbstractDungeon.player.limbo.group) {
             if (transmutedPairs.containsKey(card)) {
-                sb.draw(textureMap.get(transmutedPairs.get(card)),card.current_x - 256f,card.current_y - 256f,256f,256f,512f,512f,card.drawScale * Settings.scale,card.drawScale * Settings.scale,card.angle);
+                TextureRegion img = textureMap.get(transmutedPairs.get(card));
+                sb.draw(img,card.current_x - 256f,card.current_y - 256f,256f,256f, img.getRegionWidth(), img.getRegionHeight(),card.drawScale * Settings.scale,card.drawScale * Settings.scale, card.angle);
             }
         }
     }
@@ -92,7 +94,7 @@ public class TransmuteCardEffect extends AbstractGameEffect {
         card.target_x = 256.0f;
         card.current_y = 256.0f;
         card.target_y = 256.0f;
-        card.drawScale = 1.0f;
+        card.drawScale = 1.0f / Settings.scale;
         card.angle = 0.0f;
     }
 
