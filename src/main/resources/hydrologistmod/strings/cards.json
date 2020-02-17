@@ -138,7 +138,7 @@
   },
   "hydrologistmod:Freeze": {
     "NAME": "Freeze",
-    "DESCRIPTION": "Deal !D! damage. NL If this kills an enemy that is Weak, Upgrade a random card in your deck. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage. NL If this kills an enemy that is hydrologistmod:Cool, Upgrade a random card in your deck. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FrigidForm": {
