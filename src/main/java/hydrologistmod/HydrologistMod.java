@@ -12,6 +12,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -20,6 +21,8 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.patches.HydrologistEnum;
+import hydrologistmod.powers.HeatPower;
+import hydrologistmod.powers.ThermalShockPower;
 import hydrologistmod.relics.Distillery;
 import javassist.CtClass;
 import javassist.NotFoundException;
@@ -197,5 +200,9 @@ public class HydrologistMod implements EditCardsSubscriber, EditCharactersSubscr
 
     public static boolean isThisCorporeal(AbstractCard card) {
         return (!nonCorporealCards.contains(card));
+    }
+
+    public static boolean isHot(AbstractCreature creature) {
+        return (creature.hasPower(ThermalShockPower.POWER_ID) || creature.hasPower(HeatPower.POWER_ID));
     }
 }

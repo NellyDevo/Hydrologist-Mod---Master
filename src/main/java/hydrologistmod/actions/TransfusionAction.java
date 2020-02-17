@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
+import hydrologistmod.HydrologistMod;
 
 public class TransfusionAction extends AbstractGameAction {
     private DamageInfo info;
@@ -26,7 +27,7 @@ public class TransfusionAction extends AbstractGameAction {
         if (duration == DURATION && target != null) {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, AttackEffect.NONE));
             target.damage(info);
-            if ((((AbstractMonster)target).isDying || target.currentHealth <= 0) && !target.halfDead && target.hasPower(VulnerablePower.POWER_ID)) {
+            if ((((AbstractMonster)target).isDying || target.currentHealth <= 0) && !target.halfDead && HydrologistMod.isHot(target)) {
                 AbstractDungeon.player.increaseMaxHp(hpIncrease, false);
             }
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {

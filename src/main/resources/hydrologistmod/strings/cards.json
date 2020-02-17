@@ -429,7 +429,7 @@
   },
   "hydrologistmod:Transfusion": {
     "NAME": "Transfusion",
-    "DESCRIPTION": "Deal !D! damage. NL If this kills an enemy that is Vulnerable, raise your Max HP by !M!. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage. NL If this kills an enemy that is hydrologistmod:Hot, raise your Max HP by !M!. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:UnstableStrike": {
