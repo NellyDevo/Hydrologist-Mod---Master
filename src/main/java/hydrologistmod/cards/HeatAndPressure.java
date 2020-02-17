@@ -5,12 +5,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hydrologistmod.actions.MultiplyPowerAction;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.HeatPower;
 
 public class HeatAndPressure extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:HeatAndPressure";
@@ -29,12 +29,13 @@ public class HeatAndPressure extends AbstractHydrologistCard implements Swappabl
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = MULTIPLIER;
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m.hasPower(VulnerablePower.POWER_ID)) {
-            addToBot(new MultiplyPowerAction(m.getPower(VulnerablePower.POWER_ID), m, p, magicNumber));
+        if (m.hasPower(HeatPower.POWER_ID)) {
+            addToBot(new MultiplyPowerAction(m.getPower(HeatPower.POWER_ID), m, p, magicNumber));
         }
     }
 

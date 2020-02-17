@@ -5,11 +5,11 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import hydrologistmod.actions.MultiplyPowerAction;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.ColdPower;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -32,12 +32,13 @@ public class Ripcurrent extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = MULTIPLIER;
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new HeatAndPressure())));
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m.hasPower(WeakPower.POWER_ID)) {
-            addToBot(new MultiplyPowerAction(m.getPower(WeakPower.POWER_ID), m, p, magicNumber));
+        if (m.hasPower(ColdPower.POWER_ID)) {
+            addToBot(new MultiplyPowerAction(m.getPower(ColdPower.POWER_ID), m, p, magicNumber));
         }
     }
 

@@ -198,8 +198,8 @@
   },
   "hydrologistmod:HeatAndPressure": {
     "NAME": "Heat and Pressure",
-    "DESCRIPTION": "Double the enemy's Vulnerable amount. NL Exhaust. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Triple the enemy's Vulnerable amount. NL Exhaust. NL hydrologistmod:Swappable."
+    "DESCRIPTION": "Double the enemy's hydrologistmod:Heat amount. NL Exhaust. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Triple the enemy's hydrologistmod:Heat amount. NL Exhaust. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:HeatBlast": {
     "NAME": "Heat Blast",
@@ -341,8 +341,8 @@
   },
   "hydrologistmod:Ripcurrent": {
     "NAME": "Ripcurrent",
-    "DESCRIPTION": "Double the enemy's Weak amount. NL Exhaust. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Double the enemy's Weak amount. NL Exhaust. NL hydrologistmod:Swappable."
+    "DESCRIPTION": "Double the enemy's hydrologistmod:Cold amount. NL Exhaust. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Double the enemy's hydrologistmod:Cold amount. NL Exhaust. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:RiverOfTime": {
     "NAME": "River Of Time",
