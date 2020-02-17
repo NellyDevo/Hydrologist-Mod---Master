@@ -228,7 +228,7 @@
   },
   "hydrologistmod:IceBarrier": {
     "NAME": "Ice Barrier",
-    "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, deal !M! damage to ALL enemies.",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! hydrologistmod:Cold to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:IceSpike": {
