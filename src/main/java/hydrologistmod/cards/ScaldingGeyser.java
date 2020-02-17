@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.HeatPower;
 
 public class ScaldingGeyser extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:ScaldingGeyser";
@@ -35,12 +35,13 @@ public class ScaldingGeyser extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.STEAM);
         isInnate = true;
         exhaust = true;
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
+        addToBot(new ApplyPowerAction(m, p, new HeatPower(m, p, magicNumber), magicNumber));
     }
 
     @Override
