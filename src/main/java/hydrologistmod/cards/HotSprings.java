@@ -18,17 +18,20 @@ public class HotSprings extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/HotSprings.png";
     private static final int COST = 1;
+    private static final int POWER_AMOUNT = 1;
 
     public HotSprings() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.WATER);
+        magicNumber = baseMagicNumber = POWER_AMOUNT;
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new HotSpringsPower(p)));
+        addToBot(new ApplyPowerAction(p, p, new HotSpringsPower(p, magicNumber)));
     }
 
     @Override

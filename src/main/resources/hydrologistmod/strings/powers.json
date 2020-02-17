@@ -85,7 +85,12 @@
   },
   "hydrologistmod:HotSpringsPower": {
     "NAME": "Hot Springs",
-    "DESCRIPTIONS": ["Whenever you apply a debuff to any enemy, remove the same debuff from yourself."]
+    "DESCRIPTIONS": [
+      "Whenever an enemy suffers from #yThermal #yShock, ",
+      "draw a card.",
+      "draw #b",
+      " cards."
+    ]
   },
   "hydrologistmod:IcyFloePower": {
     "NAME": "Icy Floe",

@@ -213,8 +213,8 @@
   },
   "hydrologistmod:HotSprings": {
     "NAME": "Hot Springs",
-    "DESCRIPTION": "Whenever you apply a debuff to any enemy, remove the same debuff from yourself.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you apply a debuff to any enemy, remove the same debuff from yourself."
+    "DESCRIPTION": "Whenever an enemy suffers from *Thermal *Shock, draw a card.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever an enemy suffers from *Thermal *Shock, draw a card."
   },
   "hydrologistmod:Hydraulics": {
     "NAME": "Hydraulics",
