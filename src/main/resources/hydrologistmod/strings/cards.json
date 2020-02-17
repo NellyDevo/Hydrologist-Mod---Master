@@ -391,7 +391,7 @@
   },
   "hydrologistmod:SteamLash": {
     "NAME": "Steam Lash",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL When hydrologistmod:Swapped, gain [E].",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Heat. NL hydrologistmod:Swappable. NL When hydrologistmod:Swapped, gain [E].",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SteamPower": {

@@ -1,6 +1,7 @@
 package hydrologistmod.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -13,6 +14,7 @@ import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.HeatPower;
 
 public class SteamLash extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:SteamLash";
@@ -22,22 +24,26 @@ public class SteamLash extends AbstractHydrologistCard implements SwappableCard 
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/SteamLash.png";
     private static final int COST = 1;
-    public static final int ATTACK_DMG = 11;
+    public static final int ATTACK_DMG = 8;
     private static final int ENERGY_GAIN_ON_SWAP = 1;
     private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int HEAT_TO_APPLY = 4;
+    private static final int UPGRADE_HEAT = 1;
 
     public SteamLash() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 AbstractCard.CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.BASIC, AbstractCard.CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
-        magicNumber = baseMagicNumber = ENERGY_GAIN_ON_SWAP;
+        magicNumber = baseMagicNumber = HEAT_TO_APPLY;
         assignHydrologistSubtype(HydrologistTags.STEAM);
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+        addToBot(new ApplyPowerAction(m, p, new HeatPower(m, p, magicNumber), magicNumber));
     }
 
     @Override
@@ -51,12 +57,13 @@ public class SteamLash extends AbstractHydrologistCard implements SwappableCard 
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeMagicNumber(UPGRADE_HEAT);
         }
     }
 
     @Override
     public void onSwapOut() {
-        addToBot(new GainEnergyAction(magicNumber));
+        addToBot(new GainEnergyAction(ENERGY_GAIN_ON_SWAP));
     }
 
     @Override
