@@ -5,7 +5,7 @@
       "cold",
       "cool"
     ],
-    "DESCRIPTION": "A Cool enemy deals 25% less damage with Attacks. If a Cool enemy would become #yHot, it instead suffers from #yThermal #yShock for one turn, taking double its Cold amount in damage. Enemies suffering from #yThermal #yShock take damage instead of becoming Cool or #yHot."
+    "DESCRIPTION": "A Cool enemy deals 25% less damage with Attacks. If a Cool enemy becomes #yHot, deal double its Cool amount in damage and apply #yThermal #yShock for 1 turn."
   },
   "CORPOREAL": {
     "PROPER_NAME": "Corporeal",
@@ -27,7 +27,7 @@
       "heat",
       "hot"
     ],
-    "DESCRIPTION": "A Hot enemy takes 50% more damage from Attacks. If a Hot enemy would become #yCool, it instead suffers from #yThermal #yShock for one turn, taking double its Heat amount in damage. Enemies suffering from #yThermal #yShock take damage instead of becoming #yCool or Hot."
+    "DESCRIPTION": "A Hot enemy takes 25% increased damage from Attacks. If a Hot enemy becomes #yCool, deal double its Hot amount in damage and apply #yThermal #yShock for 1 turn."
   },
   "SWAPPABLE": {
     "PROPER_NAME": "Swappable",

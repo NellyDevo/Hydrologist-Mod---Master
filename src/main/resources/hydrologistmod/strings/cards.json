@@ -1,4 +1,13 @@
 {
+  "hydrologistmod:AbstractHydrologistCard": {
+    "NAME": "ABSTRAAAAACT",
+    "DESCRIPTION": "WHY ARE YOU STILL HERE?",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "Thermal Shock",
+      "A Shocked enemy deals 25% less damage with and takes 50% more damage from Attacks. Removes Cool and Hot when applied. Applying any Cool or Hot to this enemy will instead deal an equal amount of damage."
+    ]
+  },
   "hydrologistmod:Aqueducts": {
     "NAME": "Aqueducts",
     "DESCRIPTION": "hydrologistmod:Flow. NL Whenever you draw an extra card, deal !M! damage to ALL enemies.",

@@ -1,6 +1,7 @@
 package hydrologistmod.cards;
 
 import basemod.abstracts.CustomCard;
+import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -8,10 +9,15 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
+import hydrologistmod.HydrologistMod;
 import hydrologistmod.patches.HydrologistTags;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public abstract class AbstractHydrologistCard extends CustomCard {
     private static final String ICE_LARGE_ORB = "hydrologistmod/images/1024/card_hydrologist_ice_orb.png";
@@ -58,6 +64,8 @@ public abstract class AbstractHydrologistCard extends CustomCard {
             new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/Steam Small Skill Frame.png"), 0, 0, 512, 512);
     private static final TextureAtlas.AtlasRegion STEAM_SMALL_POWER_FRAME =
             new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/Steam Small Power Frame.png"), 0, 0, 512, 512);
+    public static CardStrings tooltip = CardCrawlGame.languagePack.getCardStrings("hydrologistmod:AbstractHydrologistCard");
+    public static String[] tooltips = tooltip.EXTENDED_DESCRIPTION;
 
     private static void makeOrbMap() {
         smallOrbMap = new HashMap<>();
@@ -82,6 +90,15 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     protected void assignHydrologistSubtype(CardTags tag) {
         setOrbTexture(smallOrbMap.get(tag), largeOrbMap.get(tag));
         tags.add(tag);
+    }
+
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        if (this.hasTag(HydrologistTags.TEMPERATURE)) {
+            retVal.add(new TooltipInfo(tooltips[0], tooltips[1]));
+        }
+        return retVal;
     }
 
     @SpireOverride
