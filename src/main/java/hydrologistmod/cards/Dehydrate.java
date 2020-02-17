@@ -1,7 +1,7 @@
 package hydrologistmod.cards;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,8 +9,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hydrologistmod.HydrologistMod;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.HeatPower;
 
 public class Dehydrate extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:Dehydrate";
@@ -20,10 +22,10 @@ public class Dehydrate extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Dehydrate.png";
     private static final int COST = 1;
-    private static final int TEMP_HP_AMT = 4;
-    private static final int UPGRADE_TEMP_HP = 2;
-    private static final int DAMAGE_AMT = 5;
-    private static final int UPGRADE_DAMAGE = 2;
+    private static final int DAMAGE_AMT = 7;
+    private static final int UPGRADE_DAMAGE = 3;
+    private static final int HEAT_AMOUNT = 3;
+    private static final int UPGRADE_HEAT_AMOUNT = 2;
 
     public Dehydrate() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -31,13 +33,15 @@ public class Dehydrate extends AbstractHydrologistCard {
                 CardRarity.COMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
-        magicNumber = baseMagicNumber = TEMP_HP_AMT;
+        magicNumber = baseMagicNumber = HEAT_AMOUNT;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new AddTemporaryHPAction(p, p, magicNumber));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+        if (!HydrologistMod.isCool(m)) {
+            addToBot(new ApplyPowerAction(m, p, new HeatPower(m, p, magicNumber), magicNumber));
+        }
     }
 
     @Override
@@ -50,7 +54,7 @@ public class Dehydrate extends AbstractHydrologistCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
-            upgradeMagicNumber(UPGRADE_TEMP_HP);
+            upgradeMagicNumber(UPGRADE_HEAT_AMOUNT);
         }
     }
 }

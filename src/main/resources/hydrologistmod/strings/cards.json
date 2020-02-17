@@ -70,7 +70,7 @@
   },
   "hydrologistmod:Dehydrate": {
     "NAME": "Dehydrate",
-    "DESCRIPTION": "Gain !M! Temporary_HP. NL Deal !D! damage.",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is not hydrologistmod:Cool, apply !M! hydrologistmod:Heat.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:DimensionalIcicles": {
