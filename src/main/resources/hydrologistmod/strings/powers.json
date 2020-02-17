@@ -89,7 +89,7 @@
   },
   "hydrologistmod:IcyFloePower": {
     "NAME": "Icy Floe",
-    "DESCRIPTIONS": ["Whenever you #yFlow, ", "draw #b", " cards for each card discarded this way.", "draw a card for each card discarded this way"]
+    "DESCRIPTIONS": ["Whenever you #yFlow, ", "draw #b", " cards.", "draw a card."]
   },
   "hydrologistmod:LiquidationPower": {
     "NAME": "Liquidation",

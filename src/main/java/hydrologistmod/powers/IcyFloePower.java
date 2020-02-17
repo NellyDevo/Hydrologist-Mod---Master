@@ -44,6 +44,6 @@ public class IcyFloePower extends AbstractPower implements FlowAffectingPower, C
 
     @Override
     public void onFlow(int cardsDiscarded) {
-        AbstractDungeon.actionManager.addToTop(new DrawCardAction(owner, cardsDiscarded * amount));
+        AbstractDungeon.actionManager.addToTop(new DrawCardAction(owner, amount));
     }
 }
