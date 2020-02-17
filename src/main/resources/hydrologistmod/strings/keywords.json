@@ -1,4 +1,12 @@
 {
+  "COLD": {
+    "PROPER_NAME": "Cold",
+    "NAMES": [
+      "cold",
+      "cool"
+    ],
+    "DESCRIPTION": "A Cool enemy deals 25% less damage with attacks. If a Cool enemy would become #yHot, it instead suffers from #yThermal #yShock for one turn, taking double its Cold amount in damage. Enemies suffering from #yThermal #yShock take damage instead of becoming Cool or #yHot."
+  },
   "CORPOREAL": {
     "PROPER_NAME": "Corporeal",
     "NAMES": [
@@ -12,6 +20,14 @@
       "flow"
     ],
     "DESCRIPTION": "When you Flow, you may discard any number of cards. You draw that many at the start of your next turn."
+  },
+  "Heat": {
+    "PROPER_NAME": "Heat",
+    "NAMES": [
+      "heat",
+      "hot"
+    ],
+    "DESCRIPTION": "A Hot enemy takes 50% more damage from attacks. If a Hot enemy would become #yCool, it instead suffers from #yThermal #yShock for one turn, taking double its Heat amount in damage. Enemies suffering from #yThermal #yShock take damage instead of becoming #yCool or Hot."
   },
   "SWAPPABLE": {
     "PROPER_NAME": "Swappable",
