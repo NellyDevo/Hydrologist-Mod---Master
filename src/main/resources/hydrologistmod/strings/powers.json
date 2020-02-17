@@ -7,6 +7,16 @@
     "NAME": "Branching Creeks",
     "DESCRIPTIONS": ["Whenever you #yTransmute a card, choose between it and ", " additional card.", " additional cards."]
   },
+  "hydrologistmod:ColdPower": {
+    "NAME": "Cold",
+    "DESCRIPTIONS": [
+      "#yAttacks deal #b25% less damage for #b",
+      " turn.",
+      " turns.",
+      " If #yHeat would be applied, this monster instead suffers from #yThermal #yShock and takes #b",
+      " damage."
+    ]
+  },
   "hydrologistmod:CondensationPower": {
     "NAME": "Condensation",
     "DESCRIPTIONS": ["If your next card played is a #yWater card, draw #b", " cards."]
@@ -58,6 +68,16 @@
   "hydrologistmod:HailstormPower": {
     "NAME": "Hailstorm",
     "DESCRIPTIONS": ["Whenever you play an #yIce card, this enemy takes #b", " damage."]
+  },
+  "hydrologistmod:HeatPower": {
+    "NAME": "Heat",
+    "DESCRIPTIONS": [
+      "Receive #b50% more damage from #yAttacks for #b",
+      " turn.",
+      " turns.",
+      " If #yCold would be applied, this monster instead suffers from #yThermal #yShock and takes #b",
+      " damage."
+    ]
   },
   "hydrologistmod:HighPressurePower": {
     "NAME": "High Pressure",
@@ -122,5 +142,11 @@
   "hydrologistmod:SublimationPower": {
     "NAME": "Sublimation",
     "DESCRIPTIONS": ["If your next card played is a #ySteam card, deal #b", " damage to ALL enemies."]
+  },
+  "hydrologistmod:ThermalShockPower": {
+    "NAME": "Thermal Shock",
+    "DESCRIPTIONS": [
+      "Receive #b50% more damage from and deal #b25% less damage with #yAttacks this turn. If #yHeat or #yCold would be applied, this monster instead takes that much damage."
+    ]
   }
 }
