@@ -6,12 +6,14 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hydrologistmod.cards.HeatBlast;
 
 public class HeatPower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:HeatPower";
@@ -39,9 +41,16 @@ public class HeatPower extends AbstractPower implements CloneablePowerInterface 
     }
 
     @Override
-    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
+    public float atDamageReceive(float damage, DamageInfo.DamageType type, AbstractCard card) {
         if (type == DamageInfo.DamageType.NORMAL) {
-            return damage * VULN_MULTIPLIER;
+            if (card instanceof HeatBlast) {
+                for (int i = 0; i < amount; ++i) {
+                    damage *= VULN_MULTIPLIER;
+                }
+                return damage;
+            } else {
+                return damage * VULN_MULTIPLIER;
+            }
         } else {
             return damage;
         }
