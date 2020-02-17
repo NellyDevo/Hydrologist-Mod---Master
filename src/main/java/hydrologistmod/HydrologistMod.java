@@ -21,6 +21,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.patches.HydrologistEnum;
+import hydrologistmod.powers.ColdPower;
 import hydrologistmod.powers.HeatPower;
 import hydrologistmod.powers.ThermalShockPower;
 import hydrologistmod.relics.Distillery;
@@ -204,5 +205,9 @@ public class HydrologistMod implements EditCardsSubscriber, EditCharactersSubscr
 
     public static boolean isHot(AbstractCreature creature) {
         return (creature.hasPower(ThermalShockPower.POWER_ID) || creature.hasPower(HeatPower.POWER_ID));
+    }
+
+    public static boolean isCool(AbstractCreature creature) {
+        return (creature.hasPower(ThermalShockPower.POWER_ID) || creature.hasPower(ColdPower.POWER_ID));
     }
 }

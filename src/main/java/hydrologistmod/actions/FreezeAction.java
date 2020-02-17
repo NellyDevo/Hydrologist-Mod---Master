@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
+import hydrologistmod.HydrologistMod;
 import hydrologistmod.powers.ColdPower;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class FreezeAction extends AbstractGameAction {
         if (duration == DURATION && target != null) {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, AttackEffect.NONE));
             target.damage(info);
-            if ((((AbstractMonster)target).isDying || target.currentHealth <= 0) && !target.halfDead && target.hasPower(ColdPower.POWER_ID)) {
+            if ((((AbstractMonster)target).isDying || target.currentHealth <= 0) && !target.halfDead && HydrologistMod.isCool(target)) {
                     final ArrayList<AbstractCard> possibleCards = new ArrayList<>();
                     for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
                         if (c.canUpgrade()) {
