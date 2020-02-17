@@ -273,8 +273,8 @@
   },
   "hydrologistmod:PersonalRaincloud": {
     "NAME": "Personal Raincloud",
-    "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL Create a *Raincloud and *Pair it with a card in your hand. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": ""
+    "DESCRIPTION": "Gain !B! Block. NL Create a *Raincloud and *Pair it with a card in your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Draw a card. NL Create a *Raincloud and *Pair it with a card in your hand. NL Exhaust."
   },
   "hydrologistmod:Pneumatics": {
     "NAME": "Pneumatics",

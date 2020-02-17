@@ -20,7 +20,6 @@ public class PersonalRaincloud extends AbstractHydrologistCard {
     public static final String IMG_PATH = "hydrologistmod/images/cards/PersonalRaincloud.png";
     private static final int COST = 0;
     private static final int BLOCK_AMT = 4;
-    private static final int UPGRADE_BLOCK = 3;
     private static final int DRAW_AMT = 1;
 
     public PersonalRaincloud() {
@@ -37,7 +36,9 @@ public class PersonalRaincloud extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new DrawCardAction(p, magicNumber));
+        if (upgraded) {
+            addToBot(new DrawCardAction(p, magicNumber));
+        }
         addToBot(new PersonalRaincloudAction());
     }
 
@@ -50,7 +51,8 @@ public class PersonalRaincloud extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_BLOCK);
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }
