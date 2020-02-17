@@ -26,11 +26,8 @@
   },
   "hydrologistmod:Cryogenics": {
     "NAME": "Cryogenics",
-    "DESCRIPTION": "Unplayable. NL When hydrologistmod:Transmuted, add an additional copy of the new card to your hand. It costs 0 this turn.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL When hydrologistmod:Transmuted, add two additional copies of the new card to your hand. They cost 0 this turn.",
-    "EXTENDED_DESCRIPTION": [
-      "I can't play this card."
-    ]
+    "DESCRIPTION": "",
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:CrystalIce": {
     "NAME": "Crystal Ice",
@@ -112,14 +109,6 @@
     "DESCRIPTION": "Deal !D! damage. NL Exhaust. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:FlashFlood": {
-    "NAME": "Flash Flood",
-    "DESCRIPTION": "Unplayable. NL When hydrologistmod:Transmuted, deal !M! damage to ALL enemies.",
-    "UPGRADE_DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": [
-      "I can't play this card."
-    ]
-  },
   "hydrologistmod:FleetingForm": {
     "NAME": "Fleeting Form",
     "DESCRIPTION": "Whenever you play a *Steam card, deal !M! damage to a random enemy. NL hydrologistmod:Swaps to *Frigid *Form.",
@@ -136,16 +125,6 @@
   "hydrologistmod:FlowingForm": {
     "NAME": "Flowing Form",
     "DESCRIPTION": "Whenever you play a *Water card, you may discard a card. If you do, draw !M! cards. NL hydrologistmod:Swaps to *Fleeting *Form.",
-    "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:FogOfWar": {
-    "NAME": "Fog of War",
-    "DESCRIPTION": "If the enemy intends to attack, apply !M! Weak.",
-    "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:ForceOfErosion": {
-    "NAME": "Force of Erosion",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Freeze": {
