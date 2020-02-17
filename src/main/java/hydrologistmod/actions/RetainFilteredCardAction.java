@@ -23,6 +23,7 @@ public class RetainFilteredCardAction extends AbstractGameAction {
         this.cardFilter = cardFilter;
         p = AbstractDungeon.player;
         retainAmount = amount;
+        cannotRetain = new ArrayList<>();
     }
 
     @Override
