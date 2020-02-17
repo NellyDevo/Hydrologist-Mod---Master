@@ -396,11 +396,8 @@
   },
   "hydrologistmod:SteamPower": {
     "NAME": "Steam Power",
-    "DESCRIPTION": "Unplayable. NL When hydrologistmod:Transmuted, draw !M! cards.",
-    "UPGRADE_DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": [
-      "I can't play this card."
-    ]
+    "DESCRIPTION": "Draw a card. The next card you play of the same subtype as the card drawn costs 0 this turn.",
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Strike_Hydrologist": {
     "NAME": "Strike",
