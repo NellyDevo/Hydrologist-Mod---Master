@@ -18,7 +18,7 @@ public class GlacialSynthesis extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/GlacialSynthesis.png";
     private static final int COST = 1;
-    private static final int BLOCK_AMT = 6;
+    private static final int BLOCK_AMT = 7;
     private static final int UPGRADE_BLOCK = 3;
 
     public GlacialSynthesis() {
@@ -27,6 +27,7 @@ public class GlacialSynthesis extends AbstractHydrologistCard {
                 CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.ICE);
         block = baseBlock = BLOCK_AMT;
+        exhaust = true;
     }
 
     @Override

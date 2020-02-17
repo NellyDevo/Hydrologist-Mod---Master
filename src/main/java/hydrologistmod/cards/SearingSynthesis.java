@@ -12,23 +12,24 @@ import hydrologistmod.actions.TransmuteCardAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class SwelteringSynthesis extends AbstractHydrologistCard {
-    public static final String ID = "hydrologistmod:SwelteringSynthesis";
+public class SearingSynthesis extends AbstractHydrologistCard {
+    public static final String ID = "hydrologistmod:SearingSynthesis";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/SwelteringSynthesis.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/SearingSynthesis.png";
     private static final int COST = 1;
-    private static final int DAMAGE_AMT = 7;
-    private static final int UPGRADE_DAMAGE = 4;
+    private static final int DAMAGE_AMT = 9;
+    private static final int UPGRADE_DAMAGE = 3;
 
-    public SwelteringSynthesis() {
+    public SearingSynthesis() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
+        exhaust = true;
     }
 
     @Override
@@ -39,7 +40,7 @@ public class SwelteringSynthesis extends AbstractHydrologistCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new SwelteringSynthesis();
+        return new SearingSynthesis();
     }
 
     @Override
