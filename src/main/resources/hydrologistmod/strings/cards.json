@@ -264,7 +264,7 @@
   },
   "hydrologistmod:LaminarFlow": {
     "NAME": "Laminar Flow",
-    "DESCRIPTION": "At the end of your turn, gain 3(4) Block. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "At the end of your turn, gain !M! Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:LayeredShell": {
