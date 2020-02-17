@@ -43,7 +43,7 @@ public class PressureBuildup extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_DAMAGE);
+            upgradeMagicNumber(UPGRADE_DAMAGE);
         }
     }
 }
