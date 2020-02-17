@@ -296,6 +296,14 @@
     "DESCRIPTION": "Every time you play 10 hydrologistmod:Corporeal cards, deal !M! damage to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:PressureCycle": {
+    "NAME": "Pressure Cycle",
+    "DESCRIPTION": "Gain !M! Block for each card in your discard pile, then shuffle your discard pile into your draw pile.",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Gain !B! Block.)"
+    ]
+  },
   "hydrologistmod:PureIce": {
     "NAME": "Pure Ice",
     "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, gain !B! Block twice.",
