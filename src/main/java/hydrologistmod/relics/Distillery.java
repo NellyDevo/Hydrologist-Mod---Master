@@ -2,10 +2,14 @@ package hydrologistmod.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import hydrologistmod.actions.TransmuteCardAction;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import hydrologistmod.HydrologistMod;
+import hydrologistmod.actions.FlowAction;
 
 public class Distillery extends CustomRelic {
     public static final String ID = "hydrologistmod:Distillery";
@@ -15,7 +19,6 @@ public class Distillery extends CustomRelic {
 
     public Distillery() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
-        counter = 0;
     }
 
     @Override
@@ -24,18 +27,18 @@ public class Distillery extends CustomRelic {
     }
 
     @Override
-    public void atTurnStartPostDraw() {
-        ++counter;
-        if (counter == TURN_COUNT) {
-            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    AbstractDungeon.actionManager.addToBottom(new TransmuteCardAction());
-                    isDone = true;
-                }
-            });
-            counter = 0;
+    public void onUseCard(AbstractCard card, UseCardAction action) {
+        if (HydrologistMod.isThisCorporeal(card) && !grayscale) {
+            flash();
+            addToTop(new FlowAction());
+            addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+            grayscale = true;
         }
+    }
+
+    @Override
+    public void justEnteredRoom(AbstractRoom room) {
+        grayscale = false;
     }
 
     @Override
