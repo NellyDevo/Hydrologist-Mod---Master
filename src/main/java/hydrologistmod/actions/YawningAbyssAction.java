@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import hydrologistmod.powers.ColdPower;
 
 public class YawningAbyssAction extends AbstractGameAction {
 //    private static final String ID = "hydrologistmod:YawningAbyssAction";
@@ -26,8 +26,8 @@ public class YawningAbyssAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        if (m.hasPower(WeakPower.POWER_ID)) {
-            times += m.getPower(WeakPower.POWER_ID).amount;
+        if (m.hasPower(ColdPower.POWER_ID)) {
+            times += m.getPower(ColdPower.POWER_ID).amount;
         }
         for (int i = 0; i < times; ++i) {
             AbstractDungeon.actionManager.addToTop(new DamageAction(m, info));

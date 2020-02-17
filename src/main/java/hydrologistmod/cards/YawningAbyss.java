@@ -7,10 +7,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import hydrologistmod.actions.YawningAbyssAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.ColdPower;
 
 public class YawningAbyss extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:YawningAbyss";
@@ -32,12 +32,13 @@ public class YawningAbyss extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = WEAK_AMT;
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new YawningAbyssAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
-        addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
+        addToBot(new ApplyPowerAction(m, p, new ColdPower(m, p, magicNumber), magicNumber));
     }
 
     @Override

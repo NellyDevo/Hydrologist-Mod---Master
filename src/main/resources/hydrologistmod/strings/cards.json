@@ -472,7 +472,7 @@
   },
   "hydrologistmod:YawningAbyss": {
     "NAME": "Yawning Abyss",
-    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage an additional time for each stack of Weak on the enemy. NL Apply !M! Weak.",
+    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage an additional time for each stack of hydrologistmod:Cold on the enemy. NL Apply !M! hydrologistmod:Cold.",
     "UPGRADE_DESCRIPTION": ""
   }
 }
