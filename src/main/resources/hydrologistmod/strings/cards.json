@@ -173,7 +173,7 @@
   },
   "hydrologistmod:GlacialStrike": {
     "NAME": "Glacial Strike",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy is Vulnerable, gain !B! Block. NL If the enemy is Weak, deal an additional !D! damage.",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is hydrologistmod:Hot, gain !B! Block. NL If the enemy is hydrologistmod:Cool, deal an additional !D! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:GlacialSynthesis": {
