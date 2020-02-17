@@ -14,24 +14,24 @@ import hydrologistmod.powers.EndothermicReactionsPower;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-public class Endothermodynamics extends AbstractHydrologistCard {
-    public static final String ID = "hydrologistmod:Endothermodynamics";
+public class Endothermancy extends AbstractHydrologistCard {
+    public static final String ID = "hydrologistmod:Endothermancy";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/Endothermodynamics.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/Endothermancy.png";
     private static final int COST = 1;
-    private static final int AMOUNT = 4;
+    private static final int AMOUNT = 6;
     private static final int UPGRADE_AMOUNT = 2;
 
-    public Endothermodynamics() {
+    public Endothermancy() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = AMOUNT;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Exothermodynamics())));
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Exothermancy())));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class Endothermodynamics extends AbstractHydrologistCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new Endothermodynamics();
+        return new Endothermancy();
     }
 
     @Override

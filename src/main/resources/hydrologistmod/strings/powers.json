@@ -35,7 +35,7 @@
   },
   "hydrologistmod:EndothermicReactionsPower": {
     "NAME": "Endothermic Reactions",
-    "DESCRIPTIONS": ["Whenever you #yTransmute a card, gain #b", " #yBlock."]
+    "DESCRIPTIONS": ["Whenever you #yTransmute a card, apply #b", " #yCold to ALL enemies."]
   },
   "hydrologistmod:EvaporationPower": {
     "NAME": "Evaporation",
@@ -43,7 +43,7 @@
   },
   "hydrologistmod:ExothermicReactionsPower": {
     "NAME": "Exothermic Reactions",
-    "DESCRIPTIONS": ["Whenever you #yTransmute a card, deal #b", " damage to a random enemy."]
+    "DESCRIPTIONS": ["Whenever you #yTransmute a card, apply #b", " #yHeat to ALL enemies."]
   },
   "hydrologistmod:FleetingFormPower": {
     "NAME": "Fleeting Form",

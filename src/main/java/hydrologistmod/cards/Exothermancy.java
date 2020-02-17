@@ -12,18 +12,18 @@ import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.ExothermicReactionsPower;
 
-public class Exothermodynamics extends AbstractHydrologistCard implements SwappableCard {
-    public static final String ID = "hydrologistmod:Exothermodynamics";
+public class Exothermancy extends AbstractHydrologistCard implements SwappableCard {
+    public static final String ID = "hydrologistmod:Exothermancy";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/Exothermodynamics.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/Exothermancy.png";
     private static final int COST = 1;
     private static final int AMOUNT = 6;
-    private static final int UPGRADE_AMOUNT = 3;
+    private static final int UPGRADE_AMOUNT = 2;
 
-    public Exothermodynamics() {
+    public Exothermancy() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
@@ -38,7 +38,7 @@ public class Exothermodynamics extends AbstractHydrologistCard implements Swappa
 
     @Override
     public AbstractCard makeCopy() {
-        return new Exothermodynamics();
+        return new Exothermancy();
     }
 
     @Override

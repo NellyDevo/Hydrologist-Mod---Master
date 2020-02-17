@@ -2,9 +2,7 @@ package hydrologistmod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -45,10 +43,8 @@ public class ExothermicReactionsPower extends AbstractPower implements Transmuta
     @Override
     public void onTransmute(TransmuteCardAction action) {
         flash();
-        AbstractPlayer p = AbstractDungeon.player;
-        AbstractMonster m = AbstractDungeon.getMonsters().getRandomMonster(true);
-        if (m != null) {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, amount, DamageInfo.DamageType.THORNS)));
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            addToBot(new ApplyPowerAction(mo, AbstractDungeon.player, new HeatPower(mo, AbstractDungeon.player, amount), amount));
         }
     }
 }
