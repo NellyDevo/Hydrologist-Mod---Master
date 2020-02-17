@@ -14,8 +14,9 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.cards.HeatBlast;
+import hydrologistmod.interfaces.HeatAndColdPower;
 
-public class HeatPower extends AbstractPower implements CloneablePowerInterface {
+public class HeatPower extends AbstractPower implements CloneablePowerInterface, HeatAndColdPower {
     public static final String POWER_ID = "hydrologistmod:HeatPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -62,21 +63,15 @@ public class HeatPower extends AbstractPower implements CloneablePowerInterface 
     }
 
     @Override
-    public void onInitialApplication() {
-        if (owner.hasPower(ColdPower.POWER_ID)) {
-            AbstractPower otherPower = owner.getPower(ColdPower.POWER_ID);
-            int damageAmt = otherPower.amount * 2;
-            addToTop(new DamageAction(owner, new DamageInfo(source, damageAmt, DamageInfo.DamageType.THORNS)));
+    public boolean heatAndColdOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (power instanceof ColdPower && target == owner) {
+            flash();
+            addToTop(new DamageAction(owner, new DamageInfo(source, amount * 2, DamageInfo.DamageType.THORNS)));
             addToTop(new ApplyPowerAction(owner, source, new ThermalShockPower(owner, source)));
             addToTop(new RemoveSpecificPowerAction(owner, source, this));
-            addToTop(new RemoveSpecificPowerAction(owner, source, otherPower));
-            return;
+            return false;
         }
-        if (owner.hasPower(ThermalShockPower.POWER_ID)) {
-            int damageAmt = amount;
-            addToTop(new DamageAction(owner, new DamageInfo(source, damageAmt, DamageInfo.DamageType.THORNS)));
-            addToTop(new RemoveSpecificPowerAction(owner, source, this));
-        }
+        return true;
     }
 
     @Override

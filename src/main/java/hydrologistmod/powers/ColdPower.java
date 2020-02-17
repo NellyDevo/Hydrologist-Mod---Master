@@ -12,8 +12,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hydrologistmod.interfaces.HeatAndColdPower;
 
-public class ColdPower extends AbstractPower implements CloneablePowerInterface {
+public class ColdPower extends AbstractPower implements CloneablePowerInterface, HeatAndColdPower {
     public static final String POWER_ID = "hydrologistmod:ColdPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -68,6 +69,18 @@ public class ColdPower extends AbstractPower implements CloneablePowerInterface 
             addToTop(new DamageAction(owner, new DamageInfo(source, damageAmt, DamageInfo.DamageType.THORNS)));
             addToTop(new RemoveSpecificPowerAction(owner, source, this));
         }
+    }
+
+    @Override
+    public boolean heatAndColdOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (power instanceof HeatPower && target == owner) {
+            flash();
+            addToTop(new DamageAction(owner, new DamageInfo(source, amount * 2, DamageInfo.DamageType.THORNS)));
+            addToTop(new ApplyPowerAction(owner, owner, new ThermalShockPower(owner, source)));
+            addToTop(new RemoveSpecificPowerAction(owner, source, this));
+            return false;
+        }
+        return true;
     }
 
     @Override
