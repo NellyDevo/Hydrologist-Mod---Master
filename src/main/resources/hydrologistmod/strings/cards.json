@@ -103,6 +103,14 @@
     "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Steam card, apply !M! hydrologistmod:Heat to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:EveningMist": {
+    "NAME": "Evening Mist",
+    "DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw a card. NL Swappable.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw !M! cards. NL Swappable.",
+    "EXTENDED_DESCRIPTION": [
+      "I can't play this card."
+    ]
+  },
   "hydrologistmod:Exothermancy": {
     "NAME": "Exothermancy",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, apply !M! hydrologistmod:Heat to ALL enemies. NL hydrologistmod:Swappable.",
@@ -273,6 +281,14 @@
     "NAME": "Manifestation",
     "DESCRIPTION": "hydrologistmod:Corporeal cards deal !M! additional damage and gain !M! additional Block.",
     "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:MorningDew": {
+    "NAME": "Morning Dew",
+    "DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw !M! cards at the start of your next turn. NL Swappable.",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "I can't play this card."
+    ]
   },
   "hydrologistmod:OccludingMist": {
     "NAME": "Occluding Mist",
