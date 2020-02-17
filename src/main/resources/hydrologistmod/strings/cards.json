@@ -53,10 +53,10 @@
     "DESCRIPTION": "Gain !B! Block. NL If your next card played is an *Ice card, hydrologistmod:Transmute a card in your hand.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:DebilitatingExplosion": {
-    "NAME": "Debilitating Explosion",
-    "DESCRIPTION": "Apply !M! Weak and Vulnerable to ALL enemies. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Apply !M! Weak and Vulnerable to ALL enemies."
+  "hydrologistmod:Debilitate": {
+    "NAME": "Debilitate",
+    "DESCRIPTION": "Apply !M! hydrologistmod:Heat AND hydrologistmod:Cold to ALL enemies. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:DeepFreeze": {
     "NAME": "Deep Freeze",
