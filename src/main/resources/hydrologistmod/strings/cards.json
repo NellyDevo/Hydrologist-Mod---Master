@@ -444,7 +444,7 @@
   },
   "hydrologistmod:Upstream": {
     "NAME": "Upstream",
-    "DESCRIPTION": "Apply !M! Weak. NL If the enemy intends to attack, gain !B! Block.",
+    "DESCRIPTION": "Apply !M! hydrologistmod:Cold. NL If the enemy intends to attack, gain !B! Block.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:WallOfIce": {
