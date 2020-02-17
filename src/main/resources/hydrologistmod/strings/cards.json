@@ -10,7 +10,7 @@
   },
   "hydrologistmod:Aqueducts": {
     "NAME": "Aqueducts",
-    "DESCRIPTION": "hydrologistmod:Flow. NL Whenever you draw an extra card, deal !M! damage to ALL enemies.",
+    "DESCRIPTION": "Whenever you draw an extra card, deal !M! damage to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:BlockOfIce": {

@@ -32,7 +32,6 @@ public class Aqueducts extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new FlowAction());
         addToBot(new ApplyPowerAction(p, p, new AqueductsPower(p, magicNumber), magicNumber));
     }
 
