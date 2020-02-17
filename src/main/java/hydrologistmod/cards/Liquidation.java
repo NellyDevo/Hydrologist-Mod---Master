@@ -31,6 +31,7 @@ public class Liquidation extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.ICE);
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = WEAK_AMT;
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override

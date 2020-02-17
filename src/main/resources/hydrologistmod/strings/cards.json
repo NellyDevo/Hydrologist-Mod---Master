@@ -258,7 +258,7 @@
   },
   "hydrologistmod:Liquidation": {
     "NAME": "Liquidation",
-    "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Water card, apply !M! Weak to ALL enemies.",
+    "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Water card, apply !M! hydrologistmod:Cold to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Manifestation": {
