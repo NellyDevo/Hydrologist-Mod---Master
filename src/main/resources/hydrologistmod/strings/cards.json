@@ -203,8 +203,8 @@
   },
   "hydrologistmod:HeatBlast": {
     "NAME": "Heat Blast",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable. NL Damage amount is multiplied once for each stack of Vulnerable.",
-    "UPGRADE_DESCRIPTION": "Triple the enemy's Vulnerable amount. NL Exhaust. NL hydrologistmod:Swappable."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Heat. NL Damage amount is multiplied once for each stack of Hydrologistmod:Heat.",
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:HighPressure": {
     "NAME": "High Pressure",
