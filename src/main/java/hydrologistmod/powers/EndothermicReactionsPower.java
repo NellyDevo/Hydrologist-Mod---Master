@@ -4,6 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -42,10 +43,10 @@ public class EndothermicReactionsPower extends AbstractPower implements Transmut
     }
 
     @Override
-    public void onTransmute(TransmuteCardAction action) {
+    public void affectTransmutedCard(AbstractCard card) {
         flash();
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            addToBot(new ApplyPowerAction(mo, AbstractDungeon.player, new ColdPower(mo, AbstractDungeon.player, amount), amount));
+            addToTop(new ApplyPowerAction(mo, AbstractDungeon.player, new ColdPower(mo, AbstractDungeon.player, amount), amount));
         }
     }
 }
