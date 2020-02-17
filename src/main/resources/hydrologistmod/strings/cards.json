@@ -60,7 +60,7 @@
   },
   "hydrologistmod:DeepFreeze": {
     "NAME": "Deep Freeze",
-    "DESCRIPTION": "Your *Ice cards that gain Block gain !M! additional Block. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Whenever you apply hydrologistmod:Cold, apply !M! additional hydrologistmod:Cold.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Defend_Hydrologist": {
@@ -203,7 +203,7 @@
   },
   "hydrologistmod:HighPressure": {
     "NAME": "High Pressure",
-    "DESCRIPTION": "Your *Steam cards that deal damage deal !M! additional damage. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Whenever you apply hydrologistmod:Heat, apply !M! additional hydrologistmod:Heat.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:HighTide": {

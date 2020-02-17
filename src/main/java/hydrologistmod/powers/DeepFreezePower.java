@@ -2,15 +2,14 @@ package hydrologistmod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hydrologistmod.patches.HydrologistTags;
 
-public class DeepFreezePower extends AbstractPower implements CloneablePowerInterface {
+public class DeepFreezePower extends AbstractPower implements CloneablePowerInterface, BetterOnApplyPowerPower {
     public static final String POWER_ID = "hydrologistmod:DeepFreezePower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -33,15 +32,22 @@ public class DeepFreezePower extends AbstractPower implements CloneablePowerInte
     }
 
     @Override
+    public boolean betterOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        return true;
+    }
+
+    @Override
+    public int betterOnApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
+        if (power instanceof ColdPower && source == owner) {
+            stackAmount += amount;
+            flash();
+        }
+        return stackAmount;
+    }
+
+    @Override
     public AbstractPower makeCopy() {
         return new DeepFreezePower(owner, amount);
     }
 
-    @Override
-    public float modifyBlock(float block, AbstractCard card) {
-        if (card.hasTag(HydrologistTags.ICE)) {
-            block += amount;
-        }
-        return block;
-    }
 }

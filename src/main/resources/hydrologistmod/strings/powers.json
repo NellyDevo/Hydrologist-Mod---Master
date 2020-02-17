@@ -27,7 +27,7 @@
   },
   "hydrologistmod:DeepFreezePower": {
     "NAME": "Deep Freeze",
-    "DESCRIPTIONS": ["Your #yIce cards that gain #yBlock gain #b", " additional #yBlock."]
+    "DESCRIPTIONS": ["Whenever you apply #yCold, apply #b", " additional #yCold."]
   },
   "hydrologistmod:EncapsulatingIcePower": {
     "NAME": "Encapsulating Ice",
@@ -81,7 +81,7 @@
   },
   "hydrologistmod:HighPressurePower": {
     "NAME": "High Pressure",
-    "DESCRIPTIONS": ["Your #ySteam cards that deal damage deal #b", " additional damage."]
+    "DESCRIPTIONS": ["Whenever you apply #yHeat, apply #b", " additional #yHeat."]
   },
   "hydrologistmod:HotSpringsPower": {
     "NAME": "Hot Springs",

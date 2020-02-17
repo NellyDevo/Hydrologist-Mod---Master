@@ -2,16 +2,14 @@ package hydrologistmod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hydrologistmod.patches.HydrologistTags;
 
-public class HighPressurePower extends AbstractPower implements CloneablePowerInterface {
+public class HighPressurePower extends AbstractPower implements CloneablePowerInterface, BetterOnApplyPowerPower {
     public static final String POWER_ID = "hydrologistmod:HighPressurePower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -34,15 +32,22 @@ public class HighPressurePower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
+    public boolean betterOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        return true;
+    }
+
+    @Override
+    public int betterOnApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
+        if (power instanceof HeatPower && source == owner) {
+            stackAmount += amount;
+            flash();
+        }
+        return stackAmount;
+    }
+
+    @Override
     public AbstractPower makeCopy() {
         return new HighPressurePower(owner, amount);
     }
 
-    @Override
-    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card) {
-        if (card.hasTag(HydrologistTags.STEAM)) {
-            damage += amount;
-        }
-        return damage;
-    }
 }
