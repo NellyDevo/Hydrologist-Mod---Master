@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hydrologistmod.patches.HydrologistTags;
 
 public class EvaporationPower extends AbstractPower implements NonStackablePower, CloneablePowerInterface {
@@ -45,7 +44,7 @@ public class EvaporationPower extends AbstractPower implements NonStackablePower
         if (card.hasTag(HydrologistTags.STEAM)) {
             flash();
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, owner, new VulnerablePower(m, amount, false), amount));
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, owner, new HeatPower(m, owner, amount), amount));
             }
         }
     }

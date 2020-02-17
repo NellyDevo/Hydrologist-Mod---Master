@@ -100,7 +100,7 @@
   },
   "hydrologistmod:Evaporation": {
     "NAME": "Evaporation",
-    "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Steam card, apply !M! Vulnerable to ALL enemies.",
+    "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Steam card, apply !M! hydrologistmod:Heat to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Exothermodynamics": {
