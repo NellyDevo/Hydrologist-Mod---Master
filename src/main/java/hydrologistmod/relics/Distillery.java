@@ -30,8 +30,8 @@ public class Distillery extends CustomRelic {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (HydrologistMod.isThisCorporeal(card) && !grayscale) {
             flash();
-            addToTop(new FlowAction());
-            addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+            addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+            addToBot(new FlowAction());
             grayscale = true;
         }
     }
