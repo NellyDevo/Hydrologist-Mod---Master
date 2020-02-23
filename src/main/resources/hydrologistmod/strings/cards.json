@@ -105,8 +105,8 @@
   },
   "hydrologistmod:EveningMist": {
     "NAME": "Evening Mist",
-    "DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw a card. NL Swappable.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw !M! cards. NL Swappable.",
+    "DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw a card. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw !M! cards. NL hydrologistmod:Swappable.",
     "EXTENDED_DESCRIPTION": [
       "I can't play this card."
     ]
@@ -284,7 +284,7 @@
   },
   "hydrologistmod:MorningDew": {
     "NAME": "Morning Dew",
-    "DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw !M! cards at the start of your next turn. NL Swappable.",
+    "DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw !M! cards at the start of your next turn. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
       "I can't play this card."
