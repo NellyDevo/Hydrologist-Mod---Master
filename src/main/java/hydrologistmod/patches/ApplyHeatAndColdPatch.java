@@ -26,7 +26,7 @@ public class ApplyHeatAndColdPatch {
     }
 
     private static SpireReturn<Void> checkPower(ApplyPowerAction action, AbstractCreature target, AbstractCreature source, float[] duration, AbstractPower powerToApply) {
-        for (AbstractPower power : source.powers) {
+        for (AbstractPower power : target.powers) {
             if (power instanceof HeatAndColdPower) {
                 boolean apply = ((HeatAndColdPower)power).heatAndColdOnApplyPower(powerToApply, target, source);
                 if (!apply) {
