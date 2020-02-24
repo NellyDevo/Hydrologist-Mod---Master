@@ -69,7 +69,7 @@ public class TransmuteParticle extends AbstractGameEffect {
         TextureRegion img = region[index];
         float w = img.getRegionWidth();
         float h = img.getRegionHeight();
-        sb.draw(img, x - (w / 2.0f), y - (h / 2.0f), x, y, w, h, scale * Settings.scale, scale * Settings.scale, rotation);
+        sb.draw(img, x - (w / 2.0f), y - (h / 2.0f), (w / 2.0f), (h / 2.0f), w, h, scale * Settings.scale, scale * Settings.scale, rotation);
     }
 
     public void dispose() {
