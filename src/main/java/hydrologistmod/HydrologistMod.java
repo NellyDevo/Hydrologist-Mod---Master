@@ -25,6 +25,7 @@ import hydrologistmod.powers.ColdPower;
 import hydrologistmod.powers.HeatPower;
 import hydrologistmod.powers.ThermalShockPower;
 import hydrologistmod.relics.Distillery;
+import hydrologistmod.vfx.TransmuteParticle;
 import javassist.CtClass;
 import javassist.NotFoundException;
 import org.apache.logging.log4j.LogManager;
@@ -44,7 +45,7 @@ import java.util.Map;
 import static hydrologistmod.patches.AbstractCardEnum.HYDROLOGIST_CYAN;
 
 @SpireInitializer
-public class HydrologistMod implements EditCardsSubscriber, EditCharactersSubscriber, PostInitializeSubscriber, EditKeywordsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, PostBattleSubscriber {
+public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, EditCharactersSubscriber, PostInitializeSubscriber, EditKeywordsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, PostBattleSubscriber {
 
     private static final Color hydrologistCyan = CardHelper.getColor(3, 240, 252); //#03f0fc / 3, 240, 252
     private static final String attackCard = "hydrologistmod/images/512/bg_attack_hydrologist.png";
@@ -145,6 +146,14 @@ public class HydrologistMod implements EditCardsSubscriber, EditCharactersSubscr
         Texture badgeImg = new Texture("hydrologistmod/images/badge.png");
         ModPanel settingsPanel = new ModPanel();
         BaseMod.registerModBadge(badgeImg, "The Hydrologist Mod", "Johnny Devo", "Adds a new character to the game: The Hydrologist.", settingsPanel);
+        TransmuteParticle.initializeRegions();
+    }
+
+    @Override
+    public void receiveAddAudio() {
+        BaseMod.addAudio("hydrologistmod:ICE", "hydrologistmod/sfx/Ice_SFX.ogg");
+        BaseMod.addAudio("hydrologistmod:WATER", "hydrologistmod/sfx/Water_SFX.ogg");
+        BaseMod.addAudio("hydrologistmod:STEAM", "hydrologistmod/sfx/Steam_SFX.ogg");
     }
 
     @Override

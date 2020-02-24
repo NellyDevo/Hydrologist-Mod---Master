@@ -9,10 +9,12 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hydrologistmod.actions.TransmuteCardAction;
+import hydrologistmod.patches.HydrologistTags;
 
 import java.util.HashMap;
 
@@ -26,6 +28,8 @@ public class TransmuteCardEffect extends AbstractGameEffect {
     private static final float MAX_RIGHT_BOUND = 0.9f;
     private static final float MAX_DOWN_BOUND = 0.2f;
     private static final float MAX_UP_BOUND = 0.8f;
+    private static final float PARTICLE_SPAWN_HEIGHT = 100.0f;
+    private static final float PARTICLE_SPAWN_WIDTH = 300.0f;
     private HashMap<AbstractCard, TextureRegion> textureMap = new HashMap<>();
     private static TextureRegion mask = new TextureRegion(new Texture("hydrologistmod/images/vfx/TransmuteMask.png"), 512, 1024);
     private static TextureRegion line = new TextureRegion(new Texture("hydrologistmod/images/vfx/TransmuteLine.png"), 512, 1024);
@@ -162,10 +166,55 @@ public class TransmuteCardEffect extends AbstractGameEffect {
                 card.target_y = MathUtils.random(downBound, upBound) * Settings.HEIGHT;
             }
             duration -= Gdx.graphics.getDeltaTime();
+            //play sounds as appropriate to what variety of new cards there are.
+            boolean hasIce = false;
+            boolean hasWater = false;
+            boolean hasSteam = false;
+            for (AbstractCard card : transmutedPairs.values()) {
+                if (card.hasTag(HydrologistTags.ICE)) {
+                    hasIce = true;
+                } else if (card.hasTag(HydrologistTags.WATER)) {
+                    hasWater = true;
+                } else if (card.hasTag(HydrologistTags.STEAM)) {
+                    hasSteam = true;
+                }
+            }
+            if (hasIce) {
+                CardCrawlGame.sound.play("hydrologistmod:ICE");
+            }
+            if (hasWater) {
+                CardCrawlGame.sound.play("hydrologistmod:WATER");
+            }
+            if (hasSteam) {
+                CardCrawlGame.sound.play("hydrologistmod:STEAM");
+            }
         } else if (duration > 0.0f) {
             //Upkeep: control logic of where the mask is to be placed upon the card(s), based on duration of the effect/action
             duration -= Gdx.graphics.getDeltaTime();
             offsetPercent = duration / startingDuration;
+            //generate particles based on card positions and offset percentage
+            for (AbstractCard card : transmutedPairs.keySet()) {
+                int num = AbstractDungeon.miscRng.random(2, 4);
+                TransmuteParticle.ParticleType type;
+                AbstractCard pairCard = transmutedPairs.get(card);
+                if (pairCard.hasTag(HydrologistTags.STEAM)) {
+                    type = TransmuteParticle.ParticleType.STEAM;
+                } else if (pairCard.hasTag(HydrologistTags.ICE)) {
+                    type = TransmuteParticle.ParticleType.ICE;
+                } else {
+                    type = TransmuteParticle.ParticleType.WATER;
+                }
+                float center_x = card.current_x;
+                float center_y = card.current_y - (512f * offsetPercent) + 256f; //start at bottom of card at 100%, end at top of card at 0%
+                for (int i = 0; i < num; ++i) {
+                    float rotation = AbstractDungeon.miscRng.random(0.0f, 360.0f);
+                    float scale = AbstractDungeon.miscRng.random(0.8f, 1.2f);
+                    //calculate random coordinates within a bounding box
+                    float x = center_x + (AbstractDungeon.miscRng.random(0.0f, PARTICLE_SPAWN_WIDTH) - (PARTICLE_SPAWN_WIDTH / 2));
+                    float y = center_y + (AbstractDungeon.miscRng.random(0.0f, PARTICLE_SPAWN_HEIGHT) - (PARTICLE_SPAWN_HEIGHT / 2));
+                    AbstractDungeon.topLevelEffectsQueue.add(new TransmuteParticle(type, x, y, rotation, scale));
+                }
+            }
         } else {
             //then, when the effect completes, distribute the cards and signal the action to complete.
             if (targetGroup != null) {
