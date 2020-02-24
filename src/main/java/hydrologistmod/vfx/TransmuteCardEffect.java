@@ -210,8 +210,8 @@ public class TransmuteCardEffect extends AbstractGameEffect {
                     float rotation = AbstractDungeon.miscRng.random(0.0f, 360.0f);
                     float scale = AbstractDungeon.miscRng.random(0.8f, 1.2f);
                     //calculate random coordinates within a bounding box
-                    float x = center_x + (AbstractDungeon.miscRng.random(0.0f, PARTICLE_SPAWN_WIDTH) - (PARTICLE_SPAWN_WIDTH / 2));
-                    float y = center_y + (AbstractDungeon.miscRng.random(0.0f, PARTICLE_SPAWN_HEIGHT) - (PARTICLE_SPAWN_HEIGHT / 2));
+                    float x = center_x + (AbstractDungeon.miscRng.random(0.0f, PARTICLE_SPAWN_WIDTH * Settings.scale) - ((PARTICLE_SPAWN_WIDTH * Settings.scale) / 2));
+                    float y = center_y + (AbstractDungeon.miscRng.random(0.0f, PARTICLE_SPAWN_HEIGHT * Settings.scale) - ((PARTICLE_SPAWN_HEIGHT * Settings.scale) / 2));
                     AbstractDungeon.topLevelEffectsQueue.add(new TransmuteParticle(type, x, y, rotation, scale));
                 }
             }
