@@ -30,12 +30,15 @@ public class TransmuteCardEffect extends AbstractGameEffect {
     private static final float MAX_UP_BOUND = 0.8f;
     private static final float PARTICLE_SPAWN_HEIGHT = 100.0f;
     private static final float PARTICLE_SPAWN_WIDTH = 300.0f;
+    private static final int PARTICLES_PER_SECOND = 60;
+    private static final float DURATION_PER_PARTICLE = 1.0f / PARTICLES_PER_SECOND;
     private HashMap<AbstractCard, TextureRegion> textureMap = new HashMap<>();
     private static TextureRegion mask = new TextureRegion(new Texture("hydrologistmod/images/vfx/TransmuteMask.png"), 512, 1024);
     private static TextureRegion line = new TextureRegion(new Texture("hydrologistmod/images/vfx/TransmuteLine.png"), 512, 1024);
     private FrameBuffer fb1;
     private FrameBuffer fb2;
     private FrameBuffer fb3;
+    private float particleTimer;
 
     public TransmuteCardEffect(HashMap<AbstractCard, AbstractCard> transmutedPairs, CardGroup.CardGroupType targetGroup, TransmuteCardAction action, float duration) {
         this.transmutedPairs = transmutedPairs;
@@ -120,7 +123,6 @@ public class TransmuteCardEffect extends AbstractGameEffect {
             sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
             sb.setColor(Color.WHITE);
             sb.draw(tmpLine, 0f, 0f);
-            //render water effects at offset TODO
 
             sb.end();
             fb3.end();
@@ -193,26 +195,27 @@ public class TransmuteCardEffect extends AbstractGameEffect {
             duration -= Gdx.graphics.getDeltaTime();
             offsetPercent = duration / startingDuration;
             //generate particles based on card positions and offset percentage
-            for (AbstractCard card : transmutedPairs.keySet()) {
-                int num = AbstractDungeon.miscRng.random(2, 4);
-                TransmuteParticle.ParticleType type;
-                AbstractCard pairCard = transmutedPairs.get(card);
-                if (pairCard.hasTag(HydrologistTags.STEAM)) {
-                    type = TransmuteParticle.ParticleType.STEAM;
-                } else if (pairCard.hasTag(HydrologistTags.ICE)) {
-                    type = TransmuteParticle.ParticleType.ICE;
-                } else {
-                    type = TransmuteParticle.ParticleType.WATER;
-                }
-                float center_x = card.current_x;
-                float center_y = card.current_y - (512f * offsetPercent) + 256f; //start at bottom of card at 100%, end at top of card at 0%
-                for (int i = 0; i < num; ++i) {
+            particleTimer += Gdx.graphics.getDeltaTime();
+            while (particleTimer >= DURATION_PER_PARTICLE) {
+                particleTimer -= DURATION_PER_PARTICLE;
+                for (AbstractCard card : transmutedPairs.keySet()) {
+                    HydrologistParticle.ParticleType type;
+                    AbstractCard pairCard = transmutedPairs.get(card);
+                    if (pairCard.hasTag(HydrologistTags.STEAM)) {
+                        type = HydrologistParticle.ParticleType.STEAM;
+                    } else if (pairCard.hasTag(HydrologistTags.ICE)) {
+                        type = HydrologistParticle.ParticleType.ICE;
+                    } else {
+                        type = HydrologistParticle.ParticleType.WATER;
+                    }
+                    float center_x = card.current_x;
+                    float center_y = card.current_y - (512f * offsetPercent) + 256f; //start at bottom of card at 100%, end at top of card at 0%
                     float rotation = AbstractDungeon.miscRng.random(0.0f, 360.0f);
                     float scale = AbstractDungeon.miscRng.random(0.8f, 1.2f);
                     //calculate random coordinates within a bounding box
                     float x = center_x + (AbstractDungeon.miscRng.random(0.0f, PARTICLE_SPAWN_WIDTH * Settings.scale) - ((PARTICLE_SPAWN_WIDTH * Settings.scale) / 2));
                     float y = center_y + (AbstractDungeon.miscRng.random(0.0f, PARTICLE_SPAWN_HEIGHT * Settings.scale) - ((PARTICLE_SPAWN_HEIGHT * Settings.scale) / 2));
-                    AbstractDungeon.topLevelEffectsQueue.add(new TransmuteParticle(type, x, y, rotation, scale));
+                    AbstractDungeon.topLevelEffectsQueue.add(new HydrologistParticle(type, x, y, rotation, scale));
                 }
             }
         } else {

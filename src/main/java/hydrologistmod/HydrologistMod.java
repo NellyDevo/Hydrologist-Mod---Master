@@ -25,7 +25,7 @@ import hydrologistmod.powers.ColdPower;
 import hydrologistmod.powers.HeatPower;
 import hydrologistmod.powers.ThermalShockPower;
 import hydrologistmod.relics.Distillery;
-import hydrologistmod.vfx.TransmuteParticle;
+import hydrologistmod.vfx.HydrologistParticle;
 import javassist.CtClass;
 import javassist.NotFoundException;
 import org.apache.logging.log4j.LogManager;
@@ -146,7 +146,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         Texture badgeImg = new Texture("hydrologistmod/images/badge.png");
         ModPanel settingsPanel = new ModPanel();
         BaseMod.registerModBadge(badgeImg, "The Hydrologist Mod", "Johnny Devo", "Adds a new character to the game: The Hydrologist.", settingsPanel);
-        TransmuteParticle.initializeRegions();
+        HydrologistParticle.initializeRegions();
     }
 
     @Override
