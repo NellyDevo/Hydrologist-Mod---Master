@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.FillHandWithCopiesAction;
+import hydrologistmod.actions.HydrologistDamageAction;
 import hydrologistmod.actions.TransmuteCardAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -35,7 +36,7 @@ public class CrystalLattice extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+        addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
         addToBot(new TransmuteCardAction((AbstractCard newCard) -> addToTop(new FillHandWithCopiesAction(newCard))));
     }
 

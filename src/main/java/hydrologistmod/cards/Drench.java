@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.HydrologistMod;
+import hydrologistmod.actions.HydrologistDamageAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.ColdPower;
@@ -39,7 +40,7 @@ public class Drench extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+        addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
         if (!HydrologistMod.isHot(m)) {
             addToBot(new ApplyPowerAction(m, p, new ColdPower(m, p, magicNumber), magicNumber));
         }
