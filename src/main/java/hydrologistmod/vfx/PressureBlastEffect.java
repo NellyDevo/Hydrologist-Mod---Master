@@ -15,12 +15,12 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hydrologistmod.actions.PressureBlastAction;
 
 public class PressureBlastEffect extends AbstractGameEffect {
-    private static final float LOOP_TARGET_VOLUME = 0.8f;
+    private static final float LOOP_TARGET_VOLUME = 0.2f;
     private static final float VOLUME_FADE_DURATION = 0.5f;
     private static final Texture CRACK_TEXTURE = new Texture("hydrologistmod/images/vfx/PressureBlastCrack.png");
     private static final Texture MASK_TEXTURE = new Texture("hydrologistmod/images/vfx/PressureBlastCrackMask.png");
-    private static final float CRACK_OFFSET_X = 20.0f;
-    private static final float CRACK_OFFSET_Y = 20.0f;
+    private static final float CRACK_OFFSET_X = 80.0f;
+    private static final float CRACK_OFFSET_Y = 30.0f;
     private static TextureAtlas.AtlasRegion beamImg;
     private static TextureRegion crackImg = new TextureRegion(CRACK_TEXTURE);
     private static TextureRegion maskImg = new TextureRegion(MASK_TEXTURE);
@@ -41,6 +41,8 @@ public class PressureBlastEffect extends AbstractGameEffect {
     public boolean doneBlasting = false;
     private float iceTransparency = 0.0f;
     private float iceTargetTransparency;
+    private float crackTransparency = 1.0f;
+    private Color crackRenderColor = Color.WHITE.cpy();
     private Color iceRenderColor = Color.WHITE.cpy();
     private PressureBlastAction parent;
     private Phase phase = Phase.FADE_IN;
@@ -87,12 +89,12 @@ public class PressureBlastEffect extends AbstractGameEffect {
                     crackFormDuration = 0;
                     phase = Phase.BLASTING;
                 }
-                crackMaskSize = Interpolation.linear.apply(0.0f, crackMaskTargetSize, (crackFormStartDuration - crackFormDuration) / crackFormStartDuration);
+                crackMaskSize = Interpolation.linear.apply(0.1f, crackMaskTargetSize, (crackFormStartDuration - crackFormDuration) / crackFormStartDuration);
                 break;
             //phase 3: render hyperbeam-like effect under ice sphere, loop sound
             case BLASTING:
                 if (!loopStarted) {
-                    soundID = CardCrawlGame.sound.playAndLoop("hydrologistmod:STEAM_LOOP");
+                    soundID = CardCrawlGame.sound.playAndLoop("hydrologistmod:STEAM_LOOP", 0.05f);
                     parent.beginBlasting = true;
                     loopStarted = true;
                     renderBeam = true;
@@ -103,7 +105,7 @@ public class PressureBlastEffect extends AbstractGameEffect {
                         if (volumeDuration >= VOLUME_FADE_DURATION) {
                             volumeDuration = VOLUME_FADE_DURATION;
                         }
-                        loopVolume = Interpolation.linear.apply(0.0f, LOOP_TARGET_VOLUME, volumeDuration / VOLUME_FADE_DURATION);
+                        loopVolume = Interpolation.linear.apply(0.05f, LOOP_TARGET_VOLUME, volumeDuration / VOLUME_FADE_DURATION);
                         CardCrawlGame.sound.adjustVolume("hydrologistmod:STEAM_LOOP", soundID, loopVolume);
                     }
                 } else {
@@ -114,7 +116,7 @@ public class PressureBlastEffect extends AbstractGameEffect {
                         renderBeam = false;
                         CardCrawlGame.sound.stop("hydrologistmod:STEAM_LOOP");
                     }
-                    loopVolume = Interpolation.linear.apply(LOOP_TARGET_VOLUME, 0.0f, (VOLUME_FADE_DURATION - volumeDuration) / VOLUME_FADE_DURATION);
+                    loopVolume = Interpolation.linear.apply(LOOP_TARGET_VOLUME, 0.05f, (VOLUME_FADE_DURATION - volumeDuration) / VOLUME_FADE_DURATION);
                     CardCrawlGame.sound.adjustVolume("hydrologistmod:STEAM_LOOP", soundID, loopVolume);
                 }
                 break;
@@ -125,7 +127,9 @@ public class PressureBlastEffect extends AbstractGameEffect {
                     isDone = true;
                     fadeDuration = fadeStartDuration;
                 }
+                crackTransparency = Interpolation.linear.apply(1.0f, 0.0f, fadeDuration / fadeStartDuration);
                 iceTransparency = Interpolation.linear.apply(iceTargetTransparency, 0.0f, fadeDuration / fadeStartDuration);
+                crackRenderColor.a = crackTransparency;
                 iceRenderColor.a = iceTransparency;
                 break;
         }
@@ -137,6 +141,7 @@ public class PressureBlastEffect extends AbstractGameEffect {
             float crackX = centerX + (CRACK_OFFSET_X * Settings.scale);
             float crackY = centerY + (CRACK_OFFSET_Y * Settings.scale);
             if (crackFormDuration == 0.0f) {
+                sb.setColor(crackRenderColor);
                 sb.draw(crackImg, crackX - (crackImg.getRegionWidth() / 2.0f), crackY - (crackImg.getRegionHeight() / 2.0f), crackImg.getRegionWidth() / 2.0f, crackImg.getRegionHeight() / 2.0f, crackImg.getRegionWidth(), crackImg.getRegionHeight(), scale, scale, crackRotation);
             } else {
                 //draw the crack in fb
@@ -168,12 +173,12 @@ public class PressureBlastEffect extends AbstractGameEffect {
         //render beam
         if (renderBeam) {
             sb.setBlendFunction(GL30.GL_SRC_ALPHA, GL30.GL_ONE);
-            sb.setColor(Color.CYAN.cpy());
-            float beamX = centerX + ((CRACK_OFFSET_X - 10.0f) * Settings.scale);
+            sb.setColor(Color.GRAY.cpy());
+            float beamX = centerX;
             float beamY = centerY + (CRACK_OFFSET_Y * Settings.scale);
             sb.draw(beamImg, beamX, beamY - beamImg.packedHeight / 2.0f, 0.0f, beamImg.packedHeight / 2.0f, beamImg.packedWidth, beamImg.packedHeight, scale * 2.0f + MathUtils.random(-0.05f, 0.05f), scale * 1.5f + MathUtils.random(-0.1f, 0.1f), MathUtils.random(-4.0f, 4.0f));
             sb.draw(beamImg, beamX, beamY - beamImg.packedHeight / 2.0f, 0.0f, beamImg.packedHeight / 2.0f, beamImg.packedWidth, beamImg.packedHeight, scale * 2.0f + MathUtils.random(-0.05f, 0.05f), scale * 1.5f + MathUtils.random(-0.1f, 0.1f), MathUtils.random(-4.0f, 4.0f));
-            sb.setColor(Color.GRAY.cpy());
+            sb.setColor(new Color(0.3f, 0.3f, 0.3f, 1.0f));
             sb.draw(beamImg, beamX, beamY - beamImg.packedHeight / 2.0f, 0.0f, beamImg.packedHeight / 2.0f, beamImg.packedWidth, beamImg.packedHeight, scale * 2.0f, scale / 2.0f, MathUtils.random(-2.0f, 2.0f));
             sb.draw(beamImg, beamX, beamY - beamImg.packedHeight / 2.0f, 0.0f, beamImg.packedHeight / 2.0f, beamImg.packedWidth, beamImg.packedHeight, scale * 2.0f, scale / 2.0f, MathUtils.random(-2.0f, 2.0f));
             sb.setBlendFunction(GL30.GL_SRC_ALPHA, GL30.GL_ONE_MINUS_SRC_ALPHA);

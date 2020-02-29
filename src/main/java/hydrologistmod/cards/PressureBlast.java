@@ -38,7 +38,7 @@ public class PressureBlast extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new PressureBlastAction(p, m, damage, damageTypeForTurn, freeToPlayOnce, energyOnUse + magicNumber));
+        addToBot(new PressureBlastAction(p, m, damage, damageTypeForTurn, freeToPlayOnce, energyOnUse + magicNumber, p.hb.cX, p.hb.cY));
     }
 
     @Override

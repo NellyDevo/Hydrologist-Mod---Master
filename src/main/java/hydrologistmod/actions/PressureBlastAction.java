@@ -25,13 +25,17 @@ public class PressureBlastAction extends AbstractGameAction {
     private int damagesPerSecond = 12;
     private float durationPerDamage = damagesPerSecond / 60.0f;
     private float damageDuration = durationPerDamage;
+    private float centerX;
+    private float centerY;
 
-    public PressureBlastAction(AbstractPlayer p, AbstractMonster m, int damage, DamageInfo.DamageType damageTypeForTurn, boolean freeToPlayOnce, int energyOnUse) {
+    public PressureBlastAction(AbstractPlayer p, AbstractMonster m, int damage, DamageInfo.DamageType damageTypeForTurn, boolean freeToPlayOnce, int energyOnUse, float x, float y) {
         this.freeToPlayOnce = freeToPlayOnce;
         this.p = p;
         this.m = m;
         this.energyOnUse = energyOnUse;
         info = new DamageInfo(p, damage, damageTypeForTurn);
+        centerX = x;
+        centerY = y;
     }
 
     @Override
@@ -47,7 +51,7 @@ public class PressureBlastAction extends AbstractGameAction {
                 p.getRelic(ChemicalX.ID).flash();
             }
             if (amount > 0) {
-                effect = new PressureBlastEffect(p.hb.cX, p.hb.cY, 0.5f, 1.0f, 2.0f, this);
+                effect = new PressureBlastEffect(centerX, centerY, 0.5f, 0.4f, 1.0f, this);
                 AbstractDungeon.effectList.add(effect);
                 if (!freeToPlayOnce) {
                     p.energy.use(EnergyPanel.totalCount);

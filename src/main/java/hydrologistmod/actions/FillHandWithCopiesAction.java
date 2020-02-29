@@ -25,5 +25,15 @@ public class FillHandWithCopiesAction extends AbstractGameAction {
             AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(card, BaseMod.MAX_HAND_SIZE - AbstractDungeon.player.hand.size()));
         }
         isDone = true;
+
+        int x = 10;
+
+        do {
+            x += 5;
+        } while (x < 20);
+
+        while (x < 30) {
+            x += 5;
+        }
     }
 }

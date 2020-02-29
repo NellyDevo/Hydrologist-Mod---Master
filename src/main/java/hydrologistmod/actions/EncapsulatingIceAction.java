@@ -34,7 +34,7 @@ public class EncapsulatingIceAction extends AbstractGameAction {
     @Override
     public void update() {
         AbstractPlayer p = AbstractDungeon.player;
-        AbstractDungeon.effectList.add(new EncapsulatingIceEffect(p.hb.cX, p.hb.cY, 2.0f, 1.0f, 0.5f));
+        AbstractDungeon.effectList.add(new EncapsulatingIceEffect(p.hb.cX, p.hb.cY, 1.0f, 0.7f, 0.5f));
         int effect = EnergyPanel.totalCount;
         if (energyOnUse != -1) {
             effect = energyOnUse;
