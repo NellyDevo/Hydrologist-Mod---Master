@@ -154,6 +154,8 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         BaseMod.addAudio("hydrologistmod:ICE", "hydrologistmod/sfx/Ice_SFX.ogg");
         BaseMod.addAudio("hydrologistmod:WATER", "hydrologistmod/sfx/Water_SFX.ogg");
         BaseMod.addAudio("hydrologistmod:STEAM", "hydrologistmod/sfx/Steam_SFX.ogg");
+        BaseMod.addAudio("hydrologistmod:ICE_CRACK", "hydrologistmod/sfx/Ice_Crack_SFX.ogg");
+        BaseMod.addAudio("hydrologistmod:STEAM_LOOP", "hydrologistmod/sfx/Steam_Loop_SFX.ogg");
     }
 
     @Override

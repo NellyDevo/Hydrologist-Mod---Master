@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.powers.EncapsulatingIcePower;
+import hydrologistmod.vfx.EncapsulatingIceEffect;
 
 import java.util.UUID;
 
@@ -33,6 +34,7 @@ public class EncapsulatingIceAction extends AbstractGameAction {
     @Override
     public void update() {
         AbstractPlayer p = AbstractDungeon.player;
+        AbstractDungeon.effectList.add(new EncapsulatingIceEffect(p.hb.cX, p.hb.cY, 2.0f, 1.0f, 0.5f));
         int effect = EnergyPanel.totalCount;
         if (energyOnUse != -1) {
             effect = energyOnUse;

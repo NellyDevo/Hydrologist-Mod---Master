@@ -1,12 +1,12 @@
 package hydrologistmod.cards;
 
-import com.megacrit.cardcrawl.actions.unique.SkewerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hydrologistmod.actions.PressureBlastAction;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -38,7 +38,7 @@ public class PressureBlast extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SkewerAction(p, m, damage, damageTypeForTurn, freeToPlayOnce, energyOnUse + magicNumber));
+        addToBot(new PressureBlastAction(p, m, damage, damageTypeForTurn, freeToPlayOnce, energyOnUse + magicNumber));
     }
 
     @Override
