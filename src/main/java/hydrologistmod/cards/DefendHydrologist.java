@@ -25,7 +25,7 @@ public class DefendHydrologist extends AbstractHydrologistCard {
                 AbstractCard.CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF);
         block = baseBlock = BLOCK_AMT;
-        tags.add(BaseModCardTags.BASIC_DEFEND);
+        tags.add(CardTags.STARTER_DEFEND);
     }
 
     @Override

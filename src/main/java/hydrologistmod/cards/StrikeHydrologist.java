@@ -1,6 +1,5 @@
 package hydrologistmod.cards;
 
-import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -27,8 +26,8 @@ public class StrikeHydrologist extends AbstractHydrologistCard {
                 AbstractCard.CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
-        tags.add(AbstractCard.CardTags.STRIKE);
-        tags.add(BaseModCardTags.BASIC_STRIKE);
+        tags.add(CardTags.STRIKE);
+        tags.add(CardTags.STARTER_STRIKE);
     }
 
     @Override
