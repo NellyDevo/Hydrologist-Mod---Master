@@ -2,18 +2,13 @@ package hydrologistmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.powers.EncapsulatingIcePower;
 import hydrologistmod.vfx.EncapsulatingIceEffect;
-
-import java.util.UUID;
 
 public class EncapsulatingIceAction extends AbstractGameAction {
 //    private static final String ID = "hydrologistmod:EncapsulatingIceAction";

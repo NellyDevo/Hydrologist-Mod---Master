@@ -6,8 +6,6 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-import java.util.ArrayList;
-
 public class FrozenDomainAction extends AbstractGameAction {
 //    private static final String ID = "hydrologistmod:FrozenDomainAction";
 //    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
