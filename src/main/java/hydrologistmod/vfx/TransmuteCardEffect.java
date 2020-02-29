@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hydrologistmod.actions.TransmuteCardAction;
+import hydrologistmod.cards.AbstractHydrologistCard;
 import hydrologistmod.patches.HydrologistTags;
 
 import java.util.HashMap;
@@ -199,14 +200,10 @@ public class TransmuteCardEffect extends AbstractGameEffect {
             while (particleTimer >= DURATION_PER_PARTICLE) {
                 particleTimer -= DURATION_PER_PARTICLE;
                 for (AbstractCard card : transmutedPairs.keySet()) {
-                    HydrologistParticle.ParticleType type;
                     AbstractCard pairCard = transmutedPairs.get(card);
-                    if (pairCard.hasTag(HydrologistTags.STEAM)) {
-                        type = HydrologistParticle.ParticleType.STEAM;
-                    } else if (pairCard.hasTag(HydrologistTags.ICE)) {
-                        type = HydrologistParticle.ParticleType.ICE;
-                    } else {
-                        type = HydrologistParticle.ParticleType.WATER;
+                    AbstractCard.CardTags type = null;
+                    if (pairCard instanceof AbstractHydrologistCard) {
+                        type = ((AbstractHydrologistCard)pairCard).getHydrologistSubtype();
                     }
                     float center_x = card.current_x;
                     float center_y = card.current_y - (512f * offsetPercent) + 256f; //start at bottom of card at 100%, end at top of card at 0%

@@ -4,8 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import hydrologistmod.patches.HydrologistTags;
 
 import java.util.HashMap;
 
@@ -18,7 +20,7 @@ public class HydrologistParticle extends AbstractGameEffect {
     private static final TextureRegion[] STEAM = new TextureRegion[9];
     private static final int ANIM_FPS = 60;
     private static final float FRAME_DURATION = 1.0f / ANIM_FPS;
-    private static HashMap<ParticleType, TextureRegion[]> regions;
+    private static HashMap<AbstractCard.CardTags, TextureRegion[]> regions;
     private float x;
     private float y;
     private int index = 0;
@@ -27,8 +29,12 @@ public class HydrologistParticle extends AbstractGameEffect {
     private float endDuration;
     private TextureRegion[] region;
 
-    public HydrologistParticle(ParticleType type, float x, float y, float rotation, float scale) {
-        region = regions.get(type);
+    public HydrologistParticle(AbstractCard.CardTags type, float x, float y, float rotation, float scale) {
+        if (type != null) {
+            region = regions.get(type);
+        } else {
+            region = regions.get(HydrologistTags.WATER);
+        }
         this.x = x;
         this.y = y;
         this.rotation = rotation;
@@ -59,9 +65,9 @@ public class HydrologistParticle extends AbstractGameEffect {
             }
         }
         regions = new HashMap<>();
-        regions.put(ParticleType.ICE, ICE);
-        regions.put(ParticleType.WATER, WATER);
-        regions.put(ParticleType.STEAM, STEAM);
+        regions.put(HydrologistTags.ICE, ICE);
+        regions.put(HydrologistTags.WATER, WATER);
+        regions.put(HydrologistTags.STEAM, STEAM);
     }
 
     public void update() {
@@ -81,11 +87,5 @@ public class HydrologistParticle extends AbstractGameEffect {
 
     public void dispose() {
 
-    }
-
-    public enum ParticleType {
-        ICE,
-        WATER,
-        STEAM
     }
 }

@@ -189,4 +189,15 @@ public abstract class AbstractHydrologistCard extends CustomCard {
         }
     }
 
+    public CardTags getHydrologistSubtype() {
+        if (this.hasTag(HydrologistTags.WATER)) {
+            return HydrologistTags.WATER;
+        } else if (this.hasTag(HydrologistTags.ICE)) {
+            return HydrologistTags.ICE;
+        } else if (this.hasTag(HydrologistTags.STEAM)) {
+            return HydrologistTags.STEAM;
+        }
+        System.out.println("WARNING: Hydrologist card which called getSubtype does not have a proper subtype");
+        return null;
+    }
 }
