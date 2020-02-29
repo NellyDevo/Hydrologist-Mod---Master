@@ -198,6 +198,6 @@ public abstract class AbstractHydrologistCard extends CustomCard {
             return HydrologistTags.STEAM;
         }
         System.out.println("WARNING: Hydrologist card which called getSubtype does not have a proper subtype");
-        return null;
+        return HydrologistTags.WATER;
     }
 }
