@@ -40,6 +40,7 @@ public class HighPressurePower extends AbstractPower implements CloneablePowerIn
     public int betterOnApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
         if (power instanceof HeatPower && source == owner) {
             stackAmount += amount;
+            power.amount += amount;
             flash();
         }
         return stackAmount;

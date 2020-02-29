@@ -39,6 +39,7 @@ public class DeepFreezePower extends AbstractPower implements CloneablePowerInte
     @Override
     public int betterOnApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
         if (power instanceof ColdPower && source == owner) {
+            power.amount += amount;
             stackAmount += amount;
             flash();
         }
