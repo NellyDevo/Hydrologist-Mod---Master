@@ -59,12 +59,14 @@ public class ThermalShockPower extends AbstractPower implements CloneablePowerIn
         if (target == owner) {
             if (power instanceof HeatPower) {
                 addToTop(new DamageAction(owner, new DamageInfo(source, power.amount, DamageInfo.DamageType.THORNS)));
+                flash();
+                return false;
             }
             if (power instanceof ColdPower) {
                 addToTop(new DamageAction(owner, new DamageInfo(source, power.amount, DamageInfo.DamageType.THORNS)));
+                flash();
+                return false;
             }
-            flash();
-            return false;
         }
         return true;
     }
