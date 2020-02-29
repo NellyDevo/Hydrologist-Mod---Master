@@ -15,7 +15,6 @@ public class Distillery extends CustomRelic {
     public static final String ID = "hydrologistmod:Distillery";
     public static final Texture IMG = new Texture("hydrologistmod/images/relics/Distillery.png");
     public static final Texture OUTLINE = new Texture("hydrologistmod/images/relics/DistilleryOutline.png");
-    private static final int TURN_COUNT = 3;
 
     public Distillery() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
@@ -23,7 +22,7 @@ public class Distillery extends CustomRelic {
 
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + TURN_COUNT + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0];
     }
 
     @Override
