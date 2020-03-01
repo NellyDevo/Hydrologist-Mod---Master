@@ -75,7 +75,6 @@ public class TransmuteCardAction extends AbstractGameAction {
             if (!transformPlayed) {
                 if (AbstractDungeon.player.hand.size() < 1) {
                     isDone = true;
-                    return;
                 } else {
                     if (anyNumber) {
                         AbstractDungeon.handCardSelectScreen.open("transmute.", 99, true, true);
@@ -85,7 +84,6 @@ public class TransmuteCardAction extends AbstractGameAction {
                         } else {
                             AbstractDungeon.handCardSelectScreen.open("transmute.", AbstractDungeon.player.hand.size(), false, false);
                         }
-                        return;
                     }
                 }
             } else {
@@ -113,8 +111,8 @@ public class TransmuteCardAction extends AbstractGameAction {
                 transmutedPairs.put(playedCard, newCard);
                 AbstractDungeon.topLevelEffects.add(new TransmuteCardEffect(transmutedPairs, null, this, 0.75f));
                 completed = true;
-                return;
             }
+            return;
         } else if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             AbstractCard oldCard = AbstractDungeon.handCardSelectScreen.selectedCards.group.get(0);
             AbstractDungeon.player.hand.group.remove(oldCard);
