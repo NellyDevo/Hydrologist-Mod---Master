@@ -154,7 +154,11 @@ public class TransmuteCardAction extends AbstractGameAction {
             return;
         }
         if (AbstractDungeon.gridSelectScreen.selectedCards.isEmpty() && AbstractDungeon.handCardSelectScreen.selectedCards.group.isEmpty() && initialized) {
-            AbstractDungeon.topLevelEffects.add(new TransmuteCardEffect(transmutedPairs, CardGroup.CardGroupType.HAND, this, 0.75f));
+            float duration = 0.75f;
+            if (anyNumber) {
+                duration *= 2.0f;
+            }
+            AbstractDungeon.topLevelEffects.add(new TransmuteCardEffect(transmutedPairs, CardGroup.CardGroupType.HAND, this, duration));
             completed = true;
         }
     }
