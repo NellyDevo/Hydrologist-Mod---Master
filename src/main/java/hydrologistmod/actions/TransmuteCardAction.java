@@ -155,7 +155,7 @@ public class TransmuteCardAction extends AbstractGameAction {
         }
         if (AbstractDungeon.gridSelectScreen.selectedCards.isEmpty() && AbstractDungeon.handCardSelectScreen.selectedCards.group.isEmpty() && initialized) {
             float duration = 0.75f;
-            if (anyNumber) {
+            if (anyNumber && transmutedPairs.keySet().size() > 1) {
                 duration *= 2.0f;
             }
             AbstractDungeon.topLevelEffects.add(new TransmuteCardEffect(transmutedPairs, CardGroup.CardGroupType.HAND, this, duration));
