@@ -2,6 +2,6 @@
   "hydrologistmod:Distillery": {
     "NAME": "Distillery",
     "FLAVOR": "A chemical factory intended for separating liquids into its constituent parts.",
-    "DESCRIPTIONS": ["The first time each combat you play a hydrologistmod:Corporeal card, hydrologistmod:Flow."]
+    "DESCRIPTIONS": ["The first time each combat you play a #yhydrologistmod:Corporeal card, #yhydrologistmod:Flow."]
   }
 }
