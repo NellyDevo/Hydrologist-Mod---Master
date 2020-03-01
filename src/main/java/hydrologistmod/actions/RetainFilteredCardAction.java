@@ -71,6 +71,7 @@ public class RetainFilteredCardAction extends AbstractGameAction {
                 if (!c.isEthereal) {
                     c.retain = true;
                 }
+                p.hand.addToTop(c);
             }
             for (AbstractCard c : cannotRetain) {
                 p.hand.addToTop(c);
