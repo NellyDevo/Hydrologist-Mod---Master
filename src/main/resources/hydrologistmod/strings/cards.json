@@ -219,7 +219,7 @@
   },
   "hydrologistmod:HeatBlast": {
     "NAME": "Heat Blast",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Heat. NL Damage amount is multiplied once for each stack of Hydrologistmod:Heat.",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Heat. NL Damage amount is multiplied once for each stack of hydrologistmod:Heat.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:HighPressure": {
