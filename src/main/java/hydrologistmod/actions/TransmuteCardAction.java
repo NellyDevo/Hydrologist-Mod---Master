@@ -149,7 +149,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                 return;
             }
         } else if (AbstractDungeon.gridSelectScreen.selectedCards.size() != 0) {
-            AbstractCard newCard = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
+            AbstractCard newCard = AbstractDungeon.gridSelectScreen.selectedCards.get(0).makeCopy();
             modifyNewCard(storedOldCard, newCard);
             transmutedPairs.put(storedOldCard, newCard);
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
