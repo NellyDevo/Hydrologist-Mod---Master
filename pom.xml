@@ -6,7 +6,7 @@
     <!-- Change These to match your mod -->
     <groupId>hydrologistmod</groupId>
     <artifactId>HydrologistMod</artifactId>
-    <version>0.1.8</version>
+    <version>0.1.9</version>
     <packaging>jar</packaging>
     <name>TheHydrologist</name>
     <description>Slay the Spire mod introducing custom character: The Hydrologist.</description>
