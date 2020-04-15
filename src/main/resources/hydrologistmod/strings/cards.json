@@ -374,7 +374,7 @@
   "hydrologistmod:Ripcurrent": {
     "NAME": "Ripcurrent",
     "DESCRIPTION": "Double the enemy's hydrologistmod:Cold amount. NL Exhaust. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Double the enemy's hydrologistmod:Cold amount. NL Exhaust. NL hydrologistmod:Swappable."
+    "UPGRADE_DESCRIPTION": "Triple the enemy's hydrologistmod:Cold amount. NL Exhaust. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:RiverOfTime": {
     "NAME": "River Of Time",
