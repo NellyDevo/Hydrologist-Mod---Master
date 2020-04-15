@@ -19,7 +19,7 @@ public class ColdPower extends AbstractPower implements CloneablePowerInterface,
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final float WEAK_MULTIPLIER = 0.75f;
+    public static final float WEAK_MULTIPLIER = 0.85f;
     private AbstractCreature source;
 
     public ColdPower(AbstractCreature owner, AbstractCreature source, int amount) {
