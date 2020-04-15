@@ -60,7 +60,7 @@
   },
   "hydrologistmod:DeepFreeze": {
     "NAME": "Deep Freeze",
-    "DESCRIPTION": "Whenever you apply hydrologistmod:Cold, apply !M! additional hydrologistmod:Cold.",
+    "DESCRIPTION": "Whenever you apply hydrologistmod:Cold, apply !M! additional hydrologistmod:Cold. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Defend_Hydrologist": {
@@ -224,7 +224,7 @@
   },
   "hydrologistmod:HighPressure": {
     "NAME": "High Pressure",
-    "DESCRIPTION": "Whenever you apply hydrologistmod:Heat, apply !M! additional hydrologistmod:Heat.",
+    "DESCRIPTION": "Whenever you apply hydrologistmod:Heat, apply !M! additional hydrologistmod:Heat. NL hydrologistmod:Swappable",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:HighTide": {
