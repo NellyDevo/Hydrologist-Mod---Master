@@ -35,8 +35,8 @@
   },
   "hydrologistmod:Cryogenics": {
     "NAME": "Cryogenics",
-    "DESCRIPTION": "Choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Draw a card, then choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust. NL hydrologistmod:Swappable."
+    "DESCRIPTION": "Choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Draw a card, then choose any number of cards in your hand to hydrologistmod:Transmute. NL Exhaust."
   },
   "hydrologistmod:CrystalIce": {
     "NAME": "Crystal Ice",
