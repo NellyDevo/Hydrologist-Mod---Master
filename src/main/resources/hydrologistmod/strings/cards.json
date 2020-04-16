@@ -317,7 +317,7 @@
   },
   "hydrologistmod:PressureBuildup": {
     "NAME": "Pressure Buildup",
-    "DESCRIPTION": "Every time you play 10 hydrologistmod:Corporeal cards, deal !M! damage to ALL enemies.",
+    "DESCRIPTION": "Every 10th hydrologistmod:Corporeal card you play, deal !M! damage to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:PressureCycle": {
