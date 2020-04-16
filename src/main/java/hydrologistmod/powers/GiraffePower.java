@@ -1,16 +1,13 @@
 package hydrologistmod.powers;
 
+import basemod.BaseMod;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.EquilibriumPower;
-import hydrologistmod.HydrologistMod;
-import hydrologistmod.actions.RetainFilteredCardAction;
 
 public class GiraffePower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:GiraffePower";
@@ -35,10 +32,28 @@ public class GiraffePower extends AbstractPower implements CloneablePowerInterfa
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        if (isPlayer && !AbstractDungeon.player.hand.isEmpty() && !AbstractDungeon.player.hasPower(EquilibriumPower.POWER_ID)) {
-            AbstractDungeon.actionManager.addToBottom(new RetainFilteredCardAction(HydrologistMod::isThisCorporeal, amount));
-        }
+    public void onInitialApplication() {
+        BaseMod.MAX_HAND_SIZE += amount;
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        BaseMod.MAX_HAND_SIZE += stackAmount;
+    }
+
+    @Override
+    public void reducePower(int reduceAmount) {
+        BaseMod.MAX_HAND_SIZE -= reduceAmount;
+    }
+
+    @Override
+    public void onVictory() {
+        BaseMod.MAX_HAND_SIZE -= amount;
+    }
+
+    @Override
+    public void onRemove() {
+        BaseMod.MAX_HAND_SIZE -= amount;
     }
 
     @Override

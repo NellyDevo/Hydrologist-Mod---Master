@@ -63,7 +63,7 @@
   },
   "hydrologistmod:GiraffePower": {
     "NAME": "Giraffe",
-    "DESCRIPTIONS": ["At the end of your turn, #yRetain up to #b", " #yCorporeal cards."]
+    "DESCRIPTIONS": ["Your maximum hand size is increased by #b", "."]
   },
   "hydrologistmod:HailstormPower": {
     "NAME": "Hailstorm",

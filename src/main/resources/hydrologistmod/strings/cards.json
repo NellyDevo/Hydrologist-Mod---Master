@@ -184,7 +184,7 @@
   },
   "hydrologistmod:Giraffe": {
     "NAME": "Giraffe",
-    "DESCRIPTION": "At the end of your turn, Retain up to !M! hydrologistmod:Corporeal cards.",
+    "DESCRIPTION": "Increase your maximum hand size by !M!.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:GlacialStrike": {

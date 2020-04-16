@@ -18,15 +18,15 @@ public class Giraffe extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Giraffe.png";
     private static final int COST = 1;
-    private static final int RETAINED_CARDS = 2;
-    private static final int UPGRADED_COST = 0;
+    private static final int SIZE_INCREASE = 2;
+    private static final int UPGRADE_SIZE_INCREASE = 1;
 
     public Giraffe() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.STEAM);
-        magicNumber = baseMagicNumber = RETAINED_CARDS;
+        magicNumber = baseMagicNumber = SIZE_INCREASE;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Giraffe extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeMagicNumber(UPGRADE_SIZE_INCREASE);
         }
     }
 }
