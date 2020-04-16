@@ -13,6 +13,11 @@
     "DESCRIPTION": "Whenever you draw an extra card, deal !M! damage to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Blizzard": {
+    "NAME": "Blizzard",
+    "DESCRIPTION": "Gain !B! Block. NL Whenever you play an *Ice card, gain !M! Block.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:BlockOfIce": {
     "NAME": "Block of Ice",
     "DESCRIPTION": "Gain !B! Block.",
@@ -205,11 +210,6 @@
   "hydrologistmod:Hail": {
     "NAME": "Hail",
     "DESCRIPTION": "Deal !D! damage. NL Increase the damage of ALL *Ice cards by !M! this combat.",
-    "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:Hailstorm": {
-    "NAME": "Hailstorm",
-    "DESCRIPTION": "Gain !B! Block. NL Whenever you play an *Ice card, the enemy takes !M! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:HeatAndPressure": {

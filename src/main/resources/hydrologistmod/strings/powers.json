@@ -3,6 +3,10 @@
     "NAME": "Aqueducts",
     "DESCRIPTIONS": ["Whenever you draw an extra card, deal #b", " damage to ALL enemies."]
   },
+  "hydrologistmod:BlizzardPower": {
+    "NAME": "Blizzard",
+    "DESCRIPTIONS": ["Whenever you play an #yIce card, you gain #b", " #yBlock."]
+  },
   "hydrologistmod:BranchingCreeksPower": {
     "NAME": "Branching Creeks",
     "DESCRIPTIONS": ["Whenever you #yTransmute a card, choose between it and ", " additional card.", " additional cards."]
@@ -64,10 +68,6 @@
   "hydrologistmod:GiraffePower": {
     "NAME": "Giraffe",
     "DESCRIPTIONS": ["Your maximum hand size is increased by #b", "."]
-  },
-  "hydrologistmod:HailstormPower": {
-    "NAME": "Hailstorm",
-    "DESCRIPTIONS": ["Whenever you play an #yIce card, this enemy takes #b", " damage."]
   },
   "hydrologistmod:HeatPower": {
     "NAME": "Heat",
