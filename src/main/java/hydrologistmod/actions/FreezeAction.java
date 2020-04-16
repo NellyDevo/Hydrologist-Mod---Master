@@ -1,12 +1,15 @@
 package hydrologistmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hydrologistmod.HydrologistMod;
 
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 public class FreezeAction extends AbstractGameAction {
     private DamageInfo info;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
+    private AbstractCard card;
 
     public FreezeAction(AbstractCreature target, DamageInfo info) {
         this.setValues(target, this.info = info);
@@ -35,7 +39,9 @@ public class FreezeAction extends AbstractGameAction {
                         }
                     }
                     if (!possibleCards.isEmpty()) {
-                        possibleCards.get(AbstractDungeon.miscRng.random(0, possibleCards.size() - 1)).upgrade();
+                        card = possibleCards.get(AbstractDungeon.miscRng.random(0, possibleCards.size() - 1));
+                        card.upgrade();
+                        AbstractDungeon.player.bottledCardUpgradeCheck(card);
                     }
             }
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
@@ -43,5 +49,10 @@ public class FreezeAction extends AbstractGameAction {
             }
         }
         this.tickDuration();
+        if (isDone && card != null) {
+            AbstractDungeon.effectsQueue.add(new UpgradeShineEffect(Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
+            AbstractDungeon.topLevelEffectsQueue.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy()));
+            addToTop(new WaitAction(Settings.ACTION_DUR_MED));
+        }
     }
 }
