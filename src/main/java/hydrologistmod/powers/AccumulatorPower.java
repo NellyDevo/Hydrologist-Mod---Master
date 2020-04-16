@@ -9,13 +9,13 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class GiraffePower extends AbstractPower implements CloneablePowerInterface {
-    public static final String POWER_ID = "hydrologistmod:GiraffePower";
+public class AccumulatorPower extends AbstractPower implements CloneablePowerInterface {
+    public static final String POWER_ID = "hydrologistmod:AccumulatorPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public GiraffePower(AbstractCreature owner, int amount) {
+    public AccumulatorPower(AbstractCreature owner, int amount) {
         name = NAME;
         ID = POWER_ID;
         this.owner = owner;
@@ -58,6 +58,6 @@ public class GiraffePower extends AbstractPower implements CloneablePowerInterfa
 
     @Override
     public AbstractPower makeCopy() {
-        return new GiraffePower(owner, amount);
+        return new AccumulatorPower(owner, amount);
     }
 }

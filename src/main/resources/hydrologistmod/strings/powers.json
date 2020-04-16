@@ -1,4 +1,8 @@
 {
+  "hydrologistmod:AccumulatorPower": {
+    "NAME": "Accumulator",
+    "DESCRIPTIONS": ["Your maximum hand size is increased by #b", "."]
+  },
   "hydrologistmod:AqueductsPower": {
     "NAME": "Aqueducts",
     "DESCRIPTIONS": ["Whenever you draw an extra card, deal #b", " damage to ALL enemies."]
@@ -64,10 +68,6 @@
   "hydrologistmod:FrigidFormPower": {
     "NAME": "Frigid Form",
     "DESCRIPTIONS": ["Whenever you play an #yIce card, gain #b", " #yBlock."]
-  },
-  "hydrologistmod:GiraffePower": {
-    "NAME": "Giraffe",
-    "DESCRIPTIONS": ["Your maximum hand size is increased by #b", "."]
   },
   "hydrologistmod:HeatPower": {
     "NAME": "Heat",
