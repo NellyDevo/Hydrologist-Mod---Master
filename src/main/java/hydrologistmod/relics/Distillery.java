@@ -2,6 +2,7 @@ package hydrologistmod.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -28,10 +29,17 @@ public class Distillery extends CustomRelic {
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (HydrologistMod.isThisCorporeal(card) && !grayscale) {
-            flash();
-            addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-            addToBot(new FlowAction());
-            grayscale = true;
+            AbstractRelic relic = this;
+            addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    flash();
+                    addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, relic));
+                    addToBot(new FlowAction());
+                    grayscale = true;
+                    isDone = true;
+                }
+            });
         }
     }
 
