@@ -29,7 +29,6 @@ public class TransmutePlayedCardPatch {
         public static SpireReturn Insert(UseCardAction __instance) {
             if (UseCardActionField.transmuteTargetCard.get(__instance) != null) {
                 AbstractCard newCard = UseCardActionField.transmuteTargetCard.get(__instance);
-                AbstractDungeon.player.cardInUse = null;
                 try {
                     Field targetCardField = UseCardAction.class.getDeclaredField("targetCard");
                     targetCardField.setAccessible(true);
@@ -38,13 +37,12 @@ public class TransmutePlayedCardPatch {
                     card.isInAutoplay = false;
                     card.exhaustOnUseOnce = false;
                     card.dontTriggerOnUseCard = false;
-                    TransmuteCardEffect.copyCardPosition(card, newCard);
-                    AbstractDungeon.player.hand.removeCard(card);
-                    AbstractDungeon.player.limbo.removeCard(card);
+                    targetCardField.set(__instance, newCard);
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
                 AbstractDungeon.player.hand.moveToDiscardPile(newCard);
+                AbstractDungeon.player.limbo.removeCard(newCard);
                 __instance.isDone = true;
                 return SpireReturn.Return(null);
             } else {

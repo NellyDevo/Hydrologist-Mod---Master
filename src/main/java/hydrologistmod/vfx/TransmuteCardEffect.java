@@ -259,6 +259,12 @@ public class TransmuteCardEffect extends AbstractGameEffect {
                         System.out.println("TransmuteCardEffect: How was this reached?");
                         break;
                 }
+            } else {
+                for (AbstractCard card : transmutedPairs.keySet()) {
+                    AbstractDungeon.player.limbo.removeCard(card);
+                    copyCardPosition(card, transmutedPairs.get(card));
+                    AbstractDungeon.player.limbo.addToTop(transmutedPairs.get(card));
+                }
             }
             action.isDone = true;
             isDone = true;

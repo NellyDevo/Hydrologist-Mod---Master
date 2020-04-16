@@ -103,6 +103,9 @@ public class TransmuteCardAction extends AbstractGameAction {
                         }
                     }
                 }
+                TransmuteCardEffect.copyCardPosition(playedCard, newCard);
+                AbstractDungeon.player.hand.removeCard(playedCard);
+                AbstractDungeon.player.cardInUse = null;
                 TransmutePlayedCardPatch.UseCardActionField.transmuteTargetCard.set(useCardAction, newCard);
                 transmutedPairs.put(playedCard, newCard);
                 AbstractDungeon.topLevelEffects.add(new TransmuteCardEffect(transmutedPairs, null, this, 0.75f));
