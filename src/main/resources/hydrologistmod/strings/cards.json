@@ -219,7 +219,7 @@
   },
   "hydrologistmod:HeatBlast": {
     "NAME": "Heat Blast",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Heat. NL Damage amount is multiplied once for each stack of hydrologistmod:Heat.",
+    "DESCRIPTION": "Deal !D! damage. NL Damage amount is multiplied once for each stack of hydrologistmod:Heat.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:HighPressure": {
@@ -501,7 +501,7 @@
   },
   "hydrologistmod:YawningAbyss": {
     "NAME": "Yawning Abyss",
-    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage an additional time for each stack of hydrologistmod:Cold on the enemy. NL Apply !M! hydrologistmod:Cold.",
+    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage an additional time for each stack of hydrologistmod:Cold on the enemy.",
     "UPGRADE_DESCRIPTION": ""
   }
 }
