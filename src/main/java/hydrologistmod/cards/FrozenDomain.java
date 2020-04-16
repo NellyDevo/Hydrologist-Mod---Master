@@ -53,6 +53,8 @@ public class FrozenDomain extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }
