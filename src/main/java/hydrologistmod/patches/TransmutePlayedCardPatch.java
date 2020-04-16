@@ -4,7 +4,6 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import hydrologistmod.vfx.TransmuteCardEffect;
 import javassist.CtBehavior;
 
 import java.lang.reflect.Field;
