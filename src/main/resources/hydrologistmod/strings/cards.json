@@ -45,7 +45,7 @@
   },
   "hydrologistmod:CrystalIce": {
     "NAME": "Crystal Ice",
-    "DESCRIPTION": "Block is not removed at the start of your turn. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Gain !B! Block. NL Increase the effect of the paired *Laminar *Flow by that much. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:CrystalLattice": {
