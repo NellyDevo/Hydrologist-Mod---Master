@@ -51,6 +51,8 @@ public class FlowingForm extends AbstractHydrologistCard implements SwappableCar
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_CARD_DRAW);
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }

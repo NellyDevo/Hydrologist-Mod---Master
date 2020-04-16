@@ -146,8 +146,8 @@
   },
   "hydrologistmod:FlowingForm": {
     "NAME": "Flowing Form",
-    "DESCRIPTION": "Whenever you play a *Water card, you may discard a card. If you do, draw !M! cards. NL hydrologistmod:Swaps to *Fleeting *Form.",
-    "UPGRADE_DESCRIPTION": ""
+    "DESCRIPTION": "Whenever you play a *Water card, you may discard a card. If you do, draw a card. NL hydrologistmod:Swaps to *Fleeting *Form.",
+    "UPGRADE_DESCRIPTION": "Whenever you play a *Water card, you may discard a card. If you do, draw !M! cards. NL hydrologistmod:Swaps to *Fleeting *Form."
   },
   "hydrologistmod:Freeze": {
     "NAME": "Freeze",
