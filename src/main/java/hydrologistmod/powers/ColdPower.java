@@ -1,7 +1,9 @@
 package hydrologistmod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -14,12 +16,13 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.interfaces.HeatAndColdPower;
 
-public class ColdPower extends AbstractPower implements CloneablePowerInterface, HeatAndColdPower {
+public class ColdPower extends AbstractPower implements CloneablePowerInterface, HeatAndColdPower, HealthBarRenderPower {
     public static final String POWER_ID = "hydrologistmod:ColdPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     public static final float WEAK_MULTIPLIER = 0.85f;
+    private static final Color HEALTH_BAR_COLOR = new Color(0.0F, 1.0F, 1.0F, 1.0F);
     private AbstractCreature source;
 
     public ColdPower(AbstractCreature owner, AbstractCreature source, int amount) {
@@ -81,6 +84,16 @@ public class ColdPower extends AbstractPower implements CloneablePowerInterface,
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int getHealthBarAmount() {
+        return amount * 2;
+    }
+
+    @Override
+    public Color getColor() {
+        return HEALTH_BAR_COLOR.cpy();
     }
 
     @Override
