@@ -20,9 +20,8 @@ public class PressureCycle extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/PressureCycle.png";
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int BLOCK_AMT = 2;
-    private static final int UPGRADE_BLOCK = 1;
 
     public PressureCycle() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -36,8 +35,10 @@ public class PressureCycle extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new EmptyDeckShuffleAction());
-        addToBot(new ShuffleAction(AbstractDungeon.player.drawPile, false));
+        if (!upgraded) {
+            addToBot(new EmptyDeckShuffleAction());
+            addToBot(new ShuffleAction(AbstractDungeon.player.drawPile, false));
+        }
         rawDescription = DESCRIPTION;
         initializeDescription();
     }
@@ -73,8 +74,8 @@ public class PressureCycle extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_BLOCK);
-            upgradeMagicNumber(UPGRADE_BLOCK);
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }
