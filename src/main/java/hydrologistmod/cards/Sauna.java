@@ -17,7 +17,7 @@ public class Sauna extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Sauna.png";
     private static final int COST = 1;
-    private static final int BLOCK_AMT = 3;
+    private static final int BLOCK_AMT = 5;
     private static final int UPGRADE_BLOCK = 2;
 
     public Sauna() {
