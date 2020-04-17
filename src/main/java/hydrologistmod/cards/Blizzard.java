@@ -35,7 +35,7 @@ public class Blizzard extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new ApplyPowerAction(p, p, new BlizzardPower(m, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new BlizzardPower(p, magicNumber)));
     }
 
     @Override
