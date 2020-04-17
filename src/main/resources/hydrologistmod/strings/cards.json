@@ -418,7 +418,7 @@
   },
   "hydrologistmod:SteadyTide": {
     "NAME": "Steady Tide",
-    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Flow.",
+    "DESCRIPTION": "hydrologistmod:Flow. NL Next turn, draw an additional extra card for each card discarded this way.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SteamEngine": {

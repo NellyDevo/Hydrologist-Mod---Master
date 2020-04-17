@@ -1,11 +1,12 @@
 package hydrologistmod.cards;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import hydrologistmod.actions.FlowAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -18,21 +19,18 @@ public class SteadyTide extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/SteadyTide.png";
     private static final int COST = 1;
-    private static final int BLOCK_AMT = 5;
-    private static final int UPGRADE_BLOCK = 2;
+    private static final int UPGRADED_COST = 0;
 
     public SteadyTide() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.WATER);
-        block = baseBlock = BLOCK_AMT;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, block));
-        addToBot(new FlowAction());
+        addToBot(new FlowAction((amount) -> addToTop(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, amount)))));
     }
 
     @Override
@@ -44,7 +42,7 @@ public class SteadyTide extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_BLOCK);
+            upgradeBaseCost(UPGRADED_COST);
         }
     }
 }
