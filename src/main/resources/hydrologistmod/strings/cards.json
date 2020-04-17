@@ -488,8 +488,8 @@
   },
   "hydrologistmod:WaterWheel": {
     "NAME": "Water Wheel",
-    "DESCRIPTION": "hydrologistmod:Flow. NL At the start of next turn, gain X [E] . NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "hydrologistmod:Flow. NL At the start of next turn, gain X [E] ."
+    "DESCRIPTION": "hydrologistmod:Transmute a card. NL The new card's damage and Block is increased by !M! times X. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:WaterWhip": {
     "NAME": "Water Whip",

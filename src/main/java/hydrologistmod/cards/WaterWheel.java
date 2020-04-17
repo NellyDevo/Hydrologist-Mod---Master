@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.actions.FlowAction;
 import hydrologistmod.actions.WaterWheelAction;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.AbstractCardEnum;
@@ -19,6 +18,8 @@ public class WaterWheel extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/WaterWheel.png";
     private static final int COST = -1;
+    private static final int MULTIPLIER = 3;
+    private static final int UPGRADE_MULTIPLIER = 2;
 
     public WaterWheel() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -26,12 +27,12 @@ public class WaterWheel extends AbstractHydrologistCard {
                 CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.WATER);
         exhaust = true;
+        magicNumber = baseMagicNumber = MULTIPLIER;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new FlowAction());
-        addToBot(new WaterWheelAction(energyOnUse, freeToPlayOnce));
+        addToBot(new WaterWheelAction(energyOnUse, freeToPlayOnce, magicNumber));
     }
 
     @Override
@@ -44,9 +45,7 @@ public class WaterWheel extends AbstractHydrologistCard {
         SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
-            exhaust = false;
+            upgradeMagicNumber(UPGRADE_MULTIPLIER);
         }
     }
 }

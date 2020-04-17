@@ -194,6 +194,11 @@ public class TransmuteCardAction extends AbstractGameAction {
         AbstractCard result = targets.get(AbstractDungeon.cardRandomRng.random(targets.size()-1));
         if (conditions != null) {
             while (!conditions.filter(result)) {
+                targets.remove(result);
+                if (targets.isEmpty()) {
+                    isDone = true;
+                    return null;
+                }
                 result = targets.get(AbstractDungeon.cardRandomRng.random(targets.size()-1));
             }
         }
