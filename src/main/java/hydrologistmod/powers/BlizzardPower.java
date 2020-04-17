@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.patches.HydrologistTags;
 
 public class BlizzardPower extends AbstractPower implements CloneablePowerInterface {
-    public static final String POWER_ID = "hydrologistmod:HailstormPower";
+    public static final String POWER_ID = "hydrologistmod:BlizzardPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
