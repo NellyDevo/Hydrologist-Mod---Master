@@ -38,7 +38,7 @@ public class HotSpringsPower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public void onApplyPower(AbstractPower p, AbstractCreature target, AbstractCreature source) {
-        if (source == owner && p instanceof ThermalShockPower) {
+        if (p instanceof ThermalShockPower) {
             addToTop(new DrawCardAction(amount));
         }
     }
