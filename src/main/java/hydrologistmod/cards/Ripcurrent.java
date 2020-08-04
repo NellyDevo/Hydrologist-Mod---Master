@@ -33,6 +33,7 @@ public class Ripcurrent extends AbstractHydrologistCard {
         magicNumber = baseMagicNumber = MULTIPLIER;
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new HeatAndPressure())));
         tags.add(HydrologistTags.TEMPERATURE);
+        exhaust = true;
     }
 
     @Override
