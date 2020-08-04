@@ -99,7 +99,7 @@
     <StSLib.version>1.17.2</StSLib.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <SlayTheSpire.version>1-27-2020</SlayTheSpire.version>
+    <SlayTheSpire.version>01-27-2020</SlayTheSpire.version>
   </properties>
 </project>
 
