@@ -19,7 +19,7 @@ public class ReleaseValve extends AbstractHydrologistCard {
     public static final String IMG_PATH = "hydrologistmod/images/cards/ReleaseValve.png";
     private static final int COST = 1;
     private static final int DAMAGE_AMT = 4;
-    private static final int UPGRADE_DAMAGE = 1;
+    private static final int UPGRADE_DAMAGE = 2;
 
     public ReleaseValve() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
