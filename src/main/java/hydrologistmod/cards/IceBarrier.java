@@ -47,6 +47,7 @@ public class IceBarrier extends AbstractHydrologistCard {
             if (upgraded) {
                 c.upgrade();
             }
+            c.applyPowers();
         }));
     }
 
@@ -67,7 +68,6 @@ public class IceBarrier extends AbstractHydrologistCard {
     }
 
     public static class GainBlockModifier extends AbstractCardModifier {
-        private boolean noLoop = false;
         private int baseExtraBlock;
         private int upgradeExtraBlock;
 
@@ -83,17 +83,13 @@ public class IceBarrier extends AbstractHydrologistCard {
                 extraBlock += upgradeExtraBlock;
             }
             IceBarrierExternalBlock.DynamicVariableFields.iceBarrierBaseBlock.set(card, extraBlock);
-            if (!noLoop) {
-                int tmp = card.baseBlock;
-                card.baseBlock = extraBlock;
-                noLoop = true;
-                card.applyPowers();
-                IceBarrierExternalBlock.DynamicVariableFields.iceBarrierBlock.set(card, card.block);
-                IceBarrierExternalBlock.DynamicVariableFields.iceBarrierIsBlockModified.set(card, card.isBlockModified);
-                card.baseBlock = tmp;
-                card.applyPowers();
-                noLoop = false;
+            AbstractCard c = new IceBarrier();
+            if (card.upgraded) {
+                c.upgrade();
             }
+            c.applyPowers();
+            IceBarrierExternalBlock.DynamicVariableFields.iceBarrierBlock.set(card, c.block);
+            IceBarrierExternalBlock.DynamicVariableFields.iceBarrierIsBlockModified.set(card, c.isBlockModified);
         }
 
         @Override
