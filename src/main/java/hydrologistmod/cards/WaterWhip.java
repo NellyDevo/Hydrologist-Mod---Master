@@ -1,5 +1,6 @@
 package hydrologistmod.cards;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -13,6 +14,7 @@ import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.ColdPower;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -26,7 +28,9 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/WaterWhip.png";
     private static final int COST = 1;
-    public static final int ATTACK_DMG = 7;
+    public static final int ATTACK_DMG = 6;
+    private static final int COLD_AMT = 1;
+    private static final int UPGRADE_COLD = 1;
     private static final int UPGRADE_PLUS_DMG = 3;
     private static final int ENERGY_LOSS_ON_SWAP = 1;
     private String cantSwapMessage = EXTENDED_DESCRIPTION[0];
@@ -36,7 +40,7 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
                 AbstractCard.CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
-        magicNumber = baseMagicNumber = ENERGY_LOSS_ON_SWAP;
+        magicNumber = baseMagicNumber = COLD_AMT;
         assignHydrologistSubtype(HydrologistTags.WATER);
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SteamLash())));
     }
@@ -44,6 +48,7 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
+        addToBot(new ApplyPowerAction(m, p, new ColdPower(m, p, magicNumber), magicNumber));
     }
 
     @Override
@@ -57,12 +62,13 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeMagicNumber(UPGRADE_COLD);
         }
     }
 
     @Override
     public boolean canSwap() {
-        return EnergyPanel.totalCount >= magicNumber;
+        return EnergyPanel.totalCount >= ENERGY_LOSS_ON_SWAP;
     }
 
     @Override
@@ -72,6 +78,6 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
 
     @Override
     public void onSwapOut() {
-        addToBot(new LoseEnergyAction(magicNumber));
+        addToBot(new LoseEnergyAction(ENERGY_LOSS_ON_SWAP));
     }
 }

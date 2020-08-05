@@ -493,7 +493,7 @@
   },
   "hydrologistmod:WaterWhip": {
     "NAME": "Water Whip",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable. NL Costs [E] to hydrologistmod:Swap.",
+    "DESCRIPTION": "Deal !D! damage. Apply !M! hydrologistmod:Cold. NL hydrologistmod:Swappable. NL Costs [E] to hydrologistmod:Swap.",
     "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
       "I don't have enough Energy!"
