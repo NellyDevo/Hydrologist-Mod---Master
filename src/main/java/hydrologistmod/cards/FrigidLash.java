@@ -21,7 +21,7 @@ public class FrigidLash extends AbstractHydrologistCard implements SwappableCard
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/FrigidLash.png";
     private static final int COST = 1;
-    private static final int DAMAGE_AMT = 10;
+    private static final int DAMAGE_AMT = 8;
     private static final int UPGRADE_DAMAGE = 3;
     private static final int INCREASE_BLOCK = 3;
     private static final int UPGRADE_INCREASE = 2;
