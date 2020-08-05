@@ -244,8 +244,8 @@
   },
   "hydrologistmod:IceBarrier": {
     "NAME": "Ice Barrier",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M! hydrologistmod:Cold to ALL enemies.",
-    "UPGRADE_DESCRIPTION": ""
+    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute this card. The new card gains \"Gain !B! Block.\".",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute this card. The new card gains \"Gain !B! Block.\", and is Upgraded."
   },
   "hydrologistmod:IceSpike": {
     "NAME": "Ice Spike",

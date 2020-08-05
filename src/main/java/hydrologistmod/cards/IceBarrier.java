@@ -1,16 +1,20 @@
 package hydrologistmod.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hydrologistmod.actions.TransmuteCardAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
-import hydrologistmod.powers.ColdPower;
+import hydrologistmod.patches.IceBarrierExternalBlock;
 
 public class IceBarrier extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:IceBarrier";
@@ -20,7 +24,7 @@ public class IceBarrier extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/IceBarrier.png";
     private static final int COST = 1;
-    public static final int BLOCK_AMT = 6;
+    public static final int BLOCK_AMT = 5;
     private static final int UPGRADE_BLOCK_AMT = 3;
     private static final int COLD_AMT = 3;
     private static final int UPGRADE_COLD_AMT = 1;
@@ -38,9 +42,12 @@ public class IceBarrier extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            addToBot(new ApplyPowerAction(mo, p, new ColdPower(mo, p, magicNumber), magicNumber));
-        }
+        addToBot(new TransmuteCardAction(this, (AbstractCard c) -> {
+            CardModifierManager.addModifier(c, new GainBlockModifier(BLOCK_AMT, UPGRADE_BLOCK_AMT));
+            if (upgraded) {
+                c.upgrade();
+            }
+        }));
     }
 
     @Override
@@ -54,6 +61,54 @@ public class IceBarrier extends AbstractHydrologistCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_COLD_AMT);
             upgradeBlock(UPGRADE_BLOCK_AMT);
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
+        }
+    }
+
+    public static class GainBlockModifier extends AbstractCardModifier {
+        private boolean noLoop = false;
+        private int baseExtraBlock;
+        private int upgradeExtraBlock;
+
+        public GainBlockModifier(int baseExtraBlock, int upgradeExtraBlock) {
+            this.baseExtraBlock = baseExtraBlock;
+            this.upgradeExtraBlock = upgradeExtraBlock;
+        }
+
+        @Override
+        public void onApplyPowers(AbstractCard card) {
+            int extraBlock = baseExtraBlock;
+            if (card.upgraded) {
+                extraBlock += upgradeExtraBlock;
+            }
+            IceBarrierExternalBlock.DynamicVariableFields.iceBarrierBaseBlock.set(card, extraBlock);
+            if (!noLoop) {
+                int tmp = card.baseBlock;
+                card.baseBlock = extraBlock;
+                noLoop = true;
+                card.applyPowers();
+                IceBarrierExternalBlock.DynamicVariableFields.iceBarrierBlock.set(card, card.block);
+                IceBarrierExternalBlock.DynamicVariableFields.iceBarrierIsBlockModified.set(card, card.isBlockModified);
+                card.baseBlock = tmp;
+                card.applyPowers();
+                noLoop = false;
+            }
+        }
+
+        @Override
+        public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+            AbstractDungeon.actionManager.addToTop(new GainBlockAction(AbstractDungeon.player, IceBarrierExternalBlock.DynamicVariableFields.iceBarrierBlock.get(card)));
+        }
+
+        @Override
+        public String modifyDescription(String rawDescription, AbstractCard card) {
+            return "Gain !hydrologistmod:ICE! Block. NL " + rawDescription;
+        }
+
+        @Override
+        public AbstractCardModifier makeCopy() {
+            return new GainBlockModifier(baseExtraBlock, upgradeExtraBlock);
         }
     }
 }
