@@ -24,6 +24,11 @@
     "FLAVOR": "Sometimes it just helps to keep me going.",
     "DESCRIPTIONS": ["The first time each combat you play a #yhydrologistmod:Corporeal card, #yhydrologistmod:Flow."]
   },
+  "hydrologistmod:SpinningStones": {
+    "NAME": "Spinning Stones",
+    "FLAVOR": "Probably the best trick I've ever seen.",
+    "DESCRIPTIONS": ["Gain [E] at the start of each turn.\nDraw 1 less card at the start of each turn."]
+  },
   "hydrologistmod:SpiritMask": {
     "NAME": "Spirit Mask",
     "FLAVOR": "Sometimes a disguise is the only excuse you need to be your truest self.",
