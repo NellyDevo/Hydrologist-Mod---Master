@@ -11,17 +11,20 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hydrologistmod.interfaces.HeatAndColdPower;
+import hydrologistmod.interfaces.HeatAndColdRelic;
 
 public class ColdPower extends AbstractPower implements CloneablePowerInterface, HeatAndColdPower, HealthBarRenderPower {
     public static final String POWER_ID = "hydrologistmod:ColdPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final float WEAK_MULTIPLIER = 0.85f;
+    public static final int WEAK_PERCENTAGE = 15;
     private static final Color HEALTH_BAR_COLOR = new Color(0.0F, 1.0F, 1.0F, 1.0F);
     private AbstractCreature source;
 
@@ -45,7 +48,7 @@ public class ColdPower extends AbstractPower implements CloneablePowerInterface,
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL) {
-            return damage * WEAK_MULTIPLIER;
+            return damage * calculateMultiplier();
         } else {
             return damage;
         }
@@ -84,6 +87,16 @@ public class ColdPower extends AbstractPower implements CloneablePowerInterface,
             return false;
         }
         return true;
+    }
+
+    public static float calculateMultiplier() {
+        int percentage = WEAK_PERCENTAGE;
+        for (AbstractRelic relic : AbstractDungeon.player.relics) {
+            if (relic instanceof HeatAndColdRelic) {
+                percentage += ((HeatAndColdRelic)relic).increaseColdPercent();
+            }
+        }
+        return ((float)(100 - percentage)) / 100.0f;
     }
 
     @Override

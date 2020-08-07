@@ -12,18 +12,21 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hydrologistmod.cards.HeatBlast;
 import hydrologistmod.interfaces.HeatAndColdPower;
+import hydrologistmod.interfaces.HeatAndColdRelic;
 
 public class HeatPower extends AbstractPower implements CloneablePowerInterface, HeatAndColdPower, HealthBarRenderPower {
     public static final String POWER_ID = "hydrologistmod:HeatPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final float VULN_MULTIPLIER = 1.3f;
+    public static final int VULN_PERCENTAGE = 30;
     private static final Color HEALTH_BAR_COLOR = new Color((255.0F / 255.0F), (120.0F / 255.0F), 0.0F, 1.0F);
     private AbstractCreature source;
 
@@ -49,11 +52,11 @@ public class HeatPower extends AbstractPower implements CloneablePowerInterface,
         if (type == DamageInfo.DamageType.NORMAL) {
             if (card instanceof HeatBlast) {
                 for (int i = 0; i < amount; ++i) {
-                    damage *= VULN_MULTIPLIER;
+                    damage *= calculateMultiplier();
                 }
                 return damage;
             } else {
-                return damage * VULN_MULTIPLIER;
+                return damage * calculateMultiplier();
             }
         } else {
             return damage;
@@ -75,6 +78,16 @@ public class HeatPower extends AbstractPower implements CloneablePowerInterface,
             return false;
         }
         return true;
+    }
+
+    public static float calculateMultiplier() {
+        int percentage = VULN_PERCENTAGE;
+        for (AbstractRelic relic : AbstractDungeon.player.relics) {
+            if (relic instanceof HeatAndColdRelic) {
+                percentage += ((HeatAndColdRelic)relic).increaseHeatPercent();
+            }
+        }
+        return ((float)(100 + percentage)) / 100.0f;
     }
 
     @Override

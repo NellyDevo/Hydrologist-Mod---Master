@@ -1,4 +1,9 @@
 {
+  "hydrologistmod:CursedCabbage": {
+    "NAME": "Cursed Cabbage",
+    "FLAVOR": "\"MY CABBAGES!\"",
+    "DESCRIPTIONS": ["At the start of each turn, if you have #b", " or more cards in your hand, deal #b", " damage to ALL enemies"]
+  },
   "hydrologistmod:GliderStaff": {
     "NAME": "Glider Staff",
     "FLAVOR": "A relic of the ancient Air Nomads.",
@@ -13,6 +18,11 @@
     "NAME": "Precious Necklace",
     "FLAVOR": "Sometimes it just helps to keep me going.",
     "DESCRIPTIONS": ["The first time each combat you play a #yhydrologistmod:Corporeal card, #yhydrologistmod:Flow."]
+  },
+  "hydrologistmod:SpiritMask": {
+    "NAME": "Spirit Mask",
+    "FLAVOR": "Sometimes a disguise is the only excuse you need to be your truest self.",
+    "DESCRIPTIONS": ["Enemies that are #yCold deal an additional #b", "% less damage. Enemies that are #yHot take an additional #b", "% more damage."]
   },
   "hydrologistmod:TwinBlades": {
     "NAME": "Twin Blades",

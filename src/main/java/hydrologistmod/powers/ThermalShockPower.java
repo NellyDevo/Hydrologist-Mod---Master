@@ -39,7 +39,7 @@ public class ThermalShockPower extends AbstractPower implements CloneablePowerIn
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL) {
-            return damage * ColdPower.WEAK_MULTIPLIER;
+            return damage * ColdPower.calculateMultiplier();
         } else {
             return damage;
         }
@@ -48,7 +48,7 @@ public class ThermalShockPower extends AbstractPower implements CloneablePowerIn
     @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL) {
-            return damage * HeatPower.VULN_MULTIPLIER;
+            return damage * HeatPower.calculateMultiplier();
         } else {
             return damage;
         }
