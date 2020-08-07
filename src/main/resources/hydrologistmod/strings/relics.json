@@ -1,7 +1,7 @@
 {
-  "hydrologistmod:Distillery": {
-    "NAME": "Distillery",
-    "FLAVOR": "A chemical factory intended for separating liquids into its constituent parts.",
+  "hydrologistmod:PreciousNecklace": {
+    "NAME": "Precious Necklace",
+    "FLAVOR": "Sometimes it just helps to keep me going.",
     "DESCRIPTIONS": ["The first time each combat you play a #yhydrologistmod:Corporeal card, #yhydrologistmod:Flow."]
   }
 }

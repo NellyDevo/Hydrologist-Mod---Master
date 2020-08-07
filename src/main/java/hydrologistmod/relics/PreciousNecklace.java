@@ -12,13 +12,13 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hydrologistmod.HydrologistMod;
 import hydrologistmod.actions.FlowAction;
 
-public class Distillery extends CustomRelic {
-    public static final String ID = "hydrologistmod:Distillery";
-    public static final Texture IMG = new Texture("hydrologistmod/images/relics/Distillery.png");
-    public static final Texture OUTLINE = new Texture("hydrologistmod/images/relics/DistilleryOutline.png");
+public class PreciousNecklace extends CustomRelic {
+    public static final String ID = "hydrologistmod:PreciousNecklace";
+    public static final Texture IMG = new Texture("hydrologistmod/images/relics/PreciousNecklace.png");
+    public static final Texture OUTLINE = new Texture("hydrologistmod/images/relics/PreciousNecklaceOutline.png");
 
-    public Distillery() {
-        super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
+    public PreciousNecklace() {
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.MAGICAL);
     }
 
     @Override
@@ -50,6 +50,6 @@ public class Distillery extends CustomRelic {
 
     @Override
     public AbstractRelic makeCopy() {
-        return new Distillery();
+        return new PreciousNecklace();
     }
 }
