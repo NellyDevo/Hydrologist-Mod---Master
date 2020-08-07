@@ -4,6 +4,11 @@
     "FLAVOR": "\"MY CABBAGES!\"",
     "DESCRIPTIONS": ["At the start of each turn, if you have #b", " or more cards in your hand, deal #b", " damage to ALL enemies"]
   },
+  "hydrologistmod:DiscardedSole": {
+    "NAME": "Discarded Sole",
+    "FLAVOR": "Doesn't seem very useful. Maybe as a blindfold?",
+    "DESCRIPTIONS": ["At the start of each turn, add #b", " #yDazed to your hand."]
+  },
   "hydrologistmod:GliderStaff": {
     "NAME": "Glider Staff",
     "FLAVOR": "A relic of the ancient Air Nomads.",
