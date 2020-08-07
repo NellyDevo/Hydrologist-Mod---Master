@@ -20,7 +20,8 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.cards.*;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistEnum;
-import hydrologistmod.relics.Distillery;
+import hydrologistmod.relics.PreciousNecklace;
+import hydrologistmod.relics.WaterPouch;
 
 import java.util.ArrayList;
 
@@ -169,8 +170,8 @@ public class HydrologistCharacter extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add(Distillery.ID);
-        UnlockTracker.markRelicAsSeen(Distillery.ID);
+        retVal.add(WaterPouch.ID);
+        UnlockTracker.markRelicAsSeen(WaterPouch.ID);
         return retVal;
     }
 

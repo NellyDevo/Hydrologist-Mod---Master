@@ -3,5 +3,10 @@
     "NAME": "Precious Necklace",
     "FLAVOR": "Sometimes it just helps to keep me going.",
     "DESCRIPTIONS": ["The first time each combat you play a #yhydrologistmod:Corporeal card, #yhydrologistmod:Flow."]
+  },
+  "hydrologistmod:WaterPouch": {
+    "NAME": "Water Pouch",
+    "FLAVOR": "I never go anywhere without it.",
+    "DESCRIPTIONS": ["Start each combat with the last card you played last combat in your opening hand.", "\nCurrent card: ", "."]
   }
 }
