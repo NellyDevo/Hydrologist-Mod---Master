@@ -6,8 +6,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.interfaces.TransmutableAffectingPower;
+import hydrologistmod.interfaces.TransmutableAffectingRelic;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.TransmutePlayedCardPatch;
 import hydrologistmod.vfx.TransmuteCardEffect;
@@ -33,6 +35,11 @@ public class TransmuteCardAction extends AbstractGameAction {
         for (AbstractPower power : AbstractDungeon.player.powers) {
             if (power instanceof TransmutableAffectingPower) {
                 ((TransmutableAffectingPower)power).onTransmute(this);
+            }
+        }
+        for (AbstractRelic relic : AbstractDungeon.player.relics) {
+            if (relic instanceof TransmutableAffectingRelic) {
+                ((TransmutableAffectingRelic)relic).onTransmute(this);
             }
         }
         this.followup = followup;
@@ -209,6 +216,11 @@ public class TransmuteCardAction extends AbstractGameAction {
         for (AbstractPower power : AbstractDungeon.player.powers) {
             if (power instanceof TransmutableAffectingPower) {
                 ((TransmutableAffectingPower)power).affectTransmutedCard(newCard);
+            }
+        }
+        for (AbstractRelic relic : AbstractDungeon.player.relics) {
+            if (relic instanceof TransmutableAffectingRelic) {
+                ((TransmutableAffectingRelic)relic).affectTransmutedCard(newCard);
             }
         }
         if (followup != null) {

@@ -34,6 +34,11 @@
     "FLAVOR": "Sometimes a disguise is the only excuse you need to be your truest self.",
     "DESCRIPTIONS": ["Enemies that are #yCold deal an additional #b", "% less damage. Enemies that are #yHot take an additional #b", "% more damage."]
   },
+  "hydrologistmod:TranquilTeacup": {
+    "NAME": "Tranquil Teacup",
+    "FLAVOR": "\"Do you know why they call me 'The Dragon Of The West'?\"",
+    "DESCRIPTIONS": ["Whenever you hydrologistmod:Transmute, you are given a choice between #b", " cards."]
+  },
   "hydrologistmod:TwinBlades": {
     "NAME": "Twin Blades",
     "FLAVOR": "\"Don't think of them as separate, because they're not.\"",
