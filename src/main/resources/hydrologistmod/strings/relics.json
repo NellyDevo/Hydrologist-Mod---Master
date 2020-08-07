@@ -14,6 +14,11 @@
     "FLAVOR": "A loyal tool from a loyal friend.",
     "DESCRIPTIONS": ["At the end of each turn, place the top card of your discard pile onto the top of your draw pile."]
   },
+  "hydrologistmod:MysticalPouch": {
+    "NAME": "Mystical Pouch",
+    "FLAVOR": "It seems to have been enchanted to never run out of water.",
+    "DESCRIPTIONS": ["Start each combat with the last card you played last combat in your opening hand, and add an additional copy of it to your hand.", "\nCurrent card: ", "."]
+  },
   "hydrologistmod:PreciousNecklace": {
     "NAME": "Precious Necklace",
     "FLAVOR": "Sometimes it just helps to keep me going.",
