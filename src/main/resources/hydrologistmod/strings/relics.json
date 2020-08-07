@@ -9,6 +9,11 @@
     "FLAVOR": "Sometimes it just helps to keep me going.",
     "DESCRIPTIONS": ["The first time each combat you play a #yhydrologistmod:Corporeal card, #yhydrologistmod:Flow."]
   },
+  "hydrologistmod:TwinBlades": {
+    "NAME": "Twin Blades",
+    "FLAVOR": "\"Don't think of them as separate, because they're not.\"",
+    "DESCRIPTIONS": ["Whenever you apply hydrologistmod:Cold, gain #b", " Block. Whenever you apply hydrologistmod:Heat, deal #b", " damage to that enemy."]
+  },
   "hydrologistmod:WaterPouch": {
     "NAME": "Water Pouch",
     "FLAVOR": "I never go anywhere without it.",
