@@ -1,4 +1,9 @@
 {
+  "hydrologistmod:GliderStaff": {
+    "NAME": "Glider Staff",
+    "FLAVOR": "A relic of the ancient Air Nomads.",
+    "DESCRIPTIONS": ["Unused draw from hydrologistmod:Flow carries over to the next turn."]
+  },
   "hydrologistmod:LoyalBoomerang": {
     "NAME": "Loyal Boomerang",
     "FLAVOR": "A loyal tool from a loyal friend.",
