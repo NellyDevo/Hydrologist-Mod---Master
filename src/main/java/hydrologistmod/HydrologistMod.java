@@ -25,7 +25,7 @@ import hydrologistmod.patches.IceBarrierExternalBlock;
 import hydrologistmod.powers.ColdPower;
 import hydrologistmod.powers.HeatPower;
 import hydrologistmod.powers.ThermalShockPower;
-import hydrologistmod.relics.Distillery;
+import hydrologistmod.relics.*;
 import hydrologistmod.vfx.HydrologistParticle;
 import javassist.CtClass;
 import javassist.NotFoundException;
@@ -179,7 +179,27 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     @Override
     public void receiveEditRelics() {
         //starter
-        BaseMod.addRelicToCustomPool(new Distillery(), HYDROLOGIST_CYAN);
+        BaseMod.addRelicToCustomPool(new WaterPouch(), HYDROLOGIST_CYAN);
+
+        //common
+        BaseMod.addRelicToCustomPool(new PreciousNecklace(), HYDROLOGIST_CYAN);
+
+        //uncommon
+        BaseMod.addRelicToCustomPool(new LoyalBoomerang(), HYDROLOGIST_CYAN);
+        BaseMod.addRelicToCustomPool(new TwinBlades(), HYDROLOGIST_CYAN);
+
+        //rare
+        BaseMod.addRelicToCustomPool(new GliderStaff(), HYDROLOGIST_CYAN);
+        BaseMod.addRelicToCustomPool(new CursedCabbage(), HYDROLOGIST_CYAN);
+        BaseMod.addRelicToCustomPool(new SpiritMask(), HYDROLOGIST_CYAN);
+
+        //boss
+        BaseMod.addRelicToCustomPool(new MysticalPouch(), HYDROLOGIST_CYAN); //starter upgrade
+        BaseMod.addRelicToCustomPool(new SpinningStones(), HYDROLOGIST_CYAN); //energy
+        BaseMod.addRelicToCustomPool(new TranquilTeacup(), HYDROLOGIST_CYAN); //special utility
+
+        //shop
+        BaseMod.addRelicToCustomPool(new DiscardedSole(), HYDROLOGIST_CYAN);
     }
 
     @Override
