@@ -18,7 +18,7 @@ import javassist.CtBehavior;
 import java.util.ArrayList;
 
 public class MysticalPouch extends CustomRelic implements CustomSavable<Integer> {
-    public static final String ID = "hydrologistmod:WaterPouch";
+    public static final String ID = "hydrologistmod:MysticalPouch";
     public static final Texture IMG = new Texture("hydrologistmod/images/relics/MysticalPouch.png");
     public static final Texture OUTLINE = new Texture("hydrologistmod/images/relics/MysticalPouchOutline.png");
     public static AbstractCard storedCard = null;
