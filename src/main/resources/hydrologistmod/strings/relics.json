@@ -22,7 +22,7 @@
   "hydrologistmod:MysticalPouch": {
     "NAME": "Mystical Pouch",
     "FLAVOR": "It seems to have been enchanted to never run out of water.",
-    "DESCRIPTIONS": ["Start each combat with the last card you played last combat in your opening hand, and add an additional copy of it to your hand.", "\nCurrent card: ", "."]
+    "DESCRIPTIONS": ["Start each combat with the last card you played last combat in your opening hand, and add an additional copy of it to your hand.", "Current card:", "."]
   },
   "hydrologistmod:PreciousNecklace": {
     "NAME": "Precious Necklace",
@@ -52,6 +52,6 @@
   "hydrologistmod:WaterPouch": {
     "NAME": "Water Pouch",
     "FLAVOR": "I never go anywhere without it.",
-    "DESCRIPTIONS": ["Start each combat with the last card you played last combat in your opening hand.", "\nCurrent card: ", "."]
+    "DESCRIPTIONS": ["Start each combat with the last card you played last combat in your opening hand.", "Current card:", "."]
   }
 }

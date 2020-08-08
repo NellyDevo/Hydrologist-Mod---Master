@@ -32,10 +32,11 @@ public class WaterPouch extends CustomRelic implements CustomSavable<Integer> {
     }
 
     public void setDescriptionWithCard() {
-        this.description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + FontHelper.colorString(storedCard.name, "y") + DESCRIPTIONS[2];
-        this.tips.clear();
-        this.tips.add(new PowerTip(this.name, this.description));
-        this.initializeTips();
+        description = DESCRIPTIONS[0];
+        tips.clear();
+        tips.add(new PowerTip(this.name, this.description));
+        tips.add(new PowerTip(DESCRIPTIONS[1], FontHelper.colorString(storedCard.name, "y") + DESCRIPTIONS[2]));
+        initializeTips();
     }
 
     @Override
