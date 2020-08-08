@@ -4,7 +4,7 @@
   <groupId>hydrologistmod</groupId>
   <artifactId>HydrologistMod</artifactId>
   <name>TheHydrologist</name>
-  <version>0.1.14</version>
+  <version>0.2.0</version>
   <description>Slay the Spire mod introducing custom character: The Hydrologist.</description>
   <build>
     <resources>
@@ -95,11 +95,11 @@
   </dependencies>
   <properties>
     <ModTheSpire.version>3.15.0</ModTheSpire.version>
-    <BaseMod.version>5.18.0</BaseMod.version>
-    <StSLib.version>1.17.2</StSLib.version>
+    <BaseMod.version>5.23.2</BaseMod.version>
+    <StSLib.version>1.20.3</StSLib.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <SlayTheSpire.version>01-27-2020</SlayTheSpire.version>
+    <SlayTheSpire.version>07-30-2020</SlayTheSpire.version>
   </properties>
 </project>
 
