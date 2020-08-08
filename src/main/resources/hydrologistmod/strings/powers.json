@@ -18,7 +18,8 @@
   "hydrologistmod:ColdPower": {
     "NAME": "Cold",
     "DESCRIPTIONS": [
-      "#yAttacks deal #b15% less damage for #b",
+      "#yAttacks deal #b",
+      "% less damage for #b",
       " turn.",
       " turns.",
       " If #yHeat would be applied, this monster instead suffers from #yThermal #yShock and takes #b",
@@ -72,7 +73,8 @@
   "hydrologistmod:HeatPower": {
     "NAME": "Heat",
     "DESCRIPTIONS": [
-      "Receive #b30% more damage from #yAttacks for #b",
+      "Receive #b",
+      "% more damage from #yAttacks for #b",
       " turn.",
       " turns.",
       " If #yCold would be applied, this monster instead suffers from #yThermal #yShock and takes #b",
@@ -175,7 +177,9 @@
   "hydrologistmod:ThermalShockPower": {
     "NAME": "Thermal Shock",
     "DESCRIPTIONS": [
-      "Receive #b30% more damage from and deal #b15% less damage with #yAttacks this turn. If #yHeat or #yCold would be applied, this monster instead takes that much damage."
+      "Receive #b",
+      "% more damage from and deal #b",
+      "% less damage with #yAttacks this turn. If #yHeat or #yCold would be applied, this monster instead takes that much damage."
     ]
   }
 }

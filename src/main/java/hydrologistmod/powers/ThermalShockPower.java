@@ -33,7 +33,7 @@ public class ThermalShockPower extends AbstractPower implements CloneablePowerIn
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0];
+        description = DESCRIPTIONS[0] + ((HeatPower.calculateMultiplier() * 100) - 100) + DESCRIPTIONS[1] + (100 - (ColdPower.calculateMultiplier() * 100)) + DESCRIPTIONS[2];
     }
 
     @Override
