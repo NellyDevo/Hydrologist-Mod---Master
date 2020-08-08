@@ -82,18 +82,24 @@ public class WaterPouch extends CustomRelic implements CustomSavable<Integer> {
     public static class MakePouchCardInnatePatch {
         @SpireInsertPatch(
                 locator = Locator.class,
-                localvars = {"c", "placeOnTop"}
+                localvars = {"copy", "placeOnTop"}
         )
-        public static void Insert(CardGroup __instance, CardGroup masterDeck, AbstractCard c, ArrayList<AbstractCard> placeOnTop) {
-            if (AbstractDungeon.player.hasRelic(ID) && c.uuid.equals(storedCard.uuid)) {
-                placeOnTop.add(c);
+        public static void Insert(CardGroup __instance, CardGroup masterDeck, CardGroup copy, ArrayList<AbstractCard> placeOnTop) {
+            if (AbstractDungeon.player.hasRelic(ID) && storedCard != null) {
+                for (AbstractCard card : copy.group) {
+                    if (card.uuid.equals(storedCard.uuid)) {
+                        copy.removeCard(card);
+                        placeOnTop.add(card);
+                        break;
+                    }
+                }
             }
         }
 
         private static class Locator extends SpireInsertLocator {
             @Override
             public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-                Matcher finalMatcher = new Matcher.MethodCallMatcher(CardGroup.class, "addToTop");
+                Matcher finalMatcher = new Matcher.FieldAccessMatcher(CardGroup.class, "group");
                 return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
             }
         }
