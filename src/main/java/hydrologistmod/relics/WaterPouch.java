@@ -85,7 +85,7 @@ public class WaterPouch extends CustomRelic implements CustomSavable<Integer> {
                 localvars = {"c", "placeOnTop"}
         )
         public static void Insert(CardGroup __instance, CardGroup masterDeck, AbstractCard c, ArrayList<AbstractCard> placeOnTop) {
-            if (AbstractDungeon.player.hasRelic(ID) && c == storedCard) {
+            if (AbstractDungeon.player.hasRelic(ID) && c.uuid.equals(storedCard.uuid)) {
                 placeOnTop.add(c);
             }
         }
