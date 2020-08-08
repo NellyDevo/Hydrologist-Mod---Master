@@ -90,36 +90,55 @@ public class TransmuteCardAction extends AbstractGameAction {
                     }
                 }
             } else {
-                AbstractCard newCard = getTransmutationResult(playedCard).makeCopy();
-                modifyNewCard(playedCard, newCard);
-                //modify useCardAction for the current card using related patch
-                UseCardAction useCardAction = null;
-                for (AbstractGameAction action : AbstractDungeon.actionManager.actions) {
-                    if (action instanceof UseCardAction) {
-                        try {
-                            Field targetCardField = UseCardAction.class.getDeclaredField("targetCard");
-                            targetCardField.setAccessible(true);
-                            if (targetCardField.get(action) == playedCard) {
-                                useCardAction = (UseCardAction)action;
-                                break;
+                if (choices == 0) {
+                    isDone = true;
+                    System.out.println("TRANSMUTECARDACTION: Make 0 choices? How did this happen?");
+                    return;
+                } else if (choices == 1) {
+                    AbstractCard newCard = getTransmutationResult(playedCard).makeCopy();
+                    modifyNewCard(playedCard, newCard);
+                    //modify useCardAction for the current card using related patch
+                    UseCardAction useCardAction = null;
+                    for (AbstractGameAction action : AbstractDungeon.actionManager.actions) {
+                        if (action instanceof UseCardAction) {
+                            try {
+                                Field targetCardField = UseCardAction.class.getDeclaredField("targetCard");
+                                targetCardField.setAccessible(true);
+                                if (targetCardField.get(action) == playedCard) {
+                                    useCardAction = (UseCardAction) action;
+                                    break;
+                                }
+                            } catch (NoSuchFieldException | IllegalAccessException e) {
+                                e.printStackTrace();
+                                isDone = true;
+                                return;
                             }
-                        } catch (NoSuchFieldException | IllegalAccessException e) {
-                            e.printStackTrace();
-                            isDone = true;
-                            return;
                         }
                     }
+                    TransmuteCardEffect.copyCardPosition(playedCard, newCard);
+                    AbstractDungeon.player.hand.removeCard(playedCard);
+                    AbstractDungeon.player.cardInUse = null;
+                    TransmutePlayedCardPatch.UseCardActionField.transmuteTargetCard.set(useCardAction, newCard);
+                    transmutedPairs.put(playedCard, newCard);
+                    AbstractDungeon.topLevelEffects.add(new TransmuteCardEffect(transmutedPairs, null, this, 0.75f));
+                    completed = true;
+                } else {
+                    CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+                    for (int i = 0; i < choices; ++i) {
+                        AbstractCard choice = getTransmutationResult(playedCard);
+                        UnlockTracker.markCardAsSeen(choice.cardID);
+                        if (!tmp.contains(choice)) {
+                            tmp.addToBottom(choice);
+                        } else {
+                            --i;
+                        }
+                    }
+                    AbstractDungeon.gridSelectScreen.open(tmp, 1, "Choose your new card.", false);
+                    return;
                 }
-                TransmuteCardEffect.copyCardPosition(playedCard, newCard);
-                AbstractDungeon.player.hand.removeCard(playedCard);
-                AbstractDungeon.player.cardInUse = null;
-                TransmutePlayedCardPatch.UseCardActionField.transmuteTargetCard.set(useCardAction, newCard);
-                transmutedPairs.put(playedCard, newCard);
-                AbstractDungeon.topLevelEffects.add(new TransmuteCardEffect(transmutedPairs, null, this, 0.75f));
-                completed = true;
             }
             return;
-        } else if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
+        } else if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved && !transformPlayed) {
             AbstractCard oldCard = AbstractDungeon.handCardSelectScreen.selectedCards.group.get(0);
             AbstractDungeon.player.hand.group.remove(oldCard);
             if (choices == 0) {
@@ -154,14 +173,44 @@ public class TransmuteCardAction extends AbstractGameAction {
             }
         } else if (AbstractDungeon.gridSelectScreen.selectedCards.size() != 0) {
             AbstractCard newCard = AbstractDungeon.gridSelectScreen.selectedCards.get(0).makeCopy();
-            modifyNewCard(storedOldCard, newCard);
-            transmutedPairs.put(storedOldCard, newCard);
-            AbstractDungeon.gridSelectScreen.selectedCards.clear();
-            AbstractDungeon.handCardSelectScreen.selectedCards.group.remove(0);
-            if (!AbstractDungeon.handCardSelectScreen.selectedCards.group.isEmpty()) {
-                AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = false;
+            if (!transformPlayed) {
+                modifyNewCard(storedOldCard, newCard);
+                transmutedPairs.put(storedOldCard, newCard);
+                AbstractDungeon.gridSelectScreen.selectedCards.clear();
+                AbstractDungeon.handCardSelectScreen.selectedCards.group.remove(0);
+                if (!AbstractDungeon.handCardSelectScreen.selectedCards.group.isEmpty()) {
+                    AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = false;
+                }
+                return;
+            } else {
+                modifyNewCard(playedCard, newCard);
+                //modify useCardAction for the current card using related patch
+                UseCardAction useCardAction = null;
+                for (AbstractGameAction action : AbstractDungeon.actionManager.actions) {
+                    if (action instanceof UseCardAction) {
+                        try {
+                            Field targetCardField = UseCardAction.class.getDeclaredField("targetCard");
+                            targetCardField.setAccessible(true);
+                            if (targetCardField.get(action) == playedCard) {
+                                useCardAction = (UseCardAction) action;
+                                break;
+                            }
+                        } catch (NoSuchFieldException | IllegalAccessException e) {
+                            e.printStackTrace();
+                            isDone = true;
+                            return;
+                        }
+                    }
+                }
+                TransmuteCardEffect.copyCardPosition(playedCard, newCard);
+                AbstractDungeon.player.hand.removeCard(playedCard);
+                AbstractDungeon.player.cardInUse = null;
+                TransmutePlayedCardPatch.UseCardActionField.transmuteTargetCard.set(useCardAction, newCard);
+                transmutedPairs.put(playedCard, newCard);
+                AbstractDungeon.topLevelEffects.add(new TransmuteCardEffect(transmutedPairs, null, this, 0.75f));
+                completed = true;
+                return;
             }
-            return;
         }
         if (AbstractDungeon.gridSelectScreen.selectedCards.isEmpty() && AbstractDungeon.handCardSelectScreen.selectedCards.group.isEmpty() && initialized) {
             float duration = 0.75f;
