@@ -12,7 +12,7 @@
   "hydrologistmod:GliderStaff": {
     "NAME": "Glider Staff",
     "FLAVOR": "A relic of the ancient Air Nomads.",
-    "DESCRIPTIONS": ["Unused draw from hydrologistmod:Flow carries over to the next turn."]
+    "DESCRIPTIONS": ["Unused draw from #yhydrologistmod:Flow carries over to the next turn."]
   },
   "hydrologistmod:LoyalBoomerang": {
     "NAME": "Loyal Boomerang",
@@ -37,17 +37,17 @@
   "hydrologistmod:SpiritMask": {
     "NAME": "Spirit Mask",
     "FLAVOR": "Sometimes a disguise is the only excuse you need to be your truest self.",
-    "DESCRIPTIONS": ["Enemies that are #yCold deal an additional #b", "% less damage. Enemies that are #yHot take an additional #b", "% more damage."]
+    "DESCRIPTIONS": ["Enemies that are #yCool deal an additional #b", "% less damage. Enemies that are #yHot take an additional #b", "% more damage."]
   },
   "hydrologistmod:TranquilTeacup": {
     "NAME": "Tranquil Teacup",
     "FLAVOR": "\"Do you know why they call me 'The Dragon Of The West'?\"",
-    "DESCRIPTIONS": ["Whenever you hydrologistmod:Transmute, you are given a choice between #b", " cards."]
+    "DESCRIPTIONS": ["Whenever you #yhydrologistmod:Transmute, you are given a choice between #b", " cards."]
   },
   "hydrologistmod:TwinBlades": {
     "NAME": "Twin Blades",
     "FLAVOR": "\"Don't think of them as separate, because they're not.\"",
-    "DESCRIPTIONS": ["Whenever you apply hydrologistmod:Cold, gain #b", " Block. Whenever you apply hydrologistmod:Heat, deal #b", " damage to that enemy."]
+    "DESCRIPTIONS": ["Whenever you apply #yhydrologistmod:Cold, gain #b", " Block. Whenever you apply #yhydrologistmod:Heat, deal #b", " damage to that enemy."]
   },
   "hydrologistmod:WaterPouch": {
     "NAME": "Water Pouch",
