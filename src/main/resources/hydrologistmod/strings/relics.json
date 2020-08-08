@@ -22,7 +22,7 @@
   "hydrologistmod:MysticalPouch": {
     "NAME": "Mystical Pouch",
     "FLAVOR": "It seems to have been enchanted to never run out of water.",
-    "DESCRIPTIONS": ["Start each combat with the last card you played last combat in your opening hand, and add an additional copy of it to your hand.", "Current card:", "."]
+    "DESCRIPTIONS": ["Replaces #bWater #bPouch. Start each combat with the last card you played last combat in your opening hand, and add an additional copy of it to your hand.", "Current card:", "."]
   },
   "hydrologistmod:PreciousNecklace": {
     "NAME": "Precious Necklace",
@@ -32,7 +32,7 @@
   "hydrologistmod:SpinningStones": {
     "NAME": "Spinning Stones",
     "FLAVOR": "Probably the best trick I've ever seen.",
-    "DESCRIPTIONS": ["Gain [E] at the start of each turn.\nDraw 1 less card at the start of each turn."]
+    "DESCRIPTIONS": ["Gain [E] at the start of each turn. Draw 1 less card at the start of each turn."]
   },
   "hydrologistmod:SpiritMask": {
     "NAME": "Spirit Mask",
