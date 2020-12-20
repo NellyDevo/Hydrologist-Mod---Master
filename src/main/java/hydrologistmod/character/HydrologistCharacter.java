@@ -1,10 +1,13 @@
 package hydrologistmod.character;
 
+import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -30,7 +33,8 @@ public class HydrologistCharacter extends CustomPlayer {
     public static final String MY_CHARACTER_SHOULDER_2 = "hydrologistmod/images/char/shoulder2.png";
     public static final String MY_CHARACTER_SHOULDER_1 = "hydrologistmod/images/char/shoulder.png";
     public static final String MY_CHARACTER_CORPSE = "hydrologistmod/images/char/corpse.png";
-    public static final String MY_CHARACTER_ANIMATION = "hydrologistmod/images/char/idle/Animation.scml";
+    public static final String MY_CHARACTER_ANIMATION_ATLAS = "hydrologistmod/images/char/idle/HydrologistSkeleton.atlas";
+    public static final String MY_CHARACTER_ANIMATION_SKELETON = "hydrologistmod/images/char/idle/HydrologistSkeleton.json";
     private static final String ID = "hydrologistmod:HydrologistCharacter";
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
@@ -38,7 +42,8 @@ public class HydrologistCharacter extends CustomPlayer {
     private static final Color hydrologistCyan = CardHelper.getColor(3, 240, 252); //#03f0fc / 3, 240, 252
     private static final float DIALOG_X_ADJUSTMENT = 0.0F;
     private static final float DIALOG_Y_ADJUSTMENT = 220.0F;
-    public static final String[] orbTextures = {
+    private static final String ORB_VFX_PATH = "hydrologistmod/images/char/orb/vfx.png";
+    private static final String[] ORB_TEXTURES = {
             "hydrologistmod/images/char/orb/layer1.png",
             "hydrologistmod/images/char/orb/layer2.png",
             "hydrologistmod/images/char/orb/layer3.png",
@@ -51,18 +56,31 @@ public class HydrologistCharacter extends CustomPlayer {
             "hydrologistmod/images/char/orb/layer4d.png",
             "hydrologistmod/images/char/orb/layer5d.png"
     };
+    private AnimationState.TrackEntry animationTrackEntry;
 
     public HydrologistCharacter(String name) {
-        super(name, HydrologistEnum.HYDROLOGIST_CLASS, orbTextures, "hydrologistmod/images/char/orb/vfx.png", null, new SpriterAnimation(MY_CHARACTER_ANIMATION));
+        super(name, HydrologistEnum.HYDROLOGIST_CLASS, new CustomEnergyOrb(ORB_TEXTURES, ORB_VFX_PATH, null), null, null);
 
         this.dialogX = this.drawX + DIALOG_X_ADJUSTMENT * Settings.scale;
         this.dialogY = this.drawY + DIALOG_Y_ADJUSTMENT * Settings.scale;
+
+        loadAnimation(MY_CHARACTER_ANIMATION_ATLAS, MY_CHARACTER_ANIMATION_SKELETON, 1.0F);
+        animationTrackEntry = state.setAnimation(0, "animtion0", true);
+        animationTrackEntry.setTime(animationTrackEntry.getEndTime() * MathUtils.random());
+        animationTrackEntry.setTimeScale(1.0F);
 
         initializeClass(null,
                 MY_CHARACTER_SHOULDER_2,
                 MY_CHARACTER_SHOULDER_1,
                 MY_CHARACTER_CORPSE,
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN));
+    }
+
+    @Override
+    public void renderPlayerImage(SpriteBatch sb) {
+        sr.setPremultipliedAlpha(false);
+        super.renderPlayerImage(sb);
+        sr.setPremultipliedAlpha(true);
     }
 
     @Override
