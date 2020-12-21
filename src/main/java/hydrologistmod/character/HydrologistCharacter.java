@@ -2,12 +2,17 @@ package hydrologistmod.character;
 
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
-import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.esotericsoftware.spine.AnimationState;
+import com.esotericsoftware.spine.Bone;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -23,8 +28,8 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.cards.*;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistEnum;
-import hydrologistmod.relics.PreciousNecklace;
 import hydrologistmod.relics.WaterPouch;
+import hydrologistmod.vfx.HydrologistWaterbendingManager;
 
 import java.util.ArrayList;
 
@@ -56,7 +61,11 @@ public class HydrologistCharacter extends CustomPlayer {
             "hydrologistmod/images/char/orb/layer4d.png",
             "hydrologistmod/images/char/orb/layer5d.png"
     };
+    private static final String WATER_BONE_NAME = "WaterDummy";
     private AnimationState.TrackEntry animationTrackEntry;
+    private Bone waterBone;
+    public static Vector2 waterCoords = new Vector2();
+    public HydrologistWaterbendingManager waterbending;
 
     public HydrologistCharacter(String name) {
         super(name, HydrologistEnum.HYDROLOGIST_CLASS, new CustomEnergyOrb(ORB_TEXTURES, ORB_VFX_PATH, null), null, null);
@@ -69,11 +78,15 @@ public class HydrologistCharacter extends CustomPlayer {
         animationTrackEntry.setTime(animationTrackEntry.getEndTime() * MathUtils.random());
         animationTrackEntry.setTimeScale(1.0F);
 
+        waterBone = skeleton.findBone(WATER_BONE_NAME);
+
         initializeClass(null,
                 MY_CHARACTER_SHOULDER_2,
                 MY_CHARACTER_SHOULDER_1,
                 MY_CHARACTER_CORPSE,
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN));
+
+        waterbending = new HydrologistWaterbendingManager();
     }
 
     @Override
@@ -81,6 +94,9 @@ public class HydrologistCharacter extends CustomPlayer {
         sr.setPremultipliedAlpha(false);
         super.renderPlayerImage(sb);
         sr.setPremultipliedAlpha(true);
+        waterCoords.set(waterBone.getWorldX() + skeleton.getX(), waterBone.getWorldY() + skeleton.getY());
+        waterbending.update(waterCoords);
+        waterbending.render(sb);
     }
 
     @Override
