@@ -177,20 +177,18 @@ public class HydrologistWaterbendingManager {
         HydrologistMod.beginBuffer(tileBuffer);
         sb.begin();
         sb.setColor(c);
-        sb.disableBlending();
+        sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         renderTiles(sb, renderThis, findGridPoints());
 
         //if necessary, overlay with the top set of tiles
         if (transitionTimer > 0) {
             renderThis = textureMap.get(target).getTexture();
             sb.setColor(new Color(1f, 1f, 1f, Interpolation.linear.apply(1F, 0F, transitionTimer / TRANSITION_TIME)));
-            sb.enableBlending();
             sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
             renderTiles(sb, renderThis, findGridPoints());
         }
 
         //mask the tiles
-        sb.enableBlending();
         sb.setBlendFunction(0, GL20.GL_SRC_ALPHA);
         sb.setColor(c);
         sb.draw(mask, 0, 0);
