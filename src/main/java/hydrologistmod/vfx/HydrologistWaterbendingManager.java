@@ -34,6 +34,8 @@ public class HydrologistWaterbendingManager {
     private static TextureRegion iceTile;
     private int waterTileCount = WATER_ANIMATION_HORIZONTAL_FRAMES * WATER_ANIMATION_VERTICAL_FRAMES;
     private int currentWaterTile = waterTileCount;
+    private static final float WATER_ANIMATION_DURATION = 1.0f;
+    private float waterTimer = 1.0f;
     private FrameBuffer maskBuffer;
     private FrameBuffer tileBuffer;
     public Vector2 override;
@@ -64,10 +66,11 @@ public class HydrologistWaterbendingManager {
             findGridPoints();
         };
         EffectUpdater waterUpdater = () -> {
-            currentWaterTile++;
-            if (currentWaterTile >= waterTileCount) {
-                currentWaterTile = 0;
+            waterTimer += Gdx.graphics.getDeltaTime();
+            if (waterTimer >= WATER_ANIMATION_DURATION) {
+                waterTimer = 0;
             }
+            currentWaterTile = (int)Math.floor((waterTimer / WATER_ANIMATION_DURATION) * waterTileCount);
         };
         effectsMap.put(HydrologistTags.WATER, new BehaviourPackage(waterUpdater, waterInstructor));
         RenderInstructor iceInstructor = () -> {
