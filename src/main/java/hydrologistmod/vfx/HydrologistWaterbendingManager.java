@@ -41,7 +41,7 @@ public class HydrologistWaterbendingManager {
     private AbstractCard.CardTags target = HydrologistTags.WATER;
     private static final float TRANSITION_TIME = 0.5f;
     private float transitionTimer = 0.0f;
-    private static HashMap<AbstractCard.CardTags, RenderInstructor> effectsMap;
+    private static HashMap<AbstractCard.CardTags, BehaviourPackage> effectsMap;
     private ArrayList<RenderInstructions> renderInstructions;
 
     public HydrologistWaterbendingManager() {
@@ -58,21 +58,36 @@ public class HydrologistWaterbendingManager {
         maskBuffer = HydrologistMod.createBuffer();
         tileBuffer = HydrologistMod.createBuffer();
         effectsMap = new HashMap<>();
-        effectsMap.put(HydrologistTags.WATER, () -> {
+        RenderInstructor waterInstructor = () -> {
             renderInstructions.clear();
             renderInstructions.add(new RenderInstructions(waterTiles[currentWaterTile]));
             findGridPoints();
-        });
-        effectsMap.put(HydrologistTags.ICE, () -> {
+        };
+        EffectUpdater waterUpdater = () -> {
+            currentWaterTile++;
+            if (currentWaterTile >= waterTileCount) {
+                currentWaterTile = 0;
+            }
+        };
+        effectsMap.put(HydrologistTags.WATER, new BehaviourPackage(waterUpdater, waterInstructor));
+        RenderInstructor iceInstructor = () -> {
             renderInstructions.clear();
             renderInstructions.add(new RenderInstructions(iceTile));
             findGridPoints();
-        });
-        effectsMap.put(HydrologistTags.STEAM, () -> {
+        };
+        EffectUpdater iceUpdater = () -> {
+
+        };
+        effectsMap.put(HydrologistTags.ICE, new BehaviourPackage(iceUpdater, iceInstructor));
+        RenderInstructor steamInstructor = () -> {
             renderInstructions.clear();
             System.out.println("What are you doing here? This has yet to be implemented");
             ; //TODO
-        });
+        };
+        EffectUpdater steamUpdater = () -> {
+
+        };
+        effectsMap.put(HydrologistTags.STEAM, new BehaviourPackage(steamUpdater, steamInstructor));
     }
 
     public void update(Vector2 coords) {
@@ -95,25 +110,14 @@ public class HydrologistWaterbendingManager {
             times.remove(dot);
             spline.remove(dot);
         }
-        updateWater();
-        updateSteam();
+        effectsMap.get(current).updater.update();
         if (transitionTimer > 0) {
+            effectsMap.get(target).updater.update();
             transitionTimer -= Gdx.graphics.getDeltaTime();
         }
         if (transitionTimer <= 0) {
             current = target;
         }
-    }
-
-    private void updateWater() {
-        currentWaterTile++;
-        if (currentWaterTile >= waterTileCount) {
-            currentWaterTile = 0;
-        }
-    }
-
-    private void updateSteam() {
-
     }
 
     private void findGridPoints() {
@@ -182,14 +186,14 @@ public class HydrologistWaterbendingManager {
         sb.begin();
         sb.setColor(c);
         sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-        effectsMap.get(current).instruct();
+        effectsMap.get(current).instructor.instruct();
         renderTiles(sb);
 
         //if necessary, overlay with the top set of tiles
         if (transitionTimer > 0) {
             sb.setColor(new Color(1f, 1f, 1f, Interpolation.linear.apply(1F, 0F, transitionTimer / TRANSITION_TIME)));
             sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-            effectsMap.get(target).instruct();
+            effectsMap.get(target).instructor.instruct();
             renderTiles(sb);
         }
 
@@ -270,6 +274,20 @@ public class HydrologistWaterbendingManager {
 
     private interface RenderInstructor {
         void instruct();
+    }
+
+    private interface EffectUpdater {
+        void update();
+    }
+
+    private static class BehaviourPackage {
+        public EffectUpdater updater;
+        public RenderInstructor instructor;
+
+        public BehaviourPackage(EffectUpdater updater, RenderInstructor instructor) {
+            this.updater = updater;
+            this.instructor = instructor;
+        }
     }
 
     private static class GridInfo {
