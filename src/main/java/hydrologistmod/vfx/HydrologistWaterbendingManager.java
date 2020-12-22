@@ -28,8 +28,6 @@ public class HydrologistWaterbendingManager {
     private static final int WATER_TILE_HEIGHT = 64;
     private static final int WATER_ANIMATION_HORIZONTAL_FRAMES = 3;
     private static final int WATER_ANIMATION_VERTICAL_FRAMES = 7;
-    private static final int ICE_TILE_WIDTH = 64;
-    private static final int ICE_TILE_HEIGHT = 64;
     private static final Texture WATER_TILE_SHEET = new Texture("hydrologistmod/images/vfx/waterbending/Water_Tile_Sheet.png");
     private static final Texture ICE_TILE = new Texture("hydrologistmod/images/vfx/waterbending/Ice_Tile.png");
     private static TextureRegion[] waterTiles;
@@ -43,11 +41,8 @@ public class HydrologistWaterbendingManager {
     private AbstractCard.CardTags target = HydrologistTags.WATER;
     private static final float TRANSITION_TIME = 0.5f;
     private float transitionTimer = 0.0f;
-    private static HashMap<AbstractCard.CardTags, TextureGetter> textureMap;
-    private int currentTileWidth;
-    private int currentTileHeight;
-
-    private TextureRegion renderThis = new TextureRegion();
+    private static HashMap<AbstractCard.CardTags, RenderInstructor> effectsMap;
+    private ArrayList<RenderInstructions> renderInstructions;
 
     public HydrologistWaterbendingManager() {
         waterTiles = new TextureRegion[waterTileCount];
@@ -58,23 +53,25 @@ public class HydrologistWaterbendingManager {
                 ++i;
             }
         }
+        renderInstructions = new ArrayList<>();
         iceTile = new TextureRegion(ICE_TILE);
         maskBuffer = HydrologistMod.createBuffer();
         tileBuffer = HydrologistMod.createBuffer();
-        textureMap = new HashMap<>();
-        textureMap.put(HydrologistTags.WATER, () -> {
-            currentTileWidth = WATER_TILE_WIDTH;
-            currentTileHeight = WATER_TILE_HEIGHT;
-            return waterTiles[currentWaterTile];
+        effectsMap = new HashMap<>();
+        effectsMap.put(HydrologistTags.WATER, () -> {
+            renderInstructions.clear();
+            renderInstructions.add(new RenderInstructions(waterTiles[currentWaterTile]));
+            findGridPoints();
         });
-        textureMap.put(HydrologistTags.ICE, () -> {
-            currentTileWidth = ICE_TILE_WIDTH;
-            currentTileHeight = ICE_TILE_HEIGHT;
-            return iceTile;
+        effectsMap.put(HydrologistTags.ICE, () -> {
+            renderInstructions.clear();
+            renderInstructions.add(new RenderInstructions(iceTile));
+            findGridPoints();
         });
-        textureMap.put(HydrologistTags.STEAM, () -> {
+        effectsMap.put(HydrologistTags.STEAM, () -> {
+            renderInstructions.clear();
             System.out.println("What are you doing here? This has yet to be implemented");
-            return null; //TODO
+            ; //TODO
         });
     }
 
@@ -119,51 +116,59 @@ public class HydrologistWaterbendingManager {
 
     }
 
-    private GridInfo findGridPoints() {
-        Vector2 bottomLeft = spline.get(0).cpy();
-        Vector2 topRight = spline.get(0).cpy();
-        for (Vector2 point : spline) {
-            if (point.x < bottomLeft.x) {
-                bottomLeft.x = point.x;
+    private void findGridPoints() {
+        for (RenderInstructions instructions : renderInstructions) {
+            Vector2 bottomLeft = spline.get(0).cpy();
+            Vector2 topRight = spline.get(0).cpy();
+            for (Vector2 point : spline) {
+                if (point.x < bottomLeft.x) {
+                    bottomLeft.x = point.x;
+                }
+                if (point.y < bottomLeft.y) {
+                    bottomLeft.y = point.y;
+                }
+                if (point.x > topRight.x) {
+                    topRight.x = point.x;
+                }
+                if (point.y > topRight.y) {
+                    topRight.y = point.y;
+                }
             }
-            if (point.y < bottomLeft.y) {
-                bottomLeft.y = point.y;
+            bottomLeft.add(-LINE_WIDTH, -LINE_WIDTH);
+            topRight.add(LINE_WIDTH, LINE_WIDTH);
+            float scaleWidth = instructions.texture.getRegionWidth() * Settings.scale * instructions.scaleX;
+            float scaleHeight = instructions.texture.getRegionHeight() * Settings.scale * instructions.scaleY;
+            float gridBottom = instructions.offSet.y;
+            if (gridBottom > bottomLeft.y) {
+                gridBottom -= scaleHeight;
             }
-            if (point.x > topRight.x) {
-                topRight.x = point.x;
+            float gridLeft = instructions.offSet.x;
+            if (gridLeft > bottomLeft.x) {
+                gridLeft -= scaleWidth;
             }
-            if (point.y > topRight.y) {
-                topRight.y = point.y;
+            int verticalTiles = 1;
+            int horizontalTiles = 1;
+            float gridTop = scaleHeight;
+            float gridRight = scaleWidth;
+            while (gridTop < topRight.y) {
+                gridTop += scaleHeight;
+                verticalTiles++;
             }
+            while (gridRight < topRight.x) {
+                gridRight += scaleWidth;
+                horizontalTiles++;
+            }
+            while (gridBottom + scaleHeight < bottomLeft.y) {
+                gridBottom += scaleHeight;
+                verticalTiles--;
+            }
+            while (gridLeft + scaleWidth < bottomLeft.x) {
+                gridLeft += scaleWidth;
+                horizontalTiles--;
+            }
+            Vector2 gridBottomLeft = new Vector2(gridLeft, gridBottom);
+            instructions.info = new GridInfo(gridBottomLeft, horizontalTiles, verticalTiles);
         }
-        bottomLeft.add(-LINE_WIDTH, -LINE_WIDTH);
-        topRight.add(LINE_WIDTH, LINE_WIDTH);
-        float scaleWidth = currentTileWidth * Settings.scale;
-        float scaleHeight = currentTileHeight * Settings.scale;
-        float gridBottom = 0;
-        float gridLeft = 0;
-        int verticalTiles = 1;
-        int horizontalTiles = 1;
-        float gridTop = scaleHeight;
-        float gridRight = scaleWidth;
-        while (gridTop < topRight.y) {
-            gridTop += scaleHeight;
-            verticalTiles++;
-        }
-        while (gridRight < topRight.x) {
-            gridRight += scaleWidth;
-            horizontalTiles++;
-        }
-        while (gridBottom + scaleHeight < bottomLeft.y) {
-            gridBottom += scaleHeight;
-            verticalTiles--;
-        }
-        while (gridLeft + scaleWidth < bottomLeft.x) {
-            gridLeft += scaleWidth;
-            horizontalTiles--;
-        }
-        Vector2 gridBottomLeft = new Vector2(gridLeft, gridBottom);
-        return new GridInfo(gridBottomLeft, horizontalTiles, verticalTiles);
     }
 
     public void render(SpriteBatch sb) {
@@ -173,19 +178,19 @@ public class HydrologistWaterbendingManager {
 
         //create the tiles
         Color c = Color.WHITE.cpy();
-        TextureRegion renderThis = textureMap.get(current).getTexture();
         HydrologistMod.beginBuffer(tileBuffer);
         sb.begin();
         sb.setColor(c);
         sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-        renderTiles(sb, renderThis, findGridPoints());
+        effectsMap.get(current).instruct();
+        renderTiles(sb);
 
         //if necessary, overlay with the top set of tiles
         if (transitionTimer > 0) {
-            renderThis = textureMap.get(target).getTexture();
             sb.setColor(new Color(1f, 1f, 1f, Interpolation.linear.apply(1F, 0F, transitionTimer / TRANSITION_TIME)));
             sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-            renderTiles(sb, renderThis, findGridPoints());
+            effectsMap.get(target).instruct();
+            renderTiles(sb);
         }
 
         //mask the tiles
@@ -230,25 +235,29 @@ public class HydrologistWaterbendingManager {
         return HydrologistMod.getBufferTexture(maskBuffer);
     }
 
-    private void renderTiles(SpriteBatch sb, TextureRegion renderThis, GridInfo info) {
-        for (int x = 0; x < info.horizontalTiles; ++x) {
-            for (int y = 0; y < info.verticalTiles; ++y) {
-                sb.draw(renderThis,
-                        info.origin.x + (x * renderThis.getRegionWidth() * Settings.scale),
-                        info.origin.y + (y * renderThis.getRegionHeight() * Settings.scale),
-                        renderThis.getRegionWidth() / 2F,
-                        renderThis.getRegionHeight() / 2F,
-                        renderThis.getRegionWidth(),
-                        renderThis.getRegionHeight(),
-                        Settings.scale,
-                        Settings.scale,
-                        0);
+    private void renderTiles(SpriteBatch sb) {
+        for (RenderInstructions instruction : renderInstructions) {
+            instruction.texture.flip(instruction.flipHorizontal, instruction.flipVertical);
+            for (int x = 0; x < instruction.info.horizontalTiles; ++x) {
+                for (int y = 0; y < instruction.info.verticalTiles; ++y) {
+                    sb.draw(instruction.texture,
+                            instruction.info.origin.x + (x * instruction.texture.getRegionWidth() * Settings.scale * instruction.scaleX),
+                            instruction.info.origin.y + (y * instruction.texture.getRegionHeight() * Settings.scale * instruction.scaleY),
+                            instruction.texture.getRegionWidth() / 2F,
+                            instruction.texture.getRegionHeight() / 2F,
+                            instruction.texture.getRegionWidth(),
+                            instruction.texture.getRegionHeight(),
+                            Settings.scale * instruction.scaleX,
+                            Settings.scale * instruction.scaleY,
+                            0);
+                }
             }
+            instruction.texture.flip(instruction.flipHorizontal, instruction.flipVertical);
         }
     }
 
     public void changeBackground(AbstractCard.CardTags newTag) {
-        if (!HydrologistMod.subTypes.contains(newTag)) {
+        if (!effectsMap.containsKey(newTag)) {
             System.out.println("WATERBENDING_MANAGER: attempted to change to invalid tag");
             return;
         }
@@ -259,8 +268,8 @@ public class HydrologistWaterbendingManager {
         }
     }
 
-    private interface TextureGetter {
-        TextureRegion getTexture();
+    private interface RenderInstructor {
+        void instruct();
     }
 
     private static class GridInfo {
@@ -272,6 +281,37 @@ public class HydrologistWaterbendingManager {
             this.origin = origin;
             this.horizontalTiles = horizontalTiles;
             this.verticalTiles = verticalTiles;
+        }
+    }
+
+    private static class RenderInstructions {
+        public TextureRegion texture;
+        public Vector2 offSet;
+        public boolean flipHorizontal;
+        public boolean flipVertical;
+        public float scaleX;
+        public float scaleY;
+        public GridInfo info;
+
+        public RenderInstructions(TextureRegion texture, Vector2 offSet, boolean flipHorizontal, boolean flipVertical, float scaleX, float scaleY) {
+            this.texture = texture;
+            this.offSet = offSet;
+            this.flipHorizontal = flipHorizontal;
+            this.flipVertical = flipVertical;
+            this.scaleX = scaleX;
+            this.scaleY = scaleY;
+            if (this.scaleX == 0.0f) {
+                System.out.println("ERROR: invalid waterbending X scale. Scale cannot be 0");
+                this.scaleX = 1;
+            }
+            if (this.scaleY == 0.0F) {
+                System.out.println("ERROR: invalid waterbending Y scale. Scale cannot be 0");
+                this.scaleY = 0;
+            }
+        }
+
+        public RenderInstructions(TextureRegion texture) {
+            this(texture, new Vector2(0, 0), false, false, 1, 1);
         }
     }
 }
