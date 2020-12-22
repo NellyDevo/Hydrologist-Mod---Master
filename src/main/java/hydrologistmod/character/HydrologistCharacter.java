@@ -23,6 +23,7 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.cards.*;
@@ -141,6 +142,17 @@ public class HydrologistCharacter extends CustomPlayer {
                 AbstractGameAction.AttackEffect.BLUNT_LIGHT,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY
                 };
+    }
+
+    @Override
+    public void useCard(AbstractCard c, AbstractMonster monster, int energyOnUse) {
+        if (c instanceof AbstractHydrologistCard) {
+            AbstractCard.CardTags tag = ((AbstractHydrologistCard)c).getHydrologistSubtype();
+            if (tag != null) {
+                waterbending.changeBackground(tag);
+            }
+        }
+        super.useCard(c, monster, energyOnUse);
     }
 
     @Override

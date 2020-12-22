@@ -25,6 +25,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.patches.HydrologistEnum;
+import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.patches.IceBarrierExternalBlock;
 import hydrologistmod.powers.ColdPower;
 import hydrologistmod.powers.HeatPower;
@@ -69,6 +70,8 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     private static ArrayList<AbstractCard> nonCorporealCards = new ArrayList<>();
 
+    public static final ArrayList<AbstractCard.CardTags> subTypes = new ArrayList<>();
+
     public HydrologistMod(){
         BaseMod.subscribe(this);
 
@@ -78,6 +81,9 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
                 attackCardPortrait, skillCardPortrait, powerCardPortrait, energyOrbPortrait,                        //as above, but for card inspect view
                 miniManaSymbol);                                                                                    //appears in Mystic Purple cards where you type [E]
 
+        subTypes.add(HydrologistTags.WATER);
+        subTypes.add(HydrologistTags.ICE);
+        subTypes.add(HydrologistTags.STEAM);
     }
 
     //Used by @SpireInitializer
