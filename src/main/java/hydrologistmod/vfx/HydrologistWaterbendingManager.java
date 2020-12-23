@@ -134,63 +134,6 @@ public class HydrologistWaterbendingManager {
         }
     }
 
-    private void findGridPoints() {
-        for (RenderInstructions instructions : renderInstructions) {
-            Vector2 bottomLeft = spline.get(0).cpy();
-            Vector2 topRight = spline.get(0).cpy();
-            for (Vector2 point : spline) {
-                if (point.x < bottomLeft.x) {
-                    bottomLeft.x = point.x;
-                }
-                if (point.y < bottomLeft.y) {
-                    bottomLeft.y = point.y;
-                }
-                if (point.x > topRight.x) {
-                    topRight.x = point.x;
-                }
-                if (point.y > topRight.y) {
-                    topRight.y = point.y;
-                }
-            }
-            bottomLeft.add(-LINE_WIDTH, -LINE_WIDTH);
-            topRight.add(LINE_WIDTH, LINE_WIDTH);
-            float scaleWidth = instructions.texture.getRegionWidth() * Settings.scale * instructions.scaleX;
-            float scaleHeight = instructions.texture.getRegionHeight() * Settings.scale * instructions.scaleY;
-            float gridBottom = instructions.offSet.y;
-            float gridTop = scaleHeight + instructions.offSet.y;
-            if (gridBottom > bottomLeft.y) {
-                gridBottom -= scaleHeight;
-                gridTop -= scaleHeight;
-            }
-            float gridLeft = instructions.offSet.x;
-            float gridRight = scaleWidth + instructions.offSet.x;
-            if (gridLeft > bottomLeft.x) {
-                gridLeft -= scaleWidth;
-                gridRight -= scaleWidth;
-            }
-            int verticalTiles = 1;
-            int horizontalTiles = 1;
-            while (gridTop < topRight.y) {
-                gridTop += scaleHeight;
-                verticalTiles++;
-            }
-            while (gridRight < topRight.x) {
-                gridRight += scaleWidth;
-                horizontalTiles++;
-            }
-            while (gridBottom + scaleHeight < bottomLeft.y) {
-                gridBottom += scaleHeight;
-                verticalTiles--;
-            }
-            while (gridLeft + scaleWidth < bottomLeft.x) {
-                gridLeft += scaleWidth;
-                horizontalTiles--;
-            }
-            Vector2 gridBottomLeft = new Vector2(gridLeft, gridBottom);
-            instructions.setInfo(gridBottomLeft, horizontalTiles, verticalTiles);
-        }
-    }
-
     public void render(SpriteBatch sb) {
         //create the mask
         sb.end();
@@ -253,6 +196,63 @@ public class HydrologistWaterbendingManager {
         shape.end();
         maskBuffer.end();
         return HydrologistMod.getBufferTexture(maskBuffer);
+    }
+
+    private void findGridPoints() {
+        for (RenderInstructions instructions : renderInstructions) {
+            Vector2 bottomLeft = spline.get(0).cpy();
+            Vector2 topRight = spline.get(0).cpy();
+            for (Vector2 point : spline) {
+                if (point.x < bottomLeft.x) {
+                    bottomLeft.x = point.x;
+                }
+                if (point.y < bottomLeft.y) {
+                    bottomLeft.y = point.y;
+                }
+                if (point.x > topRight.x) {
+                    topRight.x = point.x;
+                }
+                if (point.y > topRight.y) {
+                    topRight.y = point.y;
+                }
+            }
+            bottomLeft.add(-LINE_WIDTH, -LINE_WIDTH);
+            topRight.add(LINE_WIDTH, LINE_WIDTH);
+            float scaleWidth = instructions.texture.getRegionWidth() * Settings.scale * instructions.scaleX;
+            float scaleHeight = instructions.texture.getRegionHeight() * Settings.scale * instructions.scaleY;
+            float gridBottom = instructions.offSet.y;
+            float gridTop = scaleHeight + instructions.offSet.y;
+            if (gridBottom > bottomLeft.y) {
+                gridBottom -= scaleHeight;
+                gridTop -= scaleHeight;
+            }
+            float gridLeft = instructions.offSet.x;
+            float gridRight = scaleWidth + instructions.offSet.x;
+            if (gridLeft > bottomLeft.x) {
+                gridLeft -= scaleWidth;
+                gridRight -= scaleWidth;
+            }
+            int verticalTiles = 1;
+            int horizontalTiles = 1;
+            while (gridTop < topRight.y) {
+                gridTop += scaleHeight;
+                verticalTiles++;
+            }
+            while (gridRight < topRight.x) {
+                gridRight += scaleWidth;
+                horizontalTiles++;
+            }
+            while (gridBottom + scaleHeight < bottomLeft.y) {
+                gridBottom += scaleHeight;
+                verticalTiles--;
+            }
+            while (gridLeft + scaleWidth < bottomLeft.x) {
+                gridLeft += scaleWidth;
+                horizontalTiles--;
+            }
+            Vector2 gridBottomLeft = new Vector2(gridLeft, gridBottom);
+            instructions.setInfo(gridBottomLeft, horizontalTiles, verticalTiles);
+        }
     }
 
     private void renderTiles(SpriteBatch sb) {
