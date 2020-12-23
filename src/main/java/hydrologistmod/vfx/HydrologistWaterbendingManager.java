@@ -19,54 +19,89 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HydrologistWaterbendingManager {
-    private ArrayList<Vector2> spline = new ArrayList<>();
-    private HashMap<Vector2, Float> times = new HashMap<>();
-    public static float SPLINE_LENGTH = 1.0F; //in seconds
-    public static int LINE_WIDTH = (int)(20F * Settings.scale);
-    private ShapeRenderer shape = new ShapeRenderer();
-    private static final int WATER_TILE_WIDTH = 160;
-    private static final int WATER_TILE_HEIGHT = 64;
-    private static final int WATER_ANIMATION_HORIZONTAL_FRAMES = 3;
-    private static final int WATER_ANIMATION_VERTICAL_FRAMES = 7;
-    private static final Texture WATER_TILE_SHEET = new Texture("hydrologistmod/images/vfx/waterbending/Water_Tile_Sheet.png");
-    private static final Texture ICE_TILE = new Texture("hydrologistmod/images/vfx/waterbending/Ice_Tile.png");
-    private static final Texture STEAM_TILE = new Texture("hydrologistmod/images/vfx/waterbending/Steam_Tile.png");
-    private static TextureRegion[] waterTiles;
-    private static TextureRegion iceTile;
-    private static TextureRegion steamTile;
-    private int waterTileCount = WATER_ANIMATION_HORIZONTAL_FRAMES * WATER_ANIMATION_VERTICAL_FRAMES;
-    private int currentWaterTile = waterTileCount;
-    private static final float WATER_ANIMATION_DURATION = 1.0f;
-    private float waterTimer = WATER_ANIMATION_DURATION;
+    //mask variables
+    public static final float SPLINE_LENGTH = 1.0F; //in seconds
+    public static final int LINE_WIDTH = (int)(20F * Settings.scale);
+    private ArrayList<Vector2> spline;
+    private HashMap<Vector2, Float> times;
+    private ShapeRenderer shape;
+
+    //GDX variables
     private FrameBuffer maskBuffer;
     private FrameBuffer tileBuffer;
-    public Vector2 override;
-    private AbstractCard.CardTags current = HydrologistTags.WATER;
-    private AbstractCard.CardTags target = HydrologistTags.WATER;
-    private static final float TRANSITION_TIME = 0.5f;
-    private float transitionTimer = 0.0f;
-    private static HashMap<AbstractCard.CardTags, BehaviourPackage> effectsMap;
-    private ArrayList<RenderInstructions> renderInstructions;
+
+    //water variables
+    private static final Texture WATER_TILE_SHEET = new Texture("hydrologistmod/images/vfx/waterbending/Water_Tile_Sheet.png");
+    private static TextureRegion[] waterTiles;
+    private static final int WATER_ANIMATION_HORIZONTAL_FRAMES = 3;
+    private static final int WATER_ANIMATION_VERTICAL_FRAMES = 7;
+    private static final float WATER_ANIMATION_DURATION = 1.0f;
+    private int waterTileCount;
+    private float waterTimer;
+    private int currentWaterTile;
+
+    //ice variables
+    private static final Texture ICE_TILE = new Texture("hydrologistmod/images/vfx/waterbending/Ice_Tile.png");
+    private static TextureRegion iceTile;
+
+    //steam variables
+    private static final Texture STEAM_TILE = new Texture("hydrologistmod/images/vfx/waterbending/Steam_Tile.png");
+    private static TextureRegion steamTile;
     private static final float STEAM_SCROLL_DURATION = 8.0F;
-    private float steamTimer = STEAM_SCROLL_DURATION;
+    private float steamTimer;
+
+    //list of tiles to render and how to render them
+    private ArrayList<RenderInstructions> renderInstructions;
+
+    //transition effect variables
+    private static final float TRANSITION_TIME = 0.5f;
+    private AbstractCard.CardTags current;
+    private AbstractCard.CardTags target;
+    private float transitionTimer;
+
+    //set this to change the target coordinate for this frame
+    public Vector2 override;
+
+    //add to this to define tile modes
+    private static HashMap<AbstractCard.CardTags, BehaviourPackage> effectsMap;
 
     public HydrologistWaterbendingManager() {
+        //texture initialization
+        waterTileCount = WATER_ANIMATION_HORIZONTAL_FRAMES * WATER_ANIMATION_VERTICAL_FRAMES;
         waterTiles = new TextureRegion[waterTileCount];
         int i = 0;
         for (int w = 0; w < WATER_ANIMATION_HORIZONTAL_FRAMES; ++w) {
             for (int h = 0; h < WATER_ANIMATION_VERTICAL_FRAMES; ++h) {
-                waterTiles[i] = new TextureRegion(WATER_TILE_SHEET, w * WATER_TILE_WIDTH, h * WATER_TILE_HEIGHT, WATER_TILE_WIDTH, WATER_TILE_HEIGHT);
+                waterTiles[i] = new TextureRegion(WATER_TILE_SHEET,
+                        w * (WATER_TILE_SHEET.getWidth() / WATER_ANIMATION_HORIZONTAL_FRAMES),
+                        h * (WATER_TILE_SHEET.getHeight() / WATER_ANIMATION_VERTICAL_FRAMES),
+                        (WATER_TILE_SHEET.getWidth() / WATER_ANIMATION_HORIZONTAL_FRAMES),
+                        (WATER_TILE_SHEET.getHeight() / WATER_ANIMATION_VERTICAL_FRAMES));
                 ++i;
             }
         }
         iceTile = new TextureRegion(ICE_TILE);
         steamTile = new TextureRegion(STEAM_TILE);
 
+        //Gdx initialization
+        shape = new ShapeRenderer();
         maskBuffer = HydrologistMod.createBuffer();
         tileBuffer = HydrologistMod.createBuffer();
 
+        //list initialization
+        spline = new ArrayList<>();
+        times = new HashMap<>();
         renderInstructions = new ArrayList<>();
         effectsMap = new HashMap<>();
+
+        //transition effect initialization
+        current = HydrologistTags.WATER;
+        target = HydrologistTags.WATER;
+        transitionTimer = 0.0f;
+
+        //water effect declaration
+        waterTimer = WATER_ANIMATION_DURATION;
+        currentWaterTile = waterTileCount;
         RenderInstructor waterInstructor = () -> {
             renderInstructions.clear();
             renderInstructions.add(new RenderInstructions(waterTiles[currentWaterTile]));
@@ -80,15 +115,18 @@ public class HydrologistWaterbendingManager {
             currentWaterTile = (int)Math.floor((waterTimer / WATER_ANIMATION_DURATION) * waterTileCount);
         };
         effectsMap.put(HydrologistTags.WATER, new BehaviourPackage(waterUpdater, waterInstructor));
+
+        //ice effect declaration
         RenderInstructor iceInstructor = () -> {
             renderInstructions.clear();
             renderInstructions.add(new RenderInstructions(iceTile));
             findGridPoints();
         };
-        EffectUpdater iceUpdater = () -> {
-
-        };
+        EffectUpdater iceUpdater = () -> {};
         effectsMap.put(HydrologistTags.ICE, new BehaviourPackage(iceUpdater, iceInstructor));
+
+        //steam effect declaration
+        steamTimer = STEAM_SCROLL_DURATION;
         RenderInstructor steamInstructor = () -> {
             renderInstructions.clear();
             renderInstructions.add(new RenderInstructions(steamTile, new Vector2(steamTile.getRegionWidth() * Settings.scale * (steamTimer / STEAM_SCROLL_DURATION), 0), Color.WHITE.cpy(), false, false, 1.0f, 1.0f));
