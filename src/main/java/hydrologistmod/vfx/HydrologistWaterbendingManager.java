@@ -59,7 +59,7 @@ public class HydrologistWaterbendingManager {
     private AbstractCard.CardTags target;
     private float transitionTimer;
 
-    //set this to change the target coordinate for this frame
+    //effect control
     public Vector2 override;
 
     //add to this to define tile modes
@@ -145,7 +145,7 @@ public class HydrologistWaterbendingManager {
     public void update(Vector2 coords) {
         Vector2 point;
         if (override != null) {
-            point = override;
+            point = override.cpy();
             override = null;
         } else {
             point = coords.cpy();
