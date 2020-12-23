@@ -22,8 +22,8 @@ public class HydrologistWaterbendingManager {
     //mask variables
     public static final float SPLINE_LENGTH = 1.0F; //in seconds
     public static final int LINE_WIDTH = (int)(20F * Settings.scale);
-    private ArrayList<Vector2> spline;
-    private HashMap<Vector2, Float> times;
+    private ArrayList<Coordinates> spline;
+    private HashMap<Coordinates, Float> times;
     private ShapeRenderer shape;
 
     //GDX variables
@@ -143,12 +143,14 @@ public class HydrologistWaterbendingManager {
     }
 
     public void update(Vector2 coords) {
-        Vector2 point;
+        Coordinates point = new Coordinates();
         if (override != null) {
-            point = override.cpy();
+            point.x = override.x;
+            point.y = override.y;
             override = null;
         } else {
-            point = coords.cpy();
+            point.x = coords.x;
+            point.y = coords.y;
         }
         spline.add(point);
         times.put(point, Gdx.graphics.getDeltaTime());
@@ -157,7 +159,7 @@ public class HydrologistWaterbendingManager {
             length += time;
         }
         while (length > SPLINE_LENGTH) {
-            Vector2 dot = spline.get(0);
+            Coordinates dot = spline.get(0);
             length -= times.get(dot);
             times.remove(dot);
             spline.remove(dot);
@@ -223,11 +225,11 @@ public class HydrologistWaterbendingManager {
             } else {
                 lineWidth = LINE_WIDTH;
             }
-            Vector2 start = spline.get(i);
-            Vector2 mid = spline.get(i+1);
+            Vector2 start = spline.get(i).toVector();
+            Vector2 mid = spline.get(i+1).toVector();
             shape.rectLine(start, mid, lineWidth);
             if ((i < spline.size() - 3)) {
-                Vector2 end = spline.get(i + 2);
+                Vector2 end = spline.get(i + 2).toVector();
                 shape.rectLine(start, end, lineWidth);
             }
         }
@@ -238,9 +240,9 @@ public class HydrologistWaterbendingManager {
 
     private void findGridPoints() {
         for (RenderInstructions instructions : renderInstructions) {
-            Vector2 bottomLeft = spline.get(0).cpy();
-            Vector2 topRight = spline.get(0).cpy();
-            for (Vector2 point : spline) {
+            Coordinates bottomLeft = spline.get(0).cpy();
+            Coordinates topRight = spline.get(0).cpy();
+            for (Coordinates point : spline) {
                 if (point.x < bottomLeft.x) {
                     bottomLeft.x = point.x;
                 }
@@ -382,6 +384,35 @@ public class HydrologistWaterbendingManager {
             this.origin = origin;
             this.horizontalTiles = horizontalTiles;
             this.verticalTiles = verticalTiles;
+        }
+    }
+
+    //eat shit Vector2 and it's override of .equals
+    public static class Coordinates {
+        public float x;
+        public float y;
+
+        public Coordinates(float x, float y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public Coordinates() {
+            this.x = 0;
+            this.y = 0;
+        }
+
+        public Coordinates cpy() {
+            return new Coordinates(x, y);
+        }
+
+        public Vector2 toVector() {
+            return new Vector2(x, y);
+        }
+
+        public void add(int x, int y) {
+            this.x += x;
+            this.y += y;
         }
     }
 }
