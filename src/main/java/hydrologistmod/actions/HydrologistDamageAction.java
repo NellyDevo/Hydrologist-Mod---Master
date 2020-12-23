@@ -1,14 +1,19 @@
 package hydrologistmod.actions;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.vfx.HydrologistParticle;
 
@@ -19,15 +24,25 @@ public class HydrologistDamageAction extends AbstractGameAction {
     private static final HashMap<AbstractCard.CardTags, Color> colorMap = initializeColorMap();
     private static final float POST_ATTACK_WAIT_DUR = 0.1f;
     private static final float DURATION = 0.3f;
+    private static final float EFFECT_DURATION = 0.5f;
     private DamageInfo info;
     private AbstractCard.CardTags tag;
     private boolean secondParticle = false;
+    private HydrologistCharacter player = null;
+    private Vector2 startPosition = null;
+    private Vector2 targetPosition = null;
 
     public HydrologistDamageAction(AbstractCard.CardTags tag, AbstractCreature target, DamageInfo info) {
         setValues(target, info);
         this.info = info;
         this.tag = tag;
-        duration = DURATION;
+        if (info.owner instanceof HydrologistCharacter) {
+            player = (HydrologistCharacter)info.owner;
+            duration = EFFECT_DURATION;
+            targetPosition = new Vector2(target.hb.cX, target.hb.cY);
+        } else {
+            duration = DURATION;
+        }
         startDuration = duration;
     }
 
@@ -38,31 +53,64 @@ public class HydrologistDamageAction extends AbstractGameAction {
             return;
         }
 
-        if (duration == startDuration) {
-            if (info.type != DamageInfo.DamageType.THORNS) {
-                if (info.owner.isDying || info.owner.halfDead) {
+        if (player == null) {
+            if (duration == startDuration) {
+                if (info.type != DamageInfo.DamageType.THORNS) {
+                    if (info.owner.isDying || info.owner.halfDead) {
+                        isDone = true;
+                        return;
+                    }
+                }
+                generateParticle(tag, target);
+                CardCrawlGame.sound.playV(sfxMap.get(tag), 2.0f);
+            }
+
+            if (duration < startDuration / 2 && !secondParticle) {
+                secondParticle = true;
+                generateParticle(tag, target);
+            }
+            tickDuration();
+
+            if (isDone) {
+                doDamage();
+                addToTop(new WaitAction(POST_ATTACK_WAIT_DUR));
+            }
+        } else {
+
+            if (startPosition == null) {
+                startPosition = player.waterCoords.cpy();
+            }
+            Vector2 interPosition = new Vector2();
+            if (duration > startDuration / 2f) {
+                //interpolate new vector2 coordinates to center of target
+                interPosition.x = Interpolation.linear.apply(targetPosition.x, startPosition.x, (duration - (startDuration / 2.0F)) / (duration / 2.0F));
+                interPosition.y = Interpolation.linear.apply(targetPosition.y, startPosition.y, (duration - (startDuration / 2.0F)) / (duration / 2.0F));
+                player.waterbending.override = interPosition;
+                duration -= Gdx.graphics.getDeltaTime();
+                //if duration is <= startDuration/2, set result coordinates to startPosition
+                if (duration <= startDuration / 2f) {
+                    doDamage();
+                    startPosition = interPosition.cpy();
+                }
+            } else {
+                //interpolate new vector2 coordinates to waterbending position
+                interPosition.x = Interpolation.linear.apply(player.waterCoords.x, startPosition.x, duration / (duration / 2.0F));
+                interPosition.y = Interpolation.linear.apply(player.waterCoords.y, startPosition.y, duration / (duration / 2.0F));
+                player.waterbending.override = interPosition;
+                duration -= Gdx.graphics.getDeltaTime();
+                if (duration <= 0) {
                     isDone = true;
-                    return;
                 }
             }
-            generateParticle(tag, target);
-            CardCrawlGame.sound.playV(sfxMap.get(tag), 2.0f);
         }
+    }
 
-        if (duration < startDuration / 2 && !secondParticle) {
-            secondParticle = true;
-            generateParticle(tag, target);
-        }
-        tickDuration();
-
-        if (isDone) {
-            target.tint.color.set(colorMap.get(tag).cpy());
-            target.tint.changeColor(Color.WHITE.cpy());
-            target.damage(info);
-            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-                AbstractDungeon.actionManager.clearPostCombatActions();
-            }
-            addToTop(new WaitAction(POST_ATTACK_WAIT_DUR));
+    private void doDamage() {
+        target.tint.color.set(colorMap.get(tag).cpy());
+        target.tint.changeColor(Color.WHITE.cpy());
+        target.damage(info);
+        if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+            AbstractDungeon.actionManager.clearPostCombatActions();
         }
     }
 

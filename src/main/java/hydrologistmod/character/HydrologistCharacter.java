@@ -65,7 +65,7 @@ public class HydrologistCharacter extends CustomPlayer {
     private static final String WATER_BONE_NAME = "WaterDummy";
     private AnimationState.TrackEntry animationTrackEntry;
     private Bone waterBone;
-    public static Vector2 waterCoords = new Vector2();
+    public Vector2 waterCoords = new Vector2();
     public HydrologistWaterbendingManager waterbending;
 
     public HydrologistCharacter(String name) {
