@@ -91,7 +91,7 @@ public class HydrologistWaterbendingManager {
         effectsMap.put(HydrologistTags.ICE, new BehaviourPackage(iceUpdater, iceInstructor));
         RenderInstructor steamInstructor = () -> {
             renderInstructions.clear();
-            renderInstructions.add(new RenderInstructions(steamTile, new Vector2(-(steamTile.getRegionWidth() * Settings.scale * (steamTimer / STEAM_SCROLL_DURATION)), 0), Color.WHITE.cpy(), false, false, 1.0f, 1.0f));
+            renderInstructions.add(new RenderInstructions(steamTile, new Vector2(steamTile.getRegionWidth() * Settings.scale * (steamTimer / STEAM_SCROLL_DURATION), 0), Color.WHITE.cpy(), false, false, 1.0f, 1.0f));
             renderInstructions.add(new RenderInstructions(steamTile, new Vector2(steamTile.getRegionWidth() * Settings.scale * (steamTimer / STEAM_SCROLL_DURATION), 0), Color.WHITE.cpy(), false, true, 1.0f, 1.0f));
             findGridPoints();
         };
@@ -157,17 +157,19 @@ public class HydrologistWaterbendingManager {
             float scaleWidth = instructions.texture.getRegionWidth() * Settings.scale * instructions.scaleX;
             float scaleHeight = instructions.texture.getRegionHeight() * Settings.scale * instructions.scaleY;
             float gridBottom = instructions.offSet.y;
+            float gridTop = scaleHeight + instructions.offSet.y;
             if (gridBottom > bottomLeft.y) {
                 gridBottom -= scaleHeight;
+                gridTop -= scaleHeight;
             }
             float gridLeft = instructions.offSet.x;
+            float gridRight = scaleWidth + instructions.offSet.x;
             if (gridLeft > bottomLeft.x) {
                 gridLeft -= scaleWidth;
+                gridRight -= scaleWidth;
             }
             int verticalTiles = 1;
             int horizontalTiles = 1;
-            float gridTop = scaleHeight;
-            float gridRight = scaleWidth;
             while (gridTop < topRight.y) {
                 gridTop += scaleHeight;
                 verticalTiles++;
@@ -190,9 +192,9 @@ public class HydrologistWaterbendingManager {
     }
 
     public void render(SpriteBatch sb) {
-        //create the mask
+//        //create the mask
         sb.end();
-        TextureRegion mask = createMask();
+//        TextureRegion mask = createMask();
 
         //create the tiles
         HydrologistMod.beginBuffer(tileBuffer);
@@ -212,15 +214,15 @@ public class HydrologistWaterbendingManager {
             renderTiles(sb);
         }
 
-        //mask the tiles
-        sb.setBlendFunction(0, GL20.GL_SRC_ALPHA);
-        sb.setColor(Color.WHITE.cpy());
-        sb.draw(mask, 0, 0);
+//        //mask the tiles
+//        sb.setBlendFunction(0, GL20.GL_SRC_ALPHA);
+//        sb.setColor(Color.WHITE.cpy());
+//        sb.draw(mask, 0, 0);
+
+        //render the effect on the main camera
         sb.end();
         tileBuffer.end();
         TextureRegion texture = HydrologistMod.getBufferTexture(tileBuffer);
-
-        //render the effect on the main camera
         sb.begin();
         sb.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA);
         sb.draw(texture, 0,0);
