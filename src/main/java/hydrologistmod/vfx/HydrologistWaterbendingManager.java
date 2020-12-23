@@ -30,12 +30,14 @@ public class HydrologistWaterbendingManager {
     private static final int WATER_ANIMATION_VERTICAL_FRAMES = 7;
     private static final Texture WATER_TILE_SHEET = new Texture("hydrologistmod/images/vfx/waterbending/Water_Tile_Sheet.png");
     private static final Texture ICE_TILE = new Texture("hydrologistmod/images/vfx/waterbending/Ice_Tile.png");
+    private static final Texture STEAM_TILE = new Texture("hydrologistmod/images/vfx/waterbending/Steam_Tile.png");
     private static TextureRegion[] waterTiles;
     private static TextureRegion iceTile;
+    private static TextureRegion steamTile;
     private int waterTileCount = WATER_ANIMATION_HORIZONTAL_FRAMES * WATER_ANIMATION_VERTICAL_FRAMES;
     private int currentWaterTile = waterTileCount;
     private static final float WATER_ANIMATION_DURATION = 1.0f;
-    private float waterTimer = 1.0f;
+    private float waterTimer = WATER_ANIMATION_DURATION;
     private FrameBuffer maskBuffer;
     private FrameBuffer tileBuffer;
     public Vector2 override;
@@ -45,6 +47,8 @@ public class HydrologistWaterbendingManager {
     private float transitionTimer = 0.0f;
     private static HashMap<AbstractCard.CardTags, BehaviourPackage> effectsMap;
     private ArrayList<RenderInstructions> renderInstructions;
+    private static final float STEAM_SCROLL_DURATION = 8.0F;
+    private float steamTimer = STEAM_SCROLL_DURATION;
 
     public HydrologistWaterbendingManager() {
         waterTiles = new TextureRegion[waterTileCount];
@@ -55,10 +59,13 @@ public class HydrologistWaterbendingManager {
                 ++i;
             }
         }
-        renderInstructions = new ArrayList<>();
         iceTile = new TextureRegion(ICE_TILE);
+        steamTile = new TextureRegion(STEAM_TILE);
+
         maskBuffer = HydrologistMod.createBuffer();
         tileBuffer = HydrologistMod.createBuffer();
+
+        renderInstructions = new ArrayList<>();
         effectsMap = new HashMap<>();
         RenderInstructor waterInstructor = () -> {
             renderInstructions.clear();
@@ -84,11 +91,15 @@ public class HydrologistWaterbendingManager {
         effectsMap.put(HydrologistTags.ICE, new BehaviourPackage(iceUpdater, iceInstructor));
         RenderInstructor steamInstructor = () -> {
             renderInstructions.clear();
-            System.out.println("What are you doing here? This has yet to be implemented");
-            ; //TODO
+            renderInstructions.add(new RenderInstructions(steamTile, new Vector2(-(steamTile.getRegionWidth() * Settings.scale * (steamTimer / STEAM_SCROLL_DURATION)), 0), Color.WHITE.cpy(), false, false, 1.0f, 1.0f));
+            renderInstructions.add(new RenderInstructions(steamTile, new Vector2(steamTile.getRegionWidth() * Settings.scale * (steamTimer / STEAM_SCROLL_DURATION), 0), Color.WHITE.cpy(), false, true, 1.0f, 1.0f));
+            findGridPoints();
         };
         EffectUpdater steamUpdater = () -> {
-
+            steamTimer += Gdx.graphics.getDeltaTime();
+            if (steamTimer >= STEAM_SCROLL_DURATION) {
+                steamTimer = 0;
+            }
         };
         effectsMap.put(HydrologistTags.STEAM, new BehaviourPackage(steamUpdater, steamInstructor));
     }
