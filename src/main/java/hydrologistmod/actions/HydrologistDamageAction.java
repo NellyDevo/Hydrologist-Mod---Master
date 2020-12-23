@@ -83,8 +83,8 @@ public class HydrologistDamageAction extends AbstractGameAction {
             Vector2 interPosition = new Vector2();
             if (duration > startDuration / 2f) {
                 //interpolate new vector2 coordinates to center of target
-                interPosition.x = Interpolation.linear.apply(targetPosition.x, startPosition.x, (duration - (startDuration / 2.0F)) / (duration / 2.0F));
-                interPosition.y = Interpolation.linear.apply(targetPosition.y, startPosition.y, (duration - (startDuration / 2.0F)) / (duration / 2.0F));
+                interPosition.x = Interpolation.linear.apply(startPosition.x, targetPosition.x, 1F - ((duration - (startDuration / 2.0F)) / (startDuration / 2.0F)));
+                interPosition.y = Interpolation.swingIn.apply(startPosition.y, targetPosition.y, 1F - ((duration - (startDuration / 2.0F)) / (startDuration / 2.0F)));
                 player.waterbending.override = interPosition;
                 duration -= Gdx.graphics.getDeltaTime();
                 //if duration is <= startDuration/2, set result coordinates to startPosition
@@ -94,8 +94,8 @@ public class HydrologistDamageAction extends AbstractGameAction {
                 }
             } else {
                 //interpolate new vector2 coordinates to waterbending position
-                interPosition.x = Interpolation.linear.apply(player.waterCoords.x, startPosition.x, duration / (duration / 2.0F));
-                interPosition.y = Interpolation.linear.apply(player.waterCoords.y, startPosition.y, duration / (duration / 2.0F));
+                interPosition.x = Interpolation.linear.apply(startPosition.x, player.waterCoords.x, 1F - (duration / (startDuration / 2.0F)));
+                interPosition.y = Interpolation.swingIn.apply(startPosition.y, player.waterCoords.y, 1F - (duration / (startDuration / 2.0F)));
                 player.waterbending.override = interPosition;
                 duration -= Gdx.graphics.getDeltaTime();
                 if (duration <= 0) {
