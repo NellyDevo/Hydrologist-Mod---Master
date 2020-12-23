@@ -187,7 +187,7 @@ public class HydrologistWaterbendingManager {
                 horizontalTiles--;
             }
             Vector2 gridBottomLeft = new Vector2(gridLeft, gridBottom);
-            instructions.info = new GridInfo(gridBottomLeft, horizontalTiles, verticalTiles);
+            instructions.setInfo(gridBottomLeft, horizontalTiles, verticalTiles);
         }
     }
 
@@ -259,11 +259,11 @@ public class HydrologistWaterbendingManager {
         for (RenderInstructions instruction : renderInstructions) {
             sb.setColor(instruction.color);
             instruction.texture.flip(instruction.flipHorizontal, instruction.flipVertical);
-            for (int x = 0; x < instruction.info.horizontalTiles; ++x) {
-                for (int y = 0; y < instruction.info.verticalTiles; ++y) {
+            for (int x = 0; x < instruction.horizontalTiles; ++x) {
+                for (int y = 0; y < instruction.verticalTiles; ++y) {
                     sb.draw(instruction.texture,
-                            instruction.info.origin.x + (x * instruction.texture.getRegionWidth() * Settings.scale * instruction.scaleX),
-                            instruction.info.origin.y + (y * instruction.texture.getRegionHeight() * Settings.scale * instruction.scaleY),
+                            instruction.origin.x + (x * instruction.texture.getRegionWidth() * Settings.scale * instruction.scaleX),
+                            instruction.origin.y + (y * instruction.texture.getRegionHeight() * Settings.scale * instruction.scaleY),
                             instruction.texture.getRegionWidth() / 2F,
                             instruction.texture.getRegionHeight() / 2F,
                             instruction.texture.getRegionWidth(),
@@ -307,18 +307,6 @@ public class HydrologistWaterbendingManager {
         }
     }
 
-    private static class GridInfo {
-        public int horizontalTiles;
-        public int verticalTiles;
-        public Vector2 origin;
-
-        public GridInfo(Vector2 origin, int horizontalTiles, int verticalTiles) {
-            this.origin = origin;
-            this.horizontalTiles = horizontalTiles;
-            this.verticalTiles = verticalTiles;
-        }
-    }
-
     private static class RenderInstructions {
         public TextureRegion texture;
         public Vector2 offSet;
@@ -327,7 +315,9 @@ public class HydrologistWaterbendingManager {
         public float scaleX;
         public float scaleY;
         public Color color;
-        public GridInfo info;
+        public int horizontalTiles;
+        public int verticalTiles;
+        public Vector2 origin;
 
         public RenderInstructions(TextureRegion texture, Vector2 offSet, Color color, boolean flipHorizontal, boolean flipVertical, float scaleX, float scaleY) {
             this.texture = texture;
@@ -349,6 +339,12 @@ public class HydrologistWaterbendingManager {
 
         public RenderInstructions(TextureRegion texture) {
             this(texture, new Vector2(0, 0), Color.WHITE.cpy(), false, false, 1, 1);
+        }
+
+        public void setInfo(Vector2 origin, int horizontalTiles, int verticalTiles) {
+            this.origin = origin;
+            this.horizontalTiles = horizontalTiles;
+            this.verticalTiles = verticalTiles;
         }
     }
 }
