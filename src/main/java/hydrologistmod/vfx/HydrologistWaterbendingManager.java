@@ -192,9 +192,9 @@ public class HydrologistWaterbendingManager {
     }
 
     public void render(SpriteBatch sb) {
-//        //create the mask
+        //create the mask
         sb.end();
-//        TextureRegion mask = createMask();
+        TextureRegion mask = createMask();
 
         //create the tiles
         HydrologistMod.beginBuffer(tileBuffer);
@@ -214,10 +214,10 @@ public class HydrologistWaterbendingManager {
             renderTiles(sb);
         }
 
-//        //mask the tiles
-//        sb.setBlendFunction(0, GL20.GL_SRC_ALPHA);
-//        sb.setColor(Color.WHITE.cpy());
-//        sb.draw(mask, 0, 0);
+        //mask the tiles
+        sb.setBlendFunction(0, GL20.GL_SRC_ALPHA);
+        sb.setColor(Color.WHITE.cpy());
+        sb.draw(mask, 0, 0);
 
         //render the effect on the main camera
         sb.end();
