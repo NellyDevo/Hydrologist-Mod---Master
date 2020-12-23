@@ -184,25 +184,26 @@ public class HydrologistWaterbendingManager {
         TextureRegion mask = createMask();
 
         //create the tiles
-        Color c = Color.WHITE.cpy();
         HydrologistMod.beginBuffer(tileBuffer);
         sb.begin();
-        sb.setColor(c);
         sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         effectsMap.get(current).instructor.instruct();
         renderTiles(sb);
 
         //if necessary, overlay with the top set of tiles
         if (transitionTimer > 0) {
-            sb.setColor(new Color(1f, 1f, 1f, Interpolation.linear.apply(1F, 0F, transitionTimer / TRANSITION_TIME)));
+            float alpha = Interpolation.linear.apply(1F, 0F, transitionTimer / TRANSITION_TIME);
             sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
             effectsMap.get(target).instructor.instruct();
+            for (RenderInstructions instruction : renderInstructions) {
+                instruction.color.a = alpha;
+            }
             renderTiles(sb);
         }
 
         //mask the tiles
         sb.setBlendFunction(0, GL20.GL_SRC_ALPHA);
-        sb.setColor(c);
+        sb.setColor(Color.WHITE.cpy());
         sb.draw(mask, 0, 0);
         sb.end();
         tileBuffer.end();
@@ -212,7 +213,6 @@ public class HydrologistWaterbendingManager {
         sb.begin();
         sb.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA);
         sb.draw(texture, 0,0);
-        sb.setColor(Color.WHITE);
         sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     }
 
@@ -244,6 +244,7 @@ public class HydrologistWaterbendingManager {
 
     private void renderTiles(SpriteBatch sb) {
         for (RenderInstructions instruction : renderInstructions) {
+            sb.setColor(instruction.color);
             instruction.texture.flip(instruction.flipHorizontal, instruction.flipVertical);
             for (int x = 0; x < instruction.info.horizontalTiles; ++x) {
                 for (int y = 0; y < instruction.info.verticalTiles; ++y) {
@@ -312,9 +313,10 @@ public class HydrologistWaterbendingManager {
         public boolean flipVertical;
         public float scaleX;
         public float scaleY;
+        public Color color;
         public GridInfo info;
 
-        public RenderInstructions(TextureRegion texture, Vector2 offSet, boolean flipHorizontal, boolean flipVertical, float scaleX, float scaleY) {
+        public RenderInstructions(TextureRegion texture, Vector2 offSet, Color color, boolean flipHorizontal, boolean flipVertical, float scaleX, float scaleY) {
             this.texture = texture;
             this.offSet = offSet;
             this.flipHorizontal = flipHorizontal;
@@ -329,10 +331,11 @@ public class HydrologistWaterbendingManager {
                 System.out.println("ERROR: invalid waterbending Y scale. Scale cannot be 0");
                 this.scaleY = 0;
             }
+            this.color = color;
         }
 
         public RenderInstructions(TextureRegion texture) {
-            this(texture, new Vector2(0, 0), false, false, 1, 1);
+            this(texture, new Vector2(0, 0), Color.WHITE.cpy(), false, false, 1, 1);
         }
     }
 }
