@@ -371,7 +371,7 @@ public class HydrologistWaterbendingManager {
             }
             if (this.scaleY == 0.0F) {
                 System.out.println("ERROR: invalid waterbending Y scale. Scale cannot be 0");
-                this.scaleY = 0;
+                this.scaleY = 1;
             }
             this.color = color;
         }
