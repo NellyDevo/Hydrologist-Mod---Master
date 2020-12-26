@@ -46,5 +46,13 @@
       "transmuted"
     ],
     "DESCRIPTION": "Transforms a card in combat into any card of the same rarity available to your current run."
+  },
+  "THERMAL_SHOCK": {
+    "PROPER_NAME": "Thermal Shock",
+    "NAMES": [
+      "thermal shock",
+      "thermal_shock"
+    ],
+    "DESCRIPTION": "A Shocked enemy deals 15% less damage with and takes 30% more damage from Attacks. Removes Cool and Hot when applied. Applying any #yCold or #yHeat to this enemy will instead deal an equal amount of damage."
   }
 }

@@ -2,11 +2,16 @@ package hydrologistmod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class HotSpringsPower extends AbstractPower implements CloneablePowerInterface {
@@ -28,18 +33,22 @@ public class HotSpringsPower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0];
-        if (amount == 1) {
-            description += DESCRIPTIONS[1];
-        } else {
-            description += DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
-        }
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override
-    public void onApplyPower(AbstractPower p, AbstractCreature target, AbstractCreature source) {
-        if (p instanceof ThermalShockPower) {
-            addToTop(new DrawCardAction(amount));
+    public void atEndOfTurn(boolean isPlayer) {
+        boolean flashed = false;
+        for (AbstractMonster enemy : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (!enemy.isDeadOrEscaped()) {
+                if (enemy.hasPower(ThermalShockPower.POWER_ID)) {
+                    if (!flashed) {
+                        flash();
+                        flashed = true;
+                    }
+                    addToBot(new DamageAction(enemy, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.POISON));
+                }
+            }
         }
     }
 

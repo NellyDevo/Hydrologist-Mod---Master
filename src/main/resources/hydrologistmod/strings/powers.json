@@ -88,10 +88,8 @@
   "hydrologistmod:HotSpringsPower": {
     "NAME": "Hot Springs",
     "DESCRIPTIONS": [
-      "Whenever an enemy suffers from #yThermal #yShock, ",
-      "draw a card.",
-      "draw #b",
-      " cards."
+      "At the end of your turn, deal #b",
+      " damage to each ALL enemies suffering from #yThermal #yShock"
     ]
   },
   "hydrologistmod:IcyFloePower": {

@@ -18,7 +18,8 @@ public class HotSprings extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/HotSprings.png";
     private static final int COST = 1;
-    private static final int POWER_AMOUNT = 1;
+    private static final int POWER_AMOUNT = 8;
+    private static final int UPGRADE_POWER_AMOUNT = 4;
 
     public HotSprings() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -43,9 +44,7 @@ public class HotSprings extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            isInnate = true;
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
+            upgradeMagicNumber(UPGRADE_POWER_AMOUNT);
         }
     }
 }

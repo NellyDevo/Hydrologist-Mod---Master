@@ -233,8 +233,8 @@
   },
   "hydrologistmod:HotSprings": {
     "NAME": "Hot Springs",
-    "DESCRIPTION": "Whenever an enemy suffers from *Thermal *Shock, draw a card.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Whenever an enemy suffers from *Thermal *Shock, draw a card."
+    "DESCRIPTION": "At the end of your turn, deal !M! damage to ALL enemies suffering from hydrologistmod:Thermal_Shock.",
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Hydraulics": {
     "NAME": "Hydraulics",
