@@ -60,24 +60,6 @@ public class ColdPower extends AbstractPower implements CloneablePowerInterface,
     }
 
     @Override
-    public void onInitialApplication() {
-        if (owner.hasPower(HeatPower.POWER_ID)) {
-            AbstractPower otherPower = owner.getPower(HeatPower.POWER_ID);
-            int damageAmt = otherPower.amount * 2;
-            addToTop(new DamageAction(owner, new DamageInfo(source, damageAmt, DamageInfo.DamageType.THORNS)));
-            addToTop(new ApplyPowerAction(owner, owner, new ThermalShockPower(owner, source)));
-            addToTop(new RemoveSpecificPowerAction(owner, source, this));
-            addToTop(new RemoveSpecificPowerAction(owner, source, otherPower));
-            return;
-        }
-        if (owner.hasPower(ThermalShockPower.POWER_ID)) {
-            int damageAmt = amount;
-            addToTop(new DamageAction(owner, new DamageInfo(source, damageAmt, DamageInfo.DamageType.THORNS)));
-            addToTop(new RemoveSpecificPowerAction(owner, source, this));
-        }
-    }
-
-    @Override
     public boolean heatAndColdOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power instanceof HeatPower && target == owner) {
             flash();
