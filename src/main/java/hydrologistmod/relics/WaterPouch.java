@@ -20,7 +20,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import javassist.CtBehavior;
 
 public class WaterPouch extends CustomRelic implements CustomSavable<WaterPouch.SaveInfo> {
-    public static final String ID = "hydrologistmod:WaterPouch2";
+    public static final String ID = "hydrologistmod:WaterPouch";
     public static final Texture IMG = new Texture("hydrologistmod/images/relics/WaterPouch.png");
     public static final Texture OUTLINE = new Texture("hydrologistmod/images/relics/WaterPouchOutline.png");
     public static AbstractCard storedCard = null;
