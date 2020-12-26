@@ -21,8 +21,8 @@ public class Liquidation extends AbstractHydrologistCard {
     private static final int COST = 0;
     private static final int BLOCK_AMT = 2;
     private static final int UPGRADE_BLOCK = 2;
-    private static final int WEAK_AMT = 2;
-    private static final int UPGRADE_WEAK = 1;
+    private static final int WEAK_AMT = 3;
+    private static final int UPGRADE_WEAK = 2;
 
     public Liquidation() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
