@@ -8,15 +8,12 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.Soul;
 import com.megacrit.cardcrawl.cards.SoulGroup;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hydrologistmod.relics.MysticalPouch;
 import hydrologistmod.relics.WaterPouch;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import hydrologistmod.vfx.RelicSoul;
 import java.util.ArrayList;
 
 @SpirePatch(
@@ -55,7 +52,8 @@ public class WaterPouchEffectPatch {
                 boolean needMoreSouls = true;
                 ArrayList<Soul> souls = ReflectionHacks.getPrivate(soulGroup, SoulGroup.class, "souls");
                 for (Soul s : souls) {
-                    if (s.isReadyForReuse) {
+                    if (s.isReadyForReuse && s instanceof RelicSoul) {
+                        ((RelicSoul)s).targetRelic = relic;
                         notEmpower(card, s, relic);
                         needMoreSouls = false;
                         soul = s;
@@ -64,7 +62,8 @@ public class WaterPouchEffectPatch {
                 }
 
                 if (needMoreSouls) {
-                    Soul s = new Soul();
+                    RelicSoul s = new RelicSoul();
+                    s.targetRelic = relic;
                     notEmpower(card, s, relic);
                     souls.add(s);
                     soul = s;
@@ -79,6 +78,7 @@ public class WaterPouchEffectPatch {
                     timer = DELAY_TIMER;
                     soul = null;
                     __instance.isDone = true;
+                    AbstractDungeon.player.cardInUse = null;
                 }
             }
             return SpireReturn.Return(null);
@@ -88,18 +88,9 @@ public class WaterPouchEffectPatch {
     }
 
     private static void notEmpower(AbstractCard card, Soul s, AbstractRelic relic) {
-        CardCrawlGame.sound.play("CARD_POWER_WOOSH", 0.1f);
-        s.card = card;
-        s.group = null;
-        ReflectionHacks.setPrivate(s, Soul.class, "pos", new Vector2(card.current_x, card.current_y));
-        ReflectionHacks.setPrivate(s, Soul.class, "target", new Vector2(relic.currentX, relic.currentY));
-        try {
-            Method m = Soul.class.getDeclaredMethod("setSharedVariables");
-            m.setAccessible(true);
-            m.invoke(s);
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        s.empower(card);
+        ReflectionHacks.setPrivate(s, Soul.class, "target", new Vector2(relic.hb.cX, relic.hb.cY));
+        s.group = RelicSoul.dummyGroup;
     }
 
     private static boolean hasRelic() {
