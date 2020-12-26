@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.StSLib;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonSyntaxException;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -108,7 +109,7 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
         Object parsed = null;
         try {
             parsed = saveFileGson.fromJson(value, this.savedType());
-        } catch (IllegalStateException e) {
+        } catch (JsonSyntaxException e) {
             parsed = saveFileGson.fromJson(value, Integer.TYPE);
         }
         if (parsed instanceof WaterPouch.SaveInfo) {
