@@ -63,7 +63,7 @@ public class ColdPower extends AbstractPower implements CloneablePowerInterface,
     public boolean heatAndColdOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power instanceof HeatPower && target == owner) {
             flash();
-            addToTop(new DamageAction(owner, new DamageInfo(source, amount * 2, DamageInfo.DamageType.THORNS)));
+            addToTop(new DamageAction(owner, new DamageInfo(source, amount * 2, DamageInfo.DamageType.HP_LOSS)));
             addToTop(new ApplyPowerAction(owner, owner, new ThermalShockPower(owner, source, 1), 1));
             addToTop(new RemoveSpecificPowerAction(owner, source, this));
             return false;
