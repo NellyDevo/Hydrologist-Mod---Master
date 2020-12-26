@@ -50,14 +50,7 @@ public class HeatPower extends AbstractPower implements CloneablePowerInterface,
     @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType type, AbstractCard card) {
         if (type == DamageInfo.DamageType.NORMAL) {
-            if (card instanceof HeatBlast) {
-                for (int i = 0; i < amount; ++i) {
-                    damage *= calculateMultiplier();
-                }
-                return damage;
-            } else {
-                return damage * calculateMultiplier();
-            }
+            return damage * calculateMultiplier();
         } else {
             return damage;
         }
