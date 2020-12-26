@@ -19,7 +19,7 @@ public class IcyFloe extends AbstractHydrologistCard {
     public static final String IMG_PATH = "hydrologistmod/images/cards/IcyFloe.png";
     private static final int COST = 2;
     private static final int CARD_DRAW = 1;
-    private static final int UPGRADE_CARD_DRAW = 1;
+    private static final int UPGRADED_COST = 1;
 
     public IcyFloe() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -43,9 +43,7 @@ public class IcyFloe extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_CARD_DRAW);
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
+            upgradeBaseCost(UPGRADED_COST);
         }
     }
 }

@@ -250,7 +250,7 @@
   "hydrologistmod:IcyFloe": {
     "NAME": "Icy Floe",
     "DESCRIPTION": "Whenever you hydrologistmod:Flow, draw a card.",
-    "UPGRADE_DESCRIPTION": "Whenever you hydrologistmod:Flow, draw !M! cards."
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:JetPropulsion": {
     "NAME": "Jet Propulsion",
