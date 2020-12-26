@@ -20,7 +20,7 @@ public class Pneumatics extends AbstractHydrologistCard {
     public static final String IMG_PATH = "hydrologistmod/images/cards/Pneumatics.png";
     private static final int COST = 1;
     private static final int TURN_COUNT = 2;
-    private static final int UPGRADE_COUNT = 1;
+    private static final int UPGRADE_COUNT = 2;
 
     public Pneumatics() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
