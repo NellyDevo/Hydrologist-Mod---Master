@@ -53,6 +53,6 @@
       "thermal shock",
       "thermal_shock"
     ],
-    "DESCRIPTION": "A Shocked enemy deals 15% less damage with and takes 30% more damage from Attacks. Removes Cool and Hot when applied. Applying any #yCold or #yHeat to this enemy will instead deal an equal amount of damage."
+    "DESCRIPTION": "A Shocked enemy deals 15% less damage with and takes 30% more damage from Attacks. Removes Cool and Hot when applied. Applying any #yCold or #yHeat to this enemy will instead increase this duration by 1."
   }
 }

@@ -2,8 +2,8 @@ package hydrologistmod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -19,14 +19,14 @@ public class ThermalShockPower extends AbstractPower implements CloneablePowerIn
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private AbstractCreature source;
 
-    public ThermalShockPower(AbstractCreature owner, AbstractCreature source) {
+    public ThermalShockPower(AbstractCreature owner, AbstractCreature source, int amount) {
         name = NAME;
         ID = POWER_ID;
         this.owner = owner;
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("hydrologistmod/images/powers/ThermalShockPower84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("hydrologistmod/images/powers/ThermalShockPower32.png"), 0, 0, 32, 32);
         type = PowerType.DEBUFF;
-        amount = -1;
+        this.amount = amount;
         updateDescription();
         this.source = source;
     }
@@ -57,13 +57,8 @@ public class ThermalShockPower extends AbstractPower implements CloneablePowerIn
     @Override
     public boolean heatAndColdOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (target == owner) {
-            if (power instanceof HeatPower) {
-                addToTop(new DamageAction(owner, new DamageInfo(source, power.amount, DamageInfo.DamageType.THORNS)));
-                flash();
-                return false;
-            }
-            if (power instanceof ColdPower) {
-                addToTop(new DamageAction(owner, new DamageInfo(source, power.amount, DamageInfo.DamageType.THORNS)));
+            if (power instanceof HeatPower || power instanceof ColdPower) {
+                addToTop(new ApplyPowerAction(owner, source, new ThermalShockPower(owner, source, 1), 1));
                 flash();
                 return false;
             }
@@ -73,11 +68,11 @@ public class ThermalShockPower extends AbstractPower implements CloneablePowerIn
 
     @Override
     public void atEndOfRound() {
-        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        addToBot(new ReducePowerAction(owner, owner, this, 1));
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new ThermalShockPower(owner, source);
+        return new ThermalShockPower(owner, source, amount);
     }
 }

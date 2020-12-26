@@ -177,7 +177,7 @@
     "DESCRIPTIONS": [
       "Receive #b",
       "% more damage from and deal #b",
-      "% less damage with #yAttacks this turn. If #yHeat or #yCold would be applied, this monster instead takes that much damage."
+      "% less damage with #yAttacks this turn. If #yHeat or #yCold would be applied, increase the duration of this effect by 1 instead."
     ]
   }
 }
