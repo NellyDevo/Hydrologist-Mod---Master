@@ -5,19 +5,21 @@ import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.StSLib;
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.google.gson.JsonElement;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.CardSave;
+import com.megacrit.cardcrawl.cards.colorless.Madness;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import javassist.CtBehavior;
 
-import java.util.ArrayList;
-
-public class MysticalPouch extends CustomRelic implements CustomSavable<Integer> {
+public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPouch.SaveInfo> {
     public static final String ID = "hydrologistmod:MysticalPouch";
     public static final Texture IMG = new Texture("hydrologistmod/images/relics/MysticalPouch.png");
     public static final Texture OUTLINE = new Texture("hydrologistmod/images/relics/MysticalPouchOutline.png");
@@ -42,37 +44,79 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<Integer>
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        AbstractCard deckCard = StSLib.getMasterDeckEquivalent(card);
-        if (deckCard != null) {
-            storedCard = deckCard;
-            setDescriptionWithCard();
-        }
+        storedCard = card.makeSameInstanceOf();
+        setDescriptionWithCard();
     }
 
     @Override
     public void atBattleStart() {
-        addToBot(new MakeTempCardInHandAction(storedCard));
+        addToBot(new MakeTempCardInHandAction(storedCard, false, true));
+        addToBot(new MakeTempCardInHandAction(storedCard, false, true));
     }
 
     @Override
-    public Integer onSave() {
+    public WaterPouch.SaveInfo onSave() {
         if (storedCard != null) {
-            return AbstractDungeon.player.masterDeck.group.indexOf(storedCard);
+            WaterPouch.SaveInfo save = new WaterPouch.SaveInfo();
+            AbstractCard masterDeckCard = StSLib.getMasterDeckEquivalent(storedCard);
+            if (masterDeckCard != null) {
+                save.deckIndex = AbstractDungeon.player.masterDeck.group.indexOf(masterDeckCard);
+            } else {
+                save.save = new CardSave(storedCard.cardID, storedCard.timesUpgraded, storedCard.misc);
+            }
+            return save;
         } else {
-            return -1;
+            return null;
         }
     }
 
     @Override
-    public void onLoad(Integer cardIndex) {
-        if (cardIndex == null) {
+    public void onLoad(WaterPouch.SaveInfo save) {
+        if (save == null) {
             return;
         }
-        if (cardIndex >= 0 && cardIndex < AbstractDungeon.player.masterDeck.group.size()) {
-            storedCard = AbstractDungeon.player.masterDeck.group.get(cardIndex);
-            if (storedCard != null) {
+        if (save.deckIndex >= 0) {
+            if (save.deckIndex < AbstractDungeon.player.masterDeck.group.size()) {
+                storedCard = AbstractDungeon.player.masterDeck.group.get(save.deckIndex).makeSameInstanceOf();
                 setDescriptionWithCard();
+            } else {
+                System.out.println("how is saved index larger?");
+                storedCard = new Madness();
             }
+        } else if (save.save != null) {
+            storedCard = CardLibrary.getCard(save.save.id).makeCopy();
+            for (int i = 0; i < save.save.upgrades; ++i) {
+                storedCard.upgrade();
+            }
+            storedCard.misc = save.save.misc;
+        } else {
+            System.out.println("Water Pouch Failed to load saved card");
+            storedCard = new Madness();
+        }
+    }
+
+    private void oldOnLoad(Integer num) {
+        System.out.println("INFO: Mystical Pouch loaded using old save data");
+        if (num >= 0 && num < AbstractDungeon.player.masterDeck.group.size()) {
+            storedCard = AbstractDungeon.player.masterDeck.group.get(num).makeSameInstanceOf();
+        } else {
+            storedCard = new Madness();
+        }
+    }
+
+    public void onLoadRaw(JsonElement value) {
+        Object parsed = null;
+        try {
+            parsed = saveFileGson.fromJson(value, this.savedType());
+        } catch (IllegalStateException e) {
+            parsed = saveFileGson.fromJson(value, Integer.TYPE);
+        }
+        if (parsed instanceof WaterPouch.SaveInfo) {
+            onLoad((WaterPouch.SaveInfo)parsed);
+        } else if (parsed instanceof Integer) {
+            oldOnLoad((Integer)parsed);
+        } else {
+            onLoad(null);
         }
     }
 
@@ -108,17 +152,16 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<Integer>
             clz = CardGroup.class,
             method = "initializeDeck"
     )
-    public static class MakePouchCardInnatePatch {
+    public static class RemovePouchCardFromDeckPatch {
         @SpireInsertPatch(
                 locator = Locator.class,
-                localvars = {"copy", "placeOnTop"}
+                localvars = {"copy"}
         )
-        public static void Insert(CardGroup __instance, CardGroup masterDeck, CardGroup copy, ArrayList<AbstractCard> placeOnTop) {
+        public static void Insert(CardGroup __instance, CardGroup masterDeck, CardGroup copy) {
             if (AbstractDungeon.player.hasRelic(ID) && storedCard != null) {
                 for (AbstractCard card : copy.group) {
                     if (card.uuid.equals(storedCard.uuid)) {
                         copy.removeCard(card);
-                        placeOnTop.add(card);
                         break;
                     }
                 }
