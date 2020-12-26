@@ -76,9 +76,9 @@ public class HydrologistDamageAction extends AbstractGameAction {
                 addToTop(new WaitAction(POST_ATTACK_WAIT_DUR));
             }
         } else {
-
             if (startPosition == null) {
                 startPosition = player.waterCoords.cpy();
+                CardCrawlGame.sound.playV("ATTACK_WHIFF_1", 2.0f);
             }
             Vector2 interPosition = new Vector2();
             if (duration > startDuration / 2f) {
@@ -109,6 +109,8 @@ public class HydrologistDamageAction extends AbstractGameAction {
         target.tint.color.set(colorMap.get(tag).cpy());
         target.tint.changeColor(Color.WHITE.cpy());
         target.damage(info);
+        generateParticle(tag, target);
+        CardCrawlGame.sound.playV(sfxMap.get(tag), 2.0f);
         if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
             AbstractDungeon.actionManager.clearPostCombatActions();
         }
