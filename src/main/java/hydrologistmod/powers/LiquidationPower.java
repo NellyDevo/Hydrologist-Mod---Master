@@ -40,13 +40,13 @@ public class LiquidationPower extends AbstractPower implements NonStackablePower
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         if (card.hasTag(HydrologistTags.WATER)) {
             flash();
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, owner, new ColdPower(m, owner, amount), amount));
+                addToBot(new ApplyPowerAction(m, owner, new ColdPower(m, owner, amount), amount));
             }
         }
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

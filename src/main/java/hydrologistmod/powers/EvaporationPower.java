@@ -40,13 +40,13 @@ public class EvaporationPower extends AbstractPower implements NonStackablePower
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         if (card.hasTag(HydrologistTags.STEAM)) {
             flash();
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, owner, new HeatPower(m, owner, amount), amount));
+                addToBot(new ApplyPowerAction(m, owner, new HeatPower(m, owner, amount), amount));
             }
         }
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

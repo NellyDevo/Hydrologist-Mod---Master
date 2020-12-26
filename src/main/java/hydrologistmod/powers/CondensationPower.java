@@ -39,11 +39,11 @@ public class CondensationPower extends AbstractPower implements NonStackablePowe
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         if (card.hasTag(HydrologistTags.WATER)) {
             flash();
-            AbstractDungeon.actionManager.addToTop(new DrawCardAction(owner, amount));
+            addToBot(new DrawCardAction(owner, amount));
         }
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

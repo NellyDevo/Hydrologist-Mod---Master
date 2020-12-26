@@ -39,11 +39,11 @@ public class SolidificationPower extends AbstractPower implements NonStackablePo
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         if (card.hasTag(HydrologistTags.ICE)) {
             flash();
-            AbstractDungeon.actionManager.addToTop(new GainBlockAction(owner, owner, amount));
+            addToBot(new GainBlockAction(owner, owner, amount));
         }
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

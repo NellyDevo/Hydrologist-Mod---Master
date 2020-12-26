@@ -39,11 +39,11 @@ public class CrystallizationPower extends AbstractPower implements NonStackableP
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         if (card.hasTag(HydrologistTags.ICE)) {
             flash();
-            AbstractDungeon.actionManager.addToTop(new TransmuteCardAction());
+            addToBot(new TransmuteCardAction());
         }
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

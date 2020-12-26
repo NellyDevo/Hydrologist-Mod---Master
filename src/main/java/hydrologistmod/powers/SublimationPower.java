@@ -41,15 +41,15 @@ public class SublimationPower extends AbstractPower implements NonStackablePower
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         if (card.hasTag(HydrologistTags.STEAM)) {
             flash();
             int[] array = new int[AbstractDungeon.getMonsters().monsters.size()];
             for (int i = 0; i < array.length; ++i) {
                 array[i] = amount;
             }
-            AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(AbstractDungeon.player, array, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToBot(new DamageAllEnemiesAction(AbstractDungeon.player, array, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override
