@@ -17,9 +17,9 @@ public class Aqueducts extends AbstractHydrologistCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Aqueducts.png";
-    private static final int COST = 1;
-    private static final int POWER_AMOUNT = 1;
-    private static final int UPGRADE_AMOUNT = 1;
+    private static final int COST = 2;
+    private static final int POWER_AMOUNT = 2;
+    private static final int UPGRADE_AMOUNT = 2;
 
     public Aqueducts() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
