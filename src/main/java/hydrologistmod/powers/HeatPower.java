@@ -44,7 +44,7 @@ public class HeatPower extends AbstractPower implements CloneablePowerInterface,
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + ((calculateMultiplier() * 100) - 100) + DESCRIPTIONS[1] + amount + (amount > 1 ? DESCRIPTIONS[3] : DESCRIPTIONS[2]) + DESCRIPTIONS[4] + (amount * 2) + DESCRIPTIONS[5];
+        description = DESCRIPTIONS[0] + (int)((calculateMultiplier() * 100) - 100) + DESCRIPTIONS[1] + amount + (amount > 1 ? DESCRIPTIONS[3] : DESCRIPTIONS[2]) + DESCRIPTIONS[4] + (amount * 2) + DESCRIPTIONS[5];
     }
 
     @Override
