@@ -33,6 +33,7 @@ public class Dehydrate extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = HEAT_AMOUNT;
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override

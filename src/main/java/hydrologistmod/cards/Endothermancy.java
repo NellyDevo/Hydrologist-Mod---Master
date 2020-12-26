@@ -32,6 +32,7 @@ public class Endothermancy extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = AMOUNT;
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Exothermancy())));
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override

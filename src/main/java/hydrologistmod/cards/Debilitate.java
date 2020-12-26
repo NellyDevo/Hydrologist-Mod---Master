@@ -30,6 +30,7 @@ public class Debilitate extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = AMOUNT_TO_APPLY;
         exhaust = true;
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override

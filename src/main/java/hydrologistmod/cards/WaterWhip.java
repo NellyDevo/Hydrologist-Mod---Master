@@ -43,6 +43,7 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
         magicNumber = baseMagicNumber = COLD_AMT;
         assignHydrologistSubtype(HydrologistTags.WATER);
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SteamLash())));
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override

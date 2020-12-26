@@ -36,7 +36,6 @@ public class IceBarrier extends AbstractHydrologistCard {
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = COLD_AMT;
         assignHydrologistSubtype(HydrologistTags.ICE);
-        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override

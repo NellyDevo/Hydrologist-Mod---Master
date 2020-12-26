@@ -32,6 +32,7 @@ public class DeepFreeze extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = POWER_AMT;
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new HighPressure())));
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override

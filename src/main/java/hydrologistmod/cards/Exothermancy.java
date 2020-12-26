@@ -29,6 +29,7 @@ public class Exothermancy extends AbstractHydrologistCard implements SwappableCa
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = AMOUNT;
+        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override

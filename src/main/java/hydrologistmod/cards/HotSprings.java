@@ -27,7 +27,6 @@ public class HotSprings extends AbstractHydrologistCard {
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = POWER_AMOUNT;
-        tags.add(HydrologistTags.TEMPERATURE);
     }
 
     @Override
