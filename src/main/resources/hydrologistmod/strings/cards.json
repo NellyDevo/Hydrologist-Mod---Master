@@ -46,7 +46,7 @@
   },
   "hydrologistmod:CrystalIce": {
     "NAME": "Crystal Ice",
-    "DESCRIPTION": "Gain !B! Block. NL Increase the effect of the paired *Laminar *Flow by that much. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Gain !B! Block. NL Increase the effect of the hydrologistmod:Paired *Laminar *Flow by that much. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:CrystalLattice": {
@@ -157,7 +157,7 @@
   },
   "hydrologistmod:FrigidLash": {
     "NAME": "Frigid Lash",
-    "DESCRIPTION": "Deal !D! damage. NL Increase the Block gained by the *Paired card by !M! this combat. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Deal !D! damage. NL Increase the Block gained by the hydrologistmod:Paired card by !M! this combat. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FrozenCapsule": {
@@ -264,7 +264,7 @@
   },
   "hydrologistmod:LayeredShell": {
     "NAME": "Layered Shell",
-    "DESCRIPTION": "Gain !B! Block. NL Increase the damage dealt by the *Paired card by !M! this combat. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Gain !B! Block. NL Increase the damage dealt by the hydrologistmod:Paired card by !M! this combat. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Liquidation": {
@@ -297,8 +297,8 @@
   },
   "hydrologistmod:PersonalRaincloud": {
     "NAME": "Personal Raincloud",
-    "DESCRIPTION": "Create a *Raincloud and *Pair it with a card in your hand. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Upgrade a card in your hand, then create an Upgraded *Raincloud and *Pair it with it. NL Exhaust."
+    "DESCRIPTION": "Create a *Raincloud and hydrologistmod:Pair it with a card in your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Upgrade a card in your hand, then create an Upgraded *Raincloud and hydrologistmod:Pair it with it. NL Exhaust."
   },
   "hydrologistmod:Pneumatics": {
     "NAME": "Pneumatics",

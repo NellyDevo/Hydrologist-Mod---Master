@@ -35,9 +35,11 @@
       "swappable",
       "swapped",
       "swaps",
-      "swap"
+      "swap",
+      "pair",
+      "paired"
     ],
-    "DESCRIPTION": "A Swappable card is tied to another card and, while selected, can be freely 'Swapped' between the two. (Default key: Spacebar)"
+    "DESCRIPTION": "A Swappable card is #yPaired with another card and, while selected, can be freely 'Swapped' between the two. (Default key: Spacebar)"
   },
   "TRANSMUTE": {
     "PROPER_NAME": "Transmute",
