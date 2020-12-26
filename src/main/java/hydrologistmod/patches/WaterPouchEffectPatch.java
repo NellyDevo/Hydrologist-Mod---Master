@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.SoulGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.relics.MysticalPouch;
 import hydrologistmod.relics.WaterPouch;
 import hydrologistmod.vfx.RelicSoul;
@@ -39,6 +40,28 @@ public class WaterPouchEffectPatch {
                     return SpireReturn.Continue();
                 }
                 AbstractCard card = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
+                AbstractCard masterDeckCard = SwapperHelper.findMasterDeckEquivalent(card);
+                if (masterDeckCard != null) {
+                    AbstractCard card2 = card;
+                    boolean doSwap = false;
+                    while (masterDeckCard.uuid != card2.uuid) {
+                        card2 = SwapperHelper.getNextCard(card2);
+                        doSwap = true;
+                    }
+                    if (doSwap) {
+                        card2.current_x = card.current_x;
+                        card2.current_y = card.current_y;
+                        card2.target_x = card.target_x;
+                        card2.target_y = card.target_y;
+                        card2.isGlowing = card.isGlowing;
+                        card.stopGlowing();
+                        card.flashVfx = null;
+                        card2.flash();
+                        card = card2;
+                        ReflectionHacks.setPrivate(__instance, UseCardAction.class, "targetCard", card);
+                        AbstractDungeon.player.cardInUse = card;
+                    }
+                }
                 if (AbstractDungeon.player.hoveredCard == card) {
                     AbstractDungeon.player.releaseCard();
                 }
