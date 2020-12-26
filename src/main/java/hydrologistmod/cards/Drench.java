@@ -39,7 +39,7 @@ public class Drench extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
-        if (!HydrologistMod.isHot(m)) {
+        if (!HydrologistMod.isHot(m) || upgraded) {
             addToBot(new ApplyPowerAction(m, p, new ColdPower(m, p, magicNumber), magicNumber));
         }
     }
@@ -55,6 +55,8 @@ public class Drench extends AbstractHydrologistCard {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
             upgradeMagicNumber(UPGRADE_COOL_AMOUNT);
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }

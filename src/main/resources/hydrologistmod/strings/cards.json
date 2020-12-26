@@ -77,7 +77,7 @@
   "hydrologistmod:Dehydrate": {
     "NAME": "Dehydrate",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy is not hydrologistmod:Cool, apply !M! hydrologistmod:Heat.",
-    "UPGRADE_DESCRIPTION": ""
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Heat."
   },
   "hydrologistmod:DimensionalIcicles": {
     "NAME": "Dimensional Icicles",
@@ -87,7 +87,7 @@
   "hydrologistmod:Drench": {
     "NAME": "Drench",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy is not hydrologistmod:Hot, apply !M! hydrologistmod:Cold.",
-    "UPGRADE_DESCRIPTION": ""
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Cold."
   },
   "hydrologistmod:EncapsulatingIce": {
     "NAME": "Encapsulating Ice",

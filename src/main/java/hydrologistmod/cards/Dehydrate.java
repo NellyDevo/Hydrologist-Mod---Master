@@ -39,7 +39,7 @@ public class Dehydrate extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
-        if (!HydrologistMod.isCool(m)) {
+        if (!HydrologistMod.isCool(m) || upgraded) {
             addToBot(new ApplyPowerAction(m, p, new HeatPower(m, p, magicNumber), magicNumber));
         }
     }
@@ -55,6 +55,8 @@ public class Dehydrate extends AbstractHydrologistCard {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
             upgradeMagicNumber(UPGRADE_HEAT_AMOUNT);
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }
