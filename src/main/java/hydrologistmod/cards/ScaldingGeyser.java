@@ -20,9 +20,9 @@ public class ScaldingGeyser extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/ScaldingGeyser.png";
     private static final int COST = 2;
-    private static final int ATTACK_DMG = 20;
-    private static final int UPGRADE_PLUS_DMG = 5;
-    private static final int VULNERABLE_AMOUNT = 3;
+    private static final int ATTACK_DMG = 24;
+    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int VULNERABLE_AMOUNT = 4;
     private static final int UPGRADE_PLUS_VULN = 2;
 
     public ScaldingGeyser() {
