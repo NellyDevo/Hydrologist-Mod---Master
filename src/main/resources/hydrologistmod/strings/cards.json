@@ -1,12 +1,8 @@
 {
   "hydrologistmod:AbstractHydrologistCard": {
     "NAME": "ABSTRAAAAACT",
-    "DESCRIPTION": "WHY ARE YOU STILL HERE?",
-    "UPGRADE_DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": [
-      "Thermal Shock",
-      "A Shocked enemy deals 15% less damage with and takes 30% more damage from Attacks. Removes Cool and Hot when applied. Applying any #yCold or #yHeat to this enemy will instead increase this duration by 1."
-    ]
+    "DESCRIPTION": "hydrologistmod:Thermal_Shock",
+    "UPGRADE_DESCRIPTION": "note for translators: this keyword needs to be localized to properly get the tooltips onto cards that are related to thermal shock"
   },
   "hydrologistmod:Accumulator": {
     "NAME": "Accumulator",
