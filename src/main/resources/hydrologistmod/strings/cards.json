@@ -65,7 +65,7 @@
   },
   "hydrologistmod:Debilitate": {
     "NAME": "Debilitate",
-    "DESCRIPTION": "Apply !M! hydrologistmod:Heat AND hydrologistmod:Cold to ALL enemies. NL Exhaust.",
+    "DESCRIPTION": "Apply !M! hydrologistmod:Heat OR hydrologistmod:Cold to ALL enemies, then trigger it. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:DeepFreeze": {
