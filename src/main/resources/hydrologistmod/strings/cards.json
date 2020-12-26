@@ -419,7 +419,7 @@
   "hydrologistmod:SteamEngine": {
     "NAME": "Steam Engine",
     "DESCRIPTION": "The first hydrologistmod:Corporeal card you play each turn is played twice.",
-    "UPGRADE_DESCRIPTION": "Innate. NL The first hydrologistmod:Corporeal card you play each turn is played twice."
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SteamLash": {
     "NAME": "Steam Lash",
