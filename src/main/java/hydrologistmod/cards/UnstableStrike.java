@@ -9,12 +9,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-
-public class UnstableStrike extends AbstractHydrologistCard {
+public class UnstableStrike extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:UnstableStrike";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -31,7 +29,6 @@ public class UnstableStrike extends AbstractHydrologistCard {
                 CardRarity.BASIC, CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         tags.add(CardTags.STRIKE);
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new UnstableDefend())));
     }
 
     @Override
@@ -51,5 +48,10 @@ public class UnstableStrike extends AbstractHydrologistCard {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }
