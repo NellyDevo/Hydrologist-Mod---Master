@@ -21,33 +21,37 @@ public class CrystallizationPower extends AbstractPower implements NonStackableP
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public CrystallizationPower(AbstractCreature owner) {
+    public CrystallizationPower(AbstractCreature owner, int amount) {
         name = NAME;
         ID = POWER_ID;
         this.owner = owner;
         region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("hydrologistmod/images/powers/CrystallizationPower84.png"), 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("hydrologistmod/images/powers/CrystallizationPower32.png"), 0, 0, 32, 32);
         type = PowerType.BUFF;
-        amount = -1;
+        this.amount = amount;
         updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0];
+        if (amount == 1) {
+            description = DESCRIPTIONS[0];
+        } else {
+            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        }
     }
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.hasTag(HydrologistTags.ICE)) {
             flash();
-            addToBot(new TransmuteCardAction());
+            addToBot(new TransmuteCardAction(amount));
         }
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new CrystallizationPower(owner);
+        return new CrystallizationPower(owner, amount);
     }
 }

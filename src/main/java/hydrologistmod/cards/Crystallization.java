@@ -21,6 +21,8 @@ public class Crystallization extends AbstractHydrologistCard {
     private static final int COST = 0;
     private static final int BLOCK_AMT = 2;
     private static final int UPGRADE_BLOCK = 2;
+    private static final int TRANSMUTE_AMOUNT = 1;
+    private static final int UPGRADE_TRANSMUTE_AMOUNT = 1;
 
     public Crystallization() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -28,12 +30,13 @@ public class Crystallization extends AbstractHydrologistCard {
                 CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         block = baseBlock = BLOCK_AMT;
+        magicNumber = baseMagicNumber = TRANSMUTE_AMOUNT;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new ApplyPowerAction(p, p, new CrystallizationPower(p)));
+        addToBot(new ApplyPowerAction(p, p, new CrystallizationPower(p, magicNumber)));
     }
 
     @Override
@@ -46,6 +49,9 @@ public class Crystallization extends AbstractHydrologistCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
+            upgradeMagicNumber(UPGRADE_TRANSMUTE_AMOUNT);
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }

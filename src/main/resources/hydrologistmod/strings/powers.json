@@ -32,7 +32,11 @@
   },
   "hydrologistmod:CrystallizationPower": {
     "NAME": "Crystallization",
-    "DESCRIPTIONS": ["If your next card played is an #yIce card, transmute a card in your hand."]
+    "DESCRIPTIONS": [
+      "If your next card played is an #yIce card, transmute a card in your hand.",
+      "If your next card played is an #yIce card, transmute #b",
+      " cards in your hand."
+    ]
   },
   "hydrologistmod:DeepFreezePower": {
     "NAME": "Deep Freeze",

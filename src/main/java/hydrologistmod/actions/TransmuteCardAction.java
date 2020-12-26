@@ -51,6 +51,11 @@ public class TransmuteCardAction extends AbstractGameAction {
         this(false, null, null);
     }
 
+    public TransmuteCardAction(int amount) {
+        this(false, null, null);
+        cards = amount;
+    }
+
     public TransmuteCardAction(boolean anyNumber) {
         this(anyNumber, null, null);
     }
