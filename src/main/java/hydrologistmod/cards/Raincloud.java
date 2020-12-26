@@ -21,6 +21,7 @@ public class Raincloud extends AbstractHydrologistCard {
     private static final int BLOCK_AMT = 4;
     private static final int UPGRADE_BLOCK = 3;
     private static final int DRAW_AMT = 1;
+    private static final int UPGRADE_DRAW = 1;
 
     public Raincloud() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -48,6 +49,9 @@ public class Raincloud extends AbstractHydrologistCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
+            upgradeMagicNumber(UPGRADE_DRAW);
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }

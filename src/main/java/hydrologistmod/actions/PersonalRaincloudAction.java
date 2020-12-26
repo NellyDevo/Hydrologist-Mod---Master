@@ -1,5 +1,7 @@
 package hydrologistmod.actions;
 
+import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -23,9 +25,11 @@ public class PersonalRaincloudAction extends AbstractGameAction {
 //    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private ArrayList<AbstractCard> cannotPair = new ArrayList<>();
+    private boolean upgraded;
 
-    public PersonalRaincloudAction() {
+    public PersonalRaincloudAction(boolean upgraded) {
         this.duration = DURATION;
+        this.upgraded = upgraded;
     }
 
     @Override
@@ -89,8 +93,25 @@ public class PersonalRaincloudAction extends AbstractGameAction {
         MethodFilter filter = (Method m) -> m.getName().equals("upgrade");
         AbstractCard newCard = CardProxyHelper.createSameInstanceProxy(oldCard, filter, newBehaviour);
         AbstractDungeon.player.hand.removeCard(oldCard);
+        CardModifierManager.addModifier(newCard, new RaincloudModifier());
         AbstractCard raincloud = new Raincloud();
+        if (upgraded) {
+            raincloud.upgrade();
+            if (newCard.canUpgrade()) {
+                newCard.upgrade();
+            }
+        }
         AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(raincloud));
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(raincloud, newCard)));
+    }
+
+    public static class RaincloudModifier extends AbstractCardModifier {
+        public String modifyDescription(String rawDescription, AbstractCard card) {
+            return rawDescription + "NL hydrologistmod:Swappable.";
+        }
+
+        public AbstractCardModifier makeCopy() {
+            return new RaincloudModifier();
+        }
     }
 }

@@ -35,11 +35,7 @@ public class PersonalRaincloud extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, block));
-        if (upgraded) {
-            addToBot(new DrawCardAction(p, magicNumber));
-        }
-        addToBot(new PersonalRaincloudAction());
+        addToBot(new PersonalRaincloudAction(upgraded));
     }
 
     @Override
@@ -51,8 +47,7 @@ public class PersonalRaincloud extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
+            cardsToPreview.upgrade();
         }
     }
 }
