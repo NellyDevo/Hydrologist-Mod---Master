@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import hydrologistmod.helpers.SwapperHelper;
 import javassist.CtBehavior;
 
 public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPouch.SaveInfo> {
@@ -45,12 +46,18 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        storedCard = card.makeSameInstanceOf();
+        AbstractCard masterDeckCard = SwapperHelper.findMasterDeckEquivalent(card);
+        if (masterDeckCard == null) {
+            storedCard = card.makeSameInstanceOf();
+        } else {
+            storedCard = masterDeckCard;
+        }
         setDescriptionWithCard();
     }
 
     @Override
     public void atBattleStart() {
+        flash();
         addToBot(new MakeTempCardInHandAction(storedCard, false, true));
         addToBot(new MakeTempCardInHandAction(storedCard, false, true));
     }

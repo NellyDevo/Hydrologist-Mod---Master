@@ -1,5 +1,6 @@
 package hydrologistmod.helpers;
 
+import com.evacipated.cardcrawl.mod.stslib.StSLib;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import hydrologistmod.patches.SwapperCardPatch;
 
@@ -52,6 +53,23 @@ public class SwapperHelper {
                 preventUpgradeLoop = false;
             }
         }
+    }
+
+    public static AbstractCard findMasterDeckEquivalent(AbstractCard card) {
+        AbstractCard masterDeckCard = StSLib.getMasterDeckEquivalent(card);
+        if (masterDeckCard == null) {
+            if (isCardSwappable(card)) {
+                AbstractCard nextCard = getNextCard(card);
+                while (nextCard != card) {
+                    masterDeckCard = StSLib.getMasterDeckEquivalent(nextCard);
+                    if (masterDeckCard != null) {
+                        return masterDeckCard;
+                    }
+                    nextCard = SwapperHelper.getNextCard(nextCard);
+                }
+            }
+        }
+        return masterDeckCard;
     }
 
     private static boolean justPressedButtonLast = false;
