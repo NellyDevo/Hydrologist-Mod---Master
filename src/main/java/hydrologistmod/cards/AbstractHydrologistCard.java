@@ -12,6 +12,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -102,7 +103,8 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();
         if (this.hasTag(HydrologistTags.TEMPERATURE)) {
-            retVal.add(new TooltipInfo(BaseMod.getKeywordTitle(thermalShock), BaseMod.getKeywordDescription(thermalShock)));
+
+            retVal.add(new TooltipInfo(BaseMod.getKeywordTitle(thermalShock.toLowerCase()), BaseMod.getKeywordDescription(thermalShock.toLowerCase())));
         }
         return retVal;
     }
