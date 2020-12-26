@@ -1,6 +1,7 @@
 package hydrologistmod.patches;
 
 import basemod.ReflectionHacks;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -23,45 +24,63 @@ import java.util.ArrayList;
         method = "update"
 )
 public class WaterPouchEffectPatch {
+    private static final float DELAY_TIMER = 0.3f;
+    private static Soul soul = null;
+    private static float timer = DELAY_TIMER;
+
     public static SpireReturn Prefix(UseCardAction __instance) {
         AbstractRoom room = AbstractDungeon.getCurrRoom();
         if (room.monsters.areMonstersBasicallyDead() && hasRelic()) {
-            AbstractRelic relic;
-            relic = AbstractDungeon.player.getRelic(WaterPouch.ID);
-            if (relic == null) {
-                relic = AbstractDungeon.player.getRelic(MysticalPouch.ID);
-            }
-            if (relic == null) {
-                System.out.println("How the eff did you get here?");
-                return SpireReturn.Continue();
-            }
-            AbstractCard card = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
-            if (AbstractDungeon.player.hoveredCard == card) {
-                AbstractDungeon.player.releaseCard();
-            }
-            AbstractDungeon.actionManager.removeFromQueue(card);
-            card.unhover();
-            card.untip();
-            card.stopGlowing();
-            AbstractDungeon.player.hand.group.remove(card);
-            card.shrink();
-            SoulGroup soulGroup = room.souls;
-            boolean needMoreSouls = true;
-            ArrayList<Soul> souls = ReflectionHacks.getPrivate(soulGroup, SoulGroup.class, "souls");
-            for (Soul s : souls) {
-                if (s.isReadyForReuse) {
+            if (soul == null) {
+                AbstractRelic relic;
+                relic = AbstractDungeon.player.getRelic(WaterPouch.ID);
+                if (relic == null) {
+                    relic = AbstractDungeon.player.getRelic(MysticalPouch.ID);
+                }
+                if (relic == null) {
+                    System.out.println("How the eff did you get here?");
+                    return SpireReturn.Continue();
+                }
+                AbstractCard card = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
+                if (AbstractDungeon.player.hoveredCard == card) {
+                    AbstractDungeon.player.releaseCard();
+                }
+                AbstractDungeon.actionManager.removeFromQueue(card);
+                card.unhover();
+                card.untip();
+                card.stopGlowing();
+                AbstractDungeon.player.hand.group.remove(card);
+                card.shrink();
+                SoulGroup soulGroup = room.souls;
+                boolean needMoreSouls = true;
+                ArrayList<Soul> souls = ReflectionHacks.getPrivate(soulGroup, SoulGroup.class, "souls");
+                for (Soul s : souls) {
+                    if (s.isReadyForReuse) {
+                        notEmpower(card, s, relic);
+                        needMoreSouls = false;
+                        soul = s;
+                        break;
+                    }
+                }
+
+                if (needMoreSouls) {
+                    Soul s = new Soul();
                     notEmpower(card, s, relic);
-                    needMoreSouls = false;
-                    break;
+                    souls.add(s);
+                    soul = s;
+                }
+            } else if (timer == DELAY_TIMER) {
+                if (soul.isReadyForReuse) {
+                    timer -= Gdx.graphics.getDeltaTime();
+                }
+            } else {
+                timer -= Gdx.graphics.getDeltaTime();
+                if (timer <= 0) {
+                    timer = DELAY_TIMER;
+                    soul = null;
+                    __instance.isDone = true;
                 }
             }
-
-            if (needMoreSouls) {
-                Soul s = new Soul();
-                notEmpower(card, s, relic);
-                souls.add(s);
-            }
-            __instance.isDone = true;
             return SpireReturn.Return(null);
         } else {
             return SpireReturn.Continue();
