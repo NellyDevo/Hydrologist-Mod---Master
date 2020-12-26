@@ -21,6 +21,7 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
     public static final String IMG_PATH = "hydrologistmod/images/cards/PureWater.png";
     private static final int COST = 0;
     private static final int DRAW_AMT = 1;
+    private static final int UPGRADE_DRAW_AMOUNT = 1;
 
     public PureWater() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -32,10 +33,10 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new FlowAction());
         if (upgraded) {
-            addToBot(new DrawCardAction(p, magicNumber));
+            addToBot(new DrawCardAction(p, 1));
         }
+        addToBot(new FlowAction());
     }
 
     @Override
@@ -47,6 +48,7 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeMagicNumber(UPGRADE_DRAW_AMOUNT);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }

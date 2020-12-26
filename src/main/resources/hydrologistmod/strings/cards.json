@@ -336,7 +336,7 @@
   "hydrologistmod:PureWater": {
     "NAME": "Pure Water",
     "DESCRIPTION": "hydrologistmod:Flow. NL When hydrologistmod:Transmuted, draw a card, then hydrologistmod:Flow.",
-    "UPGRADE_DESCRIPTION": "hydrologistmod:Flow. NL Draw a card. NL When hydrologistmod:Transmuted, draw a card, then hydrologistmod:Flow."
+    "UPGRADE_DESCRIPTION": "Draw a card. NL hydrologistmod:Flow. NL When hydrologistmod:Transmuted, draw !M! cards, then hydrologistmod:Flow."
   },
   "hydrologistmod:PurifyingSteam": {
     "NAME": "Purifying Steam",
