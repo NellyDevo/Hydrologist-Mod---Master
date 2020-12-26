@@ -82,7 +82,7 @@
   "hydrologistmod:DimensionalIcicles": {
     "NAME": "Dimensional Icicles",
     "DESCRIPTION": "Deal !D! damage. NL Upgrade a hydrologistmod:Corporeal card in your hand for the rest of combat.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Upgrade a hydrologistmod:Corporeal card in your hand for the rest of combat."
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Upgrade ALL hydrologistmod:Corporeal cards in your hand for the rest of combat."
   },
   "hydrologistmod:Drench": {
     "NAME": "Drench",
