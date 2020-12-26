@@ -18,6 +18,7 @@ public class Cryogenics extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Cryogenics.png";
     private static final int COST = 1;
+    private static final int UPGRADED_COST = 0;
 
     public Cryogenics() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -44,6 +45,7 @@ public class Cryogenics extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeBaseCost(UPGRADED_COST);
         }
     }
 }
