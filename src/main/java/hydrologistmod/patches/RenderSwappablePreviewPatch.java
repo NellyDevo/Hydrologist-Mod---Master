@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 import hydrologistmod.helpers.SwapperHelper;
@@ -60,6 +61,9 @@ public class RenderSwappablePreviewPatch {
 
         public static void Postfix(AbstractCard __instance, SpriteBatch sb) {
             if (!__instance.isLocked && __instance.isSeen && !Settings.hideCards && (boolean)ReflectionHacks.getPrivate(__instance, AbstractCard.class, "renderTip") && SwapperHelper.isCardSwappable(__instance)) {
+                if (AbstractDungeon.player != null && AbstractDungeon.player.isDraggingCard) {
+                    return;
+                }
                 boolean rightSide = __instance.current_x > Settings.WIDTH * 0.75F;
                 if (cardTipPad == null) {
                     cardTipPad = ReflectionHacks.getPrivateStatic(AbstractCard.class, "CARD_TIP_PAD");
