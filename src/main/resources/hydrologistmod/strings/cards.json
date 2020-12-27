@@ -428,7 +428,7 @@
   },
   "hydrologistmod:SteamPower": {
     "NAME": "Steam Power",
-    "DESCRIPTION": "Draw a card. The next card you play of the same subtype as the card drawn costs 0 this turn.",
+    "DESCRIPTION": "If enemy is suffering from hydrologistmod:Thermal_Shock, draw cards equal to its duration and remove it.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Strike_Hydrologist": {
