@@ -32,6 +32,7 @@ public class SteamPower extends AbstractHydrologistCard {
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.STEAM);
+        exhaust = true;
     }
 
     @Override
