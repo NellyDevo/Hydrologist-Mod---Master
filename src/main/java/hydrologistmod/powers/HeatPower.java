@@ -17,7 +17,6 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import hydrologistmod.cards.HeatBlast;
 import hydrologistmod.interfaces.HeatAndColdPower;
 import hydrologistmod.interfaces.HeatAndColdRelic;
 

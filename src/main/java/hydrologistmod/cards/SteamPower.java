@@ -1,7 +1,5 @@
 package hydrologistmod.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,9 +10,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
-import hydrologistmod.powers.SteamPowerIcePower;
-import hydrologistmod.powers.SteamPowerSteamPower;
-import hydrologistmod.powers.SteamPowerWaterPower;
 import hydrologistmod.powers.ThermalShockPower;
 
 public class SteamPower extends AbstractHydrologistCard {

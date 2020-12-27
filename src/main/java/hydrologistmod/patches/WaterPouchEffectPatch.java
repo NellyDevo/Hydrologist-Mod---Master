@@ -3,7 +3,8 @@ package hydrologistmod.patches;
 import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.Soul;
@@ -15,6 +16,7 @@ import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.relics.MysticalPouch;
 import hydrologistmod.relics.WaterPouch;
 import hydrologistmod.vfx.RelicSoul;
+
 import java.util.ArrayList;
 
 @SpirePatch(
