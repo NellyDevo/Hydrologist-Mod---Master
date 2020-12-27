@@ -167,8 +167,8 @@
   },
   "hydrologistmod:FrozenDomain": {
     "NAME": "Frozen Domain",
-    "DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, Exhaust it and reduce the cost of a random card in your discard pile to 0 this combat.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, Exhaust it and reduce the cost of a random card in your discard pile and draw pile to 0 this combat.",
+    "DESCRIPTION": "Unplayable. Ethereal. Whenever you draw this card, add a copy of it to your hand. NL If this card is discarded from your hand, gain !M! Block.",
+    "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
       "I can't play this card."
     ]

@@ -1,6 +1,8 @@
 package hydrologistmod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -19,12 +21,15 @@ public class FrozenDomain extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/FrozenDomain.png";
     private static final int COST = -2;
+    private static final int BLOCK_GAIN = 3;
+    private static final int UPGRADE_BLOCK = 2;
 
     public FrozenDomain() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
+        magicNumber = baseMagicNumber = BLOCK_GAIN;
     }
 
     @Override
@@ -40,8 +45,12 @@ public class FrozenDomain extends AbstractHydrologistCard {
 
     @Override
     public void triggerOnManualDiscard() {
-        addToTop(new FrozenDomainAction(upgraded));
-        addToTop(new ExhaustSpecificCardAction(this, AbstractDungeon.player.discardPile));
+        addToTop(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, magicNumber));
+    }
+
+    @Override
+    public void triggerWhenDrawn() {
+        addToTop(new MakeTempCardInHandAction(makeStatEquivalentCopy()));
     }
 
     @Override
@@ -53,8 +62,7 @@ public class FrozenDomain extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
+            upgradeMagicNumber(UPGRADE_BLOCK);
         }
     }
 }
