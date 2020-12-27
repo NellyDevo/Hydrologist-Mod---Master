@@ -26,7 +26,6 @@ public class SwapperHelper {
 
                 //set card's relevant fields
                 SwapperCardPatch.SwappableChainField.swappableCards.set(card, swappableLink);
-                card.cardsToPreview = swappableLink.get((swappableLink.indexOf(card) + 1) % swappableLink.size());
             }
         }
     }
