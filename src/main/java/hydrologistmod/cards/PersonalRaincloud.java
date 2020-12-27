@@ -47,6 +47,8 @@ public class PersonalRaincloud extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
             cardsToPreview.upgrade();
         }
     }

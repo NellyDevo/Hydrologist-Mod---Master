@@ -346,7 +346,7 @@
   "hydrologistmod:Raincloud": {
     "NAME": "Raincloud",
     "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": ""
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Draw !M! cards. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:ReleaseValve": {
     "NAME": "Release Valve",
