@@ -57,9 +57,11 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
 
     @Override
     public void atBattleStart() {
-        flash();
-        addToBot(new MakeTempCardInHandAction(storedCard, false, true));
-        addToBot(new MakeTempCardInHandAction(storedCard, false, true));
+        if (storedCard != null) {
+            flash();
+            addToBot(new MakeTempCardInHandAction(storedCard, false, true));
+            addToBot(new MakeTempCardInHandAction(storedCard, false, true));
+        }
     }
 
     @Override

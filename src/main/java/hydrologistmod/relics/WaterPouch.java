@@ -57,8 +57,10 @@ public class WaterPouch extends CustomRelic implements CustomSavable<WaterPouch.
 
     @Override
     public void atBattleStart() {
-        flash();
-        addToBot(new MakeTempCardInHandAction(storedCard, false, true));
+        if (storedCard != null) {
+            flash();
+            addToBot(new MakeTempCardInHandAction(storedCard, false, true));
+        }
     }
 
     @Override
