@@ -53,7 +53,7 @@ public class Eruption extends AbstractHydrologistCard implements SwappableCard {
         SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_DAMAGE);
+            upgradeDamage(UPGRADE_DAMAGE);
         }
     }
 
