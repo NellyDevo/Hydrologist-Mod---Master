@@ -32,7 +32,7 @@ public class TidalWave extends AbstractHydrologistCard {
                 CardRarity.COMMON, CardTarget.ALL_ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         isMultiDamage = true;
-        baseDamage = DAMAGE_AMT;
+        baseDamage = damage = DAMAGE_AMT;
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new IceSpike())));
     }
 
