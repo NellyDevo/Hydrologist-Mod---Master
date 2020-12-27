@@ -28,6 +28,7 @@ public class FrozenDomain extends AbstractHydrologistCard {
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = BLOCK_GAIN;
+        isEthereal = true;
     }
 
     @Override
