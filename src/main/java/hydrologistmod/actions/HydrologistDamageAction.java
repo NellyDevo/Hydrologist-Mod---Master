@@ -21,6 +21,7 @@ import java.util.HashMap;
 public class HydrologistDamageAction extends AbstractGameAction {
     private static final HashMap<AbstractCard.CardTags, String> sfxMap = initializeSfxMap();
     private static final HashMap<AbstractCard.CardTags, Color> colorMap = initializeColorMap();
+    private static final HashMap<AbstractCard.CardTags, Boolean> playSoundAtStartMap = initializeBooleanMap();
     private static final float POST_ATTACK_WAIT_DUR = 0.1f;
     private static final float DURATION = 0.3f;
     private static final float EFFECT_DURATION = 0.5f;
@@ -78,6 +79,9 @@ public class HydrologistDamageAction extends AbstractGameAction {
             if (startPosition == null) {
                 startPosition = player.waterCoords.cpy();
                 CardCrawlGame.sound.playV("ATTACK_WHIFF_1", 2.0f);
+                if (playSoundAtStartMap.get(tag)) {
+                    CardCrawlGame.sound.playV(sfxMap.get(tag), 2.0f);
+                }
             }
             Vector2 interPosition = new Vector2();
             if (duration > startDuration / 2f) {
@@ -109,7 +113,9 @@ public class HydrologistDamageAction extends AbstractGameAction {
         target.tint.changeColor(Color.WHITE.cpy());
         target.damage(info);
         generateParticle(tag, target);
-        CardCrawlGame.sound.playV(sfxMap.get(tag), 2.0f);
+        if (!playSoundAtStartMap.get(tag) && player != null) {
+            CardCrawlGame.sound.playV(sfxMap.get(tag), 2.0f);
+        }
         if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
             AbstractDungeon.actionManager.clearPostCombatActions();
         }
@@ -128,6 +134,14 @@ public class HydrologistDamageAction extends AbstractGameAction {
         retVal.put(HydrologistTags.ICE, Color.CYAN);
         retVal.put(HydrologistTags.WATER, Color.BLUE);
         retVal.put(HydrologistTags.STEAM, Color.GRAY);
+        return retVal;
+    }
+
+    private static HashMap<AbstractCard.CardTags, Boolean> initializeBooleanMap() {
+        HashMap<AbstractCard.CardTags, Boolean> retVal = new HashMap<>();
+        retVal.put(HydrologistTags.WATER, true);
+        retVal.put(HydrologistTags.ICE, false);
+        retVal.put(HydrologistTags.STEAM, false);
         return retVal;
     }
 
