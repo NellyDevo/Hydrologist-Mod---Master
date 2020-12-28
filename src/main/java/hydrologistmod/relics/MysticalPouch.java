@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.tips.CardPowerTip;
 import javassist.CtBehavior;
 
 public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPouch.SaveInfo> {
@@ -40,7 +41,7 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
         description = DESCRIPTIONS[0];
         tips.clear();
         tips.add(new PowerTip(this.name, this.description));
-        tips.add(new PowerTip(DESCRIPTIONS[1], FontHelper.colorString(storedCard.name, "y") + DESCRIPTIONS[2]));
+        tips.add(new CardPowerTip(storedCard.makeStatEquivalentCopy()));
         initializeTips();
     }
 
