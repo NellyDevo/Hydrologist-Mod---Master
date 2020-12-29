@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.patches.HydrologistTags;
 
-public class CondensationPower extends AbstractPower implements NonStackablePower, CloneablePowerInterface {
+public class CondensationPower extends AbstractStateChangePower implements CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:CondensationPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -29,6 +29,7 @@ public class CondensationPower extends AbstractPower implements NonStackablePowe
         type = PowerType.BUFF;
         this.amount = amount;
         updateDescription();
+        tag = HydrologistTags.WATER;
     }
 
     @Override
