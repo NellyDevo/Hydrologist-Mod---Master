@@ -7,4 +7,8 @@ public interface HeatAndColdPower {
     default boolean heatAndColdOnApplyPower(AbstractPower powerToApply, AbstractCreature target, AbstractCreature source) {
         return true;
     }
+
+    default int damageMultiplier() {
+        return 3;
+    }
 }

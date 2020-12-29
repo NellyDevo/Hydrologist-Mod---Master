@@ -64,7 +64,7 @@ public class HeatPower extends AbstractPower implements CloneablePowerInterface,
     public boolean heatAndColdOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power instanceof ColdPower && target == owner) {
             flash();
-            addToTop(new DamageAction(owner, new DamageInfo(source, amount * 2, DamageInfo.DamageType.HP_LOSS)));
+            addToTop(new DamageAction(owner, new DamageInfo(source, amount * damageMultiplier(), DamageInfo.DamageType.HP_LOSS)));
             addToTop(new ApplyPowerAction(owner, source, new ThermalShockPower(owner, source, 1), 1));
             addToTop(new RemoveSpecificPowerAction(owner, source, this));
             return false;
@@ -84,7 +84,7 @@ public class HeatPower extends AbstractPower implements CloneablePowerInterface,
 
     @Override
     public int getHealthBarAmount() {
-        return amount * 2;
+        return amount * damageMultiplier();
     }
 
     @Override
