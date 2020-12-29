@@ -15,8 +15,9 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.HydrologistMod;
+import hydrologistmod.interfaces.CorporealRelevantPower;
 
-public class PressureBuildupPower extends TwoAmountPower implements CloneablePowerInterface {
+public class PressureBuildupPower extends TwoAmountPower implements CloneablePowerInterface, CorporealRelevantPower {
     public static final String POWER_ID = "hydrologistmod:PressureBuildupPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -59,5 +60,10 @@ public class PressureBuildupPower extends TwoAmountPower implements CloneablePow
     @Override
     public AbstractPower makeCopy() {
         return new PressureBuildupPower(owner, amount);
+    }
+
+    @Override
+    public boolean activateGlow(AbstractCard card) {
+        return true;
     }
 }

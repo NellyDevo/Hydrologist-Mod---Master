@@ -14,8 +14,9 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.HydrologistMod;
+import hydrologistmod.interfaces.CorporealRelevantPower;
 
-public class SteamEnginePower extends AbstractPower implements CloneablePowerInterface {
+public class SteamEnginePower extends AbstractPower implements CloneablePowerInterface, CorporealRelevantPower {
     public static final String POWER_ID = "hydrologistmod:SteamEnginePower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -84,5 +85,10 @@ public class SteamEnginePower extends AbstractPower implements CloneablePowerInt
     @Override
     public AbstractPower makeCopy() {
         return new SteamEnginePower(owner, amount);
+    }
+
+    @Override
+    public boolean activateGlow(AbstractCard card) {
+        return count < amount;
     }
 }

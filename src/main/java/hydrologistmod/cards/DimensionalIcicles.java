@@ -4,8 +4,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hydrologistmod.HydrologistMod;
 import hydrologistmod.actions.HydrologistDamageAction;
 import hydrologistmod.actions.UpgradeCorporealAction;
 import hydrologistmod.patches.AbstractCardEnum;
@@ -28,12 +30,24 @@ public class DimensionalIcicles extends AbstractHydrologistCard {
                 CardRarity.COMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE_AMT;
+        tags.add(HydrologistTags.CORPOREAL_EFFECT);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
         addToBot(new UpgradeCorporealAction(upgraded));
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        for (AbstractCard card : AbstractDungeon.player.hand.group) {
+            if (HydrologistMod.isThisCorporeal(card)) {
+                glowColor = GOLD_BORDER_GLOW_COLOR.cpy();
+                return;
+            }
+        }
+        glowColor = BLUE_BORDER_GLOW_COLOR.cpy();
     }
 
     @Override

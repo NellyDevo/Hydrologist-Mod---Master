@@ -31,6 +31,7 @@ public class GhostlyMist extends AbstractHydrologistCard {
                 CardRarity.COMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
+        tags.add(HydrologistTags.CORPOREAL_EFFECT);
     }
 
     @Override

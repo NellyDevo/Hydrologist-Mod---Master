@@ -16,14 +16,18 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.character.HydrologistCharacter;
+import hydrologistmod.helpers.CardBorderGlowManager;
+import hydrologistmod.interfaces.CorporealRelevantPower;
 import hydrologistmod.patches.HydrologistEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.patches.IceBarrierExternalBlock;
@@ -159,6 +163,25 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         ModPanel settingsPanel = new ModPanel();
         BaseMod.registerModBadge(badgeImg, "The Hydrologist Mod", "Johnny Devo", "Adds a new character to the game: The Hydrologist.", settingsPanel);
         HydrologistParticle.initializeRegions();
+        CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInformation() {
+            @Override
+            public boolean test(AbstractCard card) {
+                if (isThisCorporeal(card)) {
+                    return hasCorporealRelevantPower(card) || hasCorporealRelevantCard();
+                }
+                return false;
+            }
+
+            @Override
+            public Color getColor(AbstractCard card) {
+                return Color.PURPLE.cpy();
+            }
+
+            @Override
+            public String glowID() {
+                return "HydrologistMod:CorporealGlow";
+            }
+        });
     }
 
     @Override
@@ -244,6 +267,32 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     public static boolean isThisCorporeal(AbstractCard card) {
         return (!nonCorporealCards.contains(card));
+    }
+
+    public static boolean hasCorporealRelevantPower(AbstractCard card) {
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+            for (AbstractPower power : p.powers) {
+                if (power instanceof CorporealRelevantPower) {
+                    if (((CorporealRelevantPower)power).activateGlow(card)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean hasCorporealRelevantCard() {
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+            for (AbstractCard card : p.hand.group) {
+                if (card.hasTag(HydrologistTags.CORPOREAL_EFFECT)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public static boolean isHot(AbstractCreature creature) {
