@@ -28,7 +28,11 @@ public class RenderSwappablePreviewPatch {
                     cardTipPad = ReflectionHacks.getPrivateStatic(AbstractCard.class, "CARD_TIP_PAD");
                 }
                 float horizontal = ((AbstractCard.IMG_WIDTH * 0.8F) + cardTipPad);
-                float vertical = ((AbstractCard.IMG_HEIGHT * 0.8F) + cardTipPad + ((Hitbox)ReflectionHacks.getPrivate(__instance, SingleCardViewPopup.class, "prevHb")).height);
+                Hitbox prevHb = ReflectionHacks.getPrivate(__instance, SingleCardViewPopup.class, "prevHb");
+                float vertical = ((AbstractCard.IMG_HEIGHT * 0.8F) + cardTipPad);
+                if (prevHb != null) {
+                    vertical += prevHb.height;
+                }
                 boolean verticalOffset = false;
                 if (card.cardsToPreview != null) {
                     renderY -= vertical;
