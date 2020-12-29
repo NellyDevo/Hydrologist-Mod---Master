@@ -20,7 +20,7 @@ public class Debilitate extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Debilitate.png";
     private static final int COST = 2;
-    private static final int AMOUNT_TO_APPLY = 5;
+    private static final int AMOUNT_TO_APPLY = 4;
     private static final int UPGRADE_AMOUNT = 2;
 
     public Debilitate() {
