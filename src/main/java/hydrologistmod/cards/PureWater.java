@@ -33,9 +33,7 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (upgraded) {
-            addToBot(new DrawCardAction(p, 1));
-        }
+        addToBot(new DrawCardAction(p, 1));
         addToBot(new FlowAction());
     }
 

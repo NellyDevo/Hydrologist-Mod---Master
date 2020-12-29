@@ -1,5 +1,6 @@
 package hydrologistmod.cards;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -32,6 +33,7 @@ public class PureIce extends AbstractHydrologistCard implements TransmutableCard
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DrawCardAction(p, 1));
         addToBot(new GainBlockAction(p, p, block));
     }
 

@@ -325,17 +325,17 @@
   },
   "hydrologistmod:PureIce": {
     "NAME": "Pure Ice",
-    "DESCRIPTION": "Gain !B! Block. NL When hydrologistmod:Transmuted, gain !B! Block twice.",
+    "DESCRIPTION": "Draw a card. NL Gain !B! Block. NL When hydrologistmod:Transmuted, gain !B! Block twice.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:PureSteam": {
     "NAME": "Pure Steam",
-    "DESCRIPTION": "Deal !D! damage. NL When hydrologistmod:Transmuted, deal !D! damage to a random enemy twice.",
+    "DESCRIPTION": "Draw a card. NL Deal !D! damage. NL When hydrologistmod:Transmuted, deal !D! damage to a random enemy twice.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:PureWater": {
     "NAME": "Pure Water",
-    "DESCRIPTION": "hydrologistmod:Flow. NL When hydrologistmod:Transmuted, draw a card, then hydrologistmod:Flow.",
+    "DESCRIPTION": "Draw a card. NL hydrologistmod:Flow. NL When hydrologistmod:Transmuted, draw a card, then hydrologistmod:Flow.",
     "UPGRADE_DESCRIPTION": "Draw a card. NL hydrologistmod:Flow. NL When hydrologistmod:Transmuted, draw !M! cards, then hydrologistmod:Flow."
   },
   "hydrologistmod:PurifyingSteam": {
