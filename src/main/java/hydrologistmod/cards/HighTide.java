@@ -29,7 +29,7 @@ public class HighTide extends AbstractHydrologistCard {
     public HighTide() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.UNCOMMON, CardTarget.ENEMY);
+                CardRarity.COMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SeaFoam())));
