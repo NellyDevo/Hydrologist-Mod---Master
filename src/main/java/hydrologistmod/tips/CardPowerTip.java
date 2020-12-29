@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 public class CardPowerTip extends PowerTip {
     public AbstractCard card;
     public float textHeight = 0.0f;
+    public float cardScale = 0.8f;
 
     public CardPowerTip(AbstractCard card) {
         this.card = card;
