@@ -39,6 +39,7 @@ public class PreciousNecklace extends CustomRelic implements CorporealRelevantOb
                     addToBot(new FlowAction());
                     grayscale = true;
                     isDone = true;
+                    stopPulse();
                 }
             });
         }
@@ -47,6 +48,24 @@ public class PreciousNecklace extends CustomRelic implements CorporealRelevantOb
     @Override
     public void justEnteredRoom(AbstractRoom room) {
         grayscale = false;
+    }
+
+    @Override
+    public void onVictory() {
+        grayscale = false;
+    }
+
+    @Override
+    public void onRefreshHand() {
+        if (!grayscale) {
+            for (AbstractCard card : AbstractDungeon.player.hand.group) {
+                if (HydrologistMod.isThisCorporeal(card)) {
+                    beginPulse();
+                    return;
+                }
+            }
+        }
+        stopPulse();
     }
 
     @Override
