@@ -2,6 +2,6 @@ package hydrologistmod.interfaces;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
-public interface CorporealRelevantPower {
+public interface CorporealRelevantObject {
     boolean activateGlow(AbstractCard card);
 }

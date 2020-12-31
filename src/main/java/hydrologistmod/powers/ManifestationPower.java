@@ -10,9 +10,9 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.HydrologistMod;
-import hydrologistmod.interfaces.CorporealRelevantPower;
+import hydrologistmod.interfaces.CorporealRelevantObject;
 
-public class ManifestationPower extends AbstractPower implements CloneablePowerInterface, CorporealRelevantPower {
+public class ManifestationPower extends AbstractPower implements CloneablePowerInterface, CorporealRelevantObject {
     public static final String POWER_ID = "hydrologistmod:ManifestationPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;

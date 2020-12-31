@@ -11,8 +11,9 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hydrologistmod.HydrologistMod;
 import hydrologistmod.actions.FlowAction;
+import hydrologistmod.interfaces.CorporealRelevantObject;
 
-public class PreciousNecklace extends CustomRelic {
+public class PreciousNecklace extends CustomRelic implements CorporealRelevantObject {
     public static final String ID = "hydrologistmod:PreciousNecklace";
     public static final Texture IMG = new Texture("hydrologistmod/images/relics/PreciousNecklace.png");
     public static final Texture OUTLINE = new Texture("hydrologistmod/images/relics/PreciousNecklaceOutline.png");
@@ -51,5 +52,10 @@ public class PreciousNecklace extends CustomRelic {
     @Override
     public AbstractRelic makeCopy() {
         return new PreciousNecklace();
+    }
+
+    @Override
+    public boolean activateGlow(AbstractCard card) {
+        return !grayscale;
     }
 }

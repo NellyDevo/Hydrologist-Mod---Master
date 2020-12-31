@@ -23,11 +23,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.helpers.CardBorderGlowManager;
-import hydrologistmod.interfaces.CorporealRelevantPower;
+import hydrologistmod.interfaces.CorporealRelevantObject;
 import hydrologistmod.patches.HydrologistEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.patches.IceBarrierExternalBlock;
@@ -167,7 +168,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
             @Override
             public boolean test(AbstractCard card) {
                 if (isThisCorporeal(card)) {
-                    return hasCorporealRelevantPower(card) || hasCorporealRelevantCard();
+                    return hasCorporealRelevantObject(card) || hasCorporealRelevantCard();
                 }
                 return false;
             }
@@ -269,12 +270,19 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         return (!nonCorporealCards.contains(card));
     }
 
-    public static boolean hasCorporealRelevantPower(AbstractCard card) {
+    public static boolean hasCorporealRelevantObject(AbstractCard card) {
         AbstractPlayer p = AbstractDungeon.player;
         if (p != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
             for (AbstractPower power : p.powers) {
-                if (power instanceof CorporealRelevantPower) {
-                    if (((CorporealRelevantPower)power).activateGlow(card)) {
+                if (power instanceof CorporealRelevantObject) {
+                    if (((CorporealRelevantObject)power).activateGlow(card)) {
+                        return true;
+                    }
+                }
+            }
+            for (AbstractRelic relic : p.relics) {
+                if (relic instanceof CorporealRelevantObject) {
+                    if (((CorporealRelevantObject)relic).activateGlow(card)) {
                         return true;
                     }
                 }
