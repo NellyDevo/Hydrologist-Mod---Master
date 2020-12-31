@@ -42,7 +42,7 @@ public class DimensionalIcicles extends AbstractHydrologistCard {
     @Override
     public void triggerOnGlowCheck() {
         for (AbstractCard card : AbstractDungeon.player.hand.group) {
-            if (HydrologistMod.isThisCorporeal(card)) {
+            if (HydrologistMod.isThisCorporeal(card) && card != this) {
                 glowColor = GOLD_BORDER_GLOW_COLOR.cpy();
                 return;
             }
