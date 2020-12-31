@@ -355,10 +355,10 @@
   },
   "hydrologistmod:Reservoir": {
     "NAME": "Reservoir",
-    "DESCRIPTION": "Innate. Ethereal. NL Costs [E] [E] to hydrologistmod:Swap. NL When hydrologistmod:Swapped, discard this card. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Innate. Ethereal. NL Costs [E] to hydrologistmod:Swap. NL When hydrologistmod:Swapped, discard this card. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Innate. NL When hydrologistmod:Swapped, discard this card. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
-      "I don't have enough Energy!"
+      "I can't play this card."
     ]
   },
   "hydrologistmod:ResonantCrystal": {
