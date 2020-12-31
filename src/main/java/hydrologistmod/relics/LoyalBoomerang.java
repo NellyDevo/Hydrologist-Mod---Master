@@ -26,7 +26,7 @@ public class LoyalBoomerang extends CustomRelic {
             flash();
             AbstractCard topCard = AbstractDungeon.player.discardPile.getTopCard();
             AbstractDungeon.player.discardPile.removeCard(topCard);
-            AbstractDungeon.player.drawPile.moveToDeck(topCard, false);
+            AbstractDungeon.player.drawPile.moveToDeck(topCard, true);
         }
     }
 

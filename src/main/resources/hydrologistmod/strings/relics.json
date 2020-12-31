@@ -17,7 +17,7 @@
   "hydrologistmod:LoyalBoomerang": {
     "NAME": "Loyal Boomerang",
     "FLAVOR": "A loyal tool from a loyal friend.",
-    "DESCRIPTIONS": ["At the end of each turn, place the top card of your discard pile onto the top of your draw pile."]
+    "DESCRIPTIONS": ["At the end of each turn, place the top card of your discard pile into a random spot in your draw pile."]
   },
   "hydrologistmod:MysticalPouch": {
     "NAME": "Mystical Pouch",
