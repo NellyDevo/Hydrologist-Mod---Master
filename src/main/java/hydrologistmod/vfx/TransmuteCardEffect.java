@@ -204,9 +204,11 @@ public class TransmuteCardEffect extends AbstractGameEffect {
                 particleTimer -= DURATION_PER_PARTICLE;
                 for (AbstractCard card : transmutedPairs.keySet()) {
                     AbstractCard pairCard = transmutedPairs.get(card);
-                    AbstractCard.CardTags type = null;
+                    AbstractCard.CardTags type;
                     if (pairCard instanceof AbstractHydrologistCard) {
                         type = ((AbstractHydrologistCard)pairCard).getHydrologistSubtype();
+                    } else {
+                        type = HydrologistTags.WATER;
                     }
                     float center_x = card.current_x;
                     float center_y = card.current_y - (512f * offsetPercent) + 256f; //start at bottom of card at 100%, end at top of card at 0%
@@ -214,8 +216,10 @@ public class TransmuteCardEffect extends AbstractGameEffect {
                     float scale = AbstractDungeon.miscRng.random(0.8f, 1.2f);
                     //calculate random coordinates within a bounding box
                     float x = center_x + (AbstractDungeon.miscRng.random(0.0f, PARTICLE_SPAWN_WIDTH * Settings.scale) - ((PARTICLE_SPAWN_WIDTH * Settings.scale) / 2));
-                    float y = center_y + (AbstractDungeon.miscRng.random(0.0f, PARTICLE_SPAWN_HEIGHT * Settings.scale) - ((PARTICLE_SPAWN_HEIGHT * Settings.scale) / 2));
-                    AbstractDungeon.topLevelEffectsQueue.add(new HydrologistParticle(type, x, y, rotation, scale));
+                    if (x < card.hb.x + card.hb.height) {
+                        float y = center_y + (AbstractDungeon.miscRng.random(0.0f, PARTICLE_SPAWN_HEIGHT * Settings.scale) - ((PARTICLE_SPAWN_HEIGHT * Settings.scale) / 2));
+                        AbstractDungeon.topLevelEffectsQueue.add(new HydrologistParticle(type, x, y, rotation, scale));
+                    }
                 }
             }
         } else {
