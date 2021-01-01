@@ -214,16 +214,26 @@ public class HydrologistWaterbendingManager {
 
     private TextureRegion createMask() {
         HydrologistMod.beginBuffer(maskBuffer);
+        Color color = Color.BLACK.cpy();
+        color.a = 0.5f;
+        renderCurve(color, LINE_WIDTH); //half transparent larger outline for anti-aliasing
+        color.a = 1.0f;
+        renderCurve(color, LINE_WIDTH - 1);
+        maskBuffer.end();
+        return HydrologistMod.getBufferTexture(maskBuffer);
+    }
+
+    private void renderCurve(Color color, int width) {
         shape.begin(ShapeRenderer.ShapeType.Filled);
-        shape.setColor(Color.BLACK.cpy());
+        shape.setColor(color);
         int lineWidth;
         for (int i = 0; i < spline.size() - 1; ++i) {
-            if (i < LINE_WIDTH) {
+            if (i < width) {
                 lineWidth = i + 1;
-            } else if (i > spline.size() - LINE_WIDTH) {
+            } else if (i > spline.size() - width) {
                 lineWidth = spline.size() - i;
             } else {
-                lineWidth = LINE_WIDTH;
+                lineWidth = width;
             }
             Vector2 start = spline.get(i).toVector();
             Vector2 mid = spline.get(i+1).toVector();
@@ -234,8 +244,6 @@ public class HydrologistWaterbendingManager {
             }
         }
         shape.end();
-        maskBuffer.end();
-        return HydrologistMod.getBufferTexture(maskBuffer);
     }
 
     private void findGridPoints() {
