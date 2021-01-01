@@ -55,10 +55,6 @@ public class Reservoir extends AbstractHydrologistCard implements SwappableCard 
         SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
-            upgradeMagicNumber(UPGRADE_ENERGY_LOSS);
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
         }
     }
 }
