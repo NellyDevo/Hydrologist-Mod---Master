@@ -19,7 +19,6 @@ public class Blizzard extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Blizzard.png";
     private static final int COST = 2;
-    private static final int BLOCK_AMT = 8;
     private static final int POWER_AMT = 4;
     private static final int UPGRADE_POWER_AMT = 2;
 
@@ -28,13 +27,11 @@ public class Blizzard extends AbstractHydrologistCard {
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.ICE);
-        block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = POWER_AMT;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, block));
         addToBot(new ApplyPowerAction(p, p, new BlizzardPower(p, magicNumber)));
     }
 

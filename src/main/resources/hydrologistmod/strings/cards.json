@@ -16,7 +16,7 @@
   },
   "hydrologistmod:Blizzard": {
     "NAME": "Blizzard",
-    "DESCRIPTION": "Gain !B! Block. NL Whenever you play an *Ice card, gain !M! Block.",
+    "DESCRIPTION": "Whenever you play an *Ice card, gain !M! Block.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:BlockOfIce": {
