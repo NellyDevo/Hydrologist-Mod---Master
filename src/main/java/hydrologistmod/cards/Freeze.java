@@ -1,9 +1,11 @@
 package hydrologistmod.cards;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.FreezeAction;
@@ -32,6 +34,14 @@ public class Freeze extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractCard card = this;
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                card.target_y = Settings.HEIGHT / 2.0f + 300f * Settings.scale;
+                isDone = true;
+            }
+        });
         addToBot(new FreezeAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
     }
 
