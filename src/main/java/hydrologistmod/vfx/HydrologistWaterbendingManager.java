@@ -63,10 +63,6 @@ public class HydrologistWaterbendingManager {
     //effect control
     public Vector2 override;
     public boolean doCapture;
-    public float captureX;
-    public float captureY;
-    public float captureWidth;
-    public float captureHeight;
     public TextureRegion capturedTexture;
 
     //add to this to define tile modes
@@ -223,8 +219,7 @@ public class HydrologistWaterbendingManager {
             sb.draw(texture, 0, 0);
             sb.end();
             captureBuffer.end();
-            capturedTexture = new TextureRegion(captureBuffer.getColorBufferTexture(), captureX, captureY, captureWidth, captureHeight);
-            capturedTexture.flip(false, true);
+            capturedTexture = HydrologistMod.getBufferTexture(captureBuffer);
             doCapture = false;
         }
 
