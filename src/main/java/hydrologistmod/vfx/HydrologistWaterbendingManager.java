@@ -29,6 +29,7 @@ public class HydrologistWaterbendingManager {
     //GDX variables
     private FrameBuffer maskBuffer;
     private FrameBuffer tileBuffer;
+    private FrameBuffer captureBuffer;
 
     //water variables
     private static final Texture WATER_TILE_SHEET = new Texture("hydrologistmod/images/vfx/waterbending/Water_Tile_Sheet.png");
@@ -61,6 +62,12 @@ public class HydrologistWaterbendingManager {
 
     //effect control
     public Vector2 override;
+    public boolean doCapture;
+    public float captureX;
+    public float captureY;
+    public float captureWidth;
+    public float captureHeight;
+    public TextureRegion capturedTexture;
 
     //add to this to define tile modes
     private static HashMap<AbstractCard.CardTags, BehaviourPackage> effectsMap;
@@ -87,6 +94,7 @@ public class HydrologistWaterbendingManager {
         shape = new ShapeRenderer();
         maskBuffer = HydrologistMod.createBuffer();
         tileBuffer = HydrologistMod.createBuffer();
+        captureBuffer = HydrologistMod.createBuffer();
 
         //list initialization
         spline = new ArrayList<>();
@@ -202,12 +210,26 @@ public class HydrologistWaterbendingManager {
         sb.setColor(Color.WHITE.cpy());
         sb.draw(mask, 0, 0);
 
-        //render the effect on the main camera
+        //collect the final texture
         sb.end();
         tileBuffer.end();
         TextureRegion texture = HydrologistMod.getBufferTexture(tileBuffer);
-        sb.begin();
         sb.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
+        //if a capture is required, render the effect on the capture buffer
+        if (doCapture) {
+            HydrologistMod.beginBuffer(captureBuffer);
+            sb.begin();
+            sb.draw(texture, 0, 0);
+            sb.end();
+            captureBuffer.end();
+            capturedTexture = new TextureRegion(captureBuffer.getColorBufferTexture(), captureX, captureY, captureWidth, captureHeight);
+            capturedTexture.flip(false, true);
+            doCapture = false;
+        }
+
+        //render the effect on the main camera
+        sb.begin();
         sb.draw(texture, 0,0);
         sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     }
