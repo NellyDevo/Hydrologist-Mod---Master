@@ -46,6 +46,24 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     private static final TextureAtlas.AtlasRegion STEAM_SMALL_ATTACK_FRAME = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/Steam Small Attack Frame.png"), 0, 0, 512, 512);
     private static final TextureAtlas.AtlasRegion STEAM_SMALL_SKILL_FRAME = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/Steam Small Skill Frame.png"), 0, 0, 512, 512);
     private static final TextureAtlas.AtlasRegion STEAM_SMALL_POWER_FRAME = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/Steam Small Power Frame.png"), 0, 0, 512, 512);
+    public static final TextureAtlas.AtlasRegion ICE_LARGE_ATTACK_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/bg_attack_ice.png"), 0, 0, 1024, 1024);
+    public static final TextureAtlas.AtlasRegion ICE_LARGE_SKILL_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/bg_skill_ice.png"), 0, 0, 1024, 1024);
+    public static final TextureAtlas.AtlasRegion ICE_LARGE_POWER_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/bg_power_ice.png"), 0, 0, 1024, 1024);
+    public static final TextureAtlas.AtlasRegion WATER_LARGE_ATTACK_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/bg_attack_water.png"), 0, 0, 1024, 1024);
+    public static final TextureAtlas.AtlasRegion WATER_LARGE_SKILL_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/bg_skill_water.png"), 0, 0, 1024, 1024);
+    public static final TextureAtlas.AtlasRegion WATER_LARGE_POWER_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/bg_power_water.png"), 0, 0, 1024, 1024);
+    public static final TextureAtlas.AtlasRegion STEAM_LARGE_ATTACK_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/bg_attack_steam.png"), 0, 0, 1024, 1024);
+    public static final TextureAtlas.AtlasRegion STEAM_LARGE_SKILL_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/bg_skill_steam.png"), 0, 0, 1024, 1024);
+    public static final TextureAtlas.AtlasRegion STEAM_LARGE_POWER_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/bg_power_steam.png"), 0, 0, 1024, 1024);
+    private static final TextureAtlas.AtlasRegion ICE_SMALL_ATTACK_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/bg_attack_ice.png"), 0, 0, 512, 512);
+    private static final TextureAtlas.AtlasRegion ICE_SMALL_SKILL_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/bg_skill_ice.png"), 0, 0, 512, 512);
+    private static final TextureAtlas.AtlasRegion ICE_SMALL_POWER_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/bg_power_ice.png"), 0, 0, 512, 512);
+    private static final TextureAtlas.AtlasRegion WATER_SMALL_ATTACK_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/bg_attack_water.png"), 0, 0, 512, 512);
+    private static final TextureAtlas.AtlasRegion WATER_SMALL_SKILL_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/bg_skill_water.png"), 0, 0, 512, 512);
+    private static final TextureAtlas.AtlasRegion WATER_SMALL_POWER_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/bg_power_water.png"), 0, 0, 512, 512);
+    private static final TextureAtlas.AtlasRegion STEAM_SMALL_ATTACK_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/bg_attack_steam.png"), 0, 0, 512, 512);
+    private static final TextureAtlas.AtlasRegion STEAM_SMALL_SKILL_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/bg_skill_steam.png"), 0, 0, 512, 512);
+    private static final TextureAtlas.AtlasRegion STEAM_SMALL_POWER_BACKGROUND = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/bg_power_steam.png"), 0, 0, 512, 512);
     public static CardStrings tooltip = CardCrawlGame.languagePack.getCardStrings("hydrologistmod:AbstractHydrologistCard");
     public static String thermalShock = tooltip.DESCRIPTION;
     public static String swappable = tooltip.EXTENDED_DESCRIPTION[0];
@@ -88,10 +106,13 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     @SpireOverride
     protected void renderAttackPortrait(SpriteBatch sb, float x, float y) {
         if (hasTag(HydrologistTags.ICE)) {
+            renderHelper(sb, getRenderColor(), ICE_SMALL_ATTACK_BACKGROUND, x, y);
             renderHelper(sb, getRenderColor(), ICE_SMALL_ATTACK_FRAME, x, y);
         } else if (hasTag(HydrologistTags.WATER)) {
+            renderHelper(sb, getRenderColor(), WATER_SMALL_ATTACK_BACKGROUND, x, y);
             renderHelper(sb, getRenderColor(), WATER_SMALL_ATTACK_FRAME, x, y);
         } else if (hasTag(HydrologistTags.STEAM)) {
+            renderHelper(sb, getRenderColor(), STEAM_SMALL_ATTACK_BACKGROUND, x, y);
             renderHelper(sb, getRenderColor(), STEAM_SMALL_ATTACK_FRAME, x, y);
         } else {
             SpireSuper.call(sb, x, y);
@@ -101,10 +122,13 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     @SpireOverride
     protected void renderSkillPortrait(SpriteBatch sb, float x, float y) {
         if (hasTag(HydrologistTags.ICE)) {
+            renderHelper(sb, getRenderColor(), ICE_SMALL_SKILL_BACKGROUND, x, y);
             renderHelper(sb, getRenderColor(), ICE_SMALL_SKILL_FRAME, x, y);
         } else if (hasTag(HydrologistTags.WATER)) {
+            renderHelper(sb, getRenderColor(), WATER_SMALL_SKILL_BACKGROUND, x, y);
             renderHelper(sb, getRenderColor(), WATER_SMALL_SKILL_FRAME, x, y);
         } else if (hasTag(HydrologistTags.STEAM)) {
+            renderHelper(sb, getRenderColor(), STEAM_SMALL_SKILL_BACKGROUND, x, y);
             renderHelper(sb, getRenderColor(), STEAM_SMALL_SKILL_FRAME, x, y);
         } else {
             SpireSuper.call(sb, x, y);
@@ -114,10 +138,13 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     @SpireOverride
     protected void renderPowerPortrait(SpriteBatch sb, float x, float y) {
         if (hasTag(HydrologistTags.ICE)) {
+            renderHelper(sb, getRenderColor(), ICE_SMALL_POWER_BACKGROUND, x, y);
             renderHelper(sb, getRenderColor(), ICE_SMALL_POWER_FRAME, x, y);
         } else if (hasTag(HydrologistTags.WATER)) {
+            renderHelper(sb, getRenderColor(), WATER_SMALL_POWER_BACKGROUND, x, y);
             renderHelper(sb, getRenderColor(), WATER_SMALL_POWER_FRAME, x, y);
         } else if (hasTag(HydrologistTags.STEAM)) {
+            renderHelper(sb, getRenderColor(), STEAM_SMALL_POWER_BACKGROUND, x, y);
             renderHelper(sb, getRenderColor(), STEAM_SMALL_POWER_FRAME, x, y);
         } else {
             SpireSuper.call(sb, x, y);

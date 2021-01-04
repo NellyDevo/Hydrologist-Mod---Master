@@ -1,9 +1,11 @@
 package hydrologistmod.patches;
 
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 import hydrologistmod.cards.AbstractHydrologistCard;
 import javassist.CtBehavior;
@@ -35,28 +37,37 @@ public class LargeCardFramePatch {
             switch (reflectedCard.type) {
                 case ATTACK:
                     if (reflectedCard.hasTag(HydrologistTags.ICE)) {
+                        renderHelper(sb, AbstractHydrologistCard.ICE_LARGE_ATTACK_BACKGROUND);
                         tmpImg[0] = AbstractHydrologistCard.ICE_LARGE_ATTACK_FRAME;
                     } else if (reflectedCard.hasTag(HydrologistTags.WATER)) {
+                        renderHelper(sb, AbstractHydrologistCard.WATER_LARGE_ATTACK_BACKGROUND);
                         tmpImg[0] = AbstractHydrologistCard.WATER_LARGE_ATTACK_FRAME;
                     } else if (reflectedCard.hasTag(HydrologistTags.STEAM)) {
+                        renderHelper(sb, AbstractHydrologistCard.STEAM_LARGE_ATTACK_BACKGROUND);
                         tmpImg[0] = AbstractHydrologistCard.STEAM_LARGE_ATTACK_FRAME;
                     }
                     break;
                 case SKILL:
                     if (reflectedCard.hasTag(HydrologistTags.ICE)) {
+                        renderHelper(sb, AbstractHydrologistCard.ICE_LARGE_SKILL_BACKGROUND);
                         tmpImg[0] = AbstractHydrologistCard.ICE_LARGE_SKILL_FRAME;
                     } else if (reflectedCard.hasTag(HydrologistTags.WATER)) {
+                        renderHelper(sb, AbstractHydrologistCard.WATER_LARGE_SKILL_BACKGROUND);
                         tmpImg[0] = AbstractHydrologistCard.WATER_LARGE_SKILL_FRAME;
                     } else if (reflectedCard.hasTag(HydrologistTags.STEAM)) {
+                        renderHelper(sb, AbstractHydrologistCard.STEAM_LARGE_SKILL_BACKGROUND);
                         tmpImg[0] = AbstractHydrologistCard.STEAM_LARGE_SKILL_FRAME;
                     }
                     break;
                 case POWER:
                     if (reflectedCard.hasTag(HydrologistTags.ICE)) {
+                        renderHelper(sb, AbstractHydrologistCard.ICE_LARGE_POWER_BACKGROUND);
                         tmpImg[0] = AbstractHydrologistCard.ICE_LARGE_POWER_FRAME;
                     } else if (reflectedCard.hasTag(HydrologistTags.WATER)) {
+                        renderHelper(sb, AbstractHydrologistCard.WATER_LARGE_POWER_BACKGROUND);
                         tmpImg[0] = AbstractHydrologistCard.WATER_LARGE_POWER_FRAME;
                     } else if (reflectedCard.hasTag(HydrologistTags.STEAM)) {
+                        renderHelper(sb, AbstractHydrologistCard.STEAM_LARGE_POWER_BACKGROUND);
                         tmpImg[0] = AbstractHydrologistCard.STEAM_LARGE_POWER_FRAME;
                     }
                     break;
@@ -73,5 +84,9 @@ public class LargeCardFramePatch {
             Matcher finalMatcher = new Matcher.MethodCallMatcher(SingleCardViewPopup.class, "renderHelper");
             return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
         }
+    }
+
+    private static void renderHelper(SpriteBatch sb, TextureAtlas.AtlasRegion texture) {
+        ReflectionHacks.privateMethod(SingleCardViewPopup.class, "renderHelper", SpriteBatch.class, Float.class, Float.class, TextureAtlas.AtlasRegion.class).invoke(sb, Settings.WIDTH / 2.0f, Settings.HEIGHT / 2.0f, texture);
     }
 }
