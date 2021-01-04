@@ -24,8 +24,6 @@ public class SwapperCardPatch {
                 boolean pressed = SwapperHelper.handleInput();
                 if (pressed) {
                     boolean selected = (AbstractDungeon.player.isDraggingCard || AbstractDungeon.player.inSingleTargetMode);
-                    System.out.println("SWAPPER CARD CHECKPOINT REACHED");
-                    System.out.println("CARD TO SWAP: " + __instance.name);
                     int index = -1;
                     for (int i = 0; i < AbstractDungeon.player.hand.group.size(); i++) {
                         if (__instance == AbstractDungeon.player.hand.group.get(i)) {
