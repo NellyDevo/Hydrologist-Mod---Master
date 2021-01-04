@@ -1,6 +1,7 @@
 package hydrologistmod.patches;
 
 import basemod.abstracts.DynamicVariable;
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -47,6 +48,11 @@ public class IceBarrierExternalBlock {
         @Override
         public int value(AbstractCard card) {
             return DynamicVariableFields.iceBarrierBlock.get(card);
+        }
+
+        @Override
+        public Color getNormalColor() {
+            return Color.CYAN.cpy();
         }
     }
 }
