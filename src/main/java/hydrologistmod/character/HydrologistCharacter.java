@@ -26,6 +26,7 @@ import hydrologistmod.cards.*;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistEnum;
 import hydrologistmod.relics.WaterPouch;
+import hydrologistmod.ui.EnergyOrbHydrologist;
 import hydrologistmod.vfx.HydrologistWaterbendingManager;
 
 import java.util.ArrayList;
@@ -44,28 +45,17 @@ public class HydrologistCharacter extends CustomPlayer {
     private static final Color hydrologistCyan = CardHelper.getColor(3, 240, 252); //#03f0fc / 3, 240, 252
     private static final float DIALOG_X_ADJUSTMENT = 0.0F;
     private static final float DIALOG_Y_ADJUSTMENT = 220.0F;
-    private static final String ORB_VFX_PATH = "hydrologistmod/images/char/orb/vfx.png";
-    private static final String[] ORB_TEXTURES = {
-            "hydrologistmod/images/char/orb/layer1.png",
-            "hydrologistmod/images/char/orb/layer2.png",
-            "hydrologistmod/images/char/orb/layer3.png",
-            "hydrologistmod/images/char/orb/layer4.png",
-            "hydrologistmod/images/char/orb/layer5.png",
-            "hydrologistmod/images/char/orb/layer6.png",
-            "hydrologistmod/images/char/orb/layer1d.png",
-            "hydrologistmod/images/char/orb/layer2d.png",
-            "hydrologistmod/images/char/orb/layer3d.png",
-            "hydrologistmod/images/char/orb/layer4d.png",
-            "hydrologistmod/images/char/orb/layer5d.png"
-    };
     private static final String WATER_BONE_NAME = "WaterDummy";
     private AnimationState.TrackEntry animationTrackEntry;
     private Bone waterBone;
     public Vector2 waterCoords = new Vector2();
     public HydrologistWaterbendingManager waterbending;
+    private EnergyOrbHydrologist orb;
 
     public HydrologistCharacter(String name) {
-        super(name, HydrologistEnum.HYDROLOGIST_CLASS, new CustomEnergyOrb(ORB_TEXTURES, ORB_VFX_PATH, null), null, null);
+        super(name, HydrologistEnum.HYDROLOGIST_CLASS, new EnergyOrbHydrologist(), null, null);
+
+        orb = (EnergyOrbHydrologist)energyOrb;
 
         this.dialogX = this.drawX + DIALOG_X_ADJUSTMENT * Settings.scale;
         this.dialogY = this.drawY + DIALOG_Y_ADJUSTMENT * Settings.scale;
@@ -146,6 +136,7 @@ public class HydrologistCharacter extends CustomPlayer {
             AbstractCard.CardTags tag = ((AbstractHydrologistCard)c).getHydrologistSubtype();
             if (tag != null) {
                 waterbending.changeBackground(tag);
+                orb.changeColor(tag);
             }
         }
         super.useCard(c, monster, energyOnUse);
