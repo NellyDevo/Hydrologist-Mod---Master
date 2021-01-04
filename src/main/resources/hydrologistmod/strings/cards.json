@@ -2,7 +2,10 @@
   "hydrologistmod:AbstractHydrologistCard": {
     "NAME": "ABSTRAAAAACT",
     "DESCRIPTION": "hydrologistmod:Thermal_Shock",
-    "UPGRADE_DESCRIPTION": "note for translators: this keyword needs to be localized to properly get the tooltips onto cards that are related to thermal shock"
+    "UPGRADE_DESCRIPTION": "note for translators: these keywords need to be localized to properly for dynamic tooltip features to work",
+    "EXTENDED_DESCRIPTION": [
+      "hydrologistmod:Swappable"
+    ]
   },
   "hydrologistmod:Accumulator": {
     "NAME": "Accumulator",

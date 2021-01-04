@@ -39,7 +39,7 @@
       "pair",
       "paired"
     ],
-    "DESCRIPTION": "A Swappable card is #yPaired with another card and, while selected, can be freely #ySwapped between the two. (Default key: Spacebar)"
+    "DESCRIPTION": "A Swappable card is #yPaired with another card and, while selected, can be freely #ySwapped between the two by pressing #b"
   },
   "TRANSMUTE": {
     "PROPER_NAME": "Transmute",

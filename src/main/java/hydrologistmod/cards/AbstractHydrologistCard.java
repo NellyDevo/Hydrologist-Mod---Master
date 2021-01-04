@@ -48,6 +48,7 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     private static final TextureAtlas.AtlasRegion STEAM_SMALL_POWER_FRAME = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/Steam Small Power Frame.png"), 0, 0, 512, 512);
     public static CardStrings tooltip = CardCrawlGame.languagePack.getCardStrings("hydrologistmod:AbstractHydrologistCard");
     public static String thermalShock = tooltip.DESCRIPTION;
+    public static String swappable = tooltip.EXTENDED_DESCRIPTION[0];
 
     private static void makeOrbMap() {
         smallOrbMap = new HashMap<>();
