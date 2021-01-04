@@ -148,30 +148,6 @@
     "NAME": "Steam Engine",
     "DESCRIPTIONS": ["The first #yCorporeal card you play each turn is played twice.", "The first #b", " #yCorporeal cards you play each turn are played twice."]
   },
-  "hydrologistmod:SteamPowerIcePower": {
-    "NAME": "Steam Power",
-    "DESCRIPTIONS": [
-      "Ignore energy cost on the next #yIce card you play this turn.",
-      "Ignore energy cost on the next #b",
-      " #yIce cards you play this turn."
-    ]
-  },
-  "hydrologistmod:SteamPowerSteamPower": {
-    "NAME": "Steam Power",
-    "DESCRIPTIONS": [
-      "Ignore energy cost on the next #ySteam card you play this turn.",
-      "Ignore energy cost on the next #b",
-      " #ySteam cards you play this turn."
-    ]
-  },
-  "hydrologistmod:SteamPowerWaterPower": {
-    "NAME": "Steam Power",
-    "DESCRIPTIONS": [
-      "Ignore energy cost on the next #yWater card you play this turn.",
-      "Ignore energy cost on the next #b",
-      " #yWater cards you play this turn."
-    ]
-  },
   "hydrologistmod:SublimationPower": {
     "NAME": "Sublimation",
     "DESCRIPTIONS": ["If your next card played is a #ySteam card, deal #b", " damage to ALL enemies."]
