@@ -31,6 +31,7 @@ public class Hail extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = INCREASE_AMT;
+        tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
     }
 
     @Override

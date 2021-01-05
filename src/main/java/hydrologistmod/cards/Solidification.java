@@ -32,6 +32,7 @@ public class Solidification extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = BLOCK_AMT;
+        tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
     }
 
     @Override

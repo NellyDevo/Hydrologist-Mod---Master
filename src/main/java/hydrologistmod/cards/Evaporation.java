@@ -32,6 +32,7 @@ public class Evaporation extends AbstractHydrologistCard {
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = VULNERABLE_AMT;
         tags.add(HydrologistTags.TEMPERATURE);
+        tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
     }
 
     @Override

@@ -33,6 +33,7 @@ public class FlowingForm extends AbstractHydrologistCard implements SwappableCar
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = CARD_DRAW;
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new FleetingForm(), new FrigidForm())));
+        tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
     }
 
     @Override

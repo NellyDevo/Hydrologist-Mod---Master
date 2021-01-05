@@ -32,6 +32,7 @@ public class Condensation extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = CARD_DRAW;
+        tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
     }
 
     @Override

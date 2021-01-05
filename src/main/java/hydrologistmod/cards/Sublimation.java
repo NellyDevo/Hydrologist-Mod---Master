@@ -32,6 +32,7 @@ public class Sublimation extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = TRIGGERED_DAMAGE;
+        tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
     }
 
     @Override

@@ -9,4 +9,5 @@ public class HydrologistTags {
     @SpireEnum public static AbstractCard.CardTags ICE;
     @SpireEnum public static AbstractCard.CardTags TEMPERATURE;
     @SpireEnum public static AbstractCard.CardTags CORPOREAL_EFFECT;
+    @SpireEnum public static AbstractCard.CardTags CARES_ABOUT_SUBTYPES;
 }

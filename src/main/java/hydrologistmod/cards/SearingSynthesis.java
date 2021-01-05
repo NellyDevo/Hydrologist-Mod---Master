@@ -29,6 +29,7 @@ public class SearingSynthesis extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
         exhaust = true;
+        tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
     }
 
     @Override
