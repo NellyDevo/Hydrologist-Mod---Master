@@ -198,7 +198,7 @@
   },
   "hydrologistmod:GlacialSynthesis": {
     "NAME": "Glacial Synthesis",
-    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute a card into an Ice card. NL Exhaust.",
+    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute a card into an *Ice card. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:GlacierBash": {
