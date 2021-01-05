@@ -84,6 +84,7 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
     @Override
     public void onLoad(WaterPouch.SaveInfo save) {
         if (save == null) {
+            storedCard = null;
             return;
         }
         if (save.deckIndex >= 0) {
@@ -92,7 +93,7 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
                 setDescriptionWithCard();
             } else {
                 System.out.println("how is saved index larger?");
-                storedCard = new Madness();
+                storedCard = null;
             }
         } else if (save.save != null) {
             storedCard = CardLibrary.getCard(save.save.id).makeCopy();
@@ -102,7 +103,7 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
             storedCard.misc = save.save.misc;
         } else {
             System.out.println("Water Pouch Failed to load saved card");
-            storedCard = new Madness();
+            storedCard = null;
         }
     }
 
@@ -111,12 +112,12 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
         if (num >= 0 && num < AbstractDungeon.player.masterDeck.group.size()) {
             storedCard = AbstractDungeon.player.masterDeck.group.get(num).makeSameInstanceOf();
         } else {
-            storedCard = new Madness();
+            storedCard = null;
         }
     }
 
     public void onLoadRaw(JsonElement value) {
-        Object parsed = null;
+        Object parsed;
         try {
             parsed = saveFileGson.fromJson(value, this.savedType());
         } catch (JsonSyntaxException e) {
