@@ -16,8 +16,8 @@ import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.patches.IceBarrierExternalBlock;
 
-public class IceBarrier extends AbstractHydrologistCard {
-    public static final String ID = "hydrologistmod:IceBarrier";
+public class ViscousShell extends AbstractHydrologistCard {
+    public static final String ID = "hydrologistmod:ViscousShell";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -26,16 +26,13 @@ public class IceBarrier extends AbstractHydrologistCard {
     private static final int COST = 1;
     public static final int BLOCK_AMT = 5;
     private static final int UPGRADE_BLOCK_AMT = 3;
-    private static final int COLD_AMT = 3;
-    private static final int UPGRADE_COLD_AMT = 1;
 
-    public IceBarrier() {
+    public ViscousShell() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 AbstractCard.CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
-                AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF);
+                AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF);
         block = baseBlock = BLOCK_AMT;
-        magicNumber = baseMagicNumber = COLD_AMT;
-        assignHydrologistSubtype(HydrologistTags.ICE);
+        assignHydrologistSubtype(HydrologistTags.WATER);
     }
 
     @Override
@@ -52,14 +49,13 @@ public class IceBarrier extends AbstractHydrologistCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new IceBarrier();
+        return new ViscousShell();
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_COLD_AMT);
             upgradeBlock(UPGRADE_BLOCK_AMT);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
@@ -82,7 +78,7 @@ public class IceBarrier extends AbstractHydrologistCard {
                 extraBlock += upgradeExtraBlock;
             }
             IceBarrierExternalBlock.DynamicVariableFields.iceBarrierBaseBlock.set(card, extraBlock);
-            AbstractCard c = new IceBarrier();
+            AbstractCard c = new ViscousShell();
             if (card.upgraded) {
                 c.upgrade();
             }

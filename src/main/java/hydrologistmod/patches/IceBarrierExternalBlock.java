@@ -52,7 +52,7 @@ public class IceBarrierExternalBlock {
 
         @Override
         public Color getNormalColor() {
-            return Color.CYAN.cpy();
+            return Color.BLUE.cpy();
         }
     }
 }

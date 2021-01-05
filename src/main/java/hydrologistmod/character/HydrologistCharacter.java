@@ -1,6 +1,5 @@
 package hydrologistmod.character;
 
-import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -191,7 +190,7 @@ public class HydrologistCharacter extends CustomPlayer {
         retVal.add(StrikeHydrologist.ID);
         retVal.add(StrikeHydrologist.ID);
         retVal.add(WaterWhip.ID);
-        retVal.add(IceBarrier.ID);
+        retVal.add(BracingIce.ID);
         retVal.add(DefendHydrologist.ID);
         retVal.add(DefendHydrologist.ID);
         retVal.add(DefendHydrologist.ID);

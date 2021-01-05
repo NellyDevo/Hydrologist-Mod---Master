@@ -27,6 +27,11 @@
     "DESCRIPTION": "Gain !B! Block.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:BracingIce": {
+    "NAME": "Bracing Ice",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy intends to attack, hydrologistmod:Flow.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:BranchingCreeks": {
     "NAME": "Branching Creeks",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, choose between !M! additional cards.",
@@ -234,16 +239,6 @@
     "NAME": "Hot Springs",
     "DESCRIPTION": "At the end of your turn, deal !M! damage to ALL enemies suffering from hydrologistmod:Thermal_Shock.",
     "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:Hydraulics": {
-    "NAME": "Hydraulics",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy intends to attack, hydrologistmod:Flow.",
-    "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:IceBarrier": {
-    "NAME": "Ice Barrier",
-    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute this card. The new card gains \"Gain !B! Block.\".",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute this card. The new card gains \"Gain !B! Block.\", and is Upgraded."
   },
   "hydrologistmod:IceSpike": {
     "NAME": "Ice Spike",
@@ -473,6 +468,11 @@
     "NAME": "Upstream",
     "DESCRIPTION": "Apply !M! hydrologistmod:Cold. NL If the enemy intends to attack, gain !B! Block.",
     "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:ViscousShell": {
+    "NAME": "Viscous Shell",
+    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute this card. The new card gains \"Gain !B! Block.\".",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute this card. The new card gains \"Gain !B! Block.\", and is Upgraded."
   },
   "hydrologistmod:WallOfIce": {
     "NAME": "Wall of Ice",
