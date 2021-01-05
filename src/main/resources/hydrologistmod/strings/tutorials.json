@@ -1,0 +1,29 @@
+{
+  "hydrologistmod:SwappablesTutorial": {
+    "TEXT": [
+      "",
+      ""
+    ],
+    "LABEL": [
+      ""
+    ]
+  },
+  "hydrologistmod:HeatAndColdTutorial": {
+    "TEXT": [
+      "",
+      ""
+    ],
+    "LABEL": [
+      ""
+    ]
+  },
+  "hydrologistmod:SubtypesTutorial": {
+    "TEXT": [
+      "",
+      ""
+    ],
+    "LABEL": [
+      ""
+    ]
+  }
+}

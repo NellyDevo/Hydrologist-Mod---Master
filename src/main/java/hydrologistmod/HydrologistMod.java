@@ -252,6 +252,8 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
         String uiStrings = Gdx.files.internal("hydrologistmod/strings/ui.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
+        String tutorialStrings = Gdx.files.internal("hydrologistmod/strings/tutorials.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(TutorialStrings.class, tutorialStrings);
     }
 
     @Override
