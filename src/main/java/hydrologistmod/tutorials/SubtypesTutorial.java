@@ -63,23 +63,23 @@ public class SubtypesTutorial extends FtueTip {
                 textColor);
     }
 
-    @SpirePatch(
-            clz = CardRewardScreen.class,
-            method = "open"
-    )
-    public static class ShowSubtypesTutorialPatch {
-        public static void Postfix(CardRewardScreen __instance, ArrayList<AbstractCard> cards, RewardItem rItem, String header) {
-            if (AbstractDungeon.ftue == null) {
-                for (AbstractCard c : cards) {
-                    if (c.hasTag(HydrologistTags.CARES_ABOUT_SUBTYPES /*&& !subtypeShown*/)) { //TODO
-                        AbstractDungeon.ftue = new SubtypesTutorial(LABEL[0], TEXT[0], Settings.WIDTH / 2.0f - (500.0f * Settings.scale), Settings.HEIGHT / 2.0f, c);
-                        ((SkipCardButton)ReflectionHacks.getPrivate(__instance, CardRewardScreen.class, "skipButton")).hide();
-                        ((SingingBowlButton)ReflectionHacks.getPrivate(__instance, CardRewardScreen.class, "bowlButton")).hide();
-                        break;
-                    }
-                }
-            }
-        }
-    }
+//    @SpirePatch(
+//            clz = CardRewardScreen.class,
+//            method = "open"
+//    )
+//    public static class ShowSubtypesTutorialPatch {
+//        public static void Postfix(CardRewardScreen __instance, ArrayList<AbstractCard> cards, RewardItem rItem, String header) {
+//            if (AbstractDungeon.ftue == null) {
+//                for (AbstractCard c : cards) {
+//                    if (c.hasTag(HydrologistTags.CARES_ABOUT_SUBTYPES /*&& !subtypeShown*/)) { //TODO
+//                        AbstractDungeon.ftue = new SubtypesTutorial(LABEL[0], TEXT[0], Settings.WIDTH / 2.0f - (500.0f * Settings.scale), Settings.HEIGHT / 2.0f, c);
+//                        ((SkipCardButton)ReflectionHacks.getPrivate(__instance, CardRewardScreen.class, "skipButton")).hide();
+//                        ((SingingBowlButton)ReflectionHacks.getPrivate(__instance, CardRewardScreen.class, "bowlButton")).hide();
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 }
