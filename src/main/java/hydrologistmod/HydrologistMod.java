@@ -2,6 +2,7 @@ package hydrologistmod;
 
 import basemod.BaseMod;
 import basemod.ModPanel;
+import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -27,7 +28,6 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.character.HydrologistCharacter;
-import hydrologistmod.helpers.CardBorderGlowManager;
 import hydrologistmod.interfaces.CorporealRelevantObject;
 import hydrologistmod.patches.HydrologistEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -164,7 +164,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         ModPanel settingsPanel = new ModPanel();
         BaseMod.registerModBadge(badgeImg, "The Hydrologist Mod", "Johnny Devo", "Adds a new character to the game: The Hydrologist.", settingsPanel);
         HydrologistParticle.initializeRegions();
-        CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInformation() {
+        CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInfo() {
             @Override
             public boolean test(AbstractCard card) {
                 if (isThisCorporeal(card)) {

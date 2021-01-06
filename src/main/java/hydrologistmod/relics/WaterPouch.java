@@ -2,6 +2,7 @@ package hydrologistmod.relics;
 
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
+import basemod.helpers.CardPowerTip;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.StSLib;
 import com.evacipated.cardcrawl.modthespire.lib.*;
@@ -19,7 +20,6 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hydrologistmod.helpers.SwapperHelper;
-import hydrologistmod.tips.CardPowerTip;
 import javassist.CtBehavior;
 
 import javax.smartcardio.Card;

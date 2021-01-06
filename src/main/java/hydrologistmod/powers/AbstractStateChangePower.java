@@ -1,10 +1,10 @@
 package hydrologistmod.powers;
 
+import basemod.helpers.CardBorderGlowManager;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hydrologistmod.helpers.CardBorderGlowManager;
 
 public abstract class AbstractStateChangePower extends AbstractPower implements NonStackablePower {
     private String uniqueID;
@@ -13,7 +13,7 @@ public abstract class AbstractStateChangePower extends AbstractPower implements 
     @Override
     public void onInitialApplication() {
         uniqueID = String.valueOf(System.currentTimeMillis());
-        CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInformation() {
+        CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInfo() {
             @Override
             public boolean test(AbstractCard card) {
                 return card.hasTag(tag);
