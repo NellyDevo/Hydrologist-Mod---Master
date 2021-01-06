@@ -22,8 +22,8 @@
       "% less damage for #b",
       " turn.",
       " turns.",
-      " If #yHeat would be applied, this monster instead suffers from #yThermal #yShock and takes #b",
-      " damage."
+      " If #yHeat would be applied, this monster instead suffers from #yThermal #yShock and loses #b",
+      " HP."
     ]
   },
   "hydrologistmod:CondensationPower": {
@@ -81,8 +81,8 @@
       "% more damage from #yAttacks for #b",
       " turn.",
       " turns.",
-      " If #yCold would be applied, this monster instead suffers from #yThermal #yShock and takes #b",
-      " damage."
+      " If #yCold would be applied, this monster instead suffers from #yThermal #yShock and loses #b",
+      " HP."
     ]
   },
   "hydrologistmod:HighPressurePower": {

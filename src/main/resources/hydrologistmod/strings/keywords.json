@@ -5,7 +5,7 @@
       "cold",
       "cool"
     ],
-    "DESCRIPTION": "A #yCool enemy deals 15% less damage with Attacks. If a #yCool enemy becomes #yHot, remove it, deal triple its #yCool amount in damage and apply #yThermal #yShock for 1 turn."
+    "DESCRIPTION": "A #yCool enemy deals 15% less damage with Attacks. If a #yCool enemy becomes #yHot, remove it, it loses triple its #yCool amount in HP, and apply #yThermal #yShock for 1 turn."
   },
   "CORPOREAL": {
     "PROPER_NAME": "Corporeal",
@@ -27,7 +27,7 @@
       "heat",
       "hot"
     ],
-    "DESCRIPTION": "A #yHot enemy takes 30% increased damage from Attacks. If a #yHot enemy becomes #yCool, remove it, deal triple its #yHot amount in damage and apply #yThermal #yShock for 1 turn."
+    "DESCRIPTION": "A #yHot enemy takes 30% increased damage from Attacks. If a #yHot enemy becomes #yCool, remove it, it loses triple its #yHot amount in HP, and apply #yThermal #yShock for 1 turn."
   },
   "SWAPPABLE": {
     "PROPER_NAME": "Swappable",
