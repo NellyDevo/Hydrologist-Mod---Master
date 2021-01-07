@@ -33,6 +33,7 @@ public class HighTide extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SeaFoam())));
+        tags.add(CardTags.HEALING);
     }
 
     @Override

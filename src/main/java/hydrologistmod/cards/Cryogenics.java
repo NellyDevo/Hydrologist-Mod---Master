@@ -26,6 +26,7 @@ public class Cryogenics extends AbstractHydrologistCard {
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
         exhaust = true;
+        tags.add(CardTags.HEALING);
     }
 
     @Override

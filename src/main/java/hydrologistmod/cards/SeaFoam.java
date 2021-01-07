@@ -20,9 +20,9 @@ public class SeaFoam extends AbstractHydrologistCard implements SwappableCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/SeaFoam.png";
-    private static final int COST = 2;
-    private static final int DAMAGE_AMT = 12;
-    private static final int UPGRADE_DAMAGE = 4;
+    private static final int COST = 1;
+    private static final int DAMAGE_AMT = 7;
+    private static final int UPGRADE_DAMAGE = 3;
 
     public SeaFoam() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,

@@ -32,6 +32,7 @@ public class Crystallization extends AbstractHydrologistCard {
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = TRANSMUTE_AMOUNT;
         tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
+        tags.add(CardTags.HEALING);
     }
 
     @Override

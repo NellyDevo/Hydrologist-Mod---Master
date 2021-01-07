@@ -28,8 +28,8 @@ public class SearingSynthesis extends AbstractHydrologistCard {
                 CardRarity.COMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
-        exhaust = true;
         tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
+        tags.add(CardTags.HEALING);
     }
 
     @Override

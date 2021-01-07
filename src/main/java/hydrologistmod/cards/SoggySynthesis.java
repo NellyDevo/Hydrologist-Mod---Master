@@ -32,8 +32,8 @@ public class SoggySynthesis extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
         block = baseBlock = BLOCK_AMT;
-        exhaust = true;
         tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
+        tags.add(CardTags.HEALING);
     }
 
     @Override

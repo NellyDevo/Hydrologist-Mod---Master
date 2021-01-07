@@ -199,7 +199,7 @@
   },
   "hydrologistmod:GlacialSynthesis": {
     "NAME": "Glacial Synthesis",
-    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute a card into an *Ice card. NL Exhaust.",
+    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute a card into an *Ice card.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:GlacierBash": {
@@ -392,12 +392,12 @@
   },
   "hydrologistmod:SearingSynthesis": {
     "NAME": "Searing Synthesis",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card into a *Steam card. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card into a *Steam card.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SoggySynthesis": {
     "NAME": "Soggy Synthesis",
-    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL hydrologistmod:Transmute a card into a *Water card. NL Exhaust.",
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL hydrologistmod:Transmute a card into a *Water card.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Solidification": {

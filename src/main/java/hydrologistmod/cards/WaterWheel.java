@@ -28,6 +28,7 @@ public class WaterWheel extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.WATER);
         exhaust = true;
         magicNumber = baseMagicNumber = MULTIPLIER;
+        tags.add(CardTags.HEALING);
     }
 
     @Override

@@ -30,6 +30,7 @@ public class CrystalLattice extends AbstractHydrologistCard {
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE_AMT;
         exhaust = true;
+        tags.add(CardTags.HEALING);
     }
 
     @Override
