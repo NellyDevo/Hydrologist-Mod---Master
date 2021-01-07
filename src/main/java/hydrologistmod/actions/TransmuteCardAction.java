@@ -6,14 +6,17 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.colorless.Purity;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.cardmods.PurityModifier;
+import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.TransmutableAffectingPower;
 import hydrologistmod.interfaces.TransmutableAffectingRelic;
 import hydrologistmod.interfaces.TransmutableCard;
+import hydrologistmod.patches.SwapperCardPatch;
 import hydrologistmod.patches.TransmutePlayedCardPatch;
 import hydrologistmod.vfx.TransmuteCardEffect;
 
@@ -26,6 +29,7 @@ public class TransmuteCardAction extends AbstractGameAction {
     private boolean completed = false;
     public int choices = 1;
     public int cards = 1;
+    public int purity = 1;
     private boolean anyNumber;
     private AfterTransmute followup;
     private AbstractCard storedOldCard;
@@ -290,9 +294,18 @@ public class TransmuteCardAction extends AbstractGameAction {
             ((TransmutableCard)oldCard).onTransmuted(newCard);
         }
         if (CardModifierManager.hasModifier(oldCard, PurityModifier.ID)) {
-            CardModifierManager.addModifier(newCard, CardModifierManager.getModifiers(oldCard, PurityModifier.ID).get(0).makeCopy());
+            if (SwapperHelper.isCardSwappable(newCard)) {
+                for (AbstractCard card : SwapperCardPatch.SwappableChainField.swappableCards.get(newCard)) {
+                    CardModifierManager.addModifier(card, CardModifierManager.getModifiers(oldCard, PurityModifier.ID).get(0).makeCopy());
+                    CardModifierManager.addModifier(card, new PurityModifier(purity));
+                }
+            } else {
+                CardModifierManager.addModifier(newCard, CardModifierManager.getModifiers(oldCard, PurityModifier.ID).get(0).makeCopy());
+                CardModifierManager.addModifier(newCard, new PurityModifier(purity));
+            }
+        } else {
+            CardModifierManager.addModifier(newCard, new PurityModifier(purity));
         }
-        CardModifierManager.addModifier(newCard, new PurityModifier(1));
     }
 
     public interface AfterTransmute {
