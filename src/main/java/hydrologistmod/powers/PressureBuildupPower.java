@@ -22,6 +22,7 @@ public class PressureBuildupPower extends TwoAmountPower implements CloneablePow
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    private static final int CORPOREAL_PLAYS = 5;
 
     public PressureBuildupPower(AbstractCreature owner, int amount) {
         name = NAME;
@@ -37,7 +38,7 @@ public class PressureBuildupPower extends TwoAmountPower implements CloneablePow
 
     @Override
     public void updateDescription() {
-        int tmp = 10 - amount2;
+        int tmp = CORPOREAL_PLAYS - amount2;
         if (tmp == 1) {
             description = DESCRIPTIONS[0] + tmp + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
         } else {
@@ -49,10 +50,11 @@ public class PressureBuildupPower extends TwoAmountPower implements CloneablePow
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (HydrologistMod.isThisCorporeal(card)) {
             ++amount2;
-        } if (amount2 == 10) {
-            flash();
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(owner, DamageInfo.createDamageMatrix(amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
-            amount2 = 0;
+            if (amount2 == CORPOREAL_PLAYS) {
+                flash();
+                AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(owner, DamageInfo.createDamageMatrix(amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
+                amount2 = 0;
+            }
         }
         updateDescription();
     }
