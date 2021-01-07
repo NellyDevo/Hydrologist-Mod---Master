@@ -22,8 +22,8 @@ public class Endothermancy extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Endothermancy.png";
     private static final int COST = 1;
-    private static final int AMOUNT = 4;
-    private static final int UPGRADE_AMOUNT = 2;
+    private static final int AMOUNT = 3;
+    private static final int UPGRADE_AMOUNT = 1;
 
     public Endothermancy() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
