@@ -36,11 +36,11 @@ public class WaterWheelAction extends AbstractGameAction {
         }
         effect *= multiplier;
         final int tmp = effect;
-        AbstractDungeon.actionManager.addToTop(new TransmuteCardAction((newCard)-> {
-            if (tmp > 0) {
-                CardModifierManager.addModifier(newCard, new PurityModifier(tmp));
-            }
-        }));
+        TransmuteCardAction action = new TransmuteCardAction();
+        if (tmp > 0) {
+            action.purity += tmp;
+        }
+        AbstractDungeon.actionManager.addToTop(action);
         if (!freeToPlayOnce) {
             AbstractDungeon.player.energy.use(EnergyPanel.totalCount);
         }
