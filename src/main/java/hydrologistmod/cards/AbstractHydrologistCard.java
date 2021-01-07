@@ -67,6 +67,7 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     public static CardStrings tooltip = CardCrawlGame.languagePack.getCardStrings("hydrologistmod:AbstractHydrologistCard");
     public static String thermalShock = tooltip.DESCRIPTION;
     public static String swappable = tooltip.EXTENDED_DESCRIPTION[0];
+    public static String purity = tooltip.EXTENDED_DESCRIPTION[1];
 
     private static void makeOrbMap() {
         smallOrbMap = new HashMap<>();

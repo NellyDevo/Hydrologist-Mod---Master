@@ -4,7 +4,8 @@
     "DESCRIPTION": "hydrologistmod:Thermal_Shock",
     "UPGRADE_DESCRIPTION": "note for translators: these keywords need to be localized to properly for dynamic tooltip features to work",
     "EXTENDED_DESCRIPTION": [
-      "hydrologistmod:Swappable"
+      "hydrologistmod:Swappable",
+      "hydrologistmod:Purity"
     ]
   },
   "hydrologistmod:Accumulator": {
@@ -486,7 +487,7 @@
   },
   "hydrologistmod:WaterWheel": {
     "NAME": "Water Wheel",
-    "DESCRIPTION": "hydrologistmod:Transmute a card. NL The new card's damage and Block is increased by !M! times X. NL Exhaust.",
+    "DESCRIPTION": "hydrologistmod:Transmute a card. NL The new card's hydrologistmod:Purity is increased by !M! times X. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:WaterWhip": {

@@ -29,6 +29,13 @@
     ],
     "DESCRIPTION": "A #yHot enemy takes 30% increased damage from Attacks. If a #yHot enemy becomes #yCool, remove it, it loses triple its #yHot amount in HP, and apply #yThermal #yShock for 1 turn."
   },
+  "PURITY": {
+    "PROPER_NAME": "Purity",
+    "NAMES": [
+      "purity"
+    ],
+    "DESCRIPTION": "This card has grown stronger through the #yTransmutation process. #yBlock gain and damage dealt are increased this combat."
+  },
   "SWAPPABLE": {
     "PROPER_NAME": "Swappable",
     "NAMES": [
@@ -47,7 +54,7 @@
       "transmute",
       "transmuted"
     ],
-    "DESCRIPTION": "Transforms a card in combat into any card of the same rarity available to your current run."
+    "DESCRIPTION": "Transforms a card in combat into any card of the same rarity available to your current run. The new card is stronger than usual. This effect stacks."
   },
   "THERMAL_SHOCK": {
     "PROPER_NAME": "Thermal Shock",

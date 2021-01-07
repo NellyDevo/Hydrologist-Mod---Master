@@ -1,5 +1,7 @@
 package hydrologistmod.actions;
 
+import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -8,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import hydrologistmod.cardmods.PurityModifier;
 import hydrologistmod.interfaces.TransmutableAffectingPower;
 import hydrologistmod.interfaces.TransmutableAffectingRelic;
 import hydrologistmod.interfaces.TransmutableCard;
@@ -286,6 +289,10 @@ public class TransmuteCardAction extends AbstractGameAction {
         if (oldCard instanceof TransmutableCard) {
             ((TransmutableCard)oldCard).onTransmuted(newCard);
         }
+        if (CardModifierManager.hasModifier(oldCard, PurityModifier.ID)) {
+            CardModifierManager.addModifier(newCard, CardModifierManager.getModifiers(oldCard, PurityModifier.ID).get(0).makeCopy());
+        }
+        CardModifierManager.addModifier(newCard, new PurityModifier(1));
     }
 
     public interface AfterTransmute {

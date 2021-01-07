@@ -2,6 +2,7 @@ package hydrologistmod.relics;
 
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
+import basemod.helpers.CardModifierManager;
 import basemod.helpers.CardPowerTip;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.StSLib;
@@ -19,6 +20,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import hydrologistmod.cardmods.PurityModifier;
 import hydrologistmod.helpers.SwapperHelper;
 import javassist.CtBehavior;
 
@@ -49,7 +51,9 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
     public void onUseCard(AbstractCard card, UseCardAction action) {
         AbstractCard masterDeckCard = SwapperHelper.findMasterDeckEquivalent(card);
         if (masterDeckCard == null) {
-            storedCard = card.makeSameInstanceOf();
+            AbstractCard tmp = card.makeSameInstanceOf();
+            CardModifierManager.removeModifiersById(tmp, PurityModifier.ID, true);
+            storedCard = tmp;
         } else {
             storedCard = masterDeckCard;
         }

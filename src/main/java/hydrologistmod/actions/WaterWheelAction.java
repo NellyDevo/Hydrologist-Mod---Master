@@ -1,15 +1,12 @@
 package hydrologistmod.actions;
 
-import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import hydrologistmod.cardmods.PurityModifier;
 
 public class WaterWheelAction extends AbstractGameAction {
 //    private static final String ID = "hydrologistmod:EncapsulatingIceAction";
@@ -39,34 +36,14 @@ public class WaterWheelAction extends AbstractGameAction {
         }
         effect *= multiplier;
         final int tmp = effect;
-        AbstractDungeon.actionManager.addToTop(new TransmuteCardAction(false, (newCard)-> {
+        AbstractDungeon.actionManager.addToTop(new TransmuteCardAction((newCard)-> {
             if (tmp > 0) {
-                CardModifierManager.addModifier(newCard, new WaterWheelModifier(tmp));
+                CardModifierManager.addModifier(newCard, new PurityModifier(tmp));
             }
-        }, (newCard) -> (newCard.baseBlock > -1 || newCard.baseDamage > -1)));
+        }));
         if (!freeToPlayOnce) {
             AbstractDungeon.player.energy.use(EnergyPanel.totalCount);
         }
         isDone = true;
-    }
-
-    private static class WaterWheelModifier extends AbstractCardModifier {
-        private int amount;
-
-        private WaterWheelModifier(int amount) {
-            this.amount = amount;
-        }
-
-        public float modifyDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster monster) {
-            return damage + amount;
-        }
-
-        public float modifyBlock(float block, AbstractCard card) {
-            return block + amount;
-        }
-
-        public AbstractCardModifier makeCopy() {
-            return new WaterWheelModifier(amount);
-        }
     }
 }
