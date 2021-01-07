@@ -32,6 +32,7 @@ public class ViscousShell extends AbstractHydrologistCard {
                 AbstractCard.CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF);
         block = baseBlock = BLOCK_AMT;
+        magicNumber = baseMagicNumber = BLOCK_AMT;
         assignHydrologistSubtype(HydrologistTags.WATER);
     }
 
@@ -39,7 +40,7 @@ public class ViscousShell extends AbstractHydrologistCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
         addToBot(new TransmuteCardAction(this, (AbstractCard c) -> {
-            CardModifierManager.addModifier(c, new GainBlockModifier(BLOCK_AMT, UPGRADE_BLOCK_AMT));
+            CardModifierManager.addModifier(c, new GainBlockModifier(magicNumber, UPGRADE_BLOCK_AMT));
             if (upgraded) {
                 c.upgrade();
             }
@@ -57,6 +58,7 @@ public class ViscousShell extends AbstractHydrologistCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK_AMT);
+            upgradeMagicNumber(UPGRADE_BLOCK_AMT);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }

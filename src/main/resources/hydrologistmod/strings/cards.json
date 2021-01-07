@@ -472,8 +472,8 @@
   },
   "hydrologistmod:ViscousShell": {
     "NAME": "Viscous Shell",
-    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute this card. The new card gains \"Gain !B! Block.\".",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute this card. The new card gains \"Gain !B! Block.\", and is Upgraded."
+    "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute this card. The new card gains \"Gain !M! Block.\".",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Transmute this card. The new card gains \"Gain !M! Block.\", and is Upgraded."
   },
   "hydrologistmod:WallOfIce": {
     "NAME": "Wall of Ice",
