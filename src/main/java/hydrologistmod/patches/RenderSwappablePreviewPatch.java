@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
+import com.megacrit.cardcrawl.ui.FtueTip;
 import hydrologistmod.helpers.SwapperHelper;
 
 public class RenderSwappablePreviewPatch {
@@ -64,7 +65,7 @@ public class RenderSwappablePreviewPatch {
     public static class renderSwappablesPreviewPatch {
 
         public static void Postfix(AbstractCard __instance, SpriteBatch sb) {
-            if (!__instance.isLocked && __instance.isSeen && !Settings.hideCards && (boolean)ReflectionHacks.getPrivate(__instance, AbstractCard.class, "renderTip") && SwapperHelper.isCardSwappable(__instance)) {
+            if ((!__instance.isLocked && __instance.isSeen && !Settings.hideCards && (boolean)ReflectionHacks.getPrivate(__instance, AbstractCard.class, "renderTip") || (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.FTUE) && (ReflectionHacks.getPrivate(AbstractDungeon.ftue, FtueTip.class, "c") == __instance)) && SwapperHelper.isCardSwappable(__instance)) {
                 if (AbstractDungeon.player != null && AbstractDungeon.player.isDraggingCard) {
                     return;
                 }
