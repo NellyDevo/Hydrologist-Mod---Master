@@ -19,8 +19,8 @@ import hydrologistmod.powers.ColdPower;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-public class WaterWhip extends AbstractHydrologistCard implements SwappableCard {
-    public static final String ID = "hydrologistmod:WaterWhip";
+public class FrostWhip extends AbstractHydrologistCard implements SwappableCard {
+    public static final String ID = "hydrologistmod:FrostWhip";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -35,13 +35,13 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
     private static final int ENERGY_LOSS_ON_SWAP = 1;
     private String cantSwapMessage = EXTENDED_DESCRIPTION[0];
 
-    public WaterWhip() {
+    public FrostWhip() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 AbstractCard.CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         magicNumber = baseMagicNumber = COLD_AMT;
-        assignHydrologistSubtype(HydrologistTags.WATER);
+        assignHydrologistSubtype(HydrologistTags.ICE);
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SteamLash())));
         tags.add(HydrologistTags.TEMPERATURE);
     }
@@ -54,7 +54,7 @@ public class WaterWhip extends AbstractHydrologistCard implements SwappableCard 
 
     @Override
     public AbstractCard makeCopy() {
-        return new WaterWhip();
+        return new FrostWhip();
     }
 
     @Override

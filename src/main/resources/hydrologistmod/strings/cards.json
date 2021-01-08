@@ -149,6 +149,14 @@
       "This card can't be swapped again this turn!"
     ]
   },
+  "hydrologistmod:FrostWhip": {
+    "NAME": "Frost Whip",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Cold. NL hydrologistmod:Swappable. NL Costs [E] to hydrologistmod:Swap.",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "I don't have enough Energy!"
+    ]
+  },
   "hydrologistmod:FlowingForm": {
     "NAME": "Flowing Form",
     "DESCRIPTION": "Whenever you play a *Water card, you may discard a card. If you do, draw a card. NL hydrologistmod:Swaps to *Fleeting *Form.",
@@ -489,14 +497,6 @@
     "NAME": "Water Wheel",
     "DESCRIPTION": "hydrologistmod:Transmute a card. NL The new card's hydrologistmod:Purity is increased by !M! times X. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:WaterWhip": {
-    "NAME": "Water Whip",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Cold. NL hydrologistmod:Swappable. NL Costs [E] to hydrologistmod:Swap.",
-    "UPGRADE_DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": [
-      "I don't have enough Energy!"
-    ]
   },
   "hydrologistmod:YawningAbyss": {
     "NAME": "Yawning Abyss",

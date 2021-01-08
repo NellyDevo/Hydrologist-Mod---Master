@@ -143,7 +143,7 @@ public class HydrologistCharacter extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new WaterWhip();
+        return new FrostWhip();
     }
 
     @Override
@@ -189,8 +189,8 @@ public class HydrologistCharacter extends CustomPlayer {
         retVal.add(StrikeHydrologist.ID);
         retVal.add(StrikeHydrologist.ID);
         retVal.add(StrikeHydrologist.ID);
-        retVal.add(WaterWhip.ID);
         retVal.add(BracingIce.ID);
+        retVal.add(FrostWhip.ID);
         retVal.add(DefendHydrologist.ID);
         retVal.add(DefendHydrologist.ID);
         retVal.add(DefendHydrologist.ID);
