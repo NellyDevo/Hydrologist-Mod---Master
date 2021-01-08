@@ -1,11 +1,10 @@
 {
   "hydrologistmod:SwappablesTutorial": {
     "TEXT": [
-      "",
-      ""
+      "Some #yHydrologist cards are tied to another, completely separate, card. When a #ySwappable card is in your hand, you can hover or hold it with your mouse and press the #ySwap key (default space, configurable) to switch the card to its #yPaired card. "
     ],
     "LABEL": [
-      ""
+      "Swappables"
     ]
   },
   "hydrologistmod:HeatAndColdTutorial": {
