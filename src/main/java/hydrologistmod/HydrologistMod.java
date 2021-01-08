@@ -1,7 +1,6 @@
 package hydrologistmod;
 
-import basemod.BaseMod;
-import basemod.ModPanel;
+import basemod.*;
 import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -13,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.Loader;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,8 +20,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -44,6 +46,7 @@ import org.apache.logging.log4j.Logger;
 import org.clapper.util.classutil.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.net.URISyntaxException;
@@ -52,6 +55,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Properties;
 
 import static hydrologistmod.patches.AbstractCardEnum.HYDROLOGIST_CYAN;
 
@@ -72,9 +76,11 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     private static final String miniManaSymbol = "hydrologistmod/images/manaSymbol.png";
 
     public static final String ID = "hydrologistmod:hydrologistmod";
-    public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-    public static final String[] TEXT = uiStrings.TEXT;
-    public static final String[] EXTRA_TEXT = uiStrings.EXTRA_TEXT;
+    public static UIStrings uiStrings;
+    public static String[] TEXT;
+    public static String[] EXTRA_TEXT;
+
+    public static SpireConfig hydrologistConfig;
 
     private static Logger logger = LogManager.getLogger(HydrologistMod.class.getName());
 
@@ -94,6 +100,23 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         subTypes.add(HydrologistTags.WATER);
         subTypes.add(HydrologistTags.ICE);
         subTypes.add(HydrologistTags.STEAM);
+
+        Properties hydrologistDefaults = new Properties();
+        hydrologistDefaults.setProperty("Subtype Tutorial Seen", "FALSE");
+        hydrologistDefaults.setProperty("Swappable Tutorial Seen", "FALSE");
+        hydrologistDefaults.setProperty("Temperature Tutorial Seen", "FALSE");
+        hydrologistDefaults.setProperty("hydrohomie", "FALSE");
+        try {
+            hydrologistConfig = new SpireConfig("The Hydrologist", "HydrologistMod", hydrologistDefaults);
+        } catch (IOException e) {
+            logger.error("HydrologistMod SpireConfig initialization failed:");
+            e.printStackTrace();
+        }
+        logger.info("HYDROLOGIST CONFIG OPTIONS LOADED:");
+        logger.info("Subtype tutorial seen: " + hydrologistConfig.getString("Subtype Tutorial Seen") + ".");
+        logger.info("Swappable tutorial seen: " + hydrologistConfig.getString("Swappable Tutorial Seen") + ".");
+        logger.info("Temperature tutorial seen: " + hydrologistConfig.getString("Temperature Tutorial Seen") + ".");
+        logger.info("hydrohomie: " + hydrologistConfig.getString("hydrohomie") + ".");
     }
 
     //Used by @SpireInitializer
@@ -188,6 +211,38 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
                 return "HydrologistMod:CorporealGlow";
             }
         });
+        uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+        TEXT = uiStrings.TEXT;
+        EXTRA_TEXT = uiStrings.EXTRA_TEXT;
+        settingsPanel.addUIElement(new ModLabel(TEXT[0], 450.0f, 725.0f, settingsPanel, me -> {}));
+        ModButton showSubtypeTutorial = new ModButton(325.0f, 675.0f, settingsPanel, button -> {
+            hydrologistConfig.setString("Subtype Tutorial Seen", "FALSE");
+            CardCrawlGame.sound.play("UI_CLICK_1");
+            try {hydrologistConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
+        settingsPanel.addUIElement(showSubtypeTutorial);
+
+        settingsPanel.addUIElement(new ModLabel(TEXT[1], 450.0f, 625.0f, settingsPanel, me -> {}));
+        ModButton showSwappableTutorial = new ModButton(325.0f, 575.0f, settingsPanel, button -> {
+            hydrologistConfig.setString("Swappable Tutorial Seen", "FALSE");
+            CardCrawlGame.sound.play("UI_CLICK_1");
+            try {hydrologistConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
+        settingsPanel.addUIElement(showSwappableTutorial);
+
+        settingsPanel.addUIElement(new ModLabel(TEXT[2], 450.0f, 525.0f, settingsPanel, me -> {}));
+        ModButton showTemperatureTutorial = new ModButton(325.0f, 475.0f, settingsPanel, button -> {
+            hydrologistConfig.setString("Temperature Tutorial Seen", "FALSE");
+            CardCrawlGame.sound.play("UI_CLICK_1");
+            try {hydrologistConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
+        settingsPanel.addUIElement(showTemperatureTutorial);
+
+        ModLabeledToggleButton hydroHomie = new ModLabeledToggleButton(TEXT[3], 350.0f, 450.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, hydrologistConfig.getBool("hydrohomie"), settingsPanel, label -> {}, button -> {
+            hydrologistConfig.setBool("hydrohomie", button.enabled);
+            try {hydrologistConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
+        settingsPanel.addUIElement(hydroHomie);
     }
 
     @Override

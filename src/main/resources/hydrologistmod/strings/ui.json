@@ -11,7 +11,10 @@
   },
   "hydrologistmod:hydrologistmod": {
     "TEXT": [
-      "Choose any number of cards to discard."
+      "Show Subtypes tutorial again",
+      "Show Swappables tutorial again",
+      "Show Heat and Cold tutorial again",
+      "hydro homie"
     ],
     "EXTRA_TEXT": [
       "Choose any number of cards to discard."
