@@ -102,6 +102,27 @@ public class SwapperCardPatch {
 
     @SpirePatch(
             clz = AbstractCard.class,
+            method = "resetAttributes"
+    )
+    public static class AbstractCardResetAttributesPatch {
+        public static void Postfix(AbstractCard __instance) {
+            if (SwapperHelper.isCardSwappable(__instance)) {
+                if (!SwapperHelper.preventUpgradeLoop) {
+                    SwapperHelper.preventUpgradeLoop = true;
+                    AbstractCard bufferCard = SwapperHelper.getNextCard(__instance);
+                    bufferCard.resetAttributes();
+                    while (SwapperHelper.getNextCard(bufferCard) != __instance) {
+                        bufferCard = SwapperHelper.getNextCard(bufferCard);
+                        bufferCard.resetAttributes();
+                    }
+                    SwapperHelper.preventUpgradeLoop = false;
+                }
+            }
+        }
+    }
+
+    @SpirePatch(
+            clz = AbstractCard.class,
             method = SpirePatch.CLASS
     )
     public static class SwappableChainField {
