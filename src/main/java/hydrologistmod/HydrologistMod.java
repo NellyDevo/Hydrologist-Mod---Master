@@ -71,6 +71,11 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     private static final String charPortrait = "hydrologistmod/images/charSelect/portrait.png";
     private static final String miniManaSymbol = "hydrologistmod/images/manaSymbol.png";
 
+    public static final String ID = "hydrologistmod:hydrologistmod";
+    public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+    public static final String[] TEXT = uiStrings.TEXT;
+    public static final String[] EXTRA_TEXT = uiStrings.EXTRA_TEXT;
+
     private static Logger logger = LogManager.getLogger(HydrologistMod.class.getName());
 
     private static ArrayList<AbstractCard> nonCorporealCards = new ArrayList<>();

@@ -8,5 +8,13 @@
     "TEXT": [
       "Choose any number of cards to discard."
     ]
+  },
+  "hydrologistmod:hydrologistmod": {
+    "TEXT": [
+      "Choose any number of cards to discard."
+    ],
+    "EXTRA_TEXT": [
+      "Choose any number of cards to discard."
+    ]
   }
 }
