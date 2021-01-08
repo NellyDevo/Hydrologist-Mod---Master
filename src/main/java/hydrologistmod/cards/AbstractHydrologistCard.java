@@ -68,6 +68,9 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     public static String thermalShock = tooltip.DESCRIPTION;
     public static String swappable = tooltip.EXTENDED_DESCRIPTION[0];
     public static String purity = tooltip.EXTENDED_DESCRIPTION[1];
+    public static String ice = tooltip.EXTENDED_DESCRIPTION[3];
+    public static String water = tooltip.EXTENDED_DESCRIPTION[4];
+    public static String steam = tooltip.EXTENDED_DESCRIPTION[5];
 
     private static void makeOrbMap() {
         smallOrbMap = new HashMap<>();
@@ -100,6 +103,19 @@ public abstract class AbstractHydrologistCard extends CustomCard {
         if (this.hasTag(HydrologistTags.TEMPERATURE)) {
 
             retVal.add(new TooltipInfo(BaseMod.getKeywordTitle(thermalShock.toLowerCase()), BaseMod.getKeywordDescription(thermalShock.toLowerCase())));
+        }
+        return retVal;
+    }
+
+    @Override
+    public List<String> getCardDescriptors() {
+        ArrayList<String> retVal = new ArrayList<>();
+        if (hasTag(HydrologistTags.ICE)) {
+            retVal.add(ice);
+        } else if (hasTag(HydrologistTags.WATER)) {
+            retVal.add(water);
+        } else if (hasTag(HydrologistTags.STEAM)) {
+            retVal.add(steam);
         }
         return retVal;
     }

@@ -5,7 +5,11 @@
     "UPGRADE_DESCRIPTION": "note for translators: these keywords need to be localized to properly for dynamic tooltip features to work",
     "EXTENDED_DESCRIPTION": [
       "hydrologistmod:Swappable",
-      "hydrologistmod:Purity"
+      "hydrologistmod:Purity",
+      "the following words appear in card type boxes",
+      "Ice",
+      "Water",
+      "Steam"
     ]
   },
   "hydrologistmod:Accumulator": {
