@@ -21,6 +21,7 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import hydrologistmod.HydrologistMod;
 import hydrologistmod.cards.*;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistEnum;
@@ -102,6 +103,9 @@ public class HydrologistCharacter extends CustomPlayer {
 
     @Override
     public String getTitle(PlayerClass playerClass) {
+        if (HydrologistMod.hydrologistConfig.getBool("hydrohomie")) {
+            return NAMES[1];
+        }
         return NAMES[0];
     }
 
