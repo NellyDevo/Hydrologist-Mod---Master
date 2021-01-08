@@ -1,15 +1,27 @@
 package hydrologistmod.cardmods;
 
+import basemod.ReflectionHacks;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.cards.AbstractHydrologistCard;
 
 public class PurityModifier extends AbstractCardModifier {
     public static final String ID = "hydrologistmod:PurityModifier";
+    public static final TextureRegion purityIcon = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/512/Purity.png"), 0, 0, 512, 512);
     public int amount;
+    private static final float PURITY_TEXT_OFFSET_X = -132.0f;
+    private static final float PURITY_TEXT_OFFSET_Y = 125.0f;
 
     public PurityModifier(int amount) {
         this.amount = amount;
@@ -28,7 +40,16 @@ public class PurityModifier extends AbstractCardModifier {
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return rawDescription + " NL " + AbstractHydrologistCard.purity + " " + amount;
+        card.keywords.add(AbstractHydrologistCard.purity.toLowerCase());
+        return rawDescription;
+    }
+
+    @Override
+    public void onRender(AbstractCard card, SpriteBatch sb) {
+        ReflectionHacks.privateMethod(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, TextureAtlas.AtlasRegion.class, float.class, float.class)
+                .invoke(card, sb, Color.WHITE.cpy(), purityIcon, card.current_x, card.current_y);
+        BitmapFont font = ReflectionHacks.privateMethod(AbstractCard.class, "getEnergyFont").invoke(card);
+        FontHelper.renderRotatedText(sb, font, String.valueOf(amount), card.current_x, card.current_y, PURITY_TEXT_OFFSET_X * card.drawScale * Settings.scale, PURITY_TEXT_OFFSET_Y * card.drawScale * Settings.scale, card.angle, false, Color.WHITE.cpy());
     }
 
     public boolean shouldApply(AbstractCard card) {
