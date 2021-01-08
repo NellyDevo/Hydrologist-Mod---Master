@@ -18,7 +18,7 @@
   },
   "hydrologistmod:SubtypesTutorial": {
     "TEXT": [
-      "Some cards care about another card's #ySubtype. Every Hydrologist card, except for strikes and defends, have a #ySubtype assigned to them, either #yIce, #yWater, or #ySteam. To tell these subtypes apart, there are unique visual indicators.",
+      "Some cards care about another card's #ySubtype. Every #yHydrologist card, except for strikes and defends, have a #ySubtype assigned to them, either #yIce, #yWater, or #ySteam. To tell these subtypes apart, there are unique visual indicators."
     ],
     "LABEL": [
       "Subtypes"
