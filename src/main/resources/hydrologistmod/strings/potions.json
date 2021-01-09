@@ -1,2 +1,25 @@
 {
+  "hydrologistmod:BottledWater": {
+    "NAME": "Bottled Water",
+    "DESCRIPTIONS": [
+      "Choose #b1 of a random #yIce, #yWater, and #ySteam card and add it to your hand, it costs #b0 this turn.",
+      "Choose #b1 of a random #yIce, #yWater, and #ySteam card and add #b",
+      " copies to your hand, they cost #b0 this turn."
+    ]
+  },
+  "hydrologistmod:FilteredWater": {
+    "NAME": "Filtered Water",
+    "DESCRIPTIONS": [
+      "#yTransmute any number of cards in your hand.",
+      "#yTransmute any number of cards in your hand #b",
+      " times."
+    ]
+  },
+  "hydrologistmod:UnstableBrew": {
+    "NAME": "Unstable Brew",
+    "DESCRIPTIONS": [
+      "Apply #b",
+      " #yThermal #yShock."
+    ]
+  }
 }

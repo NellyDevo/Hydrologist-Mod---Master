@@ -23,6 +23,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -34,6 +35,9 @@ import hydrologistmod.interfaces.CorporealRelevantObject;
 import hydrologistmod.patches.HydrologistEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.patches.IceBarrierExternalBlock;
+import hydrologistmod.potions.BottledWater;
+import hydrologistmod.potions.FilteredWater;
+import hydrologistmod.potions.UnstableBrew;
 import hydrologistmod.powers.ColdPower;
 import hydrologistmod.powers.HeatPower;
 import hydrologistmod.powers.ThermalShockPower;
@@ -52,10 +56,7 @@ import java.lang.reflect.Type;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 import static hydrologistmod.patches.AbstractCardEnum.HYDROLOGIST_CYAN;
 
@@ -74,6 +75,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     private static final String charButton = "hydrologistmod/images/charSelect/button.png";
     private static final String charPortrait = "hydrologistmod/images/charSelect/portrait.png";
     private static final String miniManaSymbol = "hydrologistmod/images/manaSymbol.png";
+    private static HashMap<AbstractCard.CardTags, ArrayList<AbstractCard>> tagsWithLists;
 
     public static final String ID = "hydrologistmod:hydrologistmod";
     public static UIStrings uiStrings;
@@ -188,6 +190,10 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     @Override
     public void receivePostInitialize() {
+        BaseMod.addPotion(BottledWater.class, BottledWater.LIQUID_COLOR, BottledWater.HYBRID_COLOR, BottledWater.SPOTS_COLOR, BottledWater.ID, HydrologistEnum.HYDROLOGIST_CLASS);
+        BaseMod.addPotion(UnstableBrew.class, UnstableBrew.LIQUID_COLOR, UnstableBrew.HYBRID_COLOR, UnstableBrew.SPOTS_COLOR, UnstableBrew.ID, HydrologistEnum.HYDROLOGIST_CLASS);
+        BaseMod.addPotion(FilteredWater.class, FilteredWater.LIQUID_COLOR, FilteredWater.HYBRID_COLOR, FilteredWater.SPOTS_COLOR, FilteredWater.ID, HydrologistEnum.HYDROLOGIST_CLASS);
+
         Texture badgeImg = new Texture("hydrologistmod/images/badge.png");
         ModPanel settingsPanel = new ModPanel();
         BaseMod.registerModBadge(badgeImg, "The Hydrologist Mod", "Johnny Devo", "Adds a new character to the game: The Hydrologist.", settingsPanel);
@@ -371,6 +377,22 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     public static boolean isCool(AbstractCreature creature) {
         return (creature.hasPower(ThermalShockPower.POWER_ID) || creature.hasPower(ColdPower.POWER_ID));
+    }
+
+    public static AbstractCard returnTrulyRandomCardWithTagInCombat(AbstractCard.CardTags tag) {
+        if (tagsWithLists.get(tag) == null) {
+            ArrayList<AbstractCard> list = new ArrayList<>();
+            for (Map.Entry<String, AbstractCard> potentialCard : CardLibrary.cards.entrySet()) {
+                AbstractCard card = potentialCard.getValue();
+                if (card.rarity != AbstractCard.CardRarity.BASIC && card.rarity != AbstractCard.CardRarity.SPECIAL
+                        && card.hasTag(tag) && !card.hasTag(AbstractCard.CardTags.HEALING)) {
+                    list.add(card.makeCopy());
+                }
+            }
+            tagsWithLists.put(tag, list);
+        }
+        ArrayList<AbstractCard> list = tagsWithLists.get(tag);
+        return list.get(AbstractDungeon.cardRandomRng.random(list.size() - 1));
     }
 
     public static FrameBuffer createBuffer() {
