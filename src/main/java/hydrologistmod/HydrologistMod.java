@@ -32,6 +32,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.interfaces.CorporealRelevantObject;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.HydrologistEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.patches.IceBarrierExternalBlock;
@@ -75,7 +76,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     private static final String charButton = "hydrologistmod/images/charSelect/button.png";
     private static final String charPortrait = "hydrologistmod/images/charSelect/portrait.png";
     private static final String miniManaSymbol = "hydrologistmod/images/manaSymbol.png";
-    private static HashMap<AbstractCard.CardTags, ArrayList<AbstractCard>> tagsWithLists;
+    private static HashMap<AbstractCard.CardTags, ArrayList<AbstractCard>> tagsWithLists = new HashMap<>();
 
     public static final String ID = "hydrologistmod:hydrologistmod";
     public static UIStrings uiStrings;
@@ -386,6 +387,9 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
                 AbstractCard card = potentialCard.getValue();
                 if (card.rarity != AbstractCard.CardRarity.BASIC && card.rarity != AbstractCard.CardRarity.SPECIAL
                         && card.hasTag(tag) && !card.hasTag(AbstractCard.CardTags.HEALING)) {
+                    if (card instanceof SwappableCard && ((SwappableCard)card).isPairCard()) {
+                        continue;
+                    }
                     list.add(card.makeCopy());
                 }
             }
