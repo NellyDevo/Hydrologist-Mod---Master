@@ -21,6 +21,8 @@ import com.megacrit.cardcrawl.vfx.combat.BattleStartEffect;
 import hydrologistmod.HydrologistMod;
 import hydrologistmod.character.HydrologistCharacter;
 
+import java.io.IOException;
+
 public class TemperatureTutorial extends FtueTip {
     private static final TutorialStrings tutorialStrings = CardCrawlGame.languagePack.getTutorialString("hydrologistmod:HeatAndColdTutorial");
     public static final String[] MSG = tutorialStrings.TEXT;
@@ -138,6 +140,7 @@ public class TemperatureTutorial extends FtueTip {
             if (__instance instanceof HydrologistCharacter && !HydrologistMod.hydrologistConfig.getBool("Temperature Tutorial Seen")) {
                 if (AbstractDungeon.screen != AbstractDungeon.CurrentScreen.FTUE) {
                     HydrologistMod.hydrologistConfig.setBool("Temperature Tutorial Seen", true);
+                    try { HydrologistMod.hydrologistConfig.save(); } catch (IOException e) { e.printStackTrace(); }
                     AbstractDungeon.ftue = new TemperatureTutorial();
                 }
             }
