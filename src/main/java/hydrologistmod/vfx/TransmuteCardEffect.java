@@ -270,6 +270,8 @@ public class TransmuteCardEffect extends AbstractGameEffect {
                     AbstractDungeon.player.limbo.addToTop(transmutedPairs.get(card));
                 }
             }
+            AbstractDungeon.player.hand.applyPowers();
+            AbstractDungeon.player.hand.glowCheck();
             action.isDone = true;
             isDone = true;
         }
