@@ -52,6 +52,8 @@ import org.clapper.util.classutil.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.net.URISyntaxException;
@@ -194,6 +196,18 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         BaseMod.addPotion(BottledWater.class, BottledWater.LIQUID_COLOR, BottledWater.HYBRID_COLOR, BottledWater.SPOTS_COLOR, BottledWater.ID, HydrologistEnum.HYDROLOGIST_CLASS);
         BaseMod.addPotion(UnstableBrew.class, UnstableBrew.LIQUID_COLOR, UnstableBrew.HYBRID_COLOR, UnstableBrew.SPOTS_COLOR, UnstableBrew.ID, HydrologistEnum.HYDROLOGIST_CLASS);
         BaseMod.addPotion(FilteredWater.class, FilteredWater.LIQUID_COLOR, FilteredWater.HYBRID_COLOR, FilteredWater.SPOTS_COLOR, FilteredWater.ID, HydrologistEnum.HYDROLOGIST_CLASS);
+
+        if (Loader.isModLoaded("widepotions")) {
+            try {
+                Class<?> widePotionsMod = Class.forName("com.evacipated.cardcrawl.mod.widepotions.WidePotionsMod");
+                Method whitelistMethod = widePotionsMod.getDeclaredMethod("whitelistSimplePotion", String.class);
+                whitelistMethod.invoke(null, BottledWater.ID);
+                whitelistMethod.invoke(null, UnstableBrew.ID);
+                whitelistMethod.invoke(null, FilteredWater.ID);
+            } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
 
         Texture badgeImg = new Texture("hydrologistmod/images/badge.png");
         ModPanel settingsPanel = new ModPanel();
