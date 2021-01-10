@@ -1,5 +1,6 @@
 package hydrologistmod.potions;
 
+import basemod.BaseMod;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -7,6 +8,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import hydrologistmod.actions.TransmuteCardAction;
+import hydrologistmod.cards.AbstractHydrologistCard;
 
 public class FilteredWater extends AbstractPotion {
     public static final String ID = "hydrologistmod:FilteredWater";
@@ -42,6 +44,7 @@ public class FilteredWater extends AbstractPotion {
         }
         tips.clear();
         tips.add(new PowerTip(name, description));
+        tips.add(new PowerTip(BaseMod.getKeywordTitle(AbstractHydrologistCard.transmute.toLowerCase()), BaseMod.getKeywordDescription(AbstractHydrologistCard.transmute.toLowerCase())));
     }
 
     @Override

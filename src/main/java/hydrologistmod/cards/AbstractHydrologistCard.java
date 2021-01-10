@@ -68,9 +68,10 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     public static String thermalShock = tooltip.DESCRIPTION;
     public static String swappable = tooltip.EXTENDED_DESCRIPTION[0];
     public static String purity = tooltip.EXTENDED_DESCRIPTION[1];
-    public static String ice = tooltip.EXTENDED_DESCRIPTION[3];
-    public static String water = tooltip.EXTENDED_DESCRIPTION[4];
-    public static String steam = tooltip.EXTENDED_DESCRIPTION[5];
+    public static String transmute = tooltip.EXTENDED_DESCRIPTION[2];
+    public static String ice = tooltip.EXTENDED_DESCRIPTION[4];
+    public static String water = tooltip.EXTENDED_DESCRIPTION[5];
+    public static String steam = tooltip.EXTENDED_DESCRIPTION[6];
 
     private static void makeOrbMap() {
         smallOrbMap = new HashMap<>();
