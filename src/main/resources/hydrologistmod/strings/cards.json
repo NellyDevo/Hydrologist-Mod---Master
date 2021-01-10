@@ -229,7 +229,7 @@
     "DESCRIPTION": "Deal !D! damage. NL Permanently gain damage equal to the enemy's hydrologistmod:Heat amount. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
-      "NL (",
+      " NL (",
       " extra damage.)"
     ]
   },

@@ -33,6 +33,7 @@ public class HeatBlast extends AbstractHydrologistCard {
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
+        exhaust = true;
     }
 
     @Override
