@@ -355,7 +355,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     public static boolean hasCorporealRelevantObject(AbstractCard card) {
         AbstractPlayer p = AbstractDungeon.player;
-        if (p != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+        if (isInCombat()) {
             for (AbstractPower power : p.powers) {
                 if (power instanceof CorporealRelevantObject) {
                     if (((CorporealRelevantObject)power).activateGlow(card)) {
@@ -376,7 +376,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     public static boolean hasCorporealRelevantCard() {
         AbstractPlayer p = AbstractDungeon.player;
-        if (p != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+        if (isInCombat()) {
             for (AbstractCard card : p.hand.group) {
                 if (card.hasTag(HydrologistTags.CORPOREAL_EFFECT)) {
                     return true;
@@ -411,6 +411,10 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         }
         ArrayList<AbstractCard> list = tagsWithLists.get(tag);
         return list.get(AbstractDungeon.cardRandomRng.random(list.size() - 1));
+    }
+
+    public static boolean isInCombat() {
+        return CardCrawlGame.isInARun() && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
     }
 
     public static FrameBuffer createBuffer() {
