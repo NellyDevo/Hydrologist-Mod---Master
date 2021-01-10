@@ -30,6 +30,7 @@ public class HeatAndPressure extends AbstractHydrologistCard implements Swappabl
         assignHydrologistSubtype(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = MULTIPLIER;
         tags.add(HydrologistTags.TEMPERATURE);
+        exhaust = true;
     }
 
     @Override

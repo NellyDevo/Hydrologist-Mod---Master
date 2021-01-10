@@ -107,7 +107,7 @@ public class PersonalRaincloudAction extends AbstractGameAction {
 
     public static class RaincloudModifier extends AbstractCardModifier {
         public String modifyDescription(String rawDescription, AbstractCard card) {
-            return rawDescription + "NL hydrologistmod:Swappable.";
+            return rawDescription + " NL hydrologistmod:Swappable.";
         }
 
         public AbstractCardModifier makeCopy() {
