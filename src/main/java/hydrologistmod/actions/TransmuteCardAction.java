@@ -304,7 +304,13 @@ public class TransmuteCardAction extends AbstractGameAction {
                 CardModifierManager.addModifier(newCard, new PurityModifier(purity));
             }
         } else {
-            CardModifierManager.addModifier(newCard, new PurityModifier(purity));
+            if (SwapperHelper.isCardSwappable(newCard)) {
+                for (AbstractCard card : SwapperCardPatch.SwappableChainField.swappableCards.get(newCard)) {
+                    CardModifierManager.addModifier(card, new PurityModifier(purity));
+                }
+            } else {
+                CardModifierManager.addModifier(newCard, new PurityModifier(purity));
+            }
         }
     }
 
