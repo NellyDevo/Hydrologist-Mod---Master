@@ -441,7 +441,7 @@
   "hydrologistmod:SteamPower": {
     "NAME": "Steam Power",
     "DESCRIPTION": "If enemy is suffering from hydrologistmod:Thermal_Shock, draw cards equal to its duration and remove it. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": ""
+    "UPGRADE_DESCRIPTION": "If enemy is suffering from hydrologistmod:Thermal_Shock, draw cards equal to its duration and remove it."
   },
   "hydrologistmod:Strike_Hydrologist": {
     "NAME": "Strike",

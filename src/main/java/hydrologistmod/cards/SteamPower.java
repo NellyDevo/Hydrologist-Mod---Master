@@ -19,8 +19,7 @@ public class SteamPower extends AbstractHydrologistCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/SteamPower.png";
-    private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
+    private static final int COST = 0;
 
     public SteamPower() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -48,7 +47,9 @@ public class SteamPower extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            exhaust = false;
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }
