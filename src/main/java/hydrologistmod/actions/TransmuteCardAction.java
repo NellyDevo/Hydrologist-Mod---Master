@@ -239,40 +239,34 @@ public class TransmuteCardAction extends AbstractGameAction {
         switch (oldCard.rarity) {
             case RARE:
                 for (AbstractCard candidate : AbstractDungeon.srcRareCardPool.group) {
-                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING)) {
+                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING) && (conditions == null || conditions.filter(candidate))) {
                         targets.add(candidate);
                     }
                 }
                 break;
             case UNCOMMON:
                 for (AbstractCard candidate : AbstractDungeon.srcUncommonCardPool.group) {
-                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING)) {
+                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING) && (conditions == null || conditions.filter(candidate))) {
                         targets.add(candidate);
                     }
                 }
                 break;
             default:
                 for (AbstractCard candidate : AbstractDungeon.srcCommonCardPool.group) {
-                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING)) {
+                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING) && (conditions == null || conditions.filter(candidate))) {
                         targets.add(candidate);
                     }
                 }
                 break;
         }
-        AbstractCard result = targets.get(AbstractDungeon.cardRandomRng.random(targets.size()-1));
-        while (result.cardID.equals(oldCard.cardID)) {
-            result = targets.get(AbstractDungeon.cardRandomRng.random(targets.size()-1));
+        if (targets.isEmpty()) {
+            isDone = true;
+            return null;
         }
-        if (conditions != null) {
-            while (!conditions.filter(result)) {
-                targets.remove(result);
-                if (targets.isEmpty()) {
-                    isDone = true;
-                    return null;
-                }
-                result = targets.get(AbstractDungeon.cardRandomRng.random(targets.size()-1));
-            }
-        }
+        AbstractCard result;
+        do {
+            result = targets.get(AbstractDungeon.cardRandomRng.random(targets.size() - 1));
+        } while (result.cardID.equals(oldCard.cardID));
         return result;
     }
 
