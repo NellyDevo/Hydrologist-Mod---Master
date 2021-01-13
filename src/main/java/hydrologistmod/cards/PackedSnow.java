@@ -27,7 +27,6 @@ public class PackedSnow extends AbstractHydrologistCard {
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.ICE);
-        exhaust = true;
         tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
     }
 

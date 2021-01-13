@@ -304,7 +304,7 @@
   },
   "hydrologistmod:PackedSnow": {
     "NAME": "Packed Snow",
-    "DESCRIPTION": "The next *Ice, *Water, and *Steam cards you play this combat are played twice. NL Exhaust.",
+    "DESCRIPTION": "The next *Ice, *Water, and *Steam cards you play this combat are played twice.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:PersonalRaincloud": {
