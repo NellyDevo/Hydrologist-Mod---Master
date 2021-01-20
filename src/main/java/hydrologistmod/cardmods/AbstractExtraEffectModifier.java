@@ -24,6 +24,7 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
         attachedCard = card.makeStatEquivalentCopy();
         this.type = type;
         this.isMutable = isMutable;
+        setValues();
     }
 
     public boolean isModified(AbstractCard card) {
@@ -47,6 +48,10 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
             }
         }
         attachedCard.applyPowers();
+        setValues();
+    }
+
+    private void setValues() {
         switch(type) {
             case DAMAGE:
                 value = attachedCard.damage;
