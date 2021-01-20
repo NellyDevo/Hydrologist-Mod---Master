@@ -179,8 +179,8 @@
   },
   "hydrologistmod:FrozenCapsule": {
     "NAME": "Frozen Capsule",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute this card. The new card costs 0 this combat.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute this card. The new card costs 0 this combat and is Upgraded."
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute this card. NL hydrologistmod:Mutable: When hydrologistmod:Transmuted, gains !M! hydrologistmod:Purity.",
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FrozenDomain": {
     "NAME": "Frozen Domain",
