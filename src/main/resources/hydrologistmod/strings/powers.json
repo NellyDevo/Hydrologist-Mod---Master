@@ -51,7 +51,7 @@
   },
   "hydrologistmod:EvaporationPower": {
     "NAME": "Evaporation",
-    "DESCRIPTIONS": ["If your next card played is a #ySteam card, apply #b", " #yVulnerable to ALL enemies."]
+    "DESCRIPTIONS": ["If your next card played is a #ySteam card, apply #b", " #yHeat to ALL enemies."]
   },
   "hydrologistmod:ExothermicReactionsPower": {
     "NAME": "Exothermic Reactions",

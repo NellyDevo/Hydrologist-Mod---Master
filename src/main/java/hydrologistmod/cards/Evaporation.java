@@ -21,7 +21,7 @@ public class Evaporation extends AbstractHydrologistCard {
     private static final int COST = 0;
     private static final int BLOCK_AMT = 2;
     private static final int UPGRADE_BLOCK = 2;
-    private static final int VULNERABLE_AMT = 3;
+    private static final int VULNERABLE_AMT = 4;
     private static final int UPGRADE_VULNERABLE_AMT = 2;
 
     public Evaporation() {
