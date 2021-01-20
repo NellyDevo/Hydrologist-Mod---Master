@@ -39,7 +39,7 @@ public class CondensationPower extends AbstractStateChangePower implements Clone
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.hasTag(HydrologistTags.WATER)) {
+        if (card.hasTag(tag)) {
             flash();
             addToBot(new DrawCardAction(owner, amount));
         }

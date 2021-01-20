@@ -42,7 +42,7 @@ public class SublimationPower extends AbstractStateChangePower implements Clonea
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.hasTag(HydrologistTags.STEAM)) {
+        if (card.hasTag(tag)) {
             flash();
             int[] array = new int[AbstractDungeon.getMonsters().monsters.size()];
             for (int i = 0; i < array.length; ++i) {
