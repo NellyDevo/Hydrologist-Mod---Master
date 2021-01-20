@@ -55,7 +55,7 @@
   },
   "hydrologistmod:CrystalLattice": {
     "NAME": "Crystal Lattice",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand. Fill your hand with copies of the new card. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand. Add !M! additional copies of the new card to your hand. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Crystallization": {

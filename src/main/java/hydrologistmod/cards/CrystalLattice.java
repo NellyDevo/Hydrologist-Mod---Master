@@ -1,5 +1,6 @@
 package hydrologistmod.cards;
 
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -22,6 +23,8 @@ public class CrystalLattice extends AbstractHydrologistCard {
     private static final int COST = 0;
     private static final int DAMAGE_AMT = 5;
     private static final int UPGRADE_DAMAGE = 3;
+    private static final int EXTRA_COPIES = 2;
+    private static final int UPGRADE_EXTRA_COPIES = 1;
 
     public CrystalLattice() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -31,12 +34,17 @@ public class CrystalLattice extends AbstractHydrologistCard {
         damage = baseDamage = DAMAGE_AMT;
         exhaust = true;
         tags.add(CardTags.HEALING);
+        magicNumber = baseMagicNumber = EXTRA_COPIES;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
-        addToBot(new TransmuteCardAction((AbstractCard newCard) -> addToTop(new FillHandWithCopiesAction(newCard))));
+        addToBot(new TransmuteCardAction((AbstractCard newCard) -> {
+            for (int i = 0; i < magicNumber; ++i) {
+                addToTop(new MakeTempCardInHandAction(newCard));
+            }
+        }));
     }
 
     @Override
@@ -49,6 +57,7 @@ public class CrystalLattice extends AbstractHydrologistCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
+            upgradeMagicNumber(UPGRADE_EXTRA_COPIES);
         }
     }
 }
