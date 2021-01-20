@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.AccumulatorPower;
 import hydrologistmod.powers.IcyFloePower;
 
 public class IcyFloe extends AbstractHydrologistCard {
@@ -20,18 +21,20 @@ public class IcyFloe extends AbstractHydrologistCard {
     private static final int COST = 2;
     private static final int CARD_DRAW = 1;
     private static final int UPGRADED_COST = 1;
+    private static final int EXTRA_HAND_SIZE = 3;
 
     public IcyFloe() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.RARE, CardTarget.NONE);
+                CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
-        magicNumber = baseMagicNumber = CARD_DRAW;
+        magicNumber = baseMagicNumber = EXTRA_HAND_SIZE;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new IcyFloePower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new IcyFloePower(p, CARD_DRAW), CARD_DRAW));
+        addToBot(new ApplyPowerAction(p, p, new AccumulatorPower(p, magicNumber), magicNumber));
     }
 
     @Override

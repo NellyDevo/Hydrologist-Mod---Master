@@ -13,11 +13,6 @@
       "Steam"
     ]
   },
-  "hydrologistmod:Accumulator": {
-    "NAME": "Accumulator",
-    "DESCRIPTION": "Increase your maximum hand size by !M!.",
-    "UPGRADE_DESCRIPTION": ""
-  },
   "hydrologistmod:Aqueducts": {
     "NAME": "Aqueducts",
     "DESCRIPTION": "Whenever you draw an extra card, deal !M! damage to ALL enemies.",
@@ -256,7 +251,7 @@
   },
   "hydrologistmod:IcyFloe": {
     "NAME": "Icy Floe",
-    "DESCRIPTION": "Whenever you hydrologistmod:Flow, draw a card.",
+    "DESCRIPTION": "Whenever you hydrologistmod:Flow, draw a card. NL Increase your maximum hand size by !M!.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:JetPropulsion": {
