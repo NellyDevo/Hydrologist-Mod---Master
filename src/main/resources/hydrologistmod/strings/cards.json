@@ -443,11 +443,6 @@
     "DESCRIPTION": "Gain !B! Block. NL Exhaust. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:WaterTurbine": {
-    "NAME": "Water Turbine",
-    "DESCRIPTION": "hydrologistmod:Flow. NL Next turn, gain [E] equal to the number of cards discarded this way. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": ""
-  },
   "hydrologistmod:WaterWheel": {
     "NAME": "Water Wheel",
     "DESCRIPTION": "hydrologistmod:Transmute a card. NL The new card's hydrologistmod:Purity is increased by !M! times X. NL Exhaust.",
