@@ -83,7 +83,7 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
     @Override
     public void onInitialApplication(AbstractCard card) {
         DynamicDynamicVariableManager.registerVariable(card, this);
-        key = DynamicDynamicVariableManager.generateKey(card, this);
+        key = "!" + DynamicDynamicVariableManager.generateKey(card, this) + "!";
     }
 
     protected enum VariableType {
