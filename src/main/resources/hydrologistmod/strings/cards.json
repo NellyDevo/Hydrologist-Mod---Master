@@ -423,11 +423,6 @@
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:Transfusion": {
-    "NAME": "Transfusion",
-    "DESCRIPTION": "Deal !D! damage. NL If this kills an enemy that is hydrologistmod:Hot, raise your Max HP by !M!. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": ""
-  },
   "hydrologistmod:UnstableStrike": {
     "NAME": "Unstable Strike",
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable.",
