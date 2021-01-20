@@ -309,8 +309,8 @@
   },
   "hydrologistmod:Pneumatics": {
     "NAME": "Pneumatics",
-    "DESCRIPTION": "hydrologistmod:Flow. NL At the start of the next !M! turns, hydrologistmod:Flow. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": ""
+    "DESCRIPTION": "hydrologistmod:Flow. NL At the start of the next turn, hydrologistmod:Flow. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "hydrologistmod:Flow. NL At the start of the next !M! turns, hydrologistmod:Flow. NL Exhaust."
   },
   "hydrologistmod:PressureBlast": {
     "NAME": "Pressure Blast",
