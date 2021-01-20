@@ -40,9 +40,11 @@ public class CrystalLattice extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
-        addToBot(new TransmuteCardAction((AbstractCard newCard) -> {
-            for (int i = 0; i < magicNumber; ++i) {
-                addToTop(new MakeTempCardInHandAction(newCard));
+        addToBot(new TransmuteCardAction((AbstractCard newCard, boolean firstTime) -> {
+            if (firstTime) {
+                for (int i = 0; i < magicNumber; ++i) {
+                    addToTop(new MakeTempCardInHandAction(newCard));
+                }
             }
         }));
     }
