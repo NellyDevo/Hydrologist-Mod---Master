@@ -23,7 +23,7 @@ public class PersonalRaincloud extends AbstractHydrologistCard {
     public PersonalRaincloud() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.RARE, CardTarget.SELF);
+                CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = DRAW_AMT;
