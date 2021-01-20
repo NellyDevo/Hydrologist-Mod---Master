@@ -24,7 +24,7 @@ public class GainBlockEffect extends AbstractExtraEffectModifier {
         if (isMutable) {
             s = "hydrologistmod:Mutable: " + s;
         }
-        return s;
+        return s + " NL " + rawDescription;
     }
 
     @Override

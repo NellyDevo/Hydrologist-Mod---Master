@@ -1,13 +1,15 @@
 package hydrologistmod.cards;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.FlowAction;
+import hydrologistmod.cardmods.DrawCardEffect;
+import hydrologistmod.cardmods.FlowEffect;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -21,7 +23,6 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
     public static final String IMG_PATH = "hydrologistmod/images/cards/PureWater.png";
     private static final int COST = 0;
     private static final int DRAW_AMT = 1;
-    private static final int UPGRADE_DRAW_AMOUNT = 1;
 
     public PureWater() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -33,8 +34,13 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(p, 1));
-        addToBot(new FlowAction());
+        if (upgraded) {
+            addToBot(new DrawCardAction(p, magicNumber));
+            addToBot(new FlowAction());
+        } else {
+            addToBot(new FlowAction());
+            addToBot(new DrawCardAction(p, magicNumber));
+        }
     }
 
     @Override
@@ -46,7 +52,6 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_DRAW_AMOUNT);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
@@ -54,7 +59,12 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
 
     @Override
     public void onTransmuted(AbstractCard newCard) {
-        addToBot(new DrawCardAction(AbstractDungeon.player, magicNumber));
-        addToBot(new FlowAction());
+        if (upgraded) {
+            CardModifierManager.addModifier(newCard, new DrawCardEffect(this, true));
+            CardModifierManager.addModifier(newCard, new FlowEffect(this, true));
+        } else {
+            CardModifierManager.addModifier(newCard, new FlowEffect(this, true));
+            CardModifierManager.addModifier(newCard, new DrawCardEffect(this, true));
+        }
     }
 }

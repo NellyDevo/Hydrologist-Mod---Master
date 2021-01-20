@@ -1,13 +1,15 @@
 package hydrologistmod.cards;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hydrologistmod.cardmods.DrawCardEffect;
+import hydrologistmod.cardmods.GainBlockEffect;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -22,6 +24,7 @@ public class PureIce extends AbstractHydrologistCard implements TransmutableCard
     private static final int COST = 0;
     private static final int BLOCK_AMT = 3;
     private static final int UPGRADE_BLOCK_AMT = 2;
+    private static final int CARD_DRAW = 1;
 
     public PureIce() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -29,11 +32,12 @@ public class PureIce extends AbstractHydrologistCard implements TransmutableCard
                 CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.ICE);
         block = baseBlock = BLOCK_AMT;
+        magicNumber = baseMagicNumber = CARD_DRAW;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(p, 1));
+        addToBot(new DrawCardAction(p, magicNumber));
         addToBot(new GainBlockAction(p, p, block));
     }
 
@@ -52,7 +56,7 @@ public class PureIce extends AbstractHydrologistCard implements TransmutableCard
 
     @Override
     public void onTransmuted(AbstractCard newCard) {
-        addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
-        addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
+        CardModifierManager.addModifier(newCard, new DrawCardEffect(this, true));
+        CardModifierManager.addModifier(newCard, new GainBlockEffect(this, true));
     }
 }

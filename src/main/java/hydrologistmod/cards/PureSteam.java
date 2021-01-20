@@ -1,5 +1,6 @@
 package hydrologistmod.cards;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -11,6 +12,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.HydrologistDamageAction;
+import hydrologistmod.cardmods.DamageEffect;
+import hydrologistmod.cardmods.DrawCardEffect;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -25,6 +28,7 @@ public class PureSteam extends AbstractHydrologistCard implements TransmutableCa
     private static final int COST = 0;
     private static final int DAMAGE_AMT = 4;
     private static final int UPGRADE_DAMAGE = 2;
+    private static final int CARD_DRAW = 1;
 
     public PureSteam() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -32,11 +36,12 @@ public class PureSteam extends AbstractHydrologistCard implements TransmutableCa
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
+        magicNumber = baseMagicNumber = CARD_DRAW;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(p, 1));
+        addToBot(new DrawCardAction(p, magicNumber));
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
     }
 
@@ -55,17 +60,7 @@ public class PureSteam extends AbstractHydrologistCard implements TransmutableCa
 
     @Override
     public void onTransmuted(AbstractCard newCard) {
-        AbstractPlayer p = AbstractDungeon.player;
-        AbstractMonster m;
-        m = AbstractDungeon.getMonsters().getRandomMonster(true);
-        if (m != null) {
-            calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-        }
-        m = AbstractDungeon.getMonsters().getRandomMonster(true);
-        if (m != null) {
-            calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-        }
+        CardModifierManager.addModifier(newCard, new DrawCardEffect(this, true));
+        CardModifierManager.addModifier(newCard, new DamageEffect(this, true));
     }
 }
