@@ -26,7 +26,7 @@ public class HeatPower extends AbstractPower implements CloneablePowerInterface,
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     public static final int VULN_PERCENTAGE = 30;
-    private static final Color HEALTH_BAR_COLOR = new Color((255.0F / 255.0F), (120.0F / 255.0F), 0.0F, 1.0F);
+    private static final Color HEALTH_BAR_COLOR = Color.valueOf("d860e6");
     private AbstractCreature source;
 
     public HeatPower(AbstractCreature owner, AbstractCreature source, int amount) {
