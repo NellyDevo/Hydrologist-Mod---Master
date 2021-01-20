@@ -96,18 +96,6 @@
     "NAME": "Manifestation",
     "DESCRIPTIONS": ["#yCorporeal cards that deal damage deal #b", " additional damage. #yCorporeal cards that gain #yBlock gain #b", " additional #yBlock."]
   },
-  "hydrologistmod:PackedIcePower": {
-    "NAME": "Packed Ice",
-    "DESCRIPTIONS": ["The next #yIce card you play this combat is played twice.", "The next #b", " #yIce cards you play this combat are played twice."]
-  },
-  "hydrologistmod:PackedWaterPower": {
-    "NAME": "Packed Water",
-    "DESCRIPTIONS": ["The next #yWater card you play this combat is played twice.", "The next #b", " #yWater cards you play this combat are played twice."]
-  },
-  "hydrologistmod:PackedSteamPower": {
-    "NAME": "Packed Steam",
-    "DESCRIPTIONS": ["The next #ySteam card you play this combat is played twice.", "The next #b", " #ySteam cards you play this combat are played twice."]
-  },
   "hydrologistmod:PneumaticsPower": {
     "NAME": "Pneumatics",
     "DESCRIPTIONS": ["At the start of next turn, #yFlow.", "At the start of the next #b", " turns, #yFlow."]
