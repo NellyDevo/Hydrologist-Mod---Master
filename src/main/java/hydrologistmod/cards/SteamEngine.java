@@ -23,7 +23,7 @@ public class SteamEngine extends AbstractHydrologistCard {
     public SteamEngine() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.UNCOMMON, CardTarget.NONE);
+                CardRarity.RARE, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.STEAM);
     }
 
