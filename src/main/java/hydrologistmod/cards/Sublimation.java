@@ -22,7 +22,7 @@ public class Sublimation extends AbstractHydrologistCard {
     private static final int COST = 0;
     private static final int DAMAGE_AMT = 3;
     private static final int UPGRADE_DAMAGE = 2;
-    private static final int TRIGGERED_DAMAGE = 6;
+    private static final int TRIGGERED_DAMAGE = 8;
     private static final int UPGRADE_TRIGGERED = 3;
 
     public Sublimation() {
