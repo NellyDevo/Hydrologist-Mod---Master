@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import hydrologistmod.cardmods.AbstractExtraEffectModifier;
 import hydrologistmod.cardmods.PurityModifier;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.TransmutableAffectingPower;
@@ -304,6 +305,20 @@ public class TransmuteCardAction extends AbstractGameAction {
                 }
             } else {
                 CardModifierManager.addModifier(newCard, new PurityModifier(purity));
+            }
+        }
+        for (AbstractCardModifier mod : CardModifierManager.modifiers(oldCard)) {
+            if (mod instanceof AbstractExtraEffectModifier) {
+                AbstractExtraEffectModifier effect = (AbstractExtraEffectModifier)mod;
+                if (effect.isMutable) {
+                    if (SwapperHelper.isCardSwappable(newCard)) {
+                        for (AbstractCard card : SwapperCardPatch.SwappableChainField.swappableCards.get(newCard)) {
+                            CardModifierManager.addModifier(card, effect.makeCopy());
+                        }
+                    } else {
+                        CardModifierManager.addModifier(newCard, effect.makeCopy());
+                    }
+                }
             }
         }
     }
