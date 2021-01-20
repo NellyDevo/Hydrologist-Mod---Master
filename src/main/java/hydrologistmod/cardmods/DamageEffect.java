@@ -12,6 +12,8 @@ import hydrologistmod.cards.AbstractHydrologistCard;
 
 @AbstractCardModifier.SaveIgnore
 public class DamageEffect extends AbstractExtraEffectModifier {
+    private AbstractCard.CardTarget oldTarget = null;
+
     public DamageEffect(AbstractCard card, boolean isMutable) {
         super(card, VariableType.DAMAGE, isMutable);
         priority = 2;
@@ -34,6 +36,26 @@ public class DamageEffect extends AbstractExtraEffectModifier {
             s = " hydrologistmod:Mutable:" + s;
         }
         return rawDescription + " NL " + s;
+    }
+
+    @Override
+    public void onInitialApplication(AbstractCard card) {
+        super.onInitialApplication(card);
+        if (card.target != AbstractCard.CardTarget.ENEMY && card.target != AbstractCard.CardTarget.SELF_AND_ENEMY) {
+            oldTarget = card.target;
+            if (card.target == AbstractCard.CardTarget.SELF) {
+                card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+            } else {
+                card.target = AbstractCard.CardTarget.ENEMY;
+            }
+        }
+    }
+
+    @Override
+    public void onRemove(AbstractCard card) {
+        if (oldTarget != null) {
+            card.target = oldTarget;
+        }
     }
 
     @Override
