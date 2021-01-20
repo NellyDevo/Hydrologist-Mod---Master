@@ -20,7 +20,11 @@ public class GainBlockEffect extends AbstractExtraEffectModifier {
 
     @Override
     public String addExtraText(String rawDescription, AbstractCard card) {
-        return "hydrologistmod:Mutable: Gain " + key + " Block. NL " + rawDescription;
+        String s = "Gain " + key + " Block. NL " + rawDescription;
+        if (isMutable) {
+            s = "hydrologistmod:Mutable: " + s;
+        }
+        return s;
     }
 
     @Override
