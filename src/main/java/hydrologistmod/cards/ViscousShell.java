@@ -56,7 +56,7 @@ public class ViscousShell extends AbstractHydrologistCard implements Transmutabl
     }
 
     @Override
-    public void onTransmuted(AbstractCard newCard) {
+    public void onTransmuted(AbstractCard newCard, boolean firstTime) {
         CardModifierManager.addModifier(newCard, new GainBlockEffect(this, true));
         newCard.applyPowers();
     }

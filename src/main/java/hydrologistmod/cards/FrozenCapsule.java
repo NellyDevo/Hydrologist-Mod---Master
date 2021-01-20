@@ -55,7 +55,7 @@ public class FrozenCapsule extends AbstractHydrologistCard implements Transmutab
     }
 
     @Override
-    public void onTransmuted(AbstractCard newCard) {
+    public void onTransmuted(AbstractCard newCard, boolean firstTime) {
         CardModifierManager.addModifier(newCard, new ExtraPurityEffect(this, true));
     }
 }

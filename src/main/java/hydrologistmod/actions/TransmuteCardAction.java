@@ -285,7 +285,17 @@ public class TransmuteCardAction extends AbstractGameAction {
             followup.doActions(newCard);
         }
         if (oldCard instanceof TransmutableCard) {
-            ((TransmutableCard)oldCard).onTransmuted(newCard);
+            if (SwapperHelper.isCardSwappable(newCard)) {
+                boolean firstTime = true;
+                for (AbstractCard card : SwapperCardPatch.SwappableChainField.swappableCards.get(newCard)) {
+                    if (card instanceof TransmutableCard) {
+                        ((TransmutableCard) card).onTransmuted(newCard, firstTime);
+                        firstTime = false;
+                    }
+                }
+            } else {
+                ((TransmutableCard) oldCard).onTransmuted(newCard, true);
+            }
         }
         if (CardModifierManager.hasModifier(oldCard, PurityModifier.ID)) {
             if (SwapperHelper.isCardSwappable(newCard)) {

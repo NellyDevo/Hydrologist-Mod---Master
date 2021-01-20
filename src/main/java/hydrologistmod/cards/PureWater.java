@@ -58,7 +58,7 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
     }
 
     @Override
-    public void onTransmuted(AbstractCard newCard) {
+    public void onTransmuted(AbstractCard newCard, boolean firstTime) {
         if (upgraded) {
             CardModifierManager.addModifier(newCard, new DrawCardEffect(this, true));
             CardModifierManager.addModifier(newCard, new FlowEffect(this, true));

@@ -55,7 +55,7 @@ public class PureIce extends AbstractHydrologistCard implements TransmutableCard
     }
 
     @Override
-    public void onTransmuted(AbstractCard newCard) {
+    public void onTransmuted(AbstractCard newCard, boolean firstTime) {
         CardModifierManager.addModifier(newCard, new DrawCardEffect(this, true));
         CardModifierManager.addModifier(newCard, new GainBlockEffect(this, true));
     }
