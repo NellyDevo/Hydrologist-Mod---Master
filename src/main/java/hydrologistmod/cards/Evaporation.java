@@ -31,7 +31,7 @@ public class Evaporation extends AbstractHydrologistCard {
     public Evaporation() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.UNCOMMON, CardTarget.SELF);
+                CardRarity.COMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.WATER);
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = VULNERABLE_AMT;
