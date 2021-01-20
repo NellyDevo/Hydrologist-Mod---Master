@@ -35,8 +35,8 @@
   },
   "hydrologistmod:Condensation": {
     "NAME": "Condensation",
-    "DESCRIPTION": "Deal !D! damage. NL If your next card played is a *Water card, draw a card.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL If your next card played is a *Water card, draw 2 cards."
+    "DESCRIPTION": "Deal !D! damage. NL If your next card played is a *Water card, draw !M! cards.",
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Cryogenics": {
     "NAME": "Cryogenics",

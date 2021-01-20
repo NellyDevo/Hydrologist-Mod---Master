@@ -22,7 +22,7 @@ public class Condensation extends AbstractHydrologistCard {
     private static final int COST = 0;
     private static final int DAMAGE_AMT = 3;
     private static final int UPGRADE_DAMAGE = 2;
-    private static final int CARD_DRAW = 1;
+    private static final int CARD_DRAW = 2;
     private static final int UPGRADE_CARD_DRAW = 1;
 
     public Condensation() {
@@ -52,8 +52,6 @@ public class Condensation extends AbstractHydrologistCard {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
             upgradeMagicNumber(UPGRADE_CARD_DRAW);
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
         }
     }
 }
