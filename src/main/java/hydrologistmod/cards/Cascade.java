@@ -18,7 +18,7 @@ public class Cascade extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Cascade.png";
     private static final int COST = 1;
-    private static final int BLOCK_AMT = 3;
+    private static final int BLOCK_AMT = 4;
     private static final int UPGRADE_BLOCK_AMT = 1;
 
     public Cascade() {
