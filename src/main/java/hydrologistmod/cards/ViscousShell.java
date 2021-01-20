@@ -1,20 +1,16 @@
 package hydrologistmod.cards;
 
-import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.TransmuteCardAction;
+import hydrologistmod.cardmods.GainBlockEffect;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
-import hydrologistmod.patches.IceBarrierExternalBlock;
 
 public class ViscousShell extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:ViscousShell";
@@ -40,10 +36,7 @@ public class ViscousShell extends AbstractHydrologistCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
         addToBot(new TransmuteCardAction(this, (AbstractCard c) -> {
-            CardModifierManager.addModifier(c, new GainBlockModifier(magicNumber, UPGRADE_BLOCK_AMT));
-            if (upgraded) {
-                c.upgrade();
-            }
+            CardModifierManager.addModifier(c, new GainBlockEffect(this, true));
             c.applyPowers();
         }));
     }
@@ -61,47 +54,6 @@ public class ViscousShell extends AbstractHydrologistCard {
             upgradeMagicNumber(UPGRADE_BLOCK_AMT);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
-        }
-    }
-
-    public static class GainBlockModifier extends AbstractCardModifier {
-        private int baseExtraBlock;
-        private int upgradeExtraBlock;
-
-        public GainBlockModifier(int baseExtraBlock, int upgradeExtraBlock) {
-            this.baseExtraBlock = baseExtraBlock;
-            this.upgradeExtraBlock = upgradeExtraBlock;
-        }
-
-        @Override
-        public void onApplyPowers(AbstractCard card) {
-            int extraBlock = baseExtraBlock;
-            if (card.upgraded) {
-                extraBlock += upgradeExtraBlock;
-            }
-            IceBarrierExternalBlock.DynamicVariableFields.iceBarrierBaseBlock.set(card, extraBlock);
-            AbstractCard c = new ViscousShell();
-            if (card.upgraded) {
-                c.upgrade();
-            }
-            c.applyPowers();
-            IceBarrierExternalBlock.DynamicVariableFields.iceBarrierBlock.set(card, c.block);
-            IceBarrierExternalBlock.DynamicVariableFields.iceBarrierIsBlockModified.set(card, c.isBlockModified);
-        }
-
-        @Override
-        public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-            AbstractDungeon.actionManager.addToTop(new GainBlockAction(AbstractDungeon.player, IceBarrierExternalBlock.DynamicVariableFields.iceBarrierBlock.get(card)));
-        }
-
-        @Override
-        public String modifyDescription(String rawDescription, AbstractCard card) {
-            return "Gain !hydrologistmod:ICE! Block. NL " + rawDescription;
-        }
-
-        @Override
-        public AbstractCardModifier makeCopy() {
-            return new GainBlockModifier(baseExtraBlock, upgradeExtraBlock);
         }
     }
 }

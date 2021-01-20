@@ -2,6 +2,7 @@ package hydrologistmod.cardmods;
 
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,10 +18,12 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
     public int baseValue;
     private VariableType type;
     protected String key;
+    public boolean isMutable;
 
-    public AbstractExtraEffectModifier(AbstractCard card, VariableType type) {
-        attachedCard = card;
+    public AbstractExtraEffectModifier(AbstractCard card, VariableType type, boolean isMutable) {
+        attachedCard = card.makeStatEquivalentCopy();
         this.type = type;
+        this.isMutable = isMutable;
     }
 
     public boolean isModified(AbstractCard card) {
@@ -83,9 +86,17 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
         key = DynamicDynamicVariableManager.generateKey(card, this);
     }
 
-    private enum VariableType {
+    protected enum VariableType {
         DAMAGE,
         BLOCK,
         MAGIC
+    }
+
+    protected void addToTop(AbstractGameAction action) {
+        AbstractDungeon.actionManager.addToTop(action);
+    }
+
+    protected void addToBot(AbstractGameAction action) {
+        AbstractDungeon.actionManager.addToBottom(action);
     }
 }

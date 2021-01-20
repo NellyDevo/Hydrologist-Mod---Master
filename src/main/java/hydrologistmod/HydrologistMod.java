@@ -31,11 +31,11 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.character.HydrologistCharacter;
+import hydrologistmod.helpers.DynamicDynamicVariableManager;
 import hydrologistmod.interfaces.CorporealRelevantObject;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.HydrologistEnum;
 import hydrologistmod.patches.HydrologistTags;
-import hydrologistmod.patches.IceBarrierExternalBlock;
 import hydrologistmod.potions.BottledWater;
 import hydrologistmod.potions.FilteredWater;
 import hydrologistmod.potions.UnstableBrew;
@@ -132,7 +132,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     @Override
     public void receiveEditCards() {
-        BaseMod.addDynamicVariable(new IceBarrierExternalBlock.IceBarrierBlock());
+        BaseMod.addDynamicVariable(new DynamicDynamicVariableManager());
         try {
             autoAddCards();
         } catch (URISyntaxException | IllegalAccessException | InstantiationException | NotFoundException | ClassNotFoundException e) {
