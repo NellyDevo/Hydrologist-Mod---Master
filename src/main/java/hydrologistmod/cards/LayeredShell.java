@@ -30,7 +30,7 @@ public class LayeredShell extends AbstractHydrologistCard {
     public LayeredShell() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.COMMON, CardTarget.SELF);
+                CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.ICE);
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = DAMAGE_INCREASE;
