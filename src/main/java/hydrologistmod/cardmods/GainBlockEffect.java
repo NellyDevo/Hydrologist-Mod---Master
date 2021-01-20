@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 
+@AbstractCardModifier.SaveIgnore
 public class GainBlockEffect extends AbstractExtraEffectModifier {
     public GainBlockEffect(AbstractCard card, boolean isMutable) {
         super(card, VariableType.BLOCK, isMutable);
