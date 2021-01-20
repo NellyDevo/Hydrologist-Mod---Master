@@ -29,7 +29,7 @@ public class Condensation extends AbstractHydrologistCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
-        assignHydrologistSubtype(HydrologistTags.ICE);
+        assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = CARD_DRAW;
         tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
