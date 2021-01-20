@@ -142,11 +142,6 @@
       "I don't have enough Energy!"
     ]
   },
-  "hydrologistmod:Freeze": {
-    "NAME": "Freeze",
-    "DESCRIPTION": "Deal !D! damage. NL If this kills an enemy that is hydrologistmod:Cool, Upgrade a random card in your deck. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": ""
-  },
   "hydrologistmod:FrigidLash": {
     "NAME": "Frigid Lash",
     "DESCRIPTION": "Deal !D! damage. NL Increase the Block gained by the hydrologistmod:Paired card by !M! this combat. NL hydrologistmod:Swappable.",
