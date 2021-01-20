@@ -7,9 +7,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.LiquidationPower;
+
+import java.util.Arrays;
+import java.util.LinkedList;
 
 public class Liquidation extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:Liquidation";
@@ -33,6 +37,7 @@ public class Liquidation extends AbstractHydrologistCard {
         magicNumber = baseMagicNumber = WEAK_AMT;
         tags.add(HydrologistTags.TEMPERATURE);
         tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Sublimation())));
     }
 
     @Override
@@ -48,6 +53,7 @@ public class Liquidation extends AbstractHydrologistCard {
 
     @Override
     public void upgrade() {
+        SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);

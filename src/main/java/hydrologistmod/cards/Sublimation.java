@@ -8,11 +8,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.HydrologistDamageAction;
+import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.SublimationPower;
 
-public class Sublimation extends AbstractHydrologistCard {
+public class Sublimation extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:Sublimation";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -48,10 +50,16 @@ public class Sublimation extends AbstractHydrologistCard {
 
     @Override
     public void upgrade() {
+        SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
             upgradeMagicNumber(UPGRADE_TRIGGERED);
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

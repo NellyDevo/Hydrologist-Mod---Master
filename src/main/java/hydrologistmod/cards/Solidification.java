@@ -8,11 +8,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.HydrologistDamageAction;
+import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.SolidificationPower;
 
-public class Solidification extends AbstractHydrologistCard {
+public class Solidification extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:Solidification";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -48,10 +50,16 @@ public class Solidification extends AbstractHydrologistCard {
 
     @Override
     public void upgrade() {
+        SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
             upgradeMagicNumber(UPGRADE_COLD);
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

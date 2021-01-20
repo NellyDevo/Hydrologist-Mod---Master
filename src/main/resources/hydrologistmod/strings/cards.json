@@ -35,7 +35,7 @@
   },
   "hydrologistmod:Condensation": {
     "NAME": "Condensation",
-    "DESCRIPTION": "Deal !D! damage. NL If your next card played is a *Water card, draw !M! cards.",
+    "DESCRIPTION": "Deal !D! damage. NL If your next card played is a *Water card, draw !M! cards. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Cryogenics": {
@@ -55,7 +55,7 @@
   },
   "hydrologistmod:Crystallization": {
     "NAME": "Crystallization",
-    "DESCRIPTION": "Gain !B! Block. NL If your next card played is an *Ice card, hydrologistmod:Transmute a card in your hand. It gains !M! extra hydrologistmod:Purity.",
+    "DESCRIPTION": "Gain !B! Block. NL If your next card played is an *Ice card, hydrologistmod:Transmute a card in your hand. It gains !M! extra hydrologistmod:Purity. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Debilitate": {
@@ -105,7 +105,7 @@
   },
   "hydrologistmod:Evaporation": {
     "NAME": "Evaporation",
-    "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Steam card, apply !M! hydrologistmod:Heat to ALL enemies.",
+    "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Steam card, apply !M! hydrologistmod:Heat to ALL enemies. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:EveningMist": {
@@ -246,7 +246,7 @@
   },
   "hydrologistmod:Liquidation": {
     "NAME": "Liquidation",
-    "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Water card, gain !M! Block.",
+    "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Water card, gain !M! Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Manifestation": {
@@ -370,7 +370,7 @@
   },
   "hydrologistmod:Solidification": {
     "NAME": "Solidification",
-    "DESCRIPTION": "Deal !D! damage. NL If your next card played is an *Ice card, apply !M! hydrologistmod:Cold to ALL enemies.",
+    "DESCRIPTION": "Deal !D! damage. NL If your next card played is an *Ice card, apply !M! hydrologistmod:Cold to ALL enemies. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SoothingWater": {
@@ -405,7 +405,7 @@
   },
   "hydrologistmod:Sublimation": {
     "NAME": "Sublimation",
-    "DESCRIPTION": "Deal !D! damage. NL If your next card played is a *Steam card, deal !M! damage to ALL enemies.",
+    "DESCRIPTION": "Deal !D! damage. NL If your next card played is a *Steam card, deal !M! damage to ALL enemies. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SwelteringStrike": {

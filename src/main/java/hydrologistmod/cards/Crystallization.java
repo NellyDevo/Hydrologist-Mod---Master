@@ -7,9 +7,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.CrystallizationPower;
+
+import java.util.Arrays;
+import java.util.LinkedList;
 
 public class Crystallization extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:Crystallization";
@@ -33,6 +37,7 @@ public class Crystallization extends AbstractHydrologistCard {
         magicNumber = baseMagicNumber = PURITY_AMOUNT;
         tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
         tags.add(CardTags.HEALING);
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Condensation())));
     }
 
     @Override
@@ -48,6 +53,7 @@ public class Crystallization extends AbstractHydrologistCard {
 
     @Override
     public void upgrade() {
+        SwapperHelper.upgrade(this);
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
