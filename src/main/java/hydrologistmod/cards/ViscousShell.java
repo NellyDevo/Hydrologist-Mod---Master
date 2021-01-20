@@ -9,10 +9,11 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.TransmuteCardAction;
 import hydrologistmod.cardmods.GainBlockEffect;
+import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-public class ViscousShell extends AbstractHydrologistCard {
+public class ViscousShell extends AbstractHydrologistCard implements TransmutableCard {
     public static final String ID = "hydrologistmod:ViscousShell";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -35,10 +36,7 @@ public class ViscousShell extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new TransmuteCardAction(this, (AbstractCard c) -> {
-            CardModifierManager.addModifier(c, new GainBlockEffect(this, true));
-            c.applyPowers();
-        }));
+        addToBot(new TransmuteCardAction(this));
     }
 
     @Override
@@ -55,5 +53,11 @@ public class ViscousShell extends AbstractHydrologistCard {
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
+    }
+
+    @Override
+    public void onTransmuted(AbstractCard newCard) {
+        CardModifierManager.addModifier(newCard, new GainBlockEffect(this, true));
+        newCard.applyPowers();
     }
 }
