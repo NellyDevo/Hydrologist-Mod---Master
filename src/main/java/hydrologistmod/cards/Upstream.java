@@ -19,8 +19,8 @@ public class Upstream extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Upstream.png";
     private static final int COST = 1;
-    private static final int WEAK_AMT = 2;
-    private static final int UPGRADE_WEAK = 1;
+    private static final int WEAK_AMT = 3;
+    private static final int UPGRADE_WEAK = 2;
     private static final int BLOCK_AMT = 5;
     private static final int UPGRADE_BLOCK = 3;
 

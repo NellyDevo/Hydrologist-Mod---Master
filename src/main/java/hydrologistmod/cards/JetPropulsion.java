@@ -19,8 +19,8 @@ public class JetPropulsion extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/JetPropulsion.png";
     private static final int COST = 1;
-    private static final int MAGIC = 2;
-    private static final int UPGRADE_MAGIC = 1;
+    private static final int MAGIC = 3;
+    private static final int UPGRADE_MAGIC = 2;
 
     public JetPropulsion() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
