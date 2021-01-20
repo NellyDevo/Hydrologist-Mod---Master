@@ -340,6 +340,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     @Override
     public void receivePostBattle(AbstractRoom room) {
         nonCorporealCards.clear();
+        DynamicDynamicVariableManager.clearVariables();
     }
 
     public static void determineNonCorporealCards() {
