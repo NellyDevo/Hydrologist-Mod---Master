@@ -35,7 +35,7 @@
       "mutable",
       "mutable:"
     ],
-    "DESCRIPTION": "When a card is #yTransmuted, any #yMutable effect is passed on to the next card for the rest of Combat."
+    "DESCRIPTION": "When a card is #yTransmuted, any #yMutable effect is passed on to the next card for the rest of combat."
   },
   "PURITY": {
     "PROPER_NAME": "Purity",
