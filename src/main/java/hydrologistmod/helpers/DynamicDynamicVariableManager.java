@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import hydrologistmod.cardmods.AbstractExtraEffectModifier;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class DynamicDynamicVariableManager extends DynamicVariable {
@@ -105,6 +106,7 @@ public class DynamicDynamicVariableManager extends DynamicVariable {
                 return;
             }
             list.add(mod);
+            Collections.sort(list);
         }
         BaseMod.cardDynamicVariableMap.put(generateKey(card, mod), managerInstance);
     }
