@@ -55,8 +55,8 @@
   },
   "hydrologistmod:Crystallization": {
     "NAME": "Crystallization",
-    "DESCRIPTION": "Gain !B! Block. NL If your next card played is an *Ice card, hydrologistmod:Transmute a card in your hand.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL If your next card played is an *Ice card, hydrologistmod:Transmute !M! cards in your hand."
+    "DESCRIPTION": "Gain !B! Block. NL If your next card played is an *Ice card, hydrologistmod:Transmute a card in your hand. It gains !M! extra hydrologistmod:Purity.",
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Debilitate": {
     "NAME": "Debilitate",

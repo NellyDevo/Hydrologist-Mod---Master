@@ -1,5 +1,6 @@
 package hydrologistmod.powers;
 
+import basemod.helpers.CardModifierManager;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
@@ -12,6 +13,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.actions.TransmuteCardAction;
+import hydrologistmod.cardmods.PurityModifier;
 import hydrologistmod.patches.HydrologistTags;
 
 public class CrystallizationPower extends AbstractStateChangePower implements CloneablePowerInterface {
@@ -34,18 +36,16 @@ public class CrystallizationPower extends AbstractStateChangePower implements Cl
 
     @Override
     public void updateDescription() {
-        if (amount == 1) {
-            description = DESCRIPTIONS[0];
-        } else {
-            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
-        }
+        description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
     }
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.hasTag(HydrologistTags.ICE)) {
+        if (card.hasTag(tag)) {
             flash();
-            addToBot(new TransmuteCardAction(amount));
+            addToBot(new TransmuteCardAction((newCard, firstTime) -> {
+                CardModifierManager.addModifier(newCard, new PurityModifier(amount));
+            }));
         }
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
