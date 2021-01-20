@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 
+@AbstractCardModifier.SaveIgnore
 public class DrawCardEffect extends AbstractExtraEffectModifier {
     public DrawCardEffect(AbstractCard card, boolean isMutable) {
         super(card, VariableType.MAGIC, isMutable);

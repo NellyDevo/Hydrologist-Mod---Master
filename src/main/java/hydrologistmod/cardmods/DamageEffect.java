@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import hydrologistmod.actions.HydrologistDamageAction;
 import hydrologistmod.cards.AbstractHydrologistCard;
 
+@AbstractCardModifier.SaveIgnore
 public class DamageEffect extends AbstractExtraEffectModifier {
     public DamageEffect(AbstractCard card, boolean isMutable) {
         super(card, VariableType.DAMAGE, isMutable);

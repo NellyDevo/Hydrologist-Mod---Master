@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hydrologistmod.actions.FlowAction;
 
+@AbstractCardModifier.SaveIgnore
 public class FlowEffect extends AbstractExtraEffectModifier {
     public FlowEffect(AbstractCard card, boolean isMutable) {
         super(card, VariableType.DAMAGE, isMutable);
