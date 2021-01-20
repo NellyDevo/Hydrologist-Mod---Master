@@ -3,14 +3,17 @@ package hydrologistmod.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.patches.HydrologistTags;
 
@@ -39,9 +42,11 @@ public class SolidificationPower extends AbstractStateChangePower implements Clo
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.hasTag(HydrologistTags.ICE)) {
+        if (card.hasTag(tag)) {
             flash();
-            addToBot(new GainBlockAction(owner, owner, amount));
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                addToBot(new ApplyPowerAction(m, owner, new ColdPower(m, owner, amount), amount));
+            }
         }
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }

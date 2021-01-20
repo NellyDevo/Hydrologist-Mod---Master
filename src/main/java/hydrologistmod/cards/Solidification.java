@@ -22,8 +22,8 @@ public class Solidification extends AbstractHydrologistCard {
     private static final int COST = 0;
     private static final int DAMAGE_AMT = 3;
     private static final int UPGRADE_DAMAGE = 2;
-    private static final int BLOCK_AMT = 5;
-    private static final int UPGRADE_BLOCK = 3;
+    private static final int COLD_AMT = 4;
+    private static final int UPGRADE_COLD = 2;
 
     public Solidification() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -31,7 +31,7 @@ public class Solidification extends AbstractHydrologistCard {
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
-        magicNumber = baseMagicNumber = BLOCK_AMT;
+        magicNumber = baseMagicNumber = COLD_AMT;
         tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
     }
 
@@ -51,7 +51,7 @@ public class Solidification extends AbstractHydrologistCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
-            upgradeMagicNumber(UPGRADE_BLOCK);
+            upgradeMagicNumber(UPGRADE_COLD);
         }
     }
 }

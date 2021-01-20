@@ -370,7 +370,7 @@
   },
   "hydrologistmod:Solidification": {
     "NAME": "Solidification",
-    "DESCRIPTION": "Deal !D! damage. NL If your next card played is an *Ice card, gain !M! Block.",
+    "DESCRIPTION": "Deal !D! damage. NL If your next card played is an *Ice card, apply !M! hydrologistmod:Cold to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SoothingWater": {

@@ -117,7 +117,7 @@
   },
   "hydrologistmod:SolidificationPower": {
     "NAME": "Solidification",
-    "DESCRIPTIONS": ["If your next card played is an #yIce card, gain #b", " #yBlock."]
+    "DESCRIPTIONS": ["If your next card played is an #yIce card, apply #b", " #yCold to ALL enemies."]
   },
   "hydrologistmod:SteamEnginePower": {
     "NAME": "Steam Engine",

@@ -47,13 +47,6 @@ public class LiquidationPower extends AbstractStateChangePower implements Clonea
             addToBot(new GainBlockAction(owner, amount));
         }
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-//        if (card.hasTag(HydrologistTags.WATER)) {
-//            flash();
-//            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-//                addToBot(new ApplyPowerAction(m, owner, new ColdPower(m, owner, amount), amount));
-//            }
-//        }
-//        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override
