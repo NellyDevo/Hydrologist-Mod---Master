@@ -126,11 +126,6 @@
     "DESCRIPTION": "Deal !D! damage. NL Exhaust. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:FleetingForm": {
-    "NAME": "Fleeting Form",
-    "DESCRIPTION": "Whenever you play a *Steam card, deal !M! damage to a random enemy. NL hydrologistmod:Swaps to *Frigid *Form.",
-    "UPGRADE_DESCRIPTION": ""
-  },
   "hydrologistmod:FlowingCurrents": {
     "NAME": "Flowing Currents",
     "DESCRIPTION": "hydrologistmod:Flow. NL When hydrologistmod:Swapped, you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
@@ -147,19 +142,9 @@
       "I don't have enough Energy!"
     ]
   },
-  "hydrologistmod:FlowingForm": {
-    "NAME": "Flowing Form",
-    "DESCRIPTION": "Whenever you play a *Water card, you may discard a card. If you do, draw a card. NL hydrologistmod:Swaps to *Fleeting *Form.",
-    "UPGRADE_DESCRIPTION": "Whenever you play a *Water card, you may discard a card. If you do, draw !M! cards. NL hydrologistmod:Swaps to *Fleeting *Form."
-  },
   "hydrologistmod:Freeze": {
     "NAME": "Freeze",
     "DESCRIPTION": "Deal !D! damage. NL If this kills an enemy that is hydrologistmod:Cool, Upgrade a random card in your deck. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:FrigidForm": {
-    "NAME": "Frigid Form",
-    "DESCRIPTION": "Whenever you play an *Ice card, gain !M! block. NL hydrologistmod:Swaps to *Flowing *Form.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FrigidLash": {

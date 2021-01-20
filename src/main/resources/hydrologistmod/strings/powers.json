@@ -58,21 +58,9 @@
     "NAME": "Exothermic Reactions",
     "DESCRIPTIONS": ["Whenever you #yTransmute a card, apply #b", " #yHeat to ALL enemies."]
   },
-  "hydrologistmod:FleetingFormPower": {
-    "NAME": "Fleeting Form",
-    "DESCRIPTIONS": ["Whenever you play a #ySteam card, deal #b", " damage to a random enemy."]
-  },
-  "hydrologistmod:FlowingFormPower": {
-    "NAME": "Flowing Form",
-    "DESCRIPTIONS": ["Whenever you play a #yWater card, you may discard a card.", " If you do, draw #b", " cards.", " If you do, draw a card."]
-  },
   "hydrologistmod:FlowPower": {
     "NAME": "Flowing",
     "DESCRIPTIONS": ["At the start of your next turn, ", "draw #b", " cards.", "draw a card."]
-  },
-  "hydrologistmod:FrigidFormPower": {
-    "NAME": "Frigid Form",
-    "DESCRIPTIONS": ["Whenever you play an #yIce card, gain #b", " #yBlock."]
   },
   "hydrologistmod:HeatPower": {
     "NAME": "Heat",
