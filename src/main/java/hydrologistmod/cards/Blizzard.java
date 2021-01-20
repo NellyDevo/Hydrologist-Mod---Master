@@ -26,7 +26,7 @@ public class Blizzard extends AbstractHydrologistCard {
     public Blizzard() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.UNCOMMON, CardTarget.SELF);
+                CardRarity.RARE, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = POWER_AMT;
         tags.add(HydrologistTags.CARES_ABOUT_SUBTYPES);
