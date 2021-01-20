@@ -108,14 +108,6 @@
     "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Steam card, apply !M! hydrologistmod:Heat to ALL enemies. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:EveningMist": {
-    "NAME": "Evening Mist",
-    "DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw a card. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw !M! cards. NL hydrologistmod:Swappable.",
-    "EXTENDED_DESCRIPTION": [
-      "I can't play this card."
-    ]
-  },
   "hydrologistmod:Exothermancy": {
     "NAME": "Exothermancy",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, apply !M! hydrologistmod:Heat to ALL enemies. NL hydrologistmod:Swappable.",
@@ -151,14 +143,6 @@
     "NAME": "Frozen Capsule",
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute this card. NL hydrologistmod:Mutable: When hydrologistmod:Transmuted, gains !M! hydrologistmod:Purity.",
     "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:FrozenDomain": {
-    "NAME": "Frozen Domain",
-    "DESCRIPTION": "Unplayable. Ethereal. Whenever you draw this card, add a copy of it to your hand. NL If this card is discarded from your hand, gain !M! Block.",
-    "UPGRADE_DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": [
-      "I can't play this card."
-    ]
   },
   "hydrologistmod:GhostlyMist": {
     "NAME": "Ghostly Mist",
@@ -253,14 +237,6 @@
     "NAME": "Manifestation",
     "DESCRIPTION": "hydrologistmod:Corporeal cards deal !M! additional damage and gain !M! additional Block.",
     "UPGRADE_DESCRIPTION": ""
-  },
-  "hydrologistmod:MorningDew": {
-    "NAME": "Morning Dew",
-    "DESCRIPTION": "Unplayable. NL If this card is discarded from your hand, draw !M! cards at the start of your next turn. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": [
-      "I can't play this card."
-    ]
   },
   "hydrologistmod:OccludingMist": {
     "NAME": "Occluding Mist",
