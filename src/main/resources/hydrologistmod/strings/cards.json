@@ -28,11 +28,6 @@
     "DESCRIPTION": "Whenever you play an *Ice card, gain !M! Block.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:BlockOfIce": {
-    "NAME": "Block of Ice",
-    "DESCRIPTION": "Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": ""
-  },
   "hydrologistmod:BranchingCreeks": {
     "NAME": "Branching Creeks",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, choose between !M! additional cards.",
