@@ -4,6 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,6 +15,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hydrologistmod.HydrologistMod;
 import hydrologistmod.patches.HydrologistTags;
 
 public class LiquidationPower extends AbstractStateChangePower implements CloneablePowerInterface {
@@ -41,13 +43,17 @@ public class LiquidationPower extends AbstractStateChangePower implements Clonea
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.hasTag(HydrologistTags.WATER)) {
-            flash();
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                addToBot(new ApplyPowerAction(m, owner, new ColdPower(m, owner, amount), amount));
-            }
+        if (card.hasTag(tag)) {
+            addToBot(new GainBlockAction(owner, amount));
         }
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+//        if (card.hasTag(HydrologistTags.WATER)) {
+//            flash();
+//            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+//                addToBot(new ApplyPowerAction(m, owner, new ColdPower(m, owner, amount), amount));
+//            }
+//        }
+//        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

@@ -90,7 +90,7 @@
   },
   "hydrologistmod:LiquidationPower": {
     "NAME": "Liquidation",
-    "DESCRIPTIONS": ["If your next card played is a #y Water card, apply #b", " #yWeak to ALL enemies."]
+    "DESCRIPTIONS": ["If your next card played is a #yWater card, gain #b", " #yBlock."]
   },
   "hydrologistmod:ManifestationPower": {
     "NAME": "Manifestation",
