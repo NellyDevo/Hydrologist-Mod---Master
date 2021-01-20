@@ -20,8 +20,8 @@ public class IceSpike extends AbstractHydrologistCard implements SwappableCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/IceSpike.png";
     private static final int COST = 1;
-    private static final int DAMAGE_AMT = 9;
-    private static final int UPGRADE_DAMAGE_AMT = 3;
+    private static final int DAMAGE_AMT = 10;
+    private static final int UPGRADE_DAMAGE_AMT = 4;
 
     public IceSpike() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
