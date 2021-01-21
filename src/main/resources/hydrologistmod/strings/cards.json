@@ -233,11 +233,6 @@
     "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Water card, gain !M! Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
-  "hydrologistmod:Manifestation": {
-    "NAME": "Manifestation",
-    "DESCRIPTION": "hydrologistmod:Corporeal cards deal !M! additional damage and gain !M! additional Block.",
-    "UPGRADE_DESCRIPTION": ""
-  },
   "hydrologistmod:OccludingMist": {
     "NAME": "Occluding Mist",
     "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",

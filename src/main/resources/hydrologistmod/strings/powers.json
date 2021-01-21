@@ -91,10 +91,6 @@
     "NAME": "Liquidation",
     "DESCRIPTIONS": ["If your next card played is a #yWater card, gain #b", " #yBlock."]
   },
-  "hydrologistmod:ManifestationPower": {
-    "NAME": "Manifestation",
-    "DESCRIPTIONS": ["#yCorporeal cards that deal damage deal #b", " additional damage. #yCorporeal cards that gain #yBlock gain #b", " additional #yBlock."]
-  },
   "hydrologistmod:PneumaticsPower": {
     "NAME": "Pneumatics",
     "DESCRIPTIONS": ["At the start of next turn, #yFlow.", "At the start of the next #b", " turns, #yFlow."]
