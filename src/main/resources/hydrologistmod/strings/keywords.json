@@ -14,6 +14,13 @@
     ],
     "DESCRIPTION": "A Corporeal card is any card that did not start the turn in your hand, draw pile, or discard pile."
   },
+  "EBBING": {
+    "PROPER_NAME": "Ebbing",
+    "NAMES": [
+      "ebbing"
+    ],
+    "DESCRIPTION": "When an #yEbbing card is discarded from your hand, play it."
+  },
   "FLOW": {
     "PROPER_NAME": "Flow",
     "NAMES": [
