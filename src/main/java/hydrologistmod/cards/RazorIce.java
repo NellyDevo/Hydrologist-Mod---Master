@@ -60,7 +60,8 @@ public class RazorIce extends AbstractHydrologistCard implements TransmutableCar
         targetAngle = 0;
         targetDrawScale = 0.8f;
         lighten(true);
-        for (Soul soul : (ArrayList<Soul>)ReflectionHacks.getPrivate(AbstractDungeon.getCurrRoom().souls, SoulGroup.class, "souls")) {
+        ArrayList<Soul> souls = ReflectionHacks.getPrivate(AbstractDungeon.getCurrRoom().souls, SoulGroup.class, "souls");
+        for (Soul soul : souls) {
             if (soul.card == this) {
                 soul.isDone = true;
                 soul.isReadyForReuse = true;
