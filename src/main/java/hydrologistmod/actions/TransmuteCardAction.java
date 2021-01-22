@@ -20,9 +20,11 @@ import hydrologistmod.patches.SwapperCardPatch;
 import hydrologistmod.patches.TransmutePlayedCardPatch;
 import hydrologistmod.vfx.TransmuteCardEffect;
 
+import javax.smartcardio.Card;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class TransmuteCardAction extends AbstractGameAction {
     private boolean initialized = false;
@@ -285,7 +287,7 @@ public class TransmuteCardAction extends AbstractGameAction {
             if (SwapperHelper.isCardSwappable(newCard)) {
                 boolean firstTime = true;
                 for (AbstractCard card : SwapperCardPatch.SwappableChainField.swappableCards.get(newCard)) {
-                    followup.doActions(newCard, firstTime);
+                    followup.doActions(card, firstTime);
                     firstTime = false;
                 }
             } else {
@@ -305,39 +307,32 @@ public class TransmuteCardAction extends AbstractGameAction {
                 ((TransmutableCard) oldCard).onTransmuted(newCard, true);
             }
         }
+        PurityModifier mod = new PurityModifier(purity);
+        ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
         if (CardModifierManager.hasModifier(oldCard, PurityModifier.ID)) {
-            if (SwapperHelper.isCardSwappable(newCard)) {
-                for (AbstractCard card : SwapperCardPatch.SwappableChainField.swappableCards.get(newCard)) {
-                    CardModifierManager.addModifier(card, CardModifierManager.getModifiers(oldCard, PurityModifier.ID).get(0).makeCopy());
-                    CardModifierManager.addModifier(card, new PurityModifier(purity));
-                }
-            } else {
-                CardModifierManager.addModifier(newCard, CardModifierManager.getModifiers(oldCard, PurityModifier.ID).get(0).makeCopy());
-                CardModifierManager.addModifier(newCard, new PurityModifier(purity));
-            }
-        } else {
-            if (SwapperHelper.isCardSwappable(newCard)) {
-                for (AbstractCard card : SwapperCardPatch.SwappableChainField.swappableCards.get(newCard)) {
-                    CardModifierManager.addModifier(card, new PurityModifier(purity));
-                }
-            } else {
-                CardModifierManager.addModifier(newCard, new PurityModifier(purity));
-            }
+            mod.amount += ((PurityModifier)CardModifierManager.getModifiers(oldCard, PurityModifier.ID).get(0)).amount;
         }
-        for (AbstractCardModifier mod : CardModifierManager.modifiers(oldCard)) {
-            if (mod instanceof AbstractExtraEffectModifier) {
-                AbstractExtraEffectModifier effect = (AbstractExtraEffectModifier)mod;
-                if (effect.isMutable) {
-                    if (SwapperHelper.isCardSwappable(newCard)) {
-                        for (AbstractCard card : SwapperCardPatch.SwappableChainField.swappableCards.get(newCard)) {
-                            CardModifierManager.addModifier(card, effect.makeCopy());
-                        }
-                    } else {
-                        CardModifierManager.addModifier(newCard, effect.makeCopy());
-                    }
+        if (oldCard instanceof TransmutableCard) {
+            list.addAll(((TransmutableCard)oldCard).getMutableAbilities());
+        }
+        for (AbstractCardModifier effect : CardModifierManager.modifiers(oldCard)) {
+            if (effect instanceof AbstractExtraEffectModifier) {
+                if (((AbstractExtraEffectModifier)effect).isMutable) {
+                    list.add((AbstractExtraEffectModifier)effect);
                 }
             }
         }
+        applyNewBuffs(list, mod, newCard);
+    }
+
+    private void applyNewBuffs(ArrayList<AbstractExtraEffectModifier> list, PurityModifier purity, AbstractCard newCard) {
+        AbstractCard card = newCard;
+        do {
+            CardModifierManager.addModifier(card, purity.makeCopy());
+            for (AbstractExtraEffectModifier mod : list) {
+                CardModifierManager.addModifier(card, mod.makeCopy());
+            }
+        } while (SwapperHelper.isCardSwappable(card) && (card = SwapperHelper.getNextCard(card)) != newCard);
     }
 
     public interface AfterTransmute {
