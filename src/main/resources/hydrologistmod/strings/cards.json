@@ -291,6 +291,11 @@
     "DESCRIPTION": "Gain !B! Block. NL Draw a card. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Draw !M! cards. NL hydrologistmod:Swappable."
   },
+  "hydrologistmod:RazorIce": {
+    "NAME": "Razor Ice",
+    "DESCRIPTION": "Ethereal. hydrologistmod:Ebbing. NL hydrologistmod:Mutable: Gain !B! Block. NL hydrologistmod:Mutable: Deal !D! Damage. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:ReleaseValve": {
     "NAME": "Release Valve",
     "DESCRIPTION": "Whenever you hydrologistmod:Flow, the enemy takes !M! damage for each card discarded. NL Exhaust.",
