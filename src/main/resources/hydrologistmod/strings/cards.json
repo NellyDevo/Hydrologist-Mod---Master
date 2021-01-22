@@ -13,6 +13,11 @@
       "Steam"
     ]
   },
+  "hydrologistmod:AmalgamateWaters": {
+    "NAME": "Amalgamate Waters",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Flow. NL Copy the hydrologistmod:Mutable effects of any card discarded this way onto this card.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:Aqueducts": {
     "NAME": "Aqueducts",
     "DESCRIPTION": "Whenever you draw an extra card, deal !M! damage to ALL enemies.",
