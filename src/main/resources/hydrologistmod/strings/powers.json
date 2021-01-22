@@ -11,6 +11,14 @@
     "NAME": "Blizzard",
     "DESCRIPTIONS": ["Whenever you play an #yIce card, you gain #b", " #yBlock."]
   },
+  "hydrologistmod:BracedFormPower": {
+    "NAME": "Braced Form",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add #b",
+      " copies of #yRazor #yIce into your hand.",
+      " #yRazor Ice into your hand."
+    ]
+  },
   "hydrologistmod:BranchingCreeksPower": {
     "NAME": "Branching Creeks",
     "DESCRIPTIONS": ["Whenever you #yTransmute a card, choose between it and ", " additional card.", " additional cards."]

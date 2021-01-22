@@ -23,6 +23,11 @@
     "DESCRIPTION": "Whenever you play an *Ice card, gain !M! Block.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:BracedForm": {
+    "NAME": "Braced Form",
+    "DESCRIPTION": "At the start of your turn, add !M! copies of *Razor *Ice into your hand.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:BranchingCreeks": {
     "NAME": "Branching Creeks",
     "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, choose between !M! additional cards.",
