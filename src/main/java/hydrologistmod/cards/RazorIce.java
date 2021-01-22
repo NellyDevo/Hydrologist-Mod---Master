@@ -1,5 +1,6 @@
 package hydrologistmod.cards;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -55,8 +56,14 @@ public class RazorIce extends AbstractHydrologistCard implements TransmutableCar
         AbstractMonster m = AbstractDungeon.getRandomMonster();
         AbstractDungeon.player.discardPile.removeCard(this);
         AbstractDungeon.player.limbo.addToBottom(this);
-        target_y = Settings.HEIGHT / 2.0f + AbstractDungeon.miscRng.random(-100.0f, 300.0f);
-        target_x = Settings.WIDTH / 2.0f + AbstractDungeon.miscRng.random(-Settings.WIDTH / 4.0f, Settings.WIDTH / 4.0f);
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                target_y = Settings.HEIGHT / 2.0f + AbstractDungeon.miscRng.random(-100.0f, 300.0f);
+                target_x = Settings.WIDTH / 2.0f + AbstractDungeon.miscRng.random(-Settings.WIDTH / 4.0f, Settings.WIDTH / 4.0f);
+                isDone = true;
+            }
+        });
         if (m != null) {
             calculateCardDamage(m);
         }

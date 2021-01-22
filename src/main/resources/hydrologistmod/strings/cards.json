@@ -293,7 +293,7 @@
   },
   "hydrologistmod:RazorIce": {
     "NAME": "Razor Ice",
-    "DESCRIPTION": "Ethereal. hydrologistmod:Ebbing. NL hydrologistmod:Mutable: Gain !B! Block. NL hydrologistmod:Mutable: Deal !D! Damage. NL Exhaust.",
+    "DESCRIPTION": "Ethereal. hydrologistmod:Ebbing. NL hydrologistmod:Mutable: Gain !B! Block. NL hydrologistmod:Mutable: Deal !D! damage. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:ReleaseValve": {
