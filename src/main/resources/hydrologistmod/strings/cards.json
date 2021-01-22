@@ -369,6 +369,11 @@
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card into a *Steam card.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Slurry": {
+    "NAME": "Slurry",
+    "DESCRIPTION": "Trigger an enemy's hydrologistmod:Heat or hydrologistmod:Cold without removing it. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Trigger an enemy's hydrologistmod:Heat or hydrologistmod:Cold without removing it."
+  },
   "hydrologistmod:SoggySynthesis": {
     "NAME": "Soggy Synthesis",
     "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL hydrologistmod:Transmute a card into a *Water card.",
