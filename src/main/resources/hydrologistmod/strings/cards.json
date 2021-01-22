@@ -296,6 +296,11 @@
     "DESCRIPTION": "hydrologistmod:Mutable: hydrologistmod:Flow. NL hydrologistmod:Mutable: Draw a Card.",
     "UPGRADE_DESCRIPTION": "hydrologistmod:Mutable: Draw a Card. NL hydrologistmod:Mutable: hydrologistmod:Flow."
   },
+  "hydrologistmod:Purify": {
+    "NAME": "Purify",
+    "DESCRIPTION": "Deal !D! damage. NL Play all of your hydrologistmod:Corporeal cards from left to right targeting this enemy. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:PurifyingSteam": {
     "NAME": "Purifying Steam",
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable.",
