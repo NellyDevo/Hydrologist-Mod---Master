@@ -43,7 +43,7 @@ public class CrystallizationPower extends AbstractStateChangePower implements Cl
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.hasTag(tag)) {
             flash();
-            addToBot(new TransmuteCardAction((newCard, firstTime) -> {
+            addToBot(new TransmuteCardAction((oldCard, newCard, firstTime) -> {
                 CardModifierManager.addModifier(newCard, new PurityModifier(amount));
             }));
         }

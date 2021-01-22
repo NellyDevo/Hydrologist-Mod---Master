@@ -151,6 +151,11 @@
       "This card can't be swapped again this turn!"
     ]
   },
+  "hydrologistmod:Freeze": {
+    "NAME": "Freeze",
+    "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:FrostWhip": {
     "NAME": "Frost Whip",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Cold. NL hydrologistmod:Swappable. NL Costs [E] to hydrologistmod:Swap.",
@@ -377,6 +382,11 @@
   "hydrologistmod:SearingSynthesis": {
     "NAME": "Searing Synthesis",
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card into a *Steam card.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "hydrologistmod:Siphon": {
+    "NAME": "Siphon",
+    "DESCRIPTION": "Choose a card in your hand. Copy its hydrologistmod:Mutable effects onto this card's hydrologistmod:Pair, then hydrologistmod:Transmute it.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Slurry": {

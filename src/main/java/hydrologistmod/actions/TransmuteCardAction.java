@@ -285,11 +285,11 @@ public class TransmuteCardAction extends AbstractGameAction {
             if (SwapperHelper.isCardSwappable(newCard)) {
                 boolean firstTime = true;
                 for (AbstractCard card : SwapperCardPatch.SwappableChainField.swappableCards.get(newCard)) {
-                    followup.doActions(card, firstTime);
+                    followup.doActions(oldCard, card, firstTime);
                     firstTime = false;
                 }
             } else {
-                followup.doActions(newCard, true);
+                followup.doActions(oldCard, newCard, true);
             }
         }
         if (oldCard instanceof TransmutableCard) {
@@ -334,7 +334,7 @@ public class TransmuteCardAction extends AbstractGameAction {
     }
 
     public interface AfterTransmute {
-        void doActions(AbstractCard newCard, boolean firstTime);
+        void doActions(AbstractCard oldCard, AbstractCard newCard, boolean firstTime);
     }
 
     public interface Conditionals {
