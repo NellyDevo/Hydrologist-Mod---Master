@@ -63,6 +63,11 @@
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand. Add !M! additional copies of the new card to your hand. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:CrystalSpear": {
+    "NAME": "Crystal Spear",
+    "DESCRIPTION": "Deal !D! damage. NL deals extra damage equal to the total hydrologistmod:Purity of ALL your cards.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:Crystallization": {
     "NAME": "Crystallization",
     "DESCRIPTION": "Gain !B! Block. NL If your next card played is an *Ice card, hydrologistmod:Transmute a card in your hand. It gains !M! extra hydrologistmod:Purity. NL hydrologistmod:Swappable.",
