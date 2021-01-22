@@ -20,7 +20,6 @@ import hydrologistmod.vfx.HydrologistWaterbendingManager;
 public class FreezeAction extends AbstractGameAction {
     private DamageInfo info;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
-    private AbstractCard card;
     private HydrologistCharacter player = null;
     private boolean effectFinished = false;
     private static float TRAVEL_DURATION = 0.1F;
@@ -113,7 +112,7 @@ public class FreezeAction extends AbstractGameAction {
                     shapeDuration -= Gdx.graphics.getDeltaTime();
                     if (shapeDuration <= 0.0f) {
                         startPosition = interPos.cpy();
-                        player.waterbending.doCapture = true;
+                        player.waterbending.doCapture(tracePosition.x, tracePosition.y, effectWidth, effectHeight);
                         effect = new FreezeEffect(tracePosition, attackTargetPosition, target.hb.cX, ATTACK_DURATION, player);
                         AbstractDungeon.effectList.add(effect);
                     }
@@ -140,10 +139,5 @@ public class FreezeAction extends AbstractGameAction {
             }
         }
         this.tickDuration();
-        if (isDone && card != null) {
-            AbstractDungeon.effectsQueue.add(new UpgradeShineEffect(Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
-            AbstractDungeon.topLevelEffectsQueue.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy()));
-            addToTop(new WaitAction(Settings.ACTION_DUR_MED));
-        }
     }
 }

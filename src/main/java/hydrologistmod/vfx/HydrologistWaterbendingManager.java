@@ -62,8 +62,9 @@ public class HydrologistWaterbendingManager {
 
     //effect control
     public Vector2 override;
-    public boolean doCapture;
+    private boolean doCapture;
     public TextureRegion capturedTexture;
+    private float captureX, captureY, captureWidth, captureHeight;
 
     //add to this to define tile modes
     private static HashMap<AbstractCard.CardTags, BehaviourPackage> effectsMap;
@@ -219,7 +220,8 @@ public class HydrologistWaterbendingManager {
             sb.draw(texture, 0, 0);
             sb.end();
             captureBuffer.end();
-            capturedTexture = HydrologistMod.getBufferTexture(captureBuffer);
+            Texture tex = captureBuffer.getColorBufferTexture();
+            capturedTexture = new TextureRegion(tex, captureX / tex.getWidth(), captureY / tex.getHeight(), (captureX + captureWidth) / tex.getWidth(), (captureY + captureHeight) / tex.getHeight());
             doCapture = false;
         }
 
@@ -351,6 +353,14 @@ public class HydrologistWaterbendingManager {
             target = newTag;
             transitionTimer = TRANSITION_TIME;
         }
+    }
+
+    public void doCapture(float x, float y, float width, float height) {
+        doCapture = true;
+        captureX = x;
+        captureY = y;
+        captureWidth = width;
+        captureHeight = height;
     }
 
     private interface RenderInstructor {
