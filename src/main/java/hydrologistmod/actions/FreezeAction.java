@@ -10,16 +10,12 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
-import hydrologistmod.HydrologistMod;
 import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.vfx.FreezeEffect;
 import hydrologistmod.vfx.HydrologistWaterbendingManager;
-
-import java.util.ArrayList;
 
 public class FreezeAction extends AbstractGameAction {
     private DamageInfo info;

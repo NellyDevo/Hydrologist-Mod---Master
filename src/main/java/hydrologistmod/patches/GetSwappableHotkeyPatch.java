@@ -1,7 +1,7 @@
 package hydrologistmod.patches;
 
 import basemod.BaseMod;
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import hydrologistmod.cards.AbstractHydrologistCard;

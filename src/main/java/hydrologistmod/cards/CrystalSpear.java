@@ -14,7 +14,6 @@ import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CrystalSpear extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:CrystalSpear";

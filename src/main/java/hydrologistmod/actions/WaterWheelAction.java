@@ -1,12 +1,10 @@
 package hydrologistmod.actions;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import hydrologistmod.cardmods.PurityModifier;
 
 public class WaterWheelAction extends AbstractGameAction {
 //    private static final String ID = "hydrologistmod:EncapsulatingIceAction";

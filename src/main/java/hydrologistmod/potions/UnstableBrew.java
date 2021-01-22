@@ -2,7 +2,6 @@ package hydrologistmod.potions;
 
 import basemod.BaseMod;
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -12,9 +11,6 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import hydrologistmod.actions.ApplyThermalShockAction;
 import hydrologistmod.cards.AbstractHydrologistCard;
-import hydrologistmod.powers.ColdPower;
-import hydrologistmod.powers.HeatPower;
-import hydrologistmod.powers.ThermalShockPower;
 
 public class UnstableBrew extends AbstractPotion {
     public static final String ID = "hydrologistmod:UnstableBrew";
