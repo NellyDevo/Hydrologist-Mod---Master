@@ -1,6 +1,7 @@
 package hydrologistmod.cards;
 
 import basemod.BaseMod;
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
@@ -10,7 +11,12 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
+import com.megacrit.cardcrawl.cards.Soul;
+import com.megacrit.cardcrawl.cards.SoulGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import hydrologistmod.patches.HydrologistTags;
 
@@ -196,6 +202,25 @@ public abstract class AbstractHydrologistCard extends CustomCard {
         } else {
             return reflectedColor;
         }
+    }
+
+    protected void autoPlayWhenDiscarded() {
+        AbstractDungeon.player.discardPile.removeCard(this);
+        AbstractDungeon.player.limbo.addToTop(this);
+        target_y = Settings.HEIGHT / 2.0f + AbstractDungeon.miscRng.random(-100.0f, 300.0f);
+        target_x = Settings.WIDTH / 2.0f + AbstractDungeon.miscRng.random(-Settings.WIDTH / 4.0f, Settings.WIDTH / 4.0f);
+        targetAngle = 0;
+        targetDrawScale = 0.8f;
+        lighten(true);
+        ArrayList<Soul> souls = ReflectionHacks.getPrivate(AbstractDungeon.getCurrRoom().souls, SoulGroup.class, "souls");
+        for (Soul soul : souls) {
+            if (soul.card == this) {
+                soul.isDone = true;
+                soul.isReadyForReuse = true;
+                break;
+            }
+        }
+        AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(this, true, energyOnUse, true, true), true);
     }
 
     public CardTags getHydrologistSubtype() {
