@@ -3,6 +3,7 @@ package hydrologistmod.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -10,6 +11,8 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.interfaces.FlowAffectingPower;
+
+import java.util.ArrayList;
 
 public class IcyFloePower extends AbstractPower implements FlowAffectingPower, CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:IcyFloePower";
@@ -43,7 +46,7 @@ public class IcyFloePower extends AbstractPower implements FlowAffectingPower, C
     }
 
     @Override
-    public void onFlow(int cardsDiscarded) {
+    public void onFlow(ArrayList<AbstractCard> cardsDiscarded) {
         AbstractDungeon.actionManager.addToTop(new DrawCardAction(owner, amount));
     }
 }

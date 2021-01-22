@@ -10,6 +10,8 @@ import hydrologistmod.actions.FlowAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.ArrayList;
+
 public class Cascade extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:Cascade";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -31,8 +33,8 @@ public class Cascade extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new FlowAction((int cardsDiscarded) -> {
-            for (int i = 0; i < cardsDiscarded; ++i) {
+        addToBot(new FlowAction((ArrayList<AbstractCard> cardsDiscarded) -> {
+            for (int i = 0; i < cardsDiscarded.size(); ++i) {
                 addToTop(new GainBlockAction(p, p, block));
             }
         }));

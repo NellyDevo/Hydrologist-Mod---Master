@@ -30,7 +30,7 @@ public class SteadyTide extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new FlowAction((amount) -> addToTop(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, amount)))));
+        addToBot(new FlowAction((amount) -> addToTop(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, amount.size())))));
     }
 
     @Override

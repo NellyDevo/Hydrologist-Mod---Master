@@ -3,6 +3,7 @@ package hydrologistmod.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -11,6 +12,8 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.interfaces.FlowAffectingPower;
+
+import java.util.ArrayList;
 
 public class ReleaseValvePower extends AbstractPower implements FlowAffectingPower, CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:ReleaseValvePower";
@@ -42,8 +45,8 @@ public class ReleaseValvePower extends AbstractPower implements FlowAffectingPow
     }
 
     @Override
-    public void onFlow(int amountDiscarded) {
-        for (int i = 0; i < amountDiscarded; ++i) {
+    public void onFlow(ArrayList<AbstractCard> amountDiscarded) {
+        for (int i = 0; i < amountDiscarded.size(); ++i) {
             AbstractDungeon.actionManager.addToTop(new DamageAction(owner, new DamageInfo(source, amount, DamageInfo.DamageType.THORNS)));
         }
     }

@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.interfaces.FlowAffectingPower;
 import hydrologistmod.powers.FlowPower;
 
+import java.util.ArrayList;
+
 public class FlowAction extends AbstractGameAction {
 //    private static final String ID = "hydrologistmod:FlowAction";
 //    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
@@ -46,14 +48,14 @@ public class FlowAction extends AbstractGameAction {
             return;
         }
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
-            int cardsDiscarded = 0;
+            ArrayList<AbstractCard> cardsDiscarded = new ArrayList<>();
             for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
                 AbstractDungeon.player.hand.moveToDiscardPile(c);
                 c.triggerOnManualDiscard();
                 GameActionManager.incrementDiscard(false);
-                ++cardsDiscarded;
+                cardsDiscarded.add(c);
             }
-            if (cardsDiscarded > 0) {
+            if (cardsDiscarded.size() > 0) {
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
                 if (followup != null) {
                     followup.doActions(cardsDiscarded);
@@ -70,13 +72,13 @@ public class FlowAction extends AbstractGameAction {
                         }
                     }
                 }
-                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FlowPower(AbstractDungeon.player, cardsDiscarded)));
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FlowPower(AbstractDungeon.player, cardsDiscarded.size())));
             }
         }
         tickDuration();
     }
 
     public interface AfterDiscard {
-        void doActions(int numberDiscarded);
+        void doActions(ArrayList<AbstractCard> cards);
     }
 }
