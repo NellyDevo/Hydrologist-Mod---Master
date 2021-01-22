@@ -454,6 +454,11 @@
     "DESCRIPTION": "Deal !D! damage. NL If your next card played is a *Steam card, deal !M! damage to ALL enemies. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:SurfaceTension": {
+    "NAME": "Surface Tension",
+    "DESCRIPTION": "hydrologistmod:Ebbing. NL Gain !B! Block.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:SwelteringStrike": {
     "NAME": "Sweltering Strike",
     "DESCRIPTION": "Deal !D! damage. NL If enemy is hydrologistmod:Hot, deal !D! damage. NL If enemy is hydrologistmod:Cool, deal !D! damage.",
