@@ -93,6 +93,11 @@
     "DESCRIPTION": "Gain !B! Block.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:Defrost": {
+    "NAME": "Defrost",
+    "DESCRIPTION": "At the end of your turn, Retain all hydrologistmod:Corporeal cards in your hand.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the end of your turn, Retain all hydrologistmod:Corporeal cards in your hand."
+  },
   "hydrologistmod:Dehydrate": {
     "NAME": "Dehydrate",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy is not hydrologistmod:Cool, apply !M! hydrologistmod:Heat.",

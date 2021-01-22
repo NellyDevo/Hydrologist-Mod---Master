@@ -49,6 +49,10 @@
     "NAME": "Deep Freeze",
     "DESCRIPTIONS": ["Whenever you apply #yCold, apply #b", " additional #yCold."]
   },
+  "hydrologistmod:DefrostPower": {
+    "NAME": "Defrost",
+    "DESCRIPTIONS": ["At the end of your turn, #yRetain all #yCorporeal cards in your hand."]
+  },
   "hydrologistmod:EncapsulatingIcePower": {
     "NAME": "Encapsulating Ice",
     "DESCRIPTIONS": ["Your #yPressure #yBlasts are played with X increased by #b", "."]
