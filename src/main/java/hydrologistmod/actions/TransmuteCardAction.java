@@ -17,14 +17,12 @@ import hydrologistmod.interfaces.TransmutableAffectingPower;
 import hydrologistmod.interfaces.TransmutableAffectingRelic;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.SwapperCardPatch;
-import hydrologistmod.patches.TransmutePlayedCardPatch;
+import hydrologistmod.patches.UseCardActionPatch;
 import hydrologistmod.vfx.TransmuteCardEffect;
 
-import javax.smartcardio.Card;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class TransmuteCardAction extends AbstractGameAction {
     private boolean initialized = false;
@@ -132,7 +130,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                     TransmuteCardEffect.copyCardPosition(playedCard, newCard);
                     AbstractDungeon.player.hand.removeCard(playedCard);
                     AbstractDungeon.player.cardInUse = null;
-                    TransmutePlayedCardPatch.UseCardActionField.transmuteTargetCard.set(useCardAction, newCard);
+                    UseCardActionPatch.UseCardActionField.transmuteTargetCard.set(useCardAction, newCard);
                     transmutedPairs.put(playedCard, newCard);
                     AbstractDungeon.topLevelEffects.add(new TransmuteCardEffect(transmutedPairs, null, this, 0.75f));
                     completed = true;
@@ -219,7 +217,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                 TransmuteCardEffect.copyCardPosition(playedCard, newCard);
                 AbstractDungeon.player.hand.removeCard(playedCard);
                 AbstractDungeon.player.cardInUse = null;
-                TransmutePlayedCardPatch.UseCardActionField.transmuteTargetCard.set(useCardAction, newCard);
+                UseCardActionPatch.UseCardActionField.transmuteTargetCard.set(useCardAction, newCard);
                 transmutedPairs.put(playedCard, newCard);
                 AbstractDungeon.topLevelEffects.add(new TransmuteCardEffect(transmutedPairs, null, this, 0.75f));
                 completed = true;

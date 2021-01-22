@@ -1,5 +1,6 @@
 package hydrologistmod.patches;
 
+import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -8,7 +9,7 @@ import javassist.CtBehavior;
 
 import java.lang.reflect.Field;
 
-public class TransmutePlayedCardPatch {
+public class UseCardActionPatch {
     @SpirePatch(
             clz = UseCardAction.class,
             method = SpirePatch.CLASS
@@ -21,11 +22,15 @@ public class TransmutePlayedCardPatch {
             clz = UseCardAction.class,
             method = "update"
     )
-    public static class UseCardActionTransmutePatch {
+    public static class UseCardActionInsertPatch {
         @SpireInsertPatch(
                 locator = Locator.class
         )
         public static SpireReturn Insert(UseCardAction __instance) {
+            //quick fix, remove cards from limbo for multi-play effects
+            AbstractDungeon.player.limbo.removeCard((AbstractCard)ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard"));
+
+            //if the played card was transmuted, handle separately from regular UseCardAction logic
             if (UseCardActionField.transmuteTargetCard.get(__instance) != null) {
                 AbstractCard newCard = UseCardActionField.transmuteTargetCard.get(__instance);
                 try {
