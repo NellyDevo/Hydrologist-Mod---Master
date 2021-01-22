@@ -1,6 +1,5 @@
 package hydrologistmod.cards;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,7 +10,6 @@ import hydrologistmod.actions.FlowAction;
 import hydrologistmod.cardmods.AbstractExtraEffectModifier;
 import hydrologistmod.cardmods.DrawCardEffect;
 import hydrologistmod.cardmods.FlowEffect;
-import hydrologistmod.cardmods.GainBlockEffect;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
