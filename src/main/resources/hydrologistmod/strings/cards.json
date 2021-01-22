@@ -158,7 +158,7 @@
   },
   "hydrologistmod:FreezeDry": {
     "NAME": "Freeze Dry",
-    "DESCRIPTION": "Add !M! copies of #yRazor #yIce to your hand.",
+    "DESCRIPTION": "Add !M! copies of *Razor *Ice to your hand.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FrostWhip": {
