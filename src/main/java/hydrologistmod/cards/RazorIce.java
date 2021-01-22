@@ -55,15 +55,11 @@ public class RazorIce extends AbstractHydrologistCard implements TransmutableCar
     public void triggerOnManualDiscard() {
         AbstractDungeon.player.discardPile.removeCard(this);
         AbstractDungeon.player.limbo.addToTop(this);
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                target_y = Settings.HEIGHT / 2.0f + AbstractDungeon.miscRng.random(-100.0f, 300.0f);
-                target_x = Settings.WIDTH / 2.0f + AbstractDungeon.miscRng.random(-Settings.WIDTH / 4.0f, Settings.WIDTH / 4.0f);
-                targetAngle = 0;
-                isDone = true;
-            }
-        });
+        target_y = Settings.HEIGHT / 2.0f + AbstractDungeon.miscRng.random(-100.0f, 300.0f);
+        target_x = Settings.WIDTH / 2.0f + AbstractDungeon.miscRng.random(-Settings.WIDTH / 4.0f, Settings.WIDTH / 4.0f);
+        targetAngle = 0;
+        targetDrawScale = 1.0f;
+        lighten(true);
         for (Soul soul : (ArrayList<Soul>)ReflectionHacks.getPrivate(AbstractDungeon.getCurrRoom().souls, SoulGroup.class, "souls")) {
             if (soul.card == this) {
                 soul.isDone = true;
