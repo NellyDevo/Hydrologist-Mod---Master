@@ -273,6 +273,11 @@
     "DESCRIPTION": "Apply !M! hydrologistmod:Purity to this card. NL hydrologistmod:Mutable: hydrologistmod:Transmute this card.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:MirageMist": {
+    "NAME": "Mirage Mist",
+    "DESCRIPTION": "hydrologistmod:Mutable: gain !B! Block twice.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:OccludingMist": {
     "NAME": "Occluding Mist",
     "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",
