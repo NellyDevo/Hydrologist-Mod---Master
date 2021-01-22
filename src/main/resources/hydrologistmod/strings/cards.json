@@ -344,6 +344,11 @@
     "DESCRIPTION": "This turn, your next hydrologistmod:Swappable card is also played *Swapped.",
     "UPGRADE_DESCRIPTION": "This turn, your next 2 hydrologistmod:Swappable cards are also played *Swapped."
   },
+  "hydrologistmod:Scald": {
+    "NAME": "Scald",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Thermal_Shock.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:ScaldingGeyser": {
     "NAME": "Scalding Geyser",
     "DESCRIPTION": "Innate. NL Deal !D! damage. NL Apply !M! hydrologistmod:Heat. NL Exhaust.",

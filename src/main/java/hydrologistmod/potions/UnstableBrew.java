@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
+import hydrologistmod.actions.ApplyThermalShockAction;
 import hydrologistmod.cards.AbstractHydrologistCard;
 import hydrologistmod.powers.ColdPower;
 import hydrologistmod.powers.HeatPower;
@@ -36,15 +37,7 @@ public class UnstableBrew extends AbstractPotion {
     @Override
     public void use(AbstractCreature m) {
         AbstractPlayer p = AbstractDungeon.player;
-        if (m.hasPower(ColdPower.POWER_ID)) {
-            addToBot(new ApplyPowerAction(m, p, new HeatPower(m, p, 1), 1));
-            addToBot(new ApplyPowerAction(m, p, new ThermalShockPower(m, p, potency - 1), potency - 1));
-        } else if (m.hasPower(HeatPower.POWER_ID)) {
-            addToBot(new ApplyPowerAction(m, p, new ColdPower(m, p, 1), 1));
-            addToBot(new ApplyPowerAction(m, p, new ThermalShockPower(m, p, potency - 1), potency - 1));
-        } else {
-            addToBot(new ApplyPowerAction(m, p, new ThermalShockPower(m, p, potency), potency));
-        }
+        addToBot(new ApplyThermalShockAction(m, p, potency));
     }
 
     @Override
