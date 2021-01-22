@@ -57,9 +57,10 @@ public class PurifyAction extends AbstractGameAction {
                     AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(c, target));
                     c.target_x = Settings.WIDTH / 2.0f + xOffset * Settings.scale;
                     c.target_y = Settings.HEIGHT / 2.0f;
+                    c.targetAngle = 0;
+                    c.stopGlowing();
                     xOffset -= 300.0f;
                     cardsToMove.add(c);
-                    addToBot(new UnlimboAction(c));
                 }
             }
             AbstractDungeon.player.hand.group.removeAll(cardsToMove);
