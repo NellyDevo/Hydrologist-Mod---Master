@@ -139,19 +139,6 @@ public class FreezeAction extends AbstractGameAction {
             didDamage = true;
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, AttackEffect.NONE));
             target.damage(info);
-            if ((((AbstractMonster)target).isDying || target.currentHealth <= 0) && !target.halfDead && HydrologistMod.isCool(target)) {
-                    final ArrayList<AbstractCard> possibleCards = new ArrayList<>();
-                    for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
-                        if (c.canUpgrade()) {
-                            possibleCards.add(c);
-                        }
-                    }
-                    if (!possibleCards.isEmpty()) {
-                        card = possibleCards.get(AbstractDungeon.miscRng.random(0, possibleCards.size() - 1));
-                        card.upgrade();
-                        AbstractDungeon.player.bottledCardUpgradeCheck(card);
-                    }
-            }
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                 AbstractDungeon.actionManager.clearPostCombatActions();
             }
