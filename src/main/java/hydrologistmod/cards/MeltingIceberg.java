@@ -34,6 +34,7 @@ public class MeltingIceberg extends AbstractHydrologistCard implements Transmuta
                 CardRarity.RARE, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = PURITY;
+        tags.add(CardTags.HEALING);
     }
 
     @Override
