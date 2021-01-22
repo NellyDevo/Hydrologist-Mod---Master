@@ -434,6 +434,11 @@
     "DESCRIPTION": "If enemy is suffering from hydrologistmod:Thermal_Shock, draw cards equal to its duration and remove it. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "If enemy is suffering from hydrologistmod:Thermal_Shock, draw cards equal to its duration and remove it."
   },
+  "hydrologistmod:StormFront": {
+    "NAME": "Storm Front",
+    "DESCRIPTION": "hydrologistmod:Ebbing. NL Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:StormOfSleet": {
     "NAME": "Storm of Sleet",
     "DESCRIPTION": "Discard any number of cards. Add a *Razor *Ice into your hand for each card discarded.",
