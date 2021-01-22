@@ -123,6 +123,10 @@
     "NAME": "Solidification",
     "DESCRIPTIONS": ["If your next card played is an #yIce card, apply #b", " #yCold to ALL enemies."]
   },
+  "hydrologistmod:StagnantCloakPower": {
+    "NAME": "Stagnant Cloak",
+    "DESCRIPTIONS": ["Whenever you would lose HP, lose #b", " less."]
+  },
   "hydrologistmod:SteamEnginePower": {
     "NAME": "Steam Engine",
     "DESCRIPTIONS": ["The first #yCorporeal card you play each turn is played twice.", "The first #b", " #yCorporeal cards you play each turn are played twice."]

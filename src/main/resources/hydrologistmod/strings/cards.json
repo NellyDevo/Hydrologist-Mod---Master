@@ -13,6 +13,11 @@
       "Steam"
     ]
   },
+  "hydrologistmod:AblativeShell": {
+    "NAME": "Ablative Shell",
+    "DESCRIPTION": "Prevent the next time you would lose HP.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:AmalgamateWaters": {
     "NAME": "Amalgamate Waters",
     "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Flow. NL Copy the hydrologistmod:Mutable effects of any card discarded this way onto this card.",
@@ -388,6 +393,11 @@
     "NAME": "Soothing Water",
     "DESCRIPTION": "Heal !M! HP. NL Fleeting. NL When hydrologistmod:Swapped, permanently increase this card's healing by 4 and Exhaust. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": "Heal !M! HP. NL Fleeting. NL When hydrologistmod:Swapped, permanently increase this card's healing by 6 and Exhaust. NL hydrologistmod:Swappable."
+  },
+  "hydrologistmod:StagnantCloak": {
+    "NAME": "Stagnant Cloak",
+    "DESCRIPTION": "Whenever you would lose HP, lose !M! less.",
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SteadyTide": {
     "NAME": "Steady Tide",
