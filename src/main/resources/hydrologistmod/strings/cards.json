@@ -156,6 +156,11 @@
     "DESCRIPTION": "Deal !D! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:FreezeDry": {
+    "NAME": "Freeze Dry",
+    "DESCRIPTION": "Add !M! copies of #yRazor #yIce to your hand.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:FrostWhip": {
     "NAME": "Frost Whip",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! hydrologistmod:Cold. NL hydrologistmod:Swappable. NL Costs [E] to hydrologistmod:Swap.",
