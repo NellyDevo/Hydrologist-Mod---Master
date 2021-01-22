@@ -248,6 +248,11 @@
     "DESCRIPTION": "Gain !B! Block. NL If your next card played is a *Water card, gain !M! Block. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:MeltingIceberg": {
+    "NAME": "Melting Iceberg",
+    "DESCRIPTION": "Apply !M! hydrologistmod:Purity to this card. NL hydrologistmod:Mutable: hydrologistmod:Transmute this card.",
+    "UPGRADE_DESCRIPTION": ""
+  },
   "hydrologistmod:OccludingMist": {
     "NAME": "Occluding Mist",
     "DESCRIPTION": "Gain !B! Block. NL hydrologistmod:Swappable.",
