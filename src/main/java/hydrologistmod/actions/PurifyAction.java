@@ -1,6 +1,7 @@
 package hydrologistmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -58,9 +59,11 @@ public class PurifyAction extends AbstractGameAction {
                     c.target_y = Settings.HEIGHT / 2.0f;
                     xOffset -= 300.0f;
                     cardsToMove.add(c);
+                    addToBot(new UnlimboAction(c));
                 }
             }
             AbstractDungeon.player.hand.group.removeAll(cardsToMove);
+            AbstractDungeon.player.limbo.group.addAll(cardsToMove);
         }
         tickDuration();
     }
