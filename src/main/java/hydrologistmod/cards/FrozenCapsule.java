@@ -9,10 +9,13 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.HydrologistDamageAction;
 import hydrologistmod.actions.TransmuteCardAction;
+import hydrologistmod.cardmods.AbstractExtraEffectModifier;
 import hydrologistmod.cardmods.ExtraPurityEffect;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+
+import java.util.ArrayList;
 
 public class FrozenCapsule extends AbstractHydrologistCard implements TransmutableCard {
     public static final String ID = "hydrologistmod:FrozenCapsule";
@@ -55,7 +58,9 @@ public class FrozenCapsule extends AbstractHydrologistCard implements Transmutab
     }
 
     @Override
-    public void onTransmuted(AbstractCard newCard, boolean firstTime) {
-        CardModifierManager.addModifier(newCard, new ExtraPurityEffect(this, true));
+    public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
+        ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
+        list.add(new ExtraPurityEffect(this, true));
+        return list;
     }
 }

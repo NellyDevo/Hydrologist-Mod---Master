@@ -8,11 +8,14 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hydrologistmod.cardmods.AbstractExtraEffectModifier;
 import hydrologistmod.cardmods.DrawCardEffect;
 import hydrologistmod.cardmods.GainBlockEffect;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+
+import java.util.ArrayList;
 
 public class PureIce extends AbstractHydrologistCard implements TransmutableCard {
     public static final String ID = "hydrologistmod:PureIce";
@@ -55,8 +58,10 @@ public class PureIce extends AbstractHydrologistCard implements TransmutableCard
     }
 
     @Override
-    public void onTransmuted(AbstractCard newCard, boolean firstTime) {
-        CardModifierManager.addModifier(newCard, new DrawCardEffect(this, true));
-        CardModifierManager.addModifier(newCard, new GainBlockEffect(this, true));
+    public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
+        ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
+        list.add(new DrawCardEffect(this, true));
+        list.add(new GainBlockEffect(this, true));
+        return list;
     }
 }

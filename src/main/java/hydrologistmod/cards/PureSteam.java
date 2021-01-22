@@ -12,11 +12,15 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.HydrologistDamageAction;
+import hydrologistmod.cardmods.AbstractExtraEffectModifier;
 import hydrologistmod.cardmods.DamageEffect;
 import hydrologistmod.cardmods.DrawCardEffect;
+import hydrologistmod.cardmods.GainBlockEffect;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+
+import java.util.ArrayList;
 
 public class PureSteam extends AbstractHydrologistCard implements TransmutableCard {
     public static final String ID = "hydrologistmod:PureSteam";
@@ -59,8 +63,10 @@ public class PureSteam extends AbstractHydrologistCard implements TransmutableCa
     }
 
     @Override
-    public void onTransmuted(AbstractCard newCard, boolean firstTime) {
-        CardModifierManager.addModifier(newCard, new DrawCardEffect(this, true));
-        CardModifierManager.addModifier(newCard, new DamageEffect(this, true));
+    public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
+        ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
+        list.add(new DrawCardEffect(this, true));
+        list.add(new DamageEffect(this, true));
+        return list;
     }
 }

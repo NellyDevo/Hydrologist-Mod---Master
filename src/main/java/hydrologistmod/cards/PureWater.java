@@ -8,11 +8,15 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.FlowAction;
+import hydrologistmod.cardmods.AbstractExtraEffectModifier;
 import hydrologistmod.cardmods.DrawCardEffect;
 import hydrologistmod.cardmods.FlowEffect;
+import hydrologistmod.cardmods.GainBlockEffect;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+
+import java.util.ArrayList;
 
 public class PureWater extends AbstractHydrologistCard implements TransmutableCard {
     public static final String ID = "hydrologistmod:PureWater";
@@ -58,13 +62,15 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
     }
 
     @Override
-    public void onTransmuted(AbstractCard newCard, boolean firstTime) {
+    public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
+        ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
         if (upgraded) {
-            CardModifierManager.addModifier(newCard, new DrawCardEffect(this, true));
-            CardModifierManager.addModifier(newCard, new FlowEffect(this, true));
+            list.add(new DrawCardEffect(this, true));
+            list.add(new FlowEffect(this, true));
         } else {
-            CardModifierManager.addModifier(newCard, new FlowEffect(this, true));
-            CardModifierManager.addModifier(newCard, new DrawCardEffect(this, true));
+            list.add(new FlowEffect(this, true));
+            list.add(new DrawCardEffect(this, true));
         }
+        return list;
     }
 }

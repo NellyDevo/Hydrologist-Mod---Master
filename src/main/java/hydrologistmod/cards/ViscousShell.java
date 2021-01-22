@@ -8,10 +8,14 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.TransmuteCardAction;
+import hydrologistmod.cardmods.AbstractExtraEffectModifier;
+import hydrologistmod.cardmods.ExtraPurityEffect;
 import hydrologistmod.cardmods.GainBlockEffect;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+
+import java.util.ArrayList;
 
 public class ViscousShell extends AbstractHydrologistCard implements TransmutableCard {
     public static final String ID = "hydrologistmod:ViscousShell";
@@ -56,8 +60,9 @@ public class ViscousShell extends AbstractHydrologistCard implements Transmutabl
     }
 
     @Override
-    public void onTransmuted(AbstractCard newCard, boolean firstTime) {
-        CardModifierManager.addModifier(newCard, new GainBlockEffect(this, true));
-        newCard.applyPowers();
+    public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
+        ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
+        list.add(new GainBlockEffect(this, true));
+        return list;
     }
 }
