@@ -67,6 +67,7 @@ public class RazorIce extends AbstractHydrologistCard implements TransmutableCar
         for (Soul soul : (ArrayList<Soul>)ReflectionHacks.getPrivate(AbstractDungeon.getCurrRoom().souls, SoulGroup.class, "souls")) {
             if (soul.card == this) {
                 soul.isDone = true;
+                soul.isReadyForReuse = true;
                 break;
             }
         }
