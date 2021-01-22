@@ -28,6 +28,11 @@ public class GainBlockEffect extends AbstractExtraEffectModifier {
     }
 
     @Override
+    public boolean shouldRenderValue() {
+        return true;
+    }
+
+    @Override
     public AbstractCardModifier makeCopy() {
         return new GainBlockEffect(attachedCard.makeStatEquivalentCopy(), isMutable);
     }

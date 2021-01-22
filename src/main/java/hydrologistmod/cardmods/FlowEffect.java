@@ -28,6 +28,11 @@ public class FlowEffect extends AbstractExtraEffectModifier {
     }
 
     @Override
+    public boolean shouldRenderValue() {
+        return false;
+    }
+
+    @Override
     public AbstractCardModifier makeCopy() {
         return new FlowEffect(attachedCard, isMutable);
     }

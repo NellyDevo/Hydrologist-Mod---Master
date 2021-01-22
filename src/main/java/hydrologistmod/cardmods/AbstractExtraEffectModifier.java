@@ -85,6 +85,8 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
 
     public abstract String addExtraText(String rawDescription, AbstractCard card);
 
+    public abstract boolean shouldRenderValue();
+
     @Override
     public void onInitialApplication(AbstractCard card) {
         DynamicDynamicVariableManager.registerVariable(card, this);

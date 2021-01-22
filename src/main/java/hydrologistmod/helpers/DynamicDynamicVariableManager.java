@@ -29,8 +29,11 @@ public class DynamicDynamicVariableManager extends DynamicVariable {
 
     @Override
     public boolean isModified(AbstractCard card) {
-        ++timesKeyFoundThisFrame;
-        AbstractExtraEffectModifier mod = variableDatabase.get(card).get(timesKeyFoundThisFrame);
+        AbstractExtraEffectModifier mod;
+        do {
+            ++timesKeyFoundThisFrame;
+            mod = variableDatabase.get(card).get(timesKeyFoundThisFrame);
+        } while (!mod.shouldRenderValue());
         return mod.isModified(card);
     }
 
