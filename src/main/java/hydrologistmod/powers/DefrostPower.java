@@ -13,8 +13,9 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.EquilibriumPower;
 import com.megacrit.cardcrawl.relics.RunicPyramid;
 import hydrologistmod.HydrologistMod;
+import hydrologistmod.interfaces.CorporealRelevantObject;
 
-public class DefrostPower extends AbstractPower implements CloneablePowerInterface {
+public class DefrostPower extends AbstractPower implements CloneablePowerInterface, CorporealRelevantObject {
     public static final String POWER_ID = "hydrologistmod:DefrostPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -57,5 +58,10 @@ public class DefrostPower extends AbstractPower implements CloneablePowerInterfa
                 }
             });
         }
+    }
+
+    @Override
+    public boolean activateGlow(AbstractCard card) {
+        return true;
     }
 }
