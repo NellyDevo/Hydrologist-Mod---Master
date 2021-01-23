@@ -29,7 +29,7 @@ public class FrigidLash extends AbstractHydrologistCard implements SwappableCard
     public FrigidLash() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
-                CardRarity.COMMON, CardTarget.ENEMY);
+                CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = INCREASE_BLOCK;
