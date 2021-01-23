@@ -39,7 +39,9 @@ public class HydrologistDamageAction extends AbstractGameAction {
         if (info.owner instanceof HydrologistCharacter) {
             player = (HydrologistCharacter)info.owner;
             duration = EFFECT_DURATION;
-            targetPosition = new Vector2(target.hb.cX, target.hb.cY);
+            if (target != null) {
+                targetPosition = new Vector2(target.hb.cX, target.hb.cY);
+            }
         } else {
             duration = DURATION;
         }
