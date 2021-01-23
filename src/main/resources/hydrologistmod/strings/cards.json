@@ -15,7 +15,7 @@
   },
   "hydrologistmod:AblativeShell": {
     "NAME": "Ablative Shell",
-    "DESCRIPTION": "Prevent the next time you would lose HP.",
+    "DESCRIPTION": "Prevent the next time you would lose HP. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:AmalgamateWaters": {
@@ -153,7 +153,7 @@
   },
   "hydrologistmod:Freeze": {
     "NAME": "Freeze",
-    "DESCRIPTION": "Deal !D! damage.",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FreezeDry": {
@@ -396,7 +396,7 @@
   },
   "hydrologistmod:Siphon": {
     "NAME": "Siphon",
-    "DESCRIPTION": "Choose a card in your hand. Copy its hydrologistmod:Mutable effects onto this card's hydrologistmod:Pair, then hydrologistmod:Transmute it.",
+    "DESCRIPTION": "Choose a card in your hand. Copy its hydrologistmod:Mutable effects onto this card's hydrologistmod:Pair, then hydrologistmod:Transmute it. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Slurry": {
@@ -421,7 +421,7 @@
   },
   "hydrologistmod:StagnantCloak": {
     "NAME": "Stagnant Cloak",
-    "DESCRIPTION": "Whenever you would lose HP, lose !M! less.",
+    "DESCRIPTION": "Whenever you would lose HP, lose !M! less. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SteadyTide": {
