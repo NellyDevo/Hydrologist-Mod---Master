@@ -34,6 +34,7 @@ public class ExtraPurityEffect extends AbstractExtraEffectModifier {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
+        super.onInitialApplication(card);
         CardModifierManager.addModifier(card, new PurityModifier(value));
     }
 
