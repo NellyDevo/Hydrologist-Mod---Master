@@ -1,5 +1,6 @@
 package hydrologistmod.actions;
 
+import basemod.BaseMod;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.EmptyDeckShuffleAction;
@@ -50,7 +51,7 @@ public class FlowDrawAction extends AbstractGameAction {
             return;
         }
 
-        if (AbstractDungeon.player.hand.size() == Settings.MAX_HAND_SIZE) {
+        if (AbstractDungeon.player.hand.size() == BaseMod.MAX_HAND_SIZE) {
             AbstractDungeon.player.createHandIsFullDialog();
             endAction();
             return;
