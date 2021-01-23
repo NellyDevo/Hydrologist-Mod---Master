@@ -36,6 +36,7 @@ public class StagnantCloakPower extends AbstractPower implements CloneablePowerI
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
         if (damageAmount > 1) {
             --damageAmount;
+            flash();
         }
         return damageAmount;
     }
