@@ -23,7 +23,7 @@ public class Eruption extends AbstractHydrologistCard implements SwappableCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Eruption.png";
     private static final int COST = 1;
-    private static final int DAMAGE_AMT = 15;
+    private static final int DAMAGE_AMT = 20;
     private static final int UPGRADE_DAMAGE = 5;
     private static final int ENERGY_GAIN = 3;
 
