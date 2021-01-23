@@ -34,8 +34,8 @@ public class StagnantCloakPower extends AbstractPower implements CloneablePowerI
 
     @Override
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        if (damageAmount > 1) {
-            --damageAmount;
+        if (damageAmount > 0) {
+            damageAmount = Math.max(0, damageAmount - amount);
             flash();
         }
         return damageAmount;
