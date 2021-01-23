@@ -222,6 +222,7 @@ public class HydrologistWaterbendingManager {
             captureBuffer.end();
             Texture tex = captureBuffer.getColorBufferTexture();
             capturedTexture = new TextureRegion(tex, captureX / tex.getWidth(), captureY / tex.getHeight(), (captureX + captureWidth) / tex.getWidth(), (captureY + captureHeight) / tex.getHeight());
+            capturedTexture.flip(false, true);
             doCapture = false;
         }
 

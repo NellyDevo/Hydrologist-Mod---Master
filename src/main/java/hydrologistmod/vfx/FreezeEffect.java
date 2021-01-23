@@ -47,7 +47,7 @@ public class FreezeEffect extends AbstractGameEffect {
     public void render(SpriteBatch sb) {
         TextureRegion texture = player.waterbending.capturedTexture;
         if (texture != null) {
-            sb.draw(texture, drawPosition.x - (texture.getRegionWidth() / 4.0f), drawPosition.y - (texture.getRegionHeight() / 2.0f));
+            sb.draw(texture, drawPosition.x, drawPosition.y);
 //            sb.draw(texture, drawPosition.x - startPosition.x, 0);
         }
     }

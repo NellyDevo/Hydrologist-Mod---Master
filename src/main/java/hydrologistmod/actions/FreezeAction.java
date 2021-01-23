@@ -33,6 +33,7 @@ public class FreezeAction extends AbstractGameAction {
     private Vector2 targetPosition;
     private Vector2 tracePosition;
     private Vector2 attackTargetPosition;
+    private Vector2 drawPosition;
     private float effectWidth = 200.0f * Settings.scale;
     private float effectHeight = 100.0f * Settings.scale;
     private FreezeEffect effect;
@@ -48,6 +49,9 @@ public class FreezeAction extends AbstractGameAction {
             targetPosition = new Vector2(player.hb.cX + (200.0f * Settings.scale), player.hb.cY);
             tracePosition = targetPosition.cpy();
             attackTargetPosition = new Vector2(Settings.WIDTH + (200.0f * Settings.scale), target.hb.cY);
+            drawPosition = tracePosition.cpy();
+            drawPosition.x -= effectWidth / 4.0f;
+            drawPosition.y -= effectHeight / 4.0f;
         }
     }
 
@@ -112,8 +116,8 @@ public class FreezeAction extends AbstractGameAction {
                     shapeDuration -= Gdx.graphics.getDeltaTime();
                     if (shapeDuration <= 0.0f) {
                         startPosition = interPos.cpy();
-                        player.waterbending.doCapture(tracePosition.x, tracePosition.y, effectWidth, effectHeight);
-                        effect = new FreezeEffect(tracePosition, attackTargetPosition, target.hb.cX, ATTACK_DURATION, player);
+                        player.waterbending.doCapture(drawPosition.x, drawPosition.y, effectWidth, effectHeight);
+                        effect = new FreezeEffect(drawPosition, attackTargetPosition, target.hb.cX, ATTACK_DURATION, player);
                         AbstractDungeon.effectList.add(effect);
                     }
                 }
