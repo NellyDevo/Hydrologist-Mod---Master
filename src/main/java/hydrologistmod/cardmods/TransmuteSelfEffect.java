@@ -12,7 +12,7 @@ public class TransmuteSelfEffect extends AbstractExtraEffectModifier {
     public String ID = "hydrologistmod:TransmuteSelfEffect";
 
     public TransmuteSelfEffect(AbstractCard card, boolean isMutable) {
-        super(card, VariableType.MAGIC, isMutable);
+        super(card, VariableType.MAGIC, isMutable, 1);
         priority = 0;
     }
 

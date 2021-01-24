@@ -60,7 +60,7 @@ public class ViscousShell extends AbstractHydrologistCard implements Transmutabl
     @Override
     public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
         ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
-        list.add(new GainBlockEffect(this, true));
+        list.add(new GainBlockEffect(this, true, 1));
         return list;
     }
 }

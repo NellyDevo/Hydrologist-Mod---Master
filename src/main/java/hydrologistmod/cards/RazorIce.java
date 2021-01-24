@@ -69,8 +69,8 @@ public class RazorIce extends AbstractHydrologistCard implements TransmutableCar
     @Override
     public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
         ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
-        list.add(new GainBlockEffect(this, true));
-        list.add(new DamageEffect(this, true));
+        list.add(new GainBlockEffect(this, true, 1));
+        list.add(new DamageEffect(this, true, 1));
         return list;
     }
 }

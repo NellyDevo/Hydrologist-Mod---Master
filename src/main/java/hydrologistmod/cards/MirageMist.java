@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.cardmods.AbstractExtraEffectModifier;
-import hydrologistmod.cardmods.GainBlockTwiceEffect;
+import hydrologistmod.cardmods.GainBlockEffect;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -55,7 +55,7 @@ public class MirageMist extends AbstractHydrologistCard implements TransmutableC
     @Override
     public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
         ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
-        list.add(new GainBlockTwiceEffect(this, true));
+        list.add(new GainBlockEffect(this, true, 2));
         return list;
     }
 }

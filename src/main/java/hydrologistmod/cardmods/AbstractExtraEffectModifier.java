@@ -19,11 +19,13 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
     private VariableType type;
     protected String key;
     public boolean isMutable;
+    protected int amount = 1;
 
-    public AbstractExtraEffectModifier(AbstractCard card, VariableType type, boolean isMutable) {
+    public AbstractExtraEffectModifier(AbstractCard card, VariableType type, boolean isMutable, int times) {
         attachedCard = card.makeStatEquivalentCopy();
         this.type = type;
         this.isMutable = isMutable;
+        amount = times;
         setValues();
     }
 

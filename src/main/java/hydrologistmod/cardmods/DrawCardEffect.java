@@ -1,6 +1,7 @@
 package hydrologistmod.cardmods;
 
 import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -8,8 +9,10 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 
 @AbstractCardModifier.SaveIgnore
 public class DrawCardEffect extends AbstractExtraEffectModifier {
+    public static final String ID = "hydrologistmod:DrawCardEffect";
+
     public DrawCardEffect(AbstractCard card, boolean isMutable) {
-        super(card, VariableType.MAGIC, isMutable);
+        super(card, VariableType.MAGIC, isMutable, 1);
         priority = 0;
     }
 
@@ -35,6 +38,22 @@ public class DrawCardEffect extends AbstractExtraEffectModifier {
             s = "hydrologistmod:Mutable:" + s;
         }
         return rawDescription + " NL " + s;
+    }
+
+    @Override
+    public boolean shouldApply(AbstractCard card) {
+        if (CardModifierManager.hasModifier(card, ID)) {
+            ((AbstractExtraEffectModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount++;
+            card.initializeDescription();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onApplyPowers(AbstractCard card) {
+        super.onApplyPowers(card);
+        value *= amount;
     }
 
     @Override

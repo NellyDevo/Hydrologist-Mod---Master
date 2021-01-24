@@ -61,7 +61,7 @@ public class PureSteam extends AbstractHydrologistCard implements TransmutableCa
     public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
         ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
         list.add(new DrawCardEffect(this, true));
-        list.add(new DamageEffect(this, true));
+        list.add(new DamageEffect(this, true, 1));
         return list;
     }
 }
