@@ -56,6 +56,11 @@ public class GainBlockEffect extends AbstractExtraEffectModifier {
     }
 
     @Override
+    public String identifier(AbstractCard card) {
+        return ID;
+    }
+
+    @Override
     public boolean shouldRenderValue() {
         return true;
     }

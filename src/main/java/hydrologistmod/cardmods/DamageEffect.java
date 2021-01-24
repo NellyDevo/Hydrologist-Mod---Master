@@ -89,6 +89,11 @@ public class DamageEffect extends AbstractExtraEffectModifier {
     }
 
     @Override
+    public String identifier(AbstractCard card) {
+        return ID;
+    }
+
+    @Override
     public AbstractCardModifier makeCopy() {
         return new DamageEffect(attachedCard, isMutable, amount);
     }

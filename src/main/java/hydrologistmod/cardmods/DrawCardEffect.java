@@ -51,6 +51,11 @@ public class DrawCardEffect extends AbstractExtraEffectModifier {
     }
 
     @Override
+    public String identifier(AbstractCard card) {
+        return ID;
+    }
+
+    @Override
     public void onApplyPowers(AbstractCard card) {
         super.onApplyPowers(card);
         value *= amount;

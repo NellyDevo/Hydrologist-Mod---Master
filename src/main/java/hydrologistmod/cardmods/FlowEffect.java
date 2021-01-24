@@ -50,6 +50,11 @@ public class FlowEffect extends AbstractExtraEffectModifier {
     }
 
     @Override
+    public String identifier(AbstractCard card) {
+        return ID;
+    }
+
+    @Override
     public boolean shouldRenderValue() {
         return false;
     }
