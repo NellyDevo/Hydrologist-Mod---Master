@@ -401,8 +401,8 @@
   },
   "hydrologistmod:Slurry": {
     "NAME": "Slurry",
-    "DESCRIPTION": "Trigger an enemy's hydrologistmod:Heat or hydrologistmod:Cold without removing it. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Trigger an enemy's hydrologistmod:Heat or hydrologistmod:Cold without removing it."
+    "DESCRIPTION": "Enemy loses HP equal to triple its hydrologistmod:Heat or hydrologistmod:Cold. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Enemy loses HP equal to triple its hydrologistmod:Heat or hydrologistmod:Cold."
   },
   "hydrologistmod:SoggySynthesis": {
     "NAME": "Soggy Synthesis",
