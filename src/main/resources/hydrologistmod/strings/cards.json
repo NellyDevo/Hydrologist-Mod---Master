@@ -305,8 +305,8 @@
   },
   "hydrologistmod:PressureCycle": {
     "NAME": "Pressure Cycle",
-    "DESCRIPTION": "Gain !M! Block for each card in your discard pile, then shuffle your discard pile into your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain !M! Block for each card in your discard pile.",
+    "DESCRIPTION": "Gain Block equal to the number of cards in your discard pile, then shuffle your discard pile into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain Block equal to the number of cards in your discard pile.",
     "EXTENDED_DESCRIPTION": [
       " NL (Gain !B! Block.)"
     ]

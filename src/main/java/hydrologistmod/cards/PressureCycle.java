@@ -21,7 +21,7 @@ public class PressureCycle extends AbstractHydrologistCard {
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/PressureCycle.png";
     private static final int COST = 1;
-    private static final int BLOCK_AMT = 2;
+    private static final int BLOCK_AMT = 1;
 
     public PressureCycle() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -29,7 +29,6 @@ public class PressureCycle extends AbstractHydrologistCard {
                 CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         block = baseBlock = BLOCK_AMT;
-        magicNumber = baseMagicNumber = BLOCK_AMT;
     }
 
     @Override
@@ -45,22 +44,22 @@ public class PressureCycle extends AbstractHydrologistCard {
 
     @Override
     public void applyPowers() {
+        int tmp = baseBlock;
+        baseBlock *= AbstractDungeon.player.discardPile.size();
         super.applyPowers();
-        magicNumber = block;
-        block *= AbstractDungeon.player.discardPile.size();
+        baseBlock = tmp;
         isBlockModified = block != baseBlock;
-        isMagicNumberModified = magicNumber != baseMagicNumber;
         rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];
         initializeDescription();
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
+        int tmp = baseBlock;
+        baseBlock *= AbstractDungeon.player.discardPile.size();
         super.calculateCardDamage(mo);
-        magicNumber = block;
-        block *= AbstractDungeon.player.discardPile.size();
+        baseBlock = tmp;
         isBlockModified = block != baseBlock;
-        isMagicNumberModified = magicNumber != baseMagicNumber;
         rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];
         initializeDescription();
     }
