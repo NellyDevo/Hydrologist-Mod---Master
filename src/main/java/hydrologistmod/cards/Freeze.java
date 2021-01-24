@@ -8,13 +8,11 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.HydrologistDamageAction;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-
-public class Freeze extends AbstractHydrologistCard {
+public class Freeze extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:Freeze";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -31,7 +29,6 @@ public class Freeze extends AbstractHydrologistCard {
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Siphon())));
     }
 
     @Override
@@ -51,5 +48,10 @@ public class Freeze extends AbstractHydrologistCard {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
         }
+    }
+
+    @Override
+    public boolean isPairCard() {
+        return true;
     }
 }

@@ -10,14 +10,15 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.TransmuteCardAction;
 import hydrologistmod.cardmods.AbstractExtraEffectModifier;
 import hydrologistmod.helpers.SwapperHelper;
-import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 
-public class Siphon extends AbstractHydrologistCard implements SwappableCard {
+public class Siphon extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:Siphon";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -31,6 +32,7 @@ public class Siphon extends AbstractHydrologistCard implements SwappableCard {
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.WATER);
+        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Freeze())));
     }
 
     @Override
@@ -68,10 +70,5 @@ public class Siphon extends AbstractHydrologistCard implements SwappableCard {
         if (!upgraded) {
             upgradeName();
         }
-    }
-
-    @Override
-    public boolean isPairCard() {
-        return true;
     }
 }
