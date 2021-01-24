@@ -75,7 +75,7 @@
   },
   "hydrologistmod:Crystallization": {
     "NAME": "Crystallization",
-    "DESCRIPTION": "Gain !B! Block. NL If your next card played is an *Ice card, hydrologistmod:Transmute a card in your hand. It gains !M! extra hydrologistmod:Purity. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "Gain !B! Block. NL If your next card played is an *Ice card, hydrologistmod:Transmute a card in your hand. It gains !M! hydrologistmod:Purity. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Debilitate": {
@@ -176,7 +176,7 @@
   },
   "hydrologistmod:FrozenCapsule": {
     "NAME": "Frozen Capsule",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute this card. NL hydrologistmod:Mutable: When hydrologistmod:Transmuted, gains !M! hydrologistmod:Purity.",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute this card. NL hydrologistmod:Mutable: When hydrologistmod:Transmuted, this gains !M! hydrologistmod:Purity.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:GhostlyMist": {
@@ -270,7 +270,7 @@
   },
   "hydrologistmod:MeltingIceberg": {
     "NAME": "Melting Iceberg",
-    "DESCRIPTION": "Apply !M! hydrologistmod:Purity to this card. NL hydrologistmod:Mutable: hydrologistmod:Transmute this card.",
+    "DESCRIPTION": "This gains !M! hydrologistmod:Purity. NL hydrologistmod:Mutable: hydrologistmod:Transmute this card.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:MirageMist": {
@@ -506,7 +506,7 @@
   },
   "hydrologistmod:WaterWheel": {
     "NAME": "Water Wheel",
-    "DESCRIPTION": "hydrologistmod:Transmute a card. NL The new card's hydrologistmod:Purity is increased by !M! times X. NL Exhaust.",
+    "DESCRIPTION": "hydrologistmod:Transmute a card. NL It gains !M! times X hydrologistmod:Purity. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:YawningAbyss": {

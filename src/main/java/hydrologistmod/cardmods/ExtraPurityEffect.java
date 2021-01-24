@@ -25,7 +25,7 @@ public class ExtraPurityEffect extends AbstractExtraEffectModifier {
 
     @Override
     public String addExtraText(String rawDescription, AbstractCard card) {
-        String s =  "When hydrologistmod:Transmuted, gains " + key + " hydrologistmod:Purity.";
+        String s =  "When hydrologistmod:Transmuted, this gains " + key + " hydrologistmod:Purity.";
         if (isMutable) {
             s = "hydrologistmod:Mutable: " + s;
         }
