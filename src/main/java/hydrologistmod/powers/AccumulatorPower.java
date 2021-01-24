@@ -38,11 +38,13 @@ public class AccumulatorPower extends AbstractPower implements CloneablePowerInt
 
     @Override
     public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
         BaseMod.MAX_HAND_SIZE += stackAmount;
     }
 
     @Override
     public void reducePower(int reduceAmount) {
+        super.reducePower(reduceAmount);
         BaseMod.MAX_HAND_SIZE -= reduceAmount;
     }
 
