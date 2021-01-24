@@ -1,16 +1,17 @@
 package hydrologistmod.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hydrologistmod.actions.ApplyThermalShockAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
-import hydrologistmod.powers.ColdPower;
-import hydrologistmod.powers.HeatPower;
 
 public class Debilitate extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:Debilitate";
@@ -20,29 +21,27 @@ public class Debilitate extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/Debilitate.png";
     private static final int COST = 2;
-    private static final int AMOUNT_TO_APPLY = 4;
-    private static final int UPGRADE_AMOUNT = 2;
+    private static final int AMOUNT_TO_APPLY = 1;
+    private static final int UPGRADE_AMOUNT = 1;
+    private static final int DAMAGE_AMT = 12;
+    private static final int UPGRADE_DAMAGE = 3;
 
     public Debilitate() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
-                CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
+                CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.ALL_ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = AMOUNT_TO_APPLY;
         exhaust = true;
-        tags.add(HydrologistTags.TEMPERATURE);
+        damage = baseDamage = DAMAGE_AMT;
+        isMultiDamage = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DamageAllEnemiesAction(p, multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE, true));
         for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if (mo.hasPower(ColdPower.POWER_ID)) {
-                addToBot(new ApplyPowerAction(mo, p, new ColdPower(mo, p, magicNumber), magicNumber, true));
-                addToBot(new ApplyPowerAction(mo, p, new HeatPower(mo, p, magicNumber), magicNumber, true));
-            } else {
-                addToBot(new ApplyPowerAction(mo, p, new HeatPower(mo, p, magicNumber), magicNumber, true));
-                addToBot(new ApplyPowerAction(mo, p, new ColdPower(mo, p, magicNumber), magicNumber, true));
-            }
+            addToBot(new ApplyThermalShockAction(mo, p, magicNumber));
         }
     }
 
@@ -56,6 +55,7 @@ public class Debilitate extends AbstractHydrologistCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_AMOUNT);
+            upgradeDamage(UPGRADE_DAMAGE);
         }
     }
 }
