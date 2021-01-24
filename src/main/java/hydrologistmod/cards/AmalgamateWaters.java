@@ -25,7 +25,7 @@ public class AmalgamateWaters extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/AmalgamateWaters.png";
     private static final int COST = 2;
-    private static final int DAMAGE = 20;
+    private static final int DAMAGE = 10;
     private static final int UPGRADE_DAMAGE = 5;
 
     public AmalgamateWaters() {
