@@ -196,6 +196,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                 return;
             } else {
                 modifyNewCard(playedCard, newCard);
+                AbstractDungeon.gridSelectScreen.selectedCards.clear();
                 //modify useCardAction for the current card using related patch
                 UseCardAction useCardAction = null;
                 for (AbstractGameAction action : AbstractDungeon.actionManager.actions) {
