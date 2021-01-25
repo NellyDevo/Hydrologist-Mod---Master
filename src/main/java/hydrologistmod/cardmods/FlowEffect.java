@@ -43,6 +43,7 @@ public class FlowEffect extends AbstractExtraEffectModifier {
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, ID)) {
             ((AbstractExtraEffectModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount++;
+            card.applyPowers();
             card.initializeDescription();
             return false;
         }

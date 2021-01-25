@@ -69,7 +69,7 @@
       "transmute",
       "transmuted"
     ],
-    "DESCRIPTION": "Transforms a card in combat into any card of the same rarity available to your current run. The new card is stronger than usual. This effect stacks."
+    "DESCRIPTION": "Transforms a card in combat into any card of the same rarity available to your current run. The new card deals 1 more damage and gains 1 more #yBlock for the rest of combat. This effect stacks."
   },
   "THERMAL_SHOCK": {
     "PROPER_NAME": "Thermal Shock",
