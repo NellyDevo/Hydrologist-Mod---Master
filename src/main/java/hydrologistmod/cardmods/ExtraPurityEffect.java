@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class ExtraPurityEffect extends AbstractExtraEffectModifier {
     public static final String ID = "hydrologistmod:ExtraPurityEffect";
 
-    public ExtraPurityEffect(AbstractCard card, boolean isMutable) {
-        super(card, VariableType.MAGIC, isMutable, 1);
+    public ExtraPurityEffect(AbstractCard card, boolean isMutable, int times) {
+        super(card, VariableType.MAGIC, isMutable, times);
         priority = 1;
     }
 
@@ -72,6 +72,6 @@ public class ExtraPurityEffect extends AbstractExtraEffectModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new ExtraPurityEffect(attachedCard, isMutable);
+        return new ExtraPurityEffect(attachedCard, isMutable, amount);
     }
 }

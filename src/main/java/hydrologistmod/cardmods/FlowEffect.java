@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class FlowEffect extends AbstractExtraEffectModifier {
     public static final String ID = "hydrologistmod:FlowEffect";
 
-    public FlowEffect(AbstractCard card, boolean isMutable) {
-        super(card, VariableType.DAMAGE, isMutable, 1);
+    public FlowEffect(AbstractCard card, boolean isMutable, int times) {
+        super(card, VariableType.DAMAGE, isMutable, times);
         priority = 0;
     }
 
@@ -62,6 +62,6 @@ public class FlowEffect extends AbstractExtraEffectModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new FlowEffect(attachedCard, isMutable);
+        return new FlowEffect(attachedCard, isMutable, amount);
     }
 }

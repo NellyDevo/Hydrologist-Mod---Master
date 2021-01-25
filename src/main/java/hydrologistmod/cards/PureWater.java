@@ -63,11 +63,11 @@ public class PureWater extends AbstractHydrologistCard implements TransmutableCa
     public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
         ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
         if (upgraded) {
-            list.add(new DrawCardEffect(this, true));
-            list.add(new FlowEffect(this, true));
+            list.add(new DrawCardEffect(this, true, 1));
+            list.add(new FlowEffect(this, true, 1));
         } else {
-            list.add(new FlowEffect(this, true));
-            list.add(new DrawCardEffect(this, true));
+            list.add(new FlowEffect(this, true, 1));
+            list.add(new DrawCardEffect(this, true, 1));
         }
         return list;
     }

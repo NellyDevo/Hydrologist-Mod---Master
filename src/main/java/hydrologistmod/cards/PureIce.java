@@ -59,7 +59,7 @@ public class PureIce extends AbstractHydrologistCard implements TransmutableCard
     @Override
     public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
         ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
-        list.add(new DrawCardEffect(this, true));
+        list.add(new DrawCardEffect(this, true, 1));
         list.add(new GainBlockEffect(this, true, 1));
         return list;
     }

@@ -59,7 +59,7 @@ public class FrozenCapsule extends AbstractHydrologistCard implements Transmutab
     @Override
     public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
         ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
-        list.add(new ExtraPurityEffect(this, true));
+        list.add(new ExtraPurityEffect(this, true, 1));
         return list;
     }
 }

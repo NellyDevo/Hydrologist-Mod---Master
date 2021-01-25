@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 public class DrawCardEffect extends AbstractExtraEffectModifier {
     public static final String ID = "hydrologistmod:DrawCardEffect";
 
-    public DrawCardEffect(AbstractCard card, boolean isMutable) {
-        super(card, VariableType.MAGIC, isMutable, 1);
+    public DrawCardEffect(AbstractCard card, boolean isMutable, int times) {
+        super(card, VariableType.MAGIC, isMutable, times);
         priority = 0;
     }
 
@@ -65,6 +65,6 @@ public class DrawCardEffect extends AbstractExtraEffectModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new DrawCardEffect(attachedCard, isMutable);
+        return new DrawCardEffect(attachedCard, isMutable, amount);
     }
 }
