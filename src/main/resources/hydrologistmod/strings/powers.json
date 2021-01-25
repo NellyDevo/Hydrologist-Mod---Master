@@ -92,7 +92,7 @@
     "NAME": "Hot Springs",
     "DESCRIPTIONS": [
       "At the end of your turn, deal #b",
-      " damage to each ALL enemies suffering from #yThermal #yShock."
+      " damage to ALL enemies suffering from #yThermal #yShock."
     ]
   },
   "hydrologistmod:IcyFloePower": {
