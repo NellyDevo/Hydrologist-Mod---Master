@@ -28,7 +28,7 @@ public class BracedFormPower extends AbstractPower implements CloneablePowerInte
     }
 
     @Override
-    public void atStartOfTurnPostDraw() {
+    public void atStartOfTurn() {
         addToBot(new MakeTempCardInHandAction(new RazorIce(), amount));
     }
 
