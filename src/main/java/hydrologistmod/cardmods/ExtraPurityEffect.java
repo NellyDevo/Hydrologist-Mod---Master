@@ -30,6 +30,7 @@ public class ExtraPurityEffect extends AbstractExtraEffectModifier {
                 AbstractCard c = ((AbstractExtraEffectModifier)mod).attachedCard;
                 if (c.baseMagicNumber == attachedCard.baseMagicNumber) {
                     ((AbstractExtraEffectModifier)mod).amount++;
+                    card.applyPowers();
                     return false;
                 }
             }
@@ -45,6 +46,7 @@ public class ExtraPurityEffect extends AbstractExtraEffectModifier {
     @Override
     public void onApplyPowers(AbstractCard card) {
         super.onApplyPowers(card);
+        baseValue *= amount;
         value *= amount;
     }
 

@@ -80,6 +80,7 @@ public class DamageEffect extends AbstractExtraEffectModifier {
                 AbstractCard c = ((AbstractExtraEffectModifier)mod).attachedCard;
                 if (c.baseDamage == attachedCard.baseDamage) {
                     ((AbstractExtraEffectModifier)mod).amount++;
+                    card.applyPowers();
                     card.initializeDescription();
                     return false;
                 }

@@ -44,6 +44,7 @@ public class DrawCardEffect extends AbstractExtraEffectModifier {
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, ID)) {
             ((AbstractExtraEffectModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount++;
+            card.applyPowers();
             card.initializeDescription();
             return false;
         }
@@ -58,6 +59,7 @@ public class DrawCardEffect extends AbstractExtraEffectModifier {
     @Override
     public void onApplyPowers(AbstractCard card) {
         super.onApplyPowers(card);
+        baseValue *= amount;
         value *= amount;
     }
 

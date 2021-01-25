@@ -47,6 +47,7 @@ public class GainBlockEffect extends AbstractExtraEffectModifier {
                 AbstractCard c = ((AbstractExtraEffectModifier)mod).attachedCard;
                 if (c.baseBlock == attachedCard.baseBlock) {
                     ((AbstractExtraEffectModifier)mod).amount++;
+                    card.applyPowers();
                     card.initializeDescription();
                     return false;
                 }
