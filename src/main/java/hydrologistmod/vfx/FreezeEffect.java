@@ -1,9 +1,7 @@
 package hydrologistmod.vfx;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
@@ -46,12 +44,7 @@ public class FreezeEffect extends AbstractGameEffect {
 
     @Override
     public void render(SpriteBatch sb) {
-        TextureRegion texture = player.waterbending.capturedTexture;
-        sb.setColor(Color.WHITE.cpy());
-        if (texture != null) {
-            sb.draw(texture, drawPosition.x, drawPosition.y);
-//            sb.draw(texture, drawPosition.x - startPosition.x, 0);
-        }
+        player.waterbending.renderCaptured(sb, drawPosition);
     }
 
     @Override

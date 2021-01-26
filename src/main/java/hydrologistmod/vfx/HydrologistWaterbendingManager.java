@@ -11,8 +11,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import hydrologistmod.HydrologistMod;
+import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.patches.HydrologistTags;
 
 import java.util.ArrayList;
@@ -235,6 +237,13 @@ public class HydrologistWaterbendingManager {
         sb.begin();
         sb.draw(texture, 0,0);
         sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+    }
+
+    public void renderCaptured(SpriteBatch sb, Vector2 renderPosition) {
+        sb.setColor(Color.WHITE.cpy());
+        if (capturedTexture != null) {
+            sb.draw(capturedTexture, renderPosition.x, renderPosition.y);
+        }
     }
 
     private TextureRegion createMask() {
