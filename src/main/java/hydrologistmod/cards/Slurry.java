@@ -1,17 +1,15 @@
 package hydrologistmod.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hydrologistmod.interfaces.HeatAndColdPower;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.AbstractHeatAndColdPower;
 import hydrologistmod.powers.ColdPower;
 import hydrologistmod.powers.HeatPower;
 
@@ -37,20 +35,17 @@ public class Slurry extends AbstractHydrologistCard {
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                HeatAndColdPower power = null;
-                int num = 0;
+                AbstractHeatAndColdPower power = null;
                 if (m.hasPower(HeatPower.POWER_ID)) {
                     AbstractPower pow = m.getPower(HeatPower.POWER_ID);
-                    power = (HeatAndColdPower)pow;
-                    num = pow.amount;
+                    power = (AbstractHeatAndColdPower)pow;
                 }
                 if (m.hasPower(ColdPower.POWER_ID)) {
                     AbstractPower pow = m.getPower(ColdPower.POWER_ID);
-                    power = (HeatAndColdPower)pow;
-                    num = pow.amount;
+                    power = (AbstractHeatAndColdPower)pow;
                 }
                 if (power != null) {
-                    addToTop(new DamageAction(m, new DamageInfo(p, num * power.damageMultiplier(), DamageInfo.DamageType.HP_LOSS)));
+                    power.dealDamage();
                 }
                 isDone = true;
             }
