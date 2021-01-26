@@ -96,9 +96,9 @@ public class TransmuteCardAction extends AbstractGameAction {
                     isDone = true;
                 } else {
                     if (anyNumber) {
-                        AbstractDungeon.handCardSelectScreen.open("transmute.", 99, true, true);
+                        AbstractDungeon.handCardSelectScreen.open("Transmute.", 99, true, true);
                     } else {
-                        AbstractDungeon.handCardSelectScreen.open("transmute.", Math.min(AbstractDungeon.player.hand.size(), cards), false, false);
+                        AbstractDungeon.handCardSelectScreen.open("Transmute.", Math.min(AbstractDungeon.player.hand.size(), cards), false, false);
                     }
                 }
             } else {

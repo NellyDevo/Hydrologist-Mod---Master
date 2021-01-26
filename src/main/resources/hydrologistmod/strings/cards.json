@@ -70,7 +70,7 @@
   },
   "hydrologistmod:CrystalSpear": {
     "NAME": "Crystal Spear",
-    "DESCRIPTION": "Deal !D! damage. NL deals extra damage equal to the total hydrologistmod:Purity of ALL your cards.",
+    "DESCRIPTION": "Deal !D! damage. NL Deals extra damage equal to the total hydrologistmod:Purity of ALL your cards.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Crystallization": {
