@@ -328,9 +328,11 @@ public class TransmuteCardAction extends AbstractGameAction {
         AbstractCard card = newCard;
         do {
             CardModifierManager.addModifier(card, purity.makeCopy());
+            boolean firstTime = true;
             for (AbstractExtraEffectModifier mod : list) {
                 CardModifierManager.addModifier(card, mod.makeCopy());
-                mod.onCardTransmuted(oldCard, card);
+                mod.onCardTransmuted(oldCard, card, firstTime);
+                firstTime = false;
             }
             card.applyPowers();
         } while (SwapperHelper.isCardSwappable(card) && (card = SwapperHelper.getNextCard(card)) != newCard);

@@ -101,7 +101,7 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
         MAGIC
     }
 
-    public void onCardTransmuted(AbstractCard card, AbstractCard newCard) {
+    public void onCardTransmuted(AbstractCard card, AbstractCard newCard, boolean firstTime) {
 
     }
 
