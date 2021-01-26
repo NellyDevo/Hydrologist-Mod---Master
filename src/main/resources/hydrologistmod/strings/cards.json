@@ -250,7 +250,7 @@
   },
   "hydrologistmod:JetPropulsion": {
     "NAME": "Jet Propulsion",
-    "DESCRIPTION": "Apply !M! hydrologistmod:Heat. If the enemy does NOT intend to attack, draw !M! cards.",
+    "DESCRIPTION": "Apply !M! hydrologistmod:Heat. If the enemy does NOT intend to attack, draw 2 cards.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:LaminarFlow": {

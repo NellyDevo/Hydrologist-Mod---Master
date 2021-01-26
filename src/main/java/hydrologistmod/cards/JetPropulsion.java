@@ -21,6 +21,7 @@ public class JetPropulsion extends AbstractHydrologistCard {
     private static final int COST = 1;
     private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 2;
+    private static final int CARD_DRAW = 2;
 
     public JetPropulsion() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -34,7 +35,7 @@ public class JetPropulsion extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyTemperatureAction(m, p, new HeatPower(m, p, magicNumber)));
-        addToBot(new JetPropulsionAction(m, magicNumber));
+        addToBot(new JetPropulsionAction(m, CARD_DRAW));
     }
 
     @Override
