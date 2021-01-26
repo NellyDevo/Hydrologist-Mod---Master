@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hydrologistmod.actions.FlowAction;
 
-import java.util.ArrayList;
-
 @AbstractCardModifier.SaveIgnore
 public class FlowEffect extends AbstractExtraEffectModifier {
     public static final String ID = "hydrologistmod:FlowEffect";

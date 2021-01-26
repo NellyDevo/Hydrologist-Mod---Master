@@ -11,10 +11,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import hydrologistmod.HydrologistMod;
-import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.patches.HydrologistTags;
 
 import java.util.ArrayList;
