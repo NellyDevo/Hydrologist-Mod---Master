@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import hydrologistmod.cardmods.AbstractExtraEffectModifier;
 import hydrologistmod.helpers.SwapperHelper;
 import javassist.CtBehavior;
 
@@ -49,7 +50,10 @@ public class WaterPouch extends CustomRelic implements CustomSavable<WaterPouch.
         AbstractCard masterDeckCard = SwapperHelper.findMasterDeckEquivalent(card);
         if (masterDeckCard == null) {
             AbstractCard tmp = card.makeSameInstanceOf();
-            CardModifierManager.removeAllModifiers(tmp, false);
+            AbstractCard c = tmp;
+            do {
+                CardModifierManager.removeAllModifiers(c, false);
+            } while (SwapperHelper.isCardSwappable(c) && (c = SwapperHelper.getNextCard(c)) != tmp);
             storedCard = tmp;
         } else {
             storedCard = masterDeckCard;

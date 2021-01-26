@@ -49,7 +49,10 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
         AbstractCard masterDeckCard = SwapperHelper.findMasterDeckEquivalent(card);
         if (masterDeckCard == null) {
             AbstractCard tmp = card.makeSameInstanceOf();
-            CardModifierManager.removeAllModifiers(tmp, false);
+            AbstractCard c = tmp;
+            do {
+                CardModifierManager.removeAllModifiers(c, false);
+            } while (SwapperHelper.isCardSwappable(c) && (c = SwapperHelper.getNextCard(c)) != tmp);
             storedCard = tmp;
         } else {
             storedCard = masterDeckCard;
