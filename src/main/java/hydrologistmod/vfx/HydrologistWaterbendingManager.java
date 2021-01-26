@@ -241,9 +241,11 @@ public class HydrologistWaterbendingManager {
 
     public void renderCaptured(SpriteBatch sb, Vector2 renderPosition) {
         sb.setColor(Color.WHITE.cpy());
+        sb.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA);
         if (capturedTexture != null) {
             sb.draw(capturedTexture, renderPosition.x, renderPosition.y);
         }
+        sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     }
 
     private TextureRegion createMask() {
