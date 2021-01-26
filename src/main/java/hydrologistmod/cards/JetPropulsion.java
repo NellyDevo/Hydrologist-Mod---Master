@@ -1,11 +1,11 @@
 package hydrologistmod.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hydrologistmod.actions.ApplyTemperatureAction;
 import hydrologistmod.actions.JetPropulsionAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -33,7 +33,7 @@ public class JetPropulsion extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new HeatPower(m, p, magicNumber), magicNumber));
+        addToBot(new ApplyTemperatureAction(m, p, new HeatPower(m, p, magicNumber)));
         addToBot(new JetPropulsionAction(m, magicNumber));
     }
 

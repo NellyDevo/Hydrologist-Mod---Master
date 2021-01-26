@@ -2,17 +2,16 @@ package hydrologistmod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hydrologistmod.interfaces.HeatAndColdPower;
 
-public class ThermalShockPower extends AbstractPower implements CloneablePowerInterface, HeatAndColdPower {
+public class ThermalShockPower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:ThermalShockPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -55,15 +54,14 @@ public class ThermalShockPower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
-    public boolean heatAndColdOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (target == owner) {
-            if (power instanceof HeatPower || power instanceof ColdPower) {
-                addToTop(new ApplyPowerAction(owner, source, new ThermalShockPower(owner, source, 1), 1));
-                flash();
-                return false;
-            }
+    public void onInitialApplication() {
+        if (owner.hasPower(ColdPower.POWER_ID)) {
+            addToTop(new RemoveSpecificPowerAction(owner, source, ColdPower.POWER_ID));
+            ((AbstractHeatAndColdPower)owner.getPower(ColdPower.POWER_ID)).dealDamage();
+        } else if (owner.hasPower(HeatPower.POWER_ID)) {
+            addToTop(new RemoveSpecificPowerAction(owner, source, HeatPower.POWER_ID));
+            ((AbstractHeatAndColdPower)owner.getPower(HeatPower.POWER_ID)).dealDamage();
         }
-        return true;
     }
 
     @Override

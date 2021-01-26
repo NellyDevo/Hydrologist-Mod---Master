@@ -1,15 +1,16 @@
 package hydrologistmod.cards;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.actions.ApplyThermalShockAction;
 import hydrologistmod.actions.HydrologistDamageAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.ThermalShockPower;
 
 public class Scald extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:Scald";
@@ -36,7 +37,7 @@ public class Scald extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
-        addToBot(new ApplyThermalShockAction(m, p, magicNumber));
+        addToTop(new ApplyPowerAction(m, p, new ThermalShockPower(m, p, magicNumber), magicNumber));
     }
 
     @Override
