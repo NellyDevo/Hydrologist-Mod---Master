@@ -22,7 +22,6 @@ public class Drench extends AbstractHydrologistCard {
     public static final String IMG_PATH = "hydrologistmod/images/cards/Drench.png";
     private static final int COST = 1;
     private static final int DAMAGE = 7;
-    private static final int UPGRADE_DAMAGE = 3;
     private static final int COOL_AMOUNT = 3;
     private static final int UPGRADE_COOL_AMOUNT = 2;
 
@@ -53,7 +52,6 @@ public class Drench extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_DAMAGE);
             upgradeMagicNumber(UPGRADE_COOL_AMOUNT);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();

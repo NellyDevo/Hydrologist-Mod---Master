@@ -22,7 +22,6 @@ public class Dehydrate extends AbstractHydrologistCard {
     public static final String IMG_PATH = "hydrologistmod/images/cards/Dehydrate.png";
     private static final int COST = 1;
     private static final int DAMAGE_AMT = 7;
-    private static final int UPGRADE_DAMAGE = 3;
     private static final int HEAT_AMOUNT = 3;
     private static final int UPGRADE_HEAT_AMOUNT = 2;
 
@@ -53,7 +52,6 @@ public class Dehydrate extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_DAMAGE);
             upgradeMagicNumber(UPGRADE_HEAT_AMOUNT);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
