@@ -101,6 +101,10 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
         MAGIC
     }
 
+    public void onCardTransmuted(AbstractCard card, AbstractCard newCard) {
+
+    }
+
     protected void addToTop(AbstractGameAction action) {
         AbstractDungeon.actionManager.addToTop(action);
     }

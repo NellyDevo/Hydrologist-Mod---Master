@@ -321,15 +321,16 @@ public class TransmuteCardAction extends AbstractGameAction {
                 }
             }
         }
-        applyNewBuffs(list, mod, newCard);
+        applyNewBuffs(list, mod, oldCard, newCard);
     }
 
-    private void applyNewBuffs(ArrayList<AbstractExtraEffectModifier> list, PurityModifier purity, AbstractCard newCard) {
+    private void applyNewBuffs(ArrayList<AbstractExtraEffectModifier> list, PurityModifier purity, AbstractCard oldCard, AbstractCard newCard) {
         AbstractCard card = newCard;
         do {
             CardModifierManager.addModifier(card, purity.makeCopy());
             for (AbstractExtraEffectModifier mod : list) {
                 CardModifierManager.addModifier(card, mod.makeCopy());
+                mod.onCardTransmuted(oldCard, card);
             }
             card.applyPowers();
         } while (SwapperHelper.isCardSwappable(card) && (card = SwapperHelper.getNextCard(card)) != newCard);
