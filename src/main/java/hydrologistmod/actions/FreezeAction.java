@@ -28,7 +28,8 @@ public class FreezeAction extends AbstractGameAction {
     private float shapeDuration = SHAPE_DURATION;
     private float RETURN_DURATION = HydrologistWaterbendingManager.SPLINE_LENGTH;
     private float returnDuration = RETURN_DURATION;
-    private static float ATTACK_DURATION = 0.3F;
+    private static final float ATTACK_DURATION = 0.3F;
+    private static final int SPEED_MULTIPLIER = 4;
     private Vector2 startPosition;
     private Vector2 targetPosition;
     private Vector2 tracePosition;
@@ -65,72 +66,74 @@ public class FreezeAction extends AbstractGameAction {
     @Override
     public void update() {
         if (player != null && !effectFinished) {
-            if (travelDuration > 0.0F) {
-                Vector2 interPos = interpolate(travelDuration / TRAVEL_DURATION);
-                player.waterbending.override = interPos.cpy();
-                travelDuration -= Gdx.graphics.getDeltaTime();
-                if (travelDuration <= 0.0F) {
-                    startPosition = interPos.cpy();
-                    targetPosition.x = tracePosition.x - (effectWidth / 4.0f) + (HydrologistWaterbendingManager.LINE_WIDTH * 2);
-                    targetPosition.y = tracePosition.y + (effectHeight / 2.0f) - (HydrologistWaterbendingManager.LINE_WIDTH * 2);
-                }
-            } else if (shapeDuration > 0.0F) {
-
-                //separate the duration into 4 segments
-                if (shapeDuration > (SHAPE_DURATION / 4.0f) * 3.0f) {
-                    Vector2 interPos = interpolate((shapeDuration - ((SHAPE_DURATION / 4.0f) * 3.0f)) / (SHAPE_DURATION / 4.0f));
-                    player.waterbending.override = interPos.cpy();
-                    shapeDuration -= Gdx.graphics.getDeltaTime();
-                    if (shapeDuration <= (SHAPE_DURATION / 4.0f) * 3.0f) {
-                        startPosition = interPos.cpy();
-                        targetPosition.x = tracePosition.x + ((effectWidth / 4.0f) * 3.0f) - (HydrologistWaterbendingManager.LINE_WIDTH * 2);
-                        targetPosition.y = tracePosition.y;
-                    }
-
-                //second segment
-                } else if (shapeDuration > (SHAPE_DURATION / 4.0f) * 2.0f) {
-                    Vector2 interPos = interpolate((shapeDuration - (SHAPE_DURATION / 2.0f)) / (SHAPE_DURATION / 4.0f));
-                    player.waterbending.override = interPos.cpy();
-                    shapeDuration -= Gdx.graphics.getDeltaTime();
-                    if (shapeDuration <= (SHAPE_DURATION / 4.0f) * 2.0f) {
+            for (int i = 0; i < SPEED_MULTIPLIER; ++i) {
+                if (travelDuration > 0.0F) {
+                    Vector2 interPos = interpolate(travelDuration / TRAVEL_DURATION);
+                    player.waterbending.override(interPos.cpy());
+                    travelDuration -= Gdx.graphics.getDeltaTime();
+                    if (travelDuration <= 0.0F) {
                         startPosition = interPos.cpy();
                         targetPosition.x = tracePosition.x - (effectWidth / 4.0f) + (HydrologistWaterbendingManager.LINE_WIDTH * 2);
-                        targetPosition.y = tracePosition.y - (effectHeight / 2.0f) + (HydrologistWaterbendingManager.LINE_WIDTH * 2);
+                        targetPosition.y = tracePosition.y + (effectHeight / 2.0f) - (HydrologistWaterbendingManager.LINE_WIDTH * 2);
                     }
+                } else if (shapeDuration > 0.0F) {
 
-                //third segment
-                } else if (shapeDuration > SHAPE_DURATION / 4.0f) {
-                    Vector2 interPos = interpolate((shapeDuration - (SHAPE_DURATION / 4.0f)) / (SHAPE_DURATION / 4.0f));
-                    player.waterbending.override = interPos.cpy();
-                    shapeDuration -= Gdx.graphics.getDeltaTime();
-                    if (shapeDuration <= SHAPE_DURATION / 4.0f) {
-                        startPosition = interPos.cpy();
-                        targetPosition.x = tracePosition.x;
-                        targetPosition.y = tracePosition.y;
-                    }
+                    //separate the duration into 4 segments
+                    if (shapeDuration > (SHAPE_DURATION / 4.0f) * 3.0f) {
+                        Vector2 interPos = interpolate((shapeDuration - ((SHAPE_DURATION / 4.0f) * 3.0f)) / (SHAPE_DURATION / 4.0f));
+                        player.waterbending.override(interPos.cpy());
+                        shapeDuration -= Gdx.graphics.getDeltaTime();
+                        if (shapeDuration <= (SHAPE_DURATION / 4.0f) * 3.0f) {
+                            startPosition = interPos.cpy();
+                            targetPosition.x = tracePosition.x + ((effectWidth / 4.0f) * 3.0f) - (HydrologistWaterbendingManager.LINE_WIDTH * 2);
+                            targetPosition.y = tracePosition.y;
+                        }
 
-                //final segment
-                } else {
-                    Vector2 interPos = interpolate(shapeDuration / (SHAPE_DURATION / 4.0f));
-                    player.waterbending.override = interPos.cpy();
-                    shapeDuration -= Gdx.graphics.getDeltaTime();
-                    if (shapeDuration <= 0.0f) {
-                        startPosition = interPos.cpy();
-                        player.waterbending.doCapture(drawPosition.x, drawPosition.y, effectWidth, effectHeight);
-                        effect = new FreezeEffect(drawPosition, attackTargetPosition, target.hb.cX, ATTACK_DURATION, player);
-                        AbstractDungeon.effectList.add(effect);
+                        //second segment
+                    } else if (shapeDuration > (SHAPE_DURATION / 4.0f) * 2.0f) {
+                        Vector2 interPos = interpolate((shapeDuration - (SHAPE_DURATION / 2.0f)) / (SHAPE_DURATION / 4.0f));
+                        player.waterbending.override(interPos.cpy());
+                        shapeDuration -= Gdx.graphics.getDeltaTime();
+                        if (shapeDuration <= (SHAPE_DURATION / 4.0f) * 2.0f) {
+                            startPosition = interPos.cpy();
+                            targetPosition.x = tracePosition.x - (effectWidth / 4.0f) + (HydrologistWaterbendingManager.LINE_WIDTH * 2);
+                            targetPosition.y = tracePosition.y - (effectHeight / 2.0f) + (HydrologistWaterbendingManager.LINE_WIDTH * 2);
+                        }
+
+                        //third segment
+                    } else if (shapeDuration > SHAPE_DURATION / 4.0f) {
+                        Vector2 interPos = interpolate((shapeDuration - (SHAPE_DURATION / 4.0f)) / (SHAPE_DURATION / 4.0f));
+                        player.waterbending.override(interPos.cpy());
+                        shapeDuration -= Gdx.graphics.getDeltaTime();
+                        if (shapeDuration <= SHAPE_DURATION / 4.0f) {
+                            startPosition = interPos.cpy();
+                            targetPosition.x = tracePosition.x;
+                            targetPosition.y = tracePosition.y;
+                        }
+
+                        //final segment
+                    } else {
+                        Vector2 interPos = interpolate(shapeDuration / (SHAPE_DURATION / 4.0f));
+                        player.waterbending.override(interPos.cpy());
+                        shapeDuration -= Gdx.graphics.getDeltaTime();
+                        if (shapeDuration <= 0.0f) {
+                            startPosition = interPos.cpy();
+                            player.waterbending.doCapture(drawPosition.x, drawPosition.y, effectWidth, effectHeight);
+                            effect = new FreezeEffect(drawPosition, attackTargetPosition, target.hb.cX, ATTACK_DURATION, player);
+                            AbstractDungeon.effectList.add(effect);
+                        }
                     }
+                } else if (returnDuration > 0.0f) {
+                    targetPosition = player.waterCoords;
+                    Vector2 interPos = interpolate(returnDuration / RETURN_DURATION);
+                    player.waterbending.override(interPos.cpy());
+                    returnDuration -= Gdx.graphics.getDeltaTime();
+                    if (returnDuration <= 0.0f) {
+                        effect.goTime = true;
+                    }
+                } else if (effect.doDamage) {
+                    effectFinished = true;
                 }
-            } else if (returnDuration > 0.0f) {
-                targetPosition = player.waterCoords;
-                Vector2 interPos = interpolate(returnDuration / RETURN_DURATION);
-                player.waterbending.override = interPos.cpy();
-                returnDuration -= Gdx.graphics.getDeltaTime();
-                if (returnDuration <= 0.0f) {
-                    effect.goTime = true;
-                }
-            } else if (effect.doDamage) {
-                effectFinished = true;
             }
             return;
         }
