@@ -61,7 +61,7 @@ public class HydrologistWaterbendingManager {
     private float transitionTimer;
 
     //effect control
-    public Vector2 override;
+    private boolean overridden = false;
     private boolean doCapture;
     public TextureRegion capturedTexture;
     private float captureX, captureY, captureWidth, captureHeight;
@@ -147,18 +147,23 @@ public class HydrologistWaterbendingManager {
         effectsMap.put(HydrologistTags.STEAM, new BehaviourPackage(steamUpdater, steamInstructor));
     }
 
-    public void update(Vector2 coords) {
-        Coordinates point = new Coordinates();
-        if (override != null) {
-            point.x = override.x;
-            point.y = override.y;
-            override = null;
-        } else {
-            point.x = coords.x;
-            point.y = coords.y;
-        }
+    public void override(Vector2 coords) {
+        Coordinates point = new Coordinates(coords.x, coords.y);
         spline.add(point);
         times.put(point, Gdx.graphics.getDeltaTime());
+        overridden = true;
+    }
+
+    public void update(Vector2 coords) {
+        if (!overridden) {
+            Coordinates point = new Coordinates();
+            point.x = coords.x;
+            point.y = coords.y;
+            spline.add(point);
+            times.put(point, Gdx.graphics.getDeltaTime());
+        } else {
+            overridden = false;
+        }
         float length = 0.0f;
         for (float time : times.values()) {
             length += time;
