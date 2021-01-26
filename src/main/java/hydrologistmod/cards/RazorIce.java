@@ -25,7 +25,7 @@ public class RazorIce extends AbstractHydrologistCard implements TransmutableCar
     public static final String IMG_PATH = "hydrologistmod/images/cards/RazorIce.png";
     private static final int COST = 0;
     private static final int DAMAGE = 3;
-    private static final int BLOCK = 3;
+    private static final int BLOCK = 2;
     private static final int UPGRADE_DAMAGE = 1;
     private static final int UPGRADE_BLOCK = 1;
 
