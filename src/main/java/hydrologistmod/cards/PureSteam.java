@@ -25,8 +25,8 @@ public class PureSteam extends AbstractHydrologistCard implements TransmutableCa
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/PureSteam.png";
     private static final int COST = 0;
-    private static final int DAMAGE_AMT = 4;
-    private static final int UPGRADE_DAMAGE = 2;
+    private static final int DAMAGE_AMT = 3;
+    private static final int UPGRADE_DAMAGE = 3;
     private static final int CARD_DRAW = 1;
 
     public PureSteam() {
