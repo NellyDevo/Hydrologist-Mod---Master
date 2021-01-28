@@ -65,7 +65,7 @@ public class HydrologistDamageAction extends AbstractGameAction {
                     }
                 }
                 generateParticle(tag, target);
-                CardCrawlGame.sound.play(sfxMap.get(tag).get(MathUtils.random(sfxMap.get(tag).size())));
+                CardCrawlGame.sound.play(sfxMap.get(tag).get(MathUtils.random(sfxMap.get(tag).size() - 1)));
             }
 
             if (duration < startDuration / 2 && !secondParticle) {
@@ -113,7 +113,7 @@ public class HydrologistDamageAction extends AbstractGameAction {
         target.tint.changeColor(Color.WHITE.cpy());
         target.damage(info);
         generateParticle(tag, target);
-        CardCrawlGame.sound.play(sfxMap.get(tag).get(MathUtils.random(sfxMap.get(tag).size())));
+        CardCrawlGame.sound.play(sfxMap.get(tag).get(MathUtils.random(sfxMap.get(tag).size() - 1)));
         if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
             AbstractDungeon.actionManager.clearPostCombatActions();
         }
