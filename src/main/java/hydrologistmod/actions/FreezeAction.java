@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
@@ -68,6 +69,7 @@ public class FreezeAction extends AbstractGameAction {
                     player.waterbending.override(interPos.cpy());
                     travelDuration -= Gdx.graphics.getDeltaTime();
                     if (travelDuration <= 0.0F) {
+                        CardCrawlGame.sound.play("hydrologistmod:ICE_CRACK");
                         startPosition = interPos.cpy();
                         targetPosition.x = tracePosition.x - (effectWidth / 4.0f) + (HydrologistWaterbendingManager.LINE_WIDTH * 2);
                         targetPosition.y = tracePosition.y + (effectHeight / 2.0f) - (HydrologistWaterbendingManager.LINE_WIDTH * 2);
