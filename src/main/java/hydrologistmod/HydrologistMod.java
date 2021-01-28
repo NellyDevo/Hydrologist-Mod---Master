@@ -273,6 +273,18 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         BaseMod.addAudio("hydrologistmod:STEAM", "hydrologistmod/sfx/Steam_SFX.ogg");
         BaseMod.addAudio("hydrologistmod:ICE_CRACK", "hydrologistmod/sfx/Ice_Crack_SFX.ogg");
         BaseMod.addAudio("hydrologistmod:STEAM_LOOP", "hydrologistmod/sfx/Steam_Loop_SFX.ogg");
+        BaseMod.addAudio("hydrologistmod:WATER_IMPACT_1", "hydrologistmod/sfx/Water_Impact_SFX_1.ogg");
+        BaseMod.addAudio("hydrologistmod:WATER_IMPACT_2", "hydrologistmod/sfx/Water_Impact_SFX_2.ogg");
+        BaseMod.addAudio("hydrologistmod:WATER_IMPACT_3", "hydrologistmod/sfx/Water_Impact_SFX_3.ogg");
+        BaseMod.addAudio("hydrologistmod:ICE_IMPACT_1", "hydrologistmod/sfx/Ice_Impact_SFX_1.ogg");
+        BaseMod.addAudio("hydrologistmod:ICE_IMPACT_2", "hydrologistmod/sfx/Ice_Impact_SFX_2.ogg");
+        BaseMod.addAudio("hydrologistmod:ICE_IMPACT_3", "hydrologistmod/sfx/Ice_Impact_SFX_3.ogg");
+        BaseMod.addAudio("hydrologistmod:STEAM_IMPACT_1", "hydrologistmod/sfx/Steam_Impact_SFX_1.ogg");
+        BaseMod.addAudio("hydrologistmod:STEAM_IMPACT_2", "hydrologistmod/sfx/Steam_Impact_SFX_2.ogg");
+        BaseMod.addAudio("hydrologistmod:STEAM_IMPACT_3", "hydrologistmod/sfx/Steam_Impact_SFX_3.ogg");
+        BaseMod.addAudio("hydrologistmod:CRYSTAL_SPEAR", "hydrologistmod/sfx/Crystal_Spear_SFX.ogg");
+        BaseMod.addAudio("hydrologistmod:TIDAL_WAVE", "hydrologistmod/sfx/Tidal_Wave_SFX.ogg");
+        BaseMod.addAudio("hydrologistmod:ENCAPSULATING_ICE", "hydrologistmod/sfx/Ice_Shell_Formation_SFX.ogg");
     }
 
     @Override
