@@ -78,9 +78,7 @@ public class HydrologistCharacter extends CustomPlayer {
 
     @Override
     public void renderPlayerImage(SpriteBatch sb) {
-        sr.setPremultipliedAlpha(false);
         super.renderPlayerImage(sb);
-        sr.setPremultipliedAlpha(true);
         waterCoords.set(waterBone.getWorldX() + skeleton.getX(), waterBone.getWorldY() + skeleton.getY());
         waterbending.update(waterCoords);
         waterbending.render(sb);
