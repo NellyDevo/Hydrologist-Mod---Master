@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hydrologistmod.character.HydrologistCharacter;
 
@@ -17,6 +18,7 @@ public class FreezeEffect extends AbstractGameEffect {
     private HydrologistCharacter player;
     public boolean doDamage = false;
     public boolean goTime = false;
+    private boolean soundPlayed = false;
 
     public FreezeEffect(Vector2 startPosition, Vector2 targetPosition, float monsterX, float duration, HydrologistCharacter player) {
         this.startPosition = startPosition.cpy();
@@ -30,6 +32,10 @@ public class FreezeEffect extends AbstractGameEffect {
     @Override
     public void update() {
         if (goTime) {
+            if (!soundPlayed) {
+                CardCrawlGame.sound.play("hydrologistmod:CRYSTAL_SPEAR");
+                soundPlayed = true;
+            }
             effectDuration -= Gdx.graphics.getDeltaTime();
             drawPosition.x = Interpolation.linear.apply(targetPosition.x, startPosition.x, effectDuration / EFFECT_DURATION);
             drawPosition.y = Interpolation.linear.apply(targetPosition.y, startPosition.y, effectDuration / EFFECT_DURATION);

@@ -45,7 +45,7 @@ public class EncapsulatingIceEffect extends AbstractGameEffect {
     public void update() {
         if (duration > 0.0f) {
             if (!soundPlayed) {
-                CardCrawlGame.sound.playV("hydrologistmod:ICE", 3.0f);
+                CardCrawlGame.sound.play("hydrologistmod:ENCAPSULATING_ICE");
                 soundPlayed = true;
             }
             offsetX = Interpolation.linear.apply(0.0f, iceImg.getRegionWidth() * 0.75f, (startingDuration - duration) / startingDuration);
