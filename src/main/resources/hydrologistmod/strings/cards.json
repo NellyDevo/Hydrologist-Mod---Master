@@ -419,6 +419,14 @@
     "DESCRIPTION": "Whenever you would lose HP, lose !M! less. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": ""
   },
+  "hydrologistmod:StaticIce": {
+    "NAME": "Static Ice",
+    "DESCRIPTION": "hydrologistmod:Transmute a card. NL hydrologistmod:Adaptive !hydrologistmod:A!",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "hydrologistmod:Transmute a card. NL "
+    ]
+  },
   "hydrologistmod:SteadyTide": {
     "NAME": "Steady Tide",
     "DESCRIPTION": "hydrologistmod:Flow. NL Next turn, draw an additional extra card for each card discarded this way.",
