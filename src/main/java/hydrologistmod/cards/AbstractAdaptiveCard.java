@@ -107,8 +107,8 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
     public void calculateCardDamage(AbstractMonster mo) {
         adaptiveNumber = baseAdaptiveNumber;
         ArrayList<AbstractCard> list = AbstractDungeon.actionManager.cardsPlayedThisCombat;
-        if (list.size() != 0) {
-            AbstractCard card = list.get(list.size() - 1);
+        if (list.size() > 1) {
+            AbstractCard card = list.get(list.size() - 2);
             if (card.hasTag(HydrologistTags.ICE)) {
                 rawDescription = getDescription() + EXTENDED_DESCRIPTION[1];
                 initializeDescription();
