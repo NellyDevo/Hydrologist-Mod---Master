@@ -1,5 +1,6 @@
 package hydrologistmod.cards;
 
+import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -37,7 +38,17 @@ public class Blizzard extends AbstractAdaptiveCard implements TransmutableCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         super.use(p, m);
-        CardModifierManager.addModifier(this, new AdaptiveEffect(this, true, 1));
+        AbstractCard card = this.makeStatEquivalentCopy();
+        ArrayList<AbstractExtraEffectModifier> toRemove = new ArrayList<>();
+        for (AbstractCardModifier mod : CardModifierManager.modifiers(card)) {
+            if (mod instanceof AbstractExtraEffectModifier) {
+                toRemove.add((AbstractExtraEffectModifier)mod);
+            }
+        }
+        for (AbstractExtraEffectModifier mod : toRemove) {
+            CardModifierManager.removeSpecificModifier(card, mod, true);
+        }
+        CardModifierManager.addModifier(this, new AdaptiveEffect(card, true, 1));
     }
 
     @Override
@@ -61,7 +72,17 @@ public class Blizzard extends AbstractAdaptiveCard implements TransmutableCard {
     @Override
     public ArrayList<AbstractExtraEffectModifier> getMutableAbilities() {
         ArrayList<AbstractExtraEffectModifier> retVal = new ArrayList<>();
-        retVal.add(new AdaptiveEffect(this, true, 1));
+        AbstractCard card = this.makeStatEquivalentCopy();
+        ArrayList<AbstractExtraEffectModifier> toRemove = new ArrayList<>();
+        for (AbstractCardModifier mod : CardModifierManager.modifiers(card)) {
+            if (mod instanceof AbstractExtraEffectModifier) {
+                toRemove.add((AbstractExtraEffectModifier)mod);
+            }
+        }
+        for (AbstractExtraEffectModifier mod : toRemove) {
+            CardModifierManager.removeSpecificModifier(card, mod, true);
+        }
+        retVal.add(new AdaptiveEffect(card, true, 1));
         return retVal;
     }
 }
