@@ -200,8 +200,11 @@
   },
   "hydrologistmod:Hail": {
     "NAME": "Hail",
-    "DESCRIPTION": "Deal !D! damage. NL Increase the damage of ALL *Ice cards by !M! this combat.",
-    "UPGRADE_DESCRIPTION": ""
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Adaptive !hydrologistmod:A!.",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! damage. NL "
+    ]
   },
   "hydrologistmod:HeatAndPressure": {
     "NAME": "Heat and Pressure",
