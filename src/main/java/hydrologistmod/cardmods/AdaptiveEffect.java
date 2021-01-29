@@ -116,7 +116,7 @@ public class AdaptiveEffect extends AbstractExtraEffectModifier {
 
     @Override
     public boolean shouldRenderValue() {
-        return true;
+        return (card != null && card.mode != AbstractAdaptiveCard.Mode.NONE);
     }
 
     @Override
