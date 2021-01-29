@@ -29,13 +29,16 @@ public class AdaptiveEffect extends AbstractExtraEffectModifier {
             card = null;
             System.out.println("ERROR: sent a non-adaptive card to AdaptiveEffect");
         }
+        setValues();
     }
 
     @Override
     protected void setValues() {
-        value = card.adaptiveNumber;
-        baseValue = card.baseAdaptiveNumber;
-        isValueModified = card.isAdaptiveNumberModified;
+        if (card != null) {
+            value = card.adaptiveNumber;
+            baseValue = card.baseAdaptiveNumber;
+            isValueModified = card.isAdaptiveNumberModified;
+        }
     }
 
     @Override
@@ -119,21 +122,25 @@ public class AdaptiveEffect extends AbstractExtraEffectModifier {
     @Override
     public String addExtraText(String rawDescription, AbstractCard c) {
         String s;
-        switch (card.mode) {
-            case ICE:
-                s = "hydrologistmod:Adaptive: apply " + key + " hydrologistmod:Cold";
-                break;
-            case WATER:
-                s = "hydrologistmod:Adaptive: gain " + key + " Block";
-                break;
-            case STEAM:
-                s = "hydrologistmod:Adaptive: apply " + key + " hydrologistmod:Heat";
-                break;
-            default:
-                s = "hydrologistmod:Adaptive " + key;
-                break;
+        if (card != null) {
+            switch (card.mode) {
+                case ICE:
+                    s = "hydrologistmod:Adaptive: apply " + key + " hydrologistmod:Cold";
+                    break;
+                case WATER:
+                    s = "hydrologistmod:Adaptive: gain " + key + " Block";
+                    break;
+                case STEAM:
+                    s = "hydrologistmod:Adaptive: apply " + key + " hydrologistmod:Heat";
+                    break;
+                default:
+                    s = "hydrologistmod:Adaptive " + key;
+                    break;
+            }
+        } else {
+            s = "hydrologistmod:Adaptive " + key;
         }
-        if (amount == 1 || card.mode == AbstractAdaptiveCard.Mode.NONE) {
+        if (amount == 1 || card == null || card.mode == AbstractAdaptiveCard.Mode.NONE) {
             s += ".";
         } else {
             s += " " + amount + " times.";
