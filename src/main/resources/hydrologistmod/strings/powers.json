@@ -34,17 +34,6 @@
       " HP."
     ]
   },
-  "hydrologistmod:CondensationPower": {
-    "NAME": "Condensation",
-    "DESCRIPTIONS": ["If your next card played is a #yWater card, draw #b", " cards."]
-  },
-  "hydrologistmod:CrystallizationPower": {
-    "NAME": "Crystallization",
-    "DESCRIPTIONS": [
-      "If your next card played is an #yIce card, transmute a card in your hand. It gains #b",
-      " extra #yPurity."
-    ]
-  },
   "hydrologistmod:DeepFreezePower": {
     "NAME": "Deep Freeze",
     "DESCRIPTIONS": ["Whenever you apply #yCold, apply #b", " additional #yCold."]
@@ -60,10 +49,6 @@
   "hydrologistmod:EndothermicReactionsPower": {
     "NAME": "Endothermic Reactions",
     "DESCRIPTIONS": ["Whenever you #yTransmute a card, apply #b", " #yCold to ALL enemies."]
-  },
-  "hydrologistmod:EvaporationPower": {
-    "NAME": "Evaporation",
-    "DESCRIPTIONS": ["If your next card played is a #ySteam card, apply #b", " #yHeat to ALL enemies."]
   },
   "hydrologistmod:ExothermicReactionsPower": {
     "NAME": "Exothermic Reactions",
@@ -99,10 +84,6 @@
     "NAME": "Icy Floe",
     "DESCRIPTIONS": ["Whenever you #yFlow, ", "draw #b", " cards.", "draw a card."]
   },
-  "hydrologistmod:LiquidationPower": {
-    "NAME": "Liquidation",
-    "DESCRIPTIONS": ["If your next card played is a #yWater card, gain #b", " #yBlock."]
-  },
   "hydrologistmod:PneumaticsPower": {
     "NAME": "Pneumatics",
     "DESCRIPTIONS": ["At the start of next turn, #yFlow.", "At the start of the next #b", " turns, #yFlow."]
@@ -123,10 +104,6 @@
     "NAME": "River Of Time",
     "DESCRIPTIONS": ["Your next #ySwappable card is also played Swapped.", "Your next ", " #ySwappable cards are also played Swapped."]
   },
-  "hydrologistmod:SolidificationPower": {
-    "NAME": "Solidification",
-    "DESCRIPTIONS": ["If your next card played is an #yIce card, apply #b", " #yCold to ALL enemies."]
-  },
   "hydrologistmod:StagnantCloakPower": {
     "NAME": "Stagnant Cloak",
     "DESCRIPTIONS": ["Whenever you would lose HP, lose #b", " less."]
@@ -134,10 +111,6 @@
   "hydrologistmod:SteamEnginePower": {
     "NAME": "Steam Engine",
     "DESCRIPTIONS": ["The first #yCorporeal card you play each turn is played twice.", "The first #b", " #yCorporeal cards you play each turn are played twice."]
-  },
-  "hydrologistmod:SublimationPower": {
-    "NAME": "Sublimation",
-    "DESCRIPTIONS": ["If your next card played is a #ySteam card, deal #b", " damage to ALL enemies."]
   },
   "hydrologistmod:ThermalShockPower": {
     "NAME": "Thermal Shock",
