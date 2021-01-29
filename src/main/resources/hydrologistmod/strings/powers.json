@@ -7,10 +7,6 @@
     "NAME": "Aqueducts",
     "DESCRIPTIONS": ["Whenever you draw an extra card, deal #b", " damage to ALL enemies."]
   },
-  "hydrologistmod:BlizzardPower": {
-    "NAME": "Blizzard",
-    "DESCRIPTIONS": ["Whenever you play an #yIce card, you gain #b", " #yBlock."]
-  },
   "hydrologistmod:BracedFormPower": {
     "NAME": "Braced Form",
     "DESCRIPTIONS": [

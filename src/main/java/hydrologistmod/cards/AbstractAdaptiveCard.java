@@ -144,6 +144,12 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
 
     public abstract String getDescription();
 
+    protected void upgradeAdaptiveNumber(int num) {
+        baseAdaptiveNumber += num;
+        adaptiveNumber = baseAdaptiveNumber;
+        upgradedAdaptiveNumber = true;
+    }
+
     public enum Mode {
         ICE,
         WATER,
