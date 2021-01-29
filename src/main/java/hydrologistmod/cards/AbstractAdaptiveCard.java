@@ -22,6 +22,8 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
 
     public int baseAdaptiveNumber;
     public int adaptiveNumber;
+    public int baseAdaptiveMagicNumber;
+    public int baseAdaptiveBlockNumber;
     public boolean isAdaptiveNumberModified = false;
     public boolean upgradedAdaptiveNumber = false;
     public CardTarget defaultTarget;
@@ -33,6 +35,8 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
         defaultTarget = target;
         baseAdaptiveNumber = adaptiveNumber = adaptiveAmount;
+        baseAdaptiveBlockNumber = adaptiveAmount * 2;
+        baseAdaptiveMagicNumber = adaptiveAmount;
     }
 
     @Override
@@ -54,6 +58,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
 
     @Override
     public void applyPowers() {
+        baseAdaptiveNumber = baseAdaptiveMagicNumber;
         adaptiveNumber = baseAdaptiveNumber;
         ArrayList<AbstractCard> list = AbstractDungeon.actionManager.cardsPlayedThisCombat;
         if (list.size() != 0) {
@@ -69,6 +74,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
                 }
             } else if (card.hasTag(HydrologistTags.WATER)) {
                 int tmp = baseBlock;
+                baseAdaptiveNumber = baseAdaptiveBlockNumber;
                 baseBlock = baseAdaptiveNumber * 2;
                 super.applyPowers();
                 baseBlock = tmp;
