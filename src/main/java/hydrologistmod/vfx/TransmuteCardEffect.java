@@ -186,13 +186,13 @@ public class TransmuteCardEffect extends AbstractGameEffect {
                 }
             }
             if (hasIce) {
-                CardCrawlGame.sound.playV("hydrologistmod:ICE", 2.0f);
+                CardCrawlGame.sound.play("hydrologistmod:ICE");
             }
             if (hasWater) {
-                CardCrawlGame.sound.playV("hydrologistmod:WATER", 2.0f);
+                CardCrawlGame.sound.play("hydrologistmod:WATER");
             }
             if (hasSteam) {
-                CardCrawlGame.sound.playV("hydrologistmod:STEAM", 2.0f);
+                CardCrawlGame.sound.play("hydrologistmod:STEAM");
             }
         } else if (duration > 0.0f) {
             //Upkeep: control logic of where the mask is to be placed upon the card(s), based on duration of the effect/action
