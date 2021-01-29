@@ -5,7 +5,7 @@
       "adaptive",
       "adaptive:"
     ],
-    "DESCRIPTION": "An #yAdaptive X effect changes depending on the #ySubtype of the last card played this combat. \n #yIce: apply X #yCold. \n #yWater: gain 2X #yBlock. \n #ySteam: apply X #yHeat."
+    "DESCRIPTION": "An #yAdaptive X effect changes depending on the #ySubtype of the last card played this combat. NL #yIce: apply X #yCold. NL #yWater: gain 2X #yBlock. NL #ySteam: apply X #yHeat."
   },
   "COLD": {
     "PROPER_NAME": "Cold",
