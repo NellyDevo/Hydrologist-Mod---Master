@@ -20,12 +20,12 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 
-    protected int baseAdaptiveNumber;
-    protected int adaptiveNumber;
-    protected boolean isAdaptiveNumberModified = false;
-    protected boolean upgradedAdaptiveNumber = false;
-    protected CardTarget defaultTarget;
-    protected Mode mode;
+    public int baseAdaptiveNumber;
+    public int adaptiveNumber;
+    public boolean isAdaptiveNumberModified = false;
+    public boolean upgradedAdaptiveNumber = false;
+    public CardTarget defaultTarget;
+    public Mode mode;
 
     public AbstractAdaptiveCard(String id, String name, String img, int cost, String rawDescription,
                                    AbstractCard.CardType type, AbstractCard.CardColor color,
@@ -69,7 +69,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
                 }
             } else if (card.hasTag(HydrologistTags.WATER)) {
                 int tmp = baseBlock;
-                baseBlock = baseAdaptiveNumber;
+                baseBlock = baseAdaptiveNumber * 2;
                 super.applyPowers();
                 baseBlock = tmp;
                 adaptiveNumber = block;
@@ -144,7 +144,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
 
     public abstract String getDescription();
 
-    protected enum Mode {
+    public enum Mode {
         ICE,
         WATER,
         STEAM,
