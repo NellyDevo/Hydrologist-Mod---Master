@@ -2,12 +2,14 @@ package hydrologistmod.cardmods;
 
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.helpers.DynamicDynamicVariableManager;
 
 @AbstractCardModifier.SaveIgnore
@@ -19,7 +21,7 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
     private VariableType type;
     protected String key;
     public boolean isMutable;
-    protected int amount = 1;
+    protected int amount;
 
     public AbstractExtraEffectModifier(AbstractCard card, VariableType type, boolean isMutable, int times) {
         attachedCard = card.makeStatEquivalentCopy();
@@ -53,7 +55,18 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
         setValues();
     }
 
-    private void setValues() {
+    public void onCalculateAttachedCardDamage(AbstractCard card, AbstractMonster mo) {
+        CardModifierManager.removeAllModifiers(attachedCard, true);
+        for (AbstractCardModifier mod : CardModifierManager.modifiers(card)) {
+            if (!(mod instanceof AbstractExtraEffectModifier)) {
+                CardModifierManager.addModifier(attachedCard, mod.makeCopy());
+            }
+        }
+        attachedCard.calculateCardDamage(mo);
+        setValues();
+    }
+
+    protected void setValues() {
         switch(type) {
             case DAMAGE:
                 value = attachedCard.damage;
@@ -111,5 +124,19 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
 
     protected void addToBot(AbstractGameAction action) {
         AbstractDungeon.actionManager.addToBottom(action);
+    }
+
+    @SpirePatch(
+            clz = AbstractCard.class,
+            method = "calculateCardDamage"
+    )
+    public static class EffectModifierCalculateCardDamage {
+        public static void Postfix(AbstractCard __instance, AbstractMonster mo) {
+            for (AbstractCardModifier mod : CardModifierManager.modifiers(__instance)) {
+                if (mod instanceof AbstractExtraEffectModifier) {
+                    ((AbstractExtraEffectModifier)mod).onCalculateAttachedCardDamage(__instance, mo);
+                }
+            }
+        }
     }
 }
