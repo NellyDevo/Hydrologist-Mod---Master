@@ -42,7 +42,7 @@ public class Debilitate extends AbstractHydrologistCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAllEnemiesAction(p, multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE, true));
         for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            addToBot(new ApplyPowerAction(mo, p, new ThermalShockPower(m, p, magicNumber), magicNumber));
+            addToBot(new ApplyPowerAction(mo, p, new ThermalShockPower(mo, p, magicNumber), magicNumber));
         }
     }
 
