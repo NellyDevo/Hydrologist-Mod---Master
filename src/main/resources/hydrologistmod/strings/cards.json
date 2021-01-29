@@ -427,6 +427,15 @@
       "hydrologistmod:Transmute a card. NL "
     ]
   },
+  "hydrologistmod:StaticWater": {
+    "NAME": "Static Water",
+    "DESCRIPTION": "hydrologistmod:Adaptive !hydrologistmod:A!",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "",
+      "note: the above is supposed to be blank"
+    ]
+  },
   "hydrologistmod:SteadyTide": {
     "NAME": "Steady Tide",
     "DESCRIPTION": "hydrologistmod:Flow. NL Next turn, draw an additional extra card for each card discarded this way.",
