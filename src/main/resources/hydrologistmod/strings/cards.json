@@ -320,8 +320,11 @@
   },
   "hydrologistmod:PureWater": {
     "NAME": "Pure Water",
-    "DESCRIPTION": "hydrologistmod:Mutable: hydrologistmod:Flow. NL hydrologistmod:Mutable: Draw a card.",
-    "UPGRADE_DESCRIPTION": "hydrologistmod:Mutable: Draw a card. NL hydrologistmod:Mutable: hydrologistmod:Flow."
+    "DESCRIPTION": "hydrologistmod:Mutable: Draw a card. NL hydrologistmod:Mutable: hydrologistmod:Adaptive !hydrologistmod:A!.",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "hydrologistmod:Mutable: Draw a card. NL hydrologistmod:Mutable: "
+    ]
   },
   "hydrologistmod:Purify": {
     "NAME": "Purify",
