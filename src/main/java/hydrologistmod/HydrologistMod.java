@@ -30,6 +30,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import hydrologistmod.cards.AbstractAdaptiveCard;
 import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.helpers.DynamicDynamicVariableManager;
 import hydrologistmod.interfaces.CorporealRelevantObject;
@@ -133,6 +134,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     @Override
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new DynamicDynamicVariableManager());
+        BaseMod.addDynamicVariable(new AbstractAdaptiveCard.AdaptiveVariable());
         try {
             autoAddCards();
         } catch (URISyntaxException | IllegalAccessException | InstantiationException | NotFoundException | ClassNotFoundException e) {
