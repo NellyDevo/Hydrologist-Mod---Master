@@ -153,6 +153,7 @@ public class AdaptiveEffect extends AbstractExtraEffectModifier {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
+        super.onInitialApplication(card);
         defaultTarget = card.target;
     }
 
