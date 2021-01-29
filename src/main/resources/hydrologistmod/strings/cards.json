@@ -41,10 +41,10 @@
   },
   "hydrologistmod:Blizzard": {
     "NAME": "Blizzard",
-    "DESCRIPTION": "This card gains \" hydrologistmod:Mutable: hydrologistmod:Adaptive !hydrologistmod:A!\". NL hydrologistmod:Mutable: hydrologistmod:Adaptive !hydrologistmod:A!.",
+    "DESCRIPTION": "This card gains #y\"Mutable: hydrologistmod:Adaptive !hydrologistmod:A!\". NL hydrologistmod:Mutable: hydrologistmod:Adaptive !hydrologistmod:A!.",
     "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
-      "This card gains \"hydrologistmod:Mutable: Adaptive !hydrologistmod:A!\". NL hydrologistmod:Mutable: "
+      "This card gains #y\"Mutable: hydrologistmod:Adaptive !hydrologistmod:A!\". NL hydrologistmod:Mutable: "
     ]
   },
   "hydrologistmod:BracedForm": {
