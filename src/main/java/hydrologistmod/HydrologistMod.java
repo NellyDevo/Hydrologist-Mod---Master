@@ -31,6 +31,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.cards.AbstractAdaptiveCard;
+import hydrologistmod.cards.AbstractHydrologistCard;
 import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.helpers.DynamicDynamicVariableManager;
 import hydrologistmod.interfaces.CorporealRelevantObject;
@@ -135,57 +136,10 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new DynamicDynamicVariableManager());
         BaseMod.addDynamicVariable(new AbstractAdaptiveCard.AdaptiveVariable());
-        try {
-            autoAddCards();
-        } catch (URISyntaxException | IllegalAccessException | InstantiationException | NotFoundException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void autoAddCards()
-            throws URISyntaxException, IllegalAccessException, InstantiationException, NotFoundException, ClassNotFoundException
-    {
-        logger.info("auto-adding cards to basemod...");
-        ClassFinder finder = new ClassFinder();
-        URL url = HydrologistMod.class.getProtectionDomain().getCodeSource().getLocation();
-        finder.add(new File(url.toURI()));
-
-        ClassFilter filter =
-                new AndClassFilter(
-                        new NotClassFilter(new InterfaceOnlyClassFilter()),
-                        new NotClassFilter(new AbstractClassFilter()),
-                        new ClassModifiersClassFilter(Modifier.PUBLIC),
-                        new CardFilter()
-                );
-        Collection<ClassInfo> foundClasses = new ArrayList<>();
-        finder.findClasses(foundClasses, filter);
-
-        for (ClassInfo classInfo : foundClasses) {
-            CtClass cls = Loader.getClassPool().get(classInfo.getClassName());
-            if (cls.hasAnnotation(CardIgnore.class)) {
-                continue;
-            }
-            boolean isCard = false;
-            CtClass superCls = cls;
-            while (superCls != null) {
-                superCls = superCls.getSuperclass();
-                if (superCls == null) {
-                    break;
-                }
-                if (superCls.getName().equals(AbstractCard.class.getName())) {
-                    isCard = true;
-                    break;
-                }
-            }
-            if (!isCard) {
-                continue;
-            }
-            System.out.println(classInfo.getClassName());
-            AbstractCard card = (AbstractCard) Loader.getClassPool().getClassLoader().loadClass(cls.getName()).newInstance();
-            BaseMod.addCard(card);
-            logger.info("Successfully added " + card);
-            UnlockTracker.unlockCard(card.cardID);
-        }
+        new AutoAdd("HydrologistMod")
+                .packageFilter(AbstractHydrologistCard.class)
+                .setDefaultSeen(true)
+                .cards();
     }
 
     @Override
@@ -215,6 +169,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         ModPanel settingsPanel = new ModPanel();
         BaseMod.registerModBadge(badgeImg, "The Hydrologist Mod", "Johnny Devo", "Adds a new character to the game: The Hydrologist.", settingsPanel);
         HydrologistParticle.initializeRegions();
+
         CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInfo() {
             @Override
             public boolean test(AbstractCard card) {
@@ -234,6 +189,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
                 return "HydrologistMod:CorporealGlow";
             }
         });
+
         uiStrings = CardCrawlGame.languagePack.getUIString(ID);
         TEXT = uiStrings.TEXT;
         EXTRA_TEXT = uiStrings.EXTRA_TEXT;
