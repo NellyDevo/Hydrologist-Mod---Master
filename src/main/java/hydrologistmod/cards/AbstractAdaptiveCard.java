@@ -27,7 +27,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
     public boolean isAdaptiveNumberModified = false;
     public boolean upgradedAdaptiveNumber = false;
     public CardTarget defaultTarget;
-    public Mode mode;
+    public Mode mode = Mode.NONE;
 
     public AbstractAdaptiveCard(String id, String name, String img, int cost, String rawDescription,
                                    AbstractCard.CardType type, AbstractCard.CardColor color,
