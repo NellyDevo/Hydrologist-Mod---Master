@@ -41,7 +41,7 @@
   },
   "hydrologistmod:Blizzard": {
     "NAME": "Blizzard",
-    "DESCRIPTION": "This card gains #y\"Mutable: hydrologistmod:Adaptive !hydrologistmod:A!\". NL hydrologistmod:Mutable: hydrologistmod:Adaptive !hydrologistmod:A!.",
+    "DESCRIPTION": "This card gains \"Mutable: Adaptive !hydrologistmod:A!\". NL hydrologistmod:Mutable: hydrologistmod:Adaptive !hydrologistmod:A!.",
     "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
       "This card gains #y\"Mutable: hydrologistmod:Adaptive !hydrologistmod:A!\". NL hydrologistmod:Mutable: "
@@ -84,7 +84,7 @@
   },
   "hydrologistmod:Debilitate": {
     "NAME": "Debilitate",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Apply !M! hydrologistmod:Thermal_Shock to ALL enemies.",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Apply !M! hydrologistmod:Thermal_Shock to ALL enemies. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:DeepFreeze": {

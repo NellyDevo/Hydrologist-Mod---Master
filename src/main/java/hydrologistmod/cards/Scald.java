@@ -37,7 +37,7 @@ public class Scald extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
-        addToTop(new ApplyPowerAction(m, p, new ThermalShockPower(m, p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(m, p, new ThermalShockPower(m, p, magicNumber), magicNumber));
     }
 
     @Override

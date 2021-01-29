@@ -1,5 +1,6 @@
 package hydrologistmod.cards;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -30,6 +31,17 @@ public class EncapsulatingIce extends AbstractHydrologistCard implements Swappab
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new EncapsulatingIceAction(energyOnUse, upgraded, freeToPlayOnce));
+        AbstractCard card = this;
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                AbstractCard c = SwapperHelper.getNextCard(card);
+                if (c != null) {
+                    c.applyPowers();
+                }
+                isDone = true;
+            }
+        });
     }
 
     @Override

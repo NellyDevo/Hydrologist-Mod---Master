@@ -105,45 +105,44 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
+        baseAdaptiveNumber = baseAdaptiveMagicNumber;
         adaptiveNumber = baseAdaptiveNumber;
-        ArrayList<AbstractCard> list = AbstractDungeon.actionManager.cardsPlayedThisCombat;
-        if (list.size() > 1) {
-            AbstractCard card = list.get(list.size() - 2);
-            if (card.hasTag(HydrologistTags.ICE)) {
+        switch (mode) {
+            case ICE:
                 rawDescription = getDescription() + EXTENDED_DESCRIPTION[1];
                 initializeDescription();
-                mode = Mode.ICE;
                 if (defaultTarget == CardTarget.SELF_AND_ENEMY) {
                     target = CardTarget.SELF_AND_ENEMY;
                 } else {
                     target = CardTarget.ENEMY;
                 }
-            } else if (card.hasTag(HydrologistTags.WATER)) {
+                break;
+            case WATER:
                 int tmp = baseBlock;
-                baseBlock = baseAdaptiveNumber;
+                baseAdaptiveNumber = baseAdaptiveBlockNumber;
+                baseBlock = baseAdaptiveNumber * 2;
                 super.calculateCardDamage(mo);
                 baseBlock = tmp;
                 adaptiveNumber = block;
                 isAdaptiveNumberModified = adaptiveNumber != baseAdaptiveNumber;
                 rawDescription = getDescription() + EXTENDED_DESCRIPTION[2];
                 initializeDescription();
-                mode = Mode.WATER;
                 target = defaultTarget;
-            } else if (card.hasTag(HydrologistTags.STEAM)) {
+                break;
+            case STEAM:
                 rawDescription = getDescription() + EXTENDED_DESCRIPTION[3];
                 initializeDescription();
-                mode = Mode.STEAM;
                 if (defaultTarget == CardTarget.SELF_AND_ENEMY) {
                     target = CardTarget.SELF_AND_ENEMY;
                 } else {
                     target = CardTarget.ENEMY;
                 }
-            } else {
+                break;
+            default:
                 rawDescription = getDescription() + EXTENDED_DESCRIPTION[0];
                 initializeDescription();
-                mode = Mode.NONE;
                 target = defaultTarget;
-            }
+                break;
         }
         super.calculateCardDamage(mo);
     }

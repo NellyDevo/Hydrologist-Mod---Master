@@ -34,7 +34,7 @@ public class UnstableBrew extends AbstractPotion {
     @Override
     public void use(AbstractCreature m) {
         AbstractPlayer p = AbstractDungeon.player;
-        addToTop(new ApplyPowerAction(m, p, new ThermalShockPower(m, p, potency), potency));
+        addToBot(new ApplyPowerAction(m, p, new ThermalShockPower(m, p, potency), potency));
     }
 
     @Override

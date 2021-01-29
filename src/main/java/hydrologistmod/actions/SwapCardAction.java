@@ -67,6 +67,7 @@ public class SwapCardAction extends AbstractGameAction {
         card1.flashVfx = null;
         card2.flash();
         card1.applyPowers();
+        card2.applyPowers();
         p.hand.applyPowers();
         p.hand.glowCheck();
         this.isDone = true;
