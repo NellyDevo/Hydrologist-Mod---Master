@@ -1,4 +1,15 @@
 {
+  "hydrologistmod:AbstractAdaptiveCard": {
+    "NAME": "ABSTRAAAAACT",
+    "DESCRIPTION": "Why are you still here?",
+    "UPGRADE_DESCRIPTION": "The below text appears as dynamic effect display for Adaptive cards",
+    "EXTENDED_DESCRIPTION": [
+      "NL hydrologistmod:Adaptive !hydrologistmod:A!.",
+      "NL hydrologistmod:Adaptive: apply !hydrologistmod:A! hydrologistmod:Cold.",
+      "NL hydrologistmod:Adaptive: gain !hydrologistmod:A! Block.",
+      "NL hydrologistmod:Adaptive: apply !hydrologistmod:A! hydrologistmod:Heat."
+    ]
+  },
   "hydrologistmod:AbstractHydrologistCard": {
     "NAME": "ABSTRAAAAACT",
     "DESCRIPTION": "hydrologistmod:Thermal_Shock",
