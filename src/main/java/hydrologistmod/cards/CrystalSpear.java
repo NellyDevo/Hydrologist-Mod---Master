@@ -23,8 +23,9 @@ public class CrystalSpear extends AbstractHydrologistCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String IMG_PATH = "hydrologistmod/images/cards/CrystalSpear.png";
     private static final int COST = 1;
-    private static final int UPGRADED_COST = 0;
     private static final int DAMAGE = 8;
+    private static final int SCALING_AMT = 2;
+    private static final int UPGRADE_SCALING = 1;
 
     public CrystalSpear() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
@@ -32,6 +33,7 @@ public class CrystalSpear extends AbstractHydrologistCard {
                 CardRarity.RARE, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE;
+        magicNumber = baseMagicNumber = SCALING_AMT;
     }
 
     @Override
@@ -41,7 +43,7 @@ public class CrystalSpear extends AbstractHydrologistCard {
 
     @Override
     public void applyPowers() {
-        int i = baseDamage + calculatePurity();
+        int i = baseDamage + (calculatePurity() * magicNumber);
         int tmp = baseDamage;
         baseDamage = i;
         super.applyPowers();
@@ -51,7 +53,7 @@ public class CrystalSpear extends AbstractHydrologistCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {
-        int i = baseDamage + calculatePurity();
+        int i = baseDamage + (calculatePurity() * magicNumber);
         int tmp = baseDamage;
         baseDamage = i;
         super.calculateCardDamage(m);
@@ -83,7 +85,7 @@ public class CrystalSpear extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeMagicNumber(UPGRADE_SCALING);
         }
     }
 }
