@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.Soul;
 import com.megacrit.cardcrawl.cards.SoulGroup;
@@ -20,7 +19,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import hydrologistmod.patches.HydrologistTags;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -180,27 +178,12 @@ public abstract class AbstractHydrologistCard extends CustomCard {
         SpireSuper.call(sb, renderColor, image, x, y);
     }
 
-    private Field renderColorField = null;
-
     private Color getRenderColor() {
-        Color reflectedColor = null;
-        if (renderColorField == null) {
-            try {
-                renderColorField = AbstractCard.class.getDeclaredField("renderColor");
-                renderColorField.setAccessible(true);
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-        }
-        try {
-            reflectedColor = (Color)renderColorField.get(this);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        if (reflectedColor == null) {
+        Color color = ReflectionHacks.getPrivateInherited(this, AbstractHydrologistCard.class, "renderColor");
+        if (color == null) {
             return Color.WHITE.cpy();
         } else {
-            return reflectedColor;
+            return color;
         }
     }
 

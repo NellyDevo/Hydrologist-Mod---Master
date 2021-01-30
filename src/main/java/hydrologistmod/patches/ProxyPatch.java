@@ -27,11 +27,13 @@ public class ProxyPatch {
                 f.setSuperclass(__instance.getClass());
                 f.setFilter(CardProxyHelper.storedFilter);
                 CardProxyHelper.storedFilter = null;
+                AbstractCard tmp = ___card[0];
                 try {
                     ___card[0] = (AbstractCard) f.create(new Class[0], new Object[0], CardProxyHelper.storedHandler);
                 } catch(InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                     System.out.println("ERROR: Proxy class creation failed!");
                     e.printStackTrace();
+                    ___card[0] = tmp;
                 }
                 CardProxyHelper.storedHandler = null;
             }

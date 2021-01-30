@@ -29,7 +29,6 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.cards.AbstractAdaptiveCard;
 import hydrologistmod.cards.AbstractHydrologistCard;
 import hydrologistmod.character.HydrologistCharacter;
@@ -46,22 +45,18 @@ import hydrologistmod.powers.HeatPower;
 import hydrologistmod.powers.ThermalShockPower;
 import hydrologistmod.relics.*;
 import hydrologistmod.vfx.HydrologistParticle;
-import javassist.CtClass;
-import javassist.NotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.clapper.util.classutil.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 import static hydrologistmod.patches.AbstractCardEnum.HYDROLOGIST_CYAN;
 

@@ -1,5 +1,6 @@
 package hydrologistmod.actions;
 
+import basemod.ReflectionHacks;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -118,15 +119,12 @@ public class TransmuteCardAction extends AbstractGameAction {
                     UseCardAction useCardAction = null;
                     for (AbstractGameAction action : AbstractDungeon.actionManager.actions) {
                         if (action instanceof UseCardAction) {
-                            try {
-                                Field targetCardField = UseCardAction.class.getDeclaredField("targetCard");
-                                targetCardField.setAccessible(true);
-                                if (targetCardField.get(action) == playedCard) {
-                                    useCardAction = (UseCardAction) action;
-                                    break;
-                                }
-                            } catch (NoSuchFieldException | IllegalAccessException e) {
-                                e.printStackTrace();
+                            AbstractCard c = ReflectionHacks.getPrivate(action, UseCardAction.class, "targetCard");
+                            if (c != null && c == playedCard) {
+                                useCardAction = (UseCardAction) action;
+                                break;
+                            } else {
+                                System.out.println("ERROR: transmute when played, but UseCardAction not pointing at passed card");
                                 isDone = true;
                                 return;
                             }

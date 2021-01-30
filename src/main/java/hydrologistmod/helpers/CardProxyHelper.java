@@ -22,11 +22,4 @@ public class CardProxyHelper {
         storedFilter = filter;
         return card.makeStatEquivalentCopy();
     }
-//        MethodHandler mi = new MethodHandler() {
-//            public Object invoke(Object self, Method m, Method proceed,
-//                                 Object[] args) throws Throwable {
-//                System.out.println("Name: " + m.getName());
-//                return proceed.invoke(self, args);  // execute the original method.
-//            }
-//        };
 }

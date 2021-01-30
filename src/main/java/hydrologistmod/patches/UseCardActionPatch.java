@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import javassist.CtBehavior;
 
-import java.lang.reflect.Field;
-
 public class UseCardActionPatch {
     @SpirePatch(
             clz = UseCardAction.class,
@@ -33,19 +31,13 @@ public class UseCardActionPatch {
             //if the played card was transmuted, handle separately from regular UseCardAction logic
             if (UseCardActionField.transmuteTargetCard.get(__instance) != null) {
                 AbstractCard newCard = UseCardActionField.transmuteTargetCard.get(__instance);
-                try {
-                    Field targetCardField = UseCardAction.class.getDeclaredField("targetCard");
-                    targetCardField.setAccessible(true);
-                    AbstractCard card = (AbstractCard)targetCardField.get(__instance);
-                    card.freeToPlayOnce = false;
-                    card.isInAutoplay = false;
-                    card.exhaustOnUseOnce = false;
-                    card.dontTriggerOnUseCard = false;
-                    AbstractDungeon.player.limbo.removeCard(card);
-                    targetCardField.set(__instance, newCard);
-                } catch (NoSuchFieldException | IllegalAccessException e) {
-                    e.printStackTrace();
-                }
+                AbstractCard card = ReflectionHacks.getPrivate(__instance, UseCardAction.class, "targetCard");
+                card.freeToPlayOnce = false;
+                card.isInAutoplay = false;
+                card.exhaustOnUseOnce = false;
+                card.dontTriggerOnUseCard = false;
+                AbstractDungeon.player.limbo.removeCard(card);
+                ReflectionHacks.setPrivate(__instance, UseCardAction.class, "targetCard", newCard);
                 AbstractDungeon.player.hand.moveToDiscardPile(newCard);
                 AbstractDungeon.player.limbo.removeCard(newCard);
                 __instance.isDone = true;
