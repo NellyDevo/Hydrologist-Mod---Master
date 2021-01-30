@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.cardmods.LaminarFlowModifier;
+import hydrologistmod.cardmods.TempMagicNumberModifier;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -40,7 +40,7 @@ public class CrystalIce extends AbstractHydrologistCard {
         addToBot(new GainBlockAction(p, p, block));
         AbstractCard pairCard = SwapperHelper.getNextCard(this);
         if (pairCard != null) {
-            CardModifierManager.addModifier(pairCard, new LaminarFlowModifier(block));
+            CardModifierManager.addModifier(pairCard, new TempMagicNumberModifier(block));
         }
     }
 

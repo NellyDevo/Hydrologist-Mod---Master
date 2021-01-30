@@ -4,17 +4,17 @@ import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
-public class LaminarFlowModifier extends AbstractTemporaryCardmod {
+public class TempMagicNumberModifier extends AbstractTemporaryCardmod {
     public static final String ID = "hydrologistmod:LaminarFlowModifier";
     public int increase;
 
-    public LaminarFlowModifier(int increase) {
+    public TempMagicNumberModifier(int increase) {
         this.increase = increase;
     }
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new LaminarFlowModifier(increase);
+        return new TempMagicNumberModifier(increase);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class LaminarFlowModifier extends AbstractTemporaryCardmod {
     @Override
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, ID)) {
-            ((LaminarFlowModifier)CardModifierManager.getModifiers(card, ID).get(0)).increase += increase;
+            ((TempMagicNumberModifier)CardModifierManager.getModifiers(card, ID).get(0)).increase += increase;
             card.baseMagicNumber += increase;
             card.magicNumber = card.baseMagicNumber;
             return false;
