@@ -161,7 +161,8 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
                 e.printStackTrace();
             }
         }
-
+        
+        uiStrings = CardCrawlGame.languagePack.getUIString(ID);
         EXTRA_TEXT = uiStrings.EXTRA_TEXT;
         Texture badgeImg = new Texture("hydrologistmod/images/badge.png");
         ModPanel settingsPanel = new ModPanel();
@@ -188,7 +189,6 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
             }
         });
 
-        uiStrings = CardCrawlGame.languagePack.getUIString(ID);
         TEXT = uiStrings.TEXT;
         settingsPanel.addUIElement(new ModLabel(TEXT[0], 450.0f, 725.0f, settingsPanel, me -> {}));
         ModButton showSubtypeTutorial = new ModButton(325.0f, 675.0f, settingsPanel, button -> {
