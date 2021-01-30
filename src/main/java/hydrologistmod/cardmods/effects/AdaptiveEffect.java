@@ -144,9 +144,7 @@ public class AdaptiveEffect extends AbstractExtraEffectModifier {
         } else {
             s =  TEXT[0] + key + AbstractExtraEffectModifier.TEXT[3];
         }
-        if (card == null || card.mode == AbstractAdaptiveCard.Mode.NONE) {
-            s += AbstractExtraEffectModifier.TEXT[3];
-        } else {
+        if (!(card == null || card.mode == AbstractAdaptiveCard.Mode.NONE)) {
             s = applyTimes(s);
         }
         s = applyMutable(s);
