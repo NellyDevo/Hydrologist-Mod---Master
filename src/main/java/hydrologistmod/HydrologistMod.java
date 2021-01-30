@@ -251,6 +251,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
             }
         } catch (Exception e) {
             System.out.println("Error loading localized keywords for: " + lang);
+            e.printStackTrace();
         }
     }
 
@@ -303,6 +304,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
             }
         } catch (Exception e) {
             System.out.println("Error loading localized strings for: " + lang);
+            e.printStackTrace();
         }
     }
 
