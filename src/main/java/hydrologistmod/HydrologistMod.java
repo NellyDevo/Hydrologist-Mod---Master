@@ -1,10 +1,10 @@
 package hydrologistmod;
 
 import basemod.*;
+import basemod.abstracts.CustomRelic;
 import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -30,6 +30,7 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.cards.AbstractAdaptiveCard;
 import hydrologistmod.cards.AbstractHydrologistCard;
 import hydrologistmod.character.HydrologistCharacter;
@@ -270,28 +271,13 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     @Override
     public void receiveEditRelics() {
-        //starter
-        BaseMod.addRelicToCustomPool(new WaterPouch(), HYDROLOGIST_CYAN);
-
-        //common
-        BaseMod.addRelicToCustomPool(new PreciousNecklace(), HYDROLOGIST_CYAN);
-
-        //uncommon
-        BaseMod.addRelicToCustomPool(new LoyalBoomerang(), HYDROLOGIST_CYAN);
-        BaseMod.addRelicToCustomPool(new TwinBlades(), HYDROLOGIST_CYAN);
-
-        //rare
-        BaseMod.addRelicToCustomPool(new GliderStaff(), HYDROLOGIST_CYAN);
-        BaseMod.addRelicToCustomPool(new CursedCabbage(), HYDROLOGIST_CYAN);
-        BaseMod.addRelicToCustomPool(new SpiritMask(), HYDROLOGIST_CYAN);
-
-        //boss
-        BaseMod.addRelicToCustomPool(new MysticalPouch(), HYDROLOGIST_CYAN); //starter upgrade
-        BaseMod.addRelicToCustomPool(new SpinningStones(), HYDROLOGIST_CYAN); //energy
-        BaseMod.addRelicToCustomPool(new TranquilTeacup(), HYDROLOGIST_CYAN); //special utility
-
-        //shop
-        BaseMod.addRelicToCustomPool(new DiscardedSole(), HYDROLOGIST_CYAN);
+        new AutoAdd("HydrologistMod")
+                .packageFilter(CursedCabbage.class)
+                .setDefaultSeen(true)
+                .any(CustomRelic.class, (info, relic) -> {
+                    BaseMod.addRelicToCustomPool(relic, HYDROLOGIST_CYAN);
+                    UnlockTracker.markRelicAsSeen(relic.relicId);
+                });
     }
 
     @Override
