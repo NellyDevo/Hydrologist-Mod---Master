@@ -1,5 +1,6 @@
 package hydrologistmod.relics;
 
+import basemod.abstracts.AbstractCardModifier;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
 import basemod.helpers.CardModifierManager;
@@ -18,8 +19,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import hydrologistmod.cardmods.AbstractTemporaryCardmod;
+import hydrologistmod.cardmods.effects.AbstractExtraEffectModifier;
 import hydrologistmod.helpers.SwapperHelper;
 import javassist.CtBehavior;
+
+import java.util.ArrayList;
 
 public class WaterPouch extends CustomRelic implements CustomSavable<WaterPouch.SaveInfo> {
     public static final String ID = "hydrologistmod:WaterPouch";
@@ -51,7 +56,15 @@ public class WaterPouch extends CustomRelic implements CustomSavable<WaterPouch.
             AbstractCard tmp = card.makeSameInstanceOf();
             AbstractCard c = tmp;
             do {
-                CardModifierManager.removeAllModifiers(c, false);
+                ArrayList<AbstractCardModifier> toRemove = new ArrayList<>();
+                for (AbstractCardModifier mod : CardModifierManager.modifiers(c)) {
+                    if (mod instanceof AbstractExtraEffectModifier || mod instanceof AbstractTemporaryCardmod) {
+                        toRemove.add(mod);
+                    }
+                }
+                for (AbstractCardModifier mod : toRemove) {
+                    CardModifierManager.removeSpecificModifier(c, mod, true);
+                }
             } while (SwapperHelper.isCardSwappable(c) && (c = SwapperHelper.getNextCard(c)) != tmp);
             storedCard = tmp;
         } else {
