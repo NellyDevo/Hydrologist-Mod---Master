@@ -1,0 +1,55 @@
+{
+  "hydrologistmod:AbstractExtraEffectModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "hydrologistmod:Mutable: ",
+      " ",
+      " times.",
+      "."
+    ]
+  },
+  "hydrologistmod:AdaptiveEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "hydrologistmod:Adaptive ",
+      "hydrologistmod:Adaptive: apply ",
+      "hydrologistmod:Adaptive: gain ",
+      " hydrologistmod:Cold",
+      " Block",
+      " hydrologistmod:Heat"
+    ]
+  },
+  "hydrologistmod:DamageEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Deal ",
+      " damage"
+    ]
+  },
+  "hydrologistmod:DrawCardEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Draw a card.",
+      "Draw ",
+      " cards."
+    ]
+  },
+  "hydrologistmod:ExtraPurityEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "When hydrologistmod:Transmuted, this gains ",
+      " hydrologistmod:Purity."
+    ]
+  },
+  "hydrologistmod:GainBlockEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Gain ",
+      " Block"
+    ]
+  },
+  "hydrologistmod:RaincloudModifier": {
+    "EXTENDED_DESCRIPTION": [
+      " NL hydrologistmod:Swappable."
+    ]
+  },
+  "hydrologistmod:TransmuteSelfEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "hydrologistmod:Transmute this card."
+    ]
+  }
+}

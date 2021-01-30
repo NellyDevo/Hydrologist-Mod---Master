@@ -6,12 +6,16 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 
 import java.util.ArrayList;
 
 @AbstractCardModifier.SaveIgnore
 public class GainBlockEffect extends AbstractExtraEffectModifier {
-    public static final String ID = "hydrologistmod:GainBlockEffect";
+    private static final String ID = "hydrologistmod:GainBlockEffect";
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    private static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
 
     public GainBlockEffect(AbstractCard card, boolean isMutable, int times) {
         super(card, VariableType.BLOCK, isMutable, times);
@@ -27,15 +31,9 @@ public class GainBlockEffect extends AbstractExtraEffectModifier {
 
     @Override
     public String addExtraText(String rawDescription, AbstractCard card) {
-        String s = "Gain " + key + " Block";
-        if (amount == 1) {
-            s += ".";
-        } else {
-            s += " " + amount + " times.";
-        }
-        if (isMutable) {
-            s = "hydrologistmod:Mutable: " + s;
-        }
+        String s = TEXT[0] + key + TEXT[1];
+        s = applyTimes(s);
+        s = applyMutable(s);
         return s + " NL " + rawDescription;
     }
 

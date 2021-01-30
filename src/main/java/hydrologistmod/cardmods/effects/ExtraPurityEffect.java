@@ -5,13 +5,17 @@ import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import hydrologistmod.cardmods.PurityModifier;
 
 import java.util.ArrayList;
 
 @AbstractCardModifier.SaveIgnore
 public class ExtraPurityEffect extends AbstractExtraEffectModifier {
-    public static final String ID = "hydrologistmod:ExtraPurityEffect";
+    private static final String ID = "hydrologistmod:ExtraPurityEffect";
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    private static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
 
     public ExtraPurityEffect(AbstractCard card, boolean isMutable, int times) {
         super(card, VariableType.MAGIC, isMutable, times);
@@ -58,10 +62,8 @@ public class ExtraPurityEffect extends AbstractExtraEffectModifier {
 
     @Override
     public String addExtraText(String rawDescription, AbstractCard card) {
-        String s =  "When hydrologistmod:Transmuted, this gains " + key + " hydrologistmod:Purity.";
-        if (isMutable) {
-            s = "hydrologistmod:Mutable: " + s;
-        }
+        String s =  TEXT[0] + key + TEXT[1];
+        s = applyMutable(s);
         return rawDescription + " NL " + s;
     }
 

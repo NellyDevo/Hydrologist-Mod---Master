@@ -8,12 +8,17 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.helpers.DynamicDynamicVariableManager;
 
 @AbstractCardModifier.SaveIgnore
 public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
+    protected static final String ID = "hydrologistmod:AbstractExtraEffectModifier";
+    protected static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    protected static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
     public AbstractCard attachedCard;
     public boolean isValueModified;
     public int value;
@@ -124,6 +129,22 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
 
     protected void addToBot(AbstractGameAction action) {
         AbstractDungeon.actionManager.addToBottom(action);
+    }
+
+    protected String applyTimes(String s) {
+        if (amount == 1) {
+            s += TEXT[3];
+        } else {
+            s += TEXT[1] + amount + TEXT[2];
+        }
+        return s;
+    }
+
+    protected String applyMutable(String s) {
+        if (isMutable) {
+            s = TEXT[0] + s;
+        }
+        return s;
     }
 
     @SpirePatch(

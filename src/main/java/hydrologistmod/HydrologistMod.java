@@ -284,6 +284,8 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     public void receiveEditStrings() {
         String cardStrings = Gdx.files.internal("hydrologistmod/strings/cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+        String cardmodStrings = Gdx.files.internal("hydrologistmod/strings/cardmods.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(CardStrings.class, cardmodStrings);
         String characterStrings = Gdx.files.internal("hydrologistmod/strings/character.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CharacterStrings.class, characterStrings);
         String eventStrings = Gdx.files.internal("hydrologistmod/strings/events.json").readString(String.valueOf(StandardCharsets.UTF_8));

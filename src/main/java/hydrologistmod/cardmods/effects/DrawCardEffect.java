@@ -6,10 +6,14 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 
 @AbstractCardModifier.SaveIgnore
 public class DrawCardEffect extends AbstractExtraEffectModifier {
-    public static final String ID = "hydrologistmod:DrawCardEffect";
+    private static final String ID = "hydrologistmod:DrawCardEffect";
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    private static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
 
     public DrawCardEffect(AbstractCard card, boolean isMutable, int times) {
         super(card, VariableType.MAGIC, isMutable, times);
@@ -30,13 +34,11 @@ public class DrawCardEffect extends AbstractExtraEffectModifier {
     public String addExtraText(String rawDescription, AbstractCard card) {
         String s;
         if (value == 1) {
-            s = " Draw a card.";
+            s = TEXT[0];
         } else {
-            s = " Draw " + key + " cards.";
+            s = TEXT[1] + key + TEXT[2];
         }
-        if (isMutable) {
-            s = "hydrologistmod:Mutable:" + s;
-        }
+        s = applyMutable(s);
         return rawDescription + " NL " + s;
     }
 

@@ -5,11 +5,15 @@ import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import hydrologistmod.actions.TransmuteCardAction;
 
 @AbstractCardModifier.SaveIgnore
 public class TransmuteSelfEffect extends AbstractExtraEffectModifier {
-    public String ID = "hydrologistmod:TransmuteSelfEffect";
+    private static final String ID = "hydrologistmod:TransmuteSelfEffect";
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    private static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
 
     public TransmuteSelfEffect(AbstractCard card, boolean isMutable) {
         super(card, VariableType.MAGIC, isMutable, 1);
@@ -23,10 +27,8 @@ public class TransmuteSelfEffect extends AbstractExtraEffectModifier {
 
     @Override
     public String addExtraText(String rawDescription, AbstractCard card) {
-        String s = " hydrologistmod:Transmute this card.";
-        if (isMutable) {
-            s = " hydrologistmod:Mutable:" + s;
-        }
+        String s = TEXT[0];
+        s = applyMutable(s);
         return rawDescription + " NL " + s;
     }
 

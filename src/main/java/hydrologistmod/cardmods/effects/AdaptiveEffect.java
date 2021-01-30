@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.ApplyTemperatureAction;
 import hydrologistmod.cards.AbstractAdaptiveCard;
@@ -16,7 +18,9 @@ import java.util.ArrayList;
 
 @AbstractCardModifier.SaveIgnore
 public class AdaptiveEffect extends AbstractExtraEffectModifier {
-    public static final String ID = "hydrologistmod:AdaptiveEffect";
+    private static final String ID = "hydrologistmod:AdaptiveEffect";
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    private static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
     private AbstractAdaptiveCard card;
     private AbstractCard.CardTarget defaultTarget = null;
 
@@ -125,29 +129,27 @@ public class AdaptiveEffect extends AbstractExtraEffectModifier {
         if (card != null) {
             switch (card.mode) {
                 case ICE:
-                    s = "hydrologistmod:Adaptive: apply " + key + " hydrologistmod:Cold";
+                    s =  TEXT[1] + key + TEXT[3];
                     break;
                 case WATER:
-                    s = "hydrologistmod:Adaptive: gain " + key + " Block";
+                    s =  TEXT[2] + key + TEXT[4];
                     break;
                 case STEAM:
-                    s = "hydrologistmod:Adaptive: apply " + key + " hydrologistmod:Heat";
+                    s = TEXT[1] + key + TEXT[5];
                     break;
                 default:
-                    s = "hydrologistmod:Adaptive " + key;
+                    s = TEXT[0] + key + TEXT[6];
                     break;
             }
         } else {
-            s = "hydrologistmod:Adaptive " + key;
+            s =  TEXT[0] + key + TEXT[6];
         }
-        if (amount == 1 || card == null || card.mode == AbstractAdaptiveCard.Mode.NONE) {
-            s += ".";
+        if (card == null || card.mode == AbstractAdaptiveCard.Mode.NONE) {
+            s += AbstractExtraEffectModifier.TEXT[3];
         } else {
-            s += " " + amount + " times.";
+            s = applyTimes(s);
         }
-        if (isMutable) {
-            s = "hydrologistmod:Mutable: " + s;
-        }
+        s = applyMutable(s);
         return rawDescription + " NL " + s;
     }
 
