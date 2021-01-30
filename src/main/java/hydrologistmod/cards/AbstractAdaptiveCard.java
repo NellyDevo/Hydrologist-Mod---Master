@@ -63,6 +63,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
         ArrayList<AbstractCard> list = AbstractDungeon.actionManager.cardsPlayedThisCombat;
         if (list.size() != 0) {
             AbstractCard card = list.get(list.size() - 1);
+
             if (card.hasTag(HydrologistTags.ICE)) {
                 rawDescription = getDescription() + EXTENDED_DESCRIPTION[1];
                 initializeDescription();
@@ -72,6 +73,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
                 } else {
                     target = CardTarget.ENEMY;
                 }
+
             } else if (card.hasTag(HydrologistTags.WATER)) {
                 int tmp = baseBlock;
                 baseAdaptiveNumber = baseAdaptiveBlockNumber;
@@ -84,6 +86,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
                 initializeDescription();
                 mode = Mode.WATER;
                 target = defaultTarget;
+
             } else if (card.hasTag(HydrologistTags.STEAM)) {
                 rawDescription = getDescription() + EXTENDED_DESCRIPTION[3];
                 initializeDescription();
@@ -93,6 +96,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
                 } else {
                     target = CardTarget.ENEMY;
                 }
+
             } else {
                 rawDescription = getDescription() + EXTENDED_DESCRIPTION[0];
                 initializeDescription();
@@ -108,6 +112,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
         baseAdaptiveNumber = baseAdaptiveMagicNumber;
         adaptiveNumber = baseAdaptiveNumber;
         switch (mode) {
+
             case ICE:
                 rawDescription = getDescription() + EXTENDED_DESCRIPTION[1];
                 initializeDescription();
@@ -117,6 +122,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
                     target = CardTarget.ENEMY;
                 }
                 break;
+
             case WATER:
                 int tmp = baseBlock;
                 baseAdaptiveNumber = baseAdaptiveBlockNumber;
@@ -129,6 +135,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
                 initializeDescription();
                 target = defaultTarget;
                 break;
+
             case STEAM:
                 rawDescription = getDescription() + EXTENDED_DESCRIPTION[3];
                 initializeDescription();
@@ -138,6 +145,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
                     target = CardTarget.ENEMY;
                 }
                 break;
+
             default:
                 rawDescription = getDescription() + EXTENDED_DESCRIPTION[0];
                 initializeDescription();

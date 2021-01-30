@@ -27,8 +27,8 @@ public class AdaptiveEffect extends AbstractExtraEffectModifier {
     public AdaptiveEffect(AbstractCard c, boolean isMutable, int times) {
         super(c, null, isMutable, times);
         priority = 1;
-        if (c instanceof AbstractAdaptiveCard) {
-            card = (AbstractAdaptiveCard)c;
+        if (attachedCard instanceof AbstractAdaptiveCard) {
+            card = (AbstractAdaptiveCard)attachedCard;
         } else {
             card = null;
             System.out.println("ERROR: sent a non-adaptive card to AdaptiveEffect");
