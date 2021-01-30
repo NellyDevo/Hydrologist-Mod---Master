@@ -161,7 +161,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
                 e.printStackTrace();
             }
         }
-        
+
         uiStrings = CardCrawlGame.languagePack.getUIString(ID);
         EXTRA_TEXT = uiStrings.EXTRA_TEXT;
         Texture badgeImg = new Texture("hydrologistmod/images/badge.png");

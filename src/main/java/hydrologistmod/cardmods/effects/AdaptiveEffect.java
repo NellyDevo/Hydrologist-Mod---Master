@@ -138,11 +138,11 @@ public class AdaptiveEffect extends AbstractExtraEffectModifier {
                     s = TEXT[1] + key + TEXT[5];
                     break;
                 default:
-                    s = TEXT[0] + key + TEXT[6];
+                    s = TEXT[0] + key + AbstractExtraEffectModifier.TEXT[3];
                     break;
             }
         } else {
-            s =  TEXT[0] + key + TEXT[6];
+            s =  TEXT[0] + key + AbstractExtraEffectModifier.TEXT[3];
         }
         if (card == null || card.mode == AbstractAdaptiveCard.Mode.NONE) {
             s += AbstractExtraEffectModifier.TEXT[3];

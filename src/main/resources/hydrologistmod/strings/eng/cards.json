@@ -268,7 +268,7 @@
   },
   "hydrologistmod:MirageMist": {
     "NAME": "Mirage Mist",
-    "DESCRIPTION": "hydrologistmod:Mutable: gain !B! Block twice.",
+    "DESCRIPTION": "hydrologistmod:Mutable: Gain !B! Block twice.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:OccludingMist": {
