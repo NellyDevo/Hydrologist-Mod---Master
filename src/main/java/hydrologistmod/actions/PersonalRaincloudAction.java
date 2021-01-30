@@ -1,6 +1,5 @@
 package hydrologistmod.actions;
 
-import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,6 +9,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
+import hydrologistmod.cardmods.RaincloudModifier;
 import hydrologistmod.cards.Raincloud;
 import hydrologistmod.helpers.CardProxyHelper;
 import hydrologistmod.helpers.SwapperHelper;
@@ -105,15 +105,5 @@ public class PersonalRaincloudAction extends AbstractGameAction {
         }
         AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(raincloud));
         SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(raincloud, newCard)));
-    }
-
-    public static class RaincloudModifier extends AbstractCardModifier {
-        public String modifyDescription(String rawDescription, AbstractCard card) {
-            return rawDescription + " NL hydrologistmod:Swappable.";
-        }
-
-        public AbstractCardModifier makeCopy() {
-            return new RaincloudModifier();
-        }
     }
 }
