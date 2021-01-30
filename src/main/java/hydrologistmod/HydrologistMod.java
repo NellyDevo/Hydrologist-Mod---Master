@@ -245,9 +245,12 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     public void receiveEditKeywords() {
         addKeywords("eng");
         String lang = Settings.language.toString().toLowerCase();
-        FileHandle langDirectory = Gdx.files.internal("hydrologistmod/strings/" + lang);
-        if (!lang.equals("eng") && langDirectory.exists()) {
-            addKeywords(lang);
+        try {
+            if (!lang.equals("eng")) {
+                addKeywords(lang);
+            }
+        } catch (Exception e) {
+            System.out.println("Error loading localized keywords for: " + lang);
         }
     }
 
@@ -294,31 +297,25 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     public void receiveEditStrings() {
         addStrings("eng");
         String lang = Settings.language.toString().toLowerCase();
-        FileHandle langDirectory = Gdx.files.internal("hydrologistmod/strings/" + lang);
-        if (!lang.equals("eng") && langDirectory.exists()) {
-            addStrings(lang);
+        try {
+            if (!lang.equals("eng")) {
+                addStrings(lang);
+            }
+        } catch (Exception e) {
+            System.out.println("Error loading localized strings for: " + lang);
         }
     }
 
     private void addStrings(String lang) {
-        String cardStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
-        String cardmodStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/cardmods.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(CardStrings.class, cardmodStrings);
-        String characterStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/character.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(CharacterStrings.class, characterStrings);
-        String eventStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/events.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
-        String potionStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/potions.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
-        String powerStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/powers.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
-        String relicStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/relics.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
-        String uiStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/ui.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
-        String tutorialStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/tutorials.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(TutorialStrings.class, tutorialStrings);
+        BaseMod.loadCustomStringsFile(CardStrings.class, "hydrologistmod/strings/" + lang + "/cards.json");
+        BaseMod.loadCustomStringsFile(CardStrings.class, "hydrologistmod/strings/" + lang + "/cardmods.json");
+        BaseMod.loadCustomStringsFile(CharacterStrings.class, "hydrologistmod/strings/" + lang + "/character.json");
+        BaseMod.loadCustomStringsFile(EventStrings.class, "hydrologistmod/strings/" + lang + "/events.json");
+        BaseMod.loadCustomStringsFile(PotionStrings.class, "hydrologistmod/strings/" + lang + "/potions.json");
+        BaseMod.loadCustomStringsFile(PowerStrings.class, "hydrologistmod/strings/" + lang + "/powers.json");
+        BaseMod.loadCustomStringsFile(RelicStrings.class, "hydrologistmod/strings/" + lang + "/relics.json");
+        BaseMod.loadCustomStringsFile(TutorialStrings.class, "hydrologistmod/strings/" + lang + "/tutorials.json");
+        BaseMod.loadCustomStringsFile(UIStrings.class, "hydrologistmod/strings/" + lang + "/ui.json");
     }
 
     @Override
