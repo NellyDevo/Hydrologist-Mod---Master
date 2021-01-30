@@ -1,7 +1,5 @@
 package hydrologistmod.cards;
 
-import basemod.abstracts.AbstractCardModifier;
-import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -41,29 +39,6 @@ public class LaminarFlow extends AbstractHydrologistCard implements SwappableCar
     @Override
     public AbstractCard makeCopy() {
         return new LaminarFlow();
-    }
-
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        calculateMagicNumber();
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        super.calculateCardDamage(mo);
-        calculateMagicNumber();
-    }
-
-    private void calculateMagicNumber() {
-        int tmp = baseMagicNumber;
-        for (AbstractCardModifier mod : CardModifierPatches.CardModifierFields.cardModifiers.get(this)) {
-            if (mod instanceof CrystalIce.LaminarFlowModifier) {
-                tmp += ((CrystalIce.LaminarFlowModifier)mod).increase;
-            }
-        }
-        magicNumber = tmp;
-        isMagicNumberModified = magicNumber != baseMagicNumber;
     }
 
     @Override
