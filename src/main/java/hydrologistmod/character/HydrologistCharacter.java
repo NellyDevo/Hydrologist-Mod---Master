@@ -171,7 +171,7 @@ public class HydrologistCharacter extends CustomPlayer {
 
     @Override
     public String getCustomModeCharacterButtonSoundKey() {
-        return "ATTACK_FIRE";
+        return "hydrologistmod:WATER";
     }
 
     @Override

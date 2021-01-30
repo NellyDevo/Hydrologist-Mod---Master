@@ -16,6 +16,8 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+
 public class SublimationPower extends AbstractStateChangePower implements CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:SublimationPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -44,9 +46,7 @@ public class SublimationPower extends AbstractStateChangePower implements Clonea
         if (card.hasTag(tag)) {
             flash();
             int[] array = new int[AbstractDungeon.getMonsters().monsters.size()];
-            for (int i = 0; i < array.length; ++i) {
-                array[i] = amount;
-            }
+            Arrays.fill(array, amount);
             addToBot(new DamageAllEnemiesAction(AbstractDungeon.player, array, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));

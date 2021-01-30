@@ -28,7 +28,6 @@ public class TemperatureTutorial extends FtueTip {
     public static final String[] MSG = tutorialStrings.TEXT;
     public static final String[] LABEL = tutorialStrings.LABEL;
 
-    private static final int W = 760, H = 580;
     private static final TextureRegion img1 = new TextureRegion(new Texture("hydrologistmod/images/tutorials/t1.png"));
     private static final TextureRegion img2 = new TextureRegion(new Texture("hydrologistmod/images/tutorials/t2.png"));
     private static final TextureRegion img3 = new TextureRegion(new Texture("hydrologistmod/images/tutorials/t3.png"));

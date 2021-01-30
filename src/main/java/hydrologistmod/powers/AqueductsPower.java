@@ -14,6 +14,8 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import java.util.Arrays;
+
 public class AqueductsPower extends AbstractPower implements OnCardDrawPower, CloneablePowerInterface {
     public static final String POWER_ID = "hydrologistmod:AqueductsPower";
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -44,9 +46,7 @@ public class AqueductsPower extends AbstractPower implements OnCardDrawPower, Cl
         if (cardsDrawnThisTurn > AbstractDungeon.player.gameHandSize) {
             flashWithoutSound();
             int[] array = new int[AbstractDungeon.getMonsters().monsters.size()];
-            for (int i = 0; i < array.length; ++i) {
-                array[i] = amount;
-            }
+            Arrays.fill(array, amount);
             AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(owner, array, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
         }
     }
