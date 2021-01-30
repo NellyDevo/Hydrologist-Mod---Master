@@ -4,6 +4,7 @@ import basemod.*;
 import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -242,16 +243,23 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     @Override
     public void receiveEditKeywords() {
+        addKeywords("eng");
+        String lang = Settings.language.toString().toLowerCase();
+        FileHandle langDirectory = Gdx.files.internal("hydrologistmod/strings/" + lang);
+        if (!lang.equals("eng") && langDirectory.exists()) {
+            addKeywords(lang);
+        }
+    }
+
+    private void addKeywords(String lang) {
         Gson gson = new Gson();
 
-        String keywordStrings = Gdx.files.internal("hydrologistmod/strings/keywords.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String keywordStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/keywords.json").readString(String.valueOf(StandardCharsets.UTF_8));
         Type typeToken = new TypeToken<Map<String, com.evacipated.cardcrawl.mod.stslib.Keyword>>() {}.getType();
 
         Map<String, Keyword> keywords = gson.fromJson(keywordStrings, typeToken);
 
         keywords.forEach((k,v)->{
-            // Keyword word = (Keyword)v;
-            logger.info("Adding Keyword - " + v.NAMES[0]);
             BaseMod.addKeyword("hydrologistmod:", v.PROPER_NAME, v.NAMES, v.DESCRIPTION);
         });
     }
@@ -284,23 +292,32 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     @Override
     public void receiveEditStrings() {
-        String cardStrings = Gdx.files.internal("hydrologistmod/strings/cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        addStrings("eng");
+        String lang = Settings.language.toString().toLowerCase();
+        FileHandle langDirectory = Gdx.files.internal("hydrologistmod/strings/" + lang);
+        if (!lang.equals("eng") && langDirectory.exists()) {
+            addStrings(lang);
+        }
+    }
+
+    private void addStrings(String lang) {
+        String cardStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
-        String cardmodStrings = Gdx.files.internal("hydrologistmod/strings/cardmods.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String cardmodStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/cardmods.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CardStrings.class, cardmodStrings);
-        String characterStrings = Gdx.files.internal("hydrologistmod/strings/character.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String characterStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/character.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CharacterStrings.class, characterStrings);
-        String eventStrings = Gdx.files.internal("hydrologistmod/strings/events.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String eventStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/events.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
-        String potionStrings = Gdx.files.internal("hydrologistmod/strings/potions.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String potionStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/potions.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
-        String powerStrings = Gdx.files.internal("hydrologistmod/strings/powers.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String powerStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/powers.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
-        String relicStrings = Gdx.files.internal("hydrologistmod/strings/relics.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String relicStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/relics.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
-        String uiStrings = Gdx.files.internal("hydrologistmod/strings/ui.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String uiStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/ui.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
-        String tutorialStrings = Gdx.files.internal("hydrologistmod/strings/tutorials.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String tutorialStrings = Gdx.files.internal("hydrologistmod/strings/" + lang + "/tutorials.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(TutorialStrings.class, tutorialStrings);
     }
 
