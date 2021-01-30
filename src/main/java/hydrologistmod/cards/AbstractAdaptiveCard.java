@@ -77,7 +77,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
             } else if (card.hasTag(HydrologistTags.WATER)) {
                 int tmp = baseBlock;
                 baseAdaptiveNumber = baseAdaptiveBlockNumber;
-                baseBlock = baseAdaptiveNumber * 2;
+                baseBlock = baseAdaptiveNumber;
                 super.applyPowers();
                 baseBlock = tmp;
                 adaptiveNumber = block;
