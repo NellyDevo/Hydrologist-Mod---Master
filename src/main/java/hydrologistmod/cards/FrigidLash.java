@@ -1,5 +1,7 @@
 package hydrologistmod.cards;
 
+import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -7,7 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.HydrologistDamageAction;
-import hydrologistmod.actions.IncreasePairCardStatsAction;
+import hydrologistmod.cardmods.TempBlockModifier;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
@@ -38,7 +40,16 @@ public class FrigidLash extends AbstractHydrologistCard implements SwappableCard
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
-        addToBot(new IncreasePairCardStatsAction(this, SwapperHelper.getNextCard(this), 0, magicNumber));
+        AbstractCard pairCard = SwapperHelper.getNextCard(this);
+        if (pairCard != null) {
+            addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    CardModifierManager.addModifier(pairCard, new TempBlockModifier(magicNumber));
+                    isDone = true;
+                }
+            });
+        }
     }
 
     @Override

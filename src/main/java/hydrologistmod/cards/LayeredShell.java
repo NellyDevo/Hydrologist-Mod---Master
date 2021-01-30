@@ -1,12 +1,14 @@
 package hydrologistmod.cards;
 
+import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.actions.IncreasePairCardStatsAction;
+import hydrologistmod.cardmods.TempDamageModifier;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -40,7 +42,16 @@ public class LayeredShell extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new IncreasePairCardStatsAction(this, SwapperHelper.getNextCard(this), magicNumber, 0));
+        AbstractCard pairCard = SwapperHelper.getNextCard(this);
+        if (pairCard != null) {
+            addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    CardModifierManager.addModifier(pairCard, new TempDamageModifier(magicNumber));
+                    isDone = true;
+                }
+            });
+        }
     }
 
     @Override
