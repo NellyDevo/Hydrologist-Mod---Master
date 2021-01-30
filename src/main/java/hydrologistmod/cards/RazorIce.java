@@ -8,9 +8,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.HydrologistDamageAction;
-import hydrologistmod.cardmods.AbstractExtraEffectModifier;
-import hydrologistmod.cardmods.DamageEffect;
-import hydrologistmod.cardmods.GainBlockEffect;
+import hydrologistmod.cardmods.effects.AbstractExtraEffectModifier;
+import hydrologistmod.cardmods.effects.DamageEffect;
+import hydrologistmod.cardmods.effects.GainBlockEffect;
 import hydrologistmod.interfaces.TransmutableCard;
 import hydrologistmod.patches.HydrologistTags;
 

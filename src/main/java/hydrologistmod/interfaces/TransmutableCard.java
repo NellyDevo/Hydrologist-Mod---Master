@@ -1,7 +1,7 @@
 package hydrologistmod.interfaces;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import hydrologistmod.cardmods.AbstractExtraEffectModifier;
+import hydrologistmod.cardmods.effects.AbstractExtraEffectModifier;
 
 import java.util.ArrayList;
 

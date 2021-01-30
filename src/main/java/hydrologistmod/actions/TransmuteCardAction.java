@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import hydrologistmod.cardmods.AbstractExtraEffectModifier;
+import hydrologistmod.cardmods.effects.AbstractExtraEffectModifier;
 import hydrologistmod.cardmods.PurityModifier;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.TransmutableAffectingPower;

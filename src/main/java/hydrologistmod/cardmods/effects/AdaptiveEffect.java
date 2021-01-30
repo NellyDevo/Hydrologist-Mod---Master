@@ -1,4 +1,4 @@
-package hydrologistmod.cardmods;
+package hydrologistmod.cardmods.effects;
 
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;

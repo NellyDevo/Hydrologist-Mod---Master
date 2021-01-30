@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import hydrologistmod.cardmods.AbstractExtraEffectModifier;
+import hydrologistmod.cardmods.effects.AbstractExtraEffectModifier;
 
 import java.util.ArrayList;
 import java.util.Collections;

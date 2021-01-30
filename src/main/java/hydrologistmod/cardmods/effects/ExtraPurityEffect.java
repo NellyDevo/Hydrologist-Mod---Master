@@ -1,42 +1,26 @@
-package hydrologistmod.cardmods;
+package hydrologistmod.cardmods.effects;
 
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import hydrologistmod.cardmods.PurityModifier;
 
 import java.util.ArrayList;
 
 @AbstractCardModifier.SaveIgnore
-public class GainBlockEffect extends AbstractExtraEffectModifier {
-    public static final String ID = "hydrologistmod:GainBlockEffect";
+public class ExtraPurityEffect extends AbstractExtraEffectModifier {
+    public static final String ID = "hydrologistmod:ExtraPurityEffect";
 
-    public GainBlockEffect(AbstractCard card, boolean isMutable, int times) {
-        super(card, VariableType.BLOCK, isMutable, times);
-        priority = -1;
+    public ExtraPurityEffect(AbstractCard card, boolean isMutable, int times) {
+        super(card, VariableType.MAGIC, isMutable, times);
+        priority = 1;
     }
 
     @Override
     public void doExtraEffects(AbstractCard card, AbstractPlayer p, AbstractCreature m) {
-        for (int i = 0; i < amount; ++i) {
-            addToTop(new GainBlockAction(p, p, value));
-        }
-    }
 
-    @Override
-    public String addExtraText(String rawDescription, AbstractCard card) {
-        String s = "Gain " + key + " Block";
-        if (amount == 1) {
-            s += ".";
-        } else {
-            s += " " + amount + " times.";
-        }
-        if (isMutable) {
-            s = "hydrologistmod:Mutable: " + s;
-        }
-        return s + " NL " + rawDescription;
     }
 
     @Override
@@ -45,10 +29,9 @@ public class GainBlockEffect extends AbstractExtraEffectModifier {
             ArrayList<AbstractCardModifier> list = CardModifierManager.getModifiers(card, ID);
             for (AbstractCardModifier mod : list) {
                 AbstractCard c = ((AbstractExtraEffectModifier)mod).attachedCard;
-                if (c.baseBlock == attachedCard.baseBlock) {
+                if (c.baseMagicNumber == attachedCard.baseMagicNumber) {
                     ((AbstractExtraEffectModifier)mod).amount++;
                     card.applyPowers();
-                    card.initializeDescription();
                     return false;
                 }
             }
@@ -62,12 +45,33 @@ public class GainBlockEffect extends AbstractExtraEffectModifier {
     }
 
     @Override
+    public void onApplyPowers(AbstractCard card) {
+        super.onApplyPowers(card);
+        baseValue *= amount;
+        value *= amount;
+    }
+
+    @Override
     public boolean shouldRenderValue() {
         return true;
     }
 
     @Override
+    public String addExtraText(String rawDescription, AbstractCard card) {
+        String s =  "When hydrologistmod:Transmuted, this gains " + key + " hydrologistmod:Purity.";
+        if (isMutable) {
+            s = "hydrologistmod:Mutable: " + s;
+        }
+        return rawDescription + " NL " + s;
+    }
+
+    @Override
+    public void onCardTransmuted(AbstractCard oldCard, AbstractCard newCard, boolean firstTime) {
+        CardModifierManager.addModifier(newCard, new PurityModifier(value));
+    }
+
+    @Override
     public AbstractCardModifier makeCopy() {
-        return new GainBlockEffect(attachedCard.makeStatEquivalentCopy(), isMutable, amount);
+        return new ExtraPurityEffect(attachedCard, isMutable, amount);
     }
 }
