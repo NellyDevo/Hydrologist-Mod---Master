@@ -11,9 +11,6 @@ import hydrologistmod.powers.EncapsulatingIcePower;
 import hydrologistmod.vfx.EncapsulatingIceEffect;
 
 public class EncapsulatingIceAction extends AbstractGameAction {
-//    private static final String ID = "hydrologistmod:EncapsulatingIceAction";
-//    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-//    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private int energyOnUse;
     private boolean freeToPlayOnce;

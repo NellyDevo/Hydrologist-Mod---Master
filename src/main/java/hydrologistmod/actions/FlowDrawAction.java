@@ -15,9 +15,6 @@ import hydrologistmod.interfaces.FlowAffectingRelic;
 import hydrologistmod.powers.FlowPower;
 
 public class FlowDrawAction extends AbstractGameAction {
-//    private static final String ID = "hydrologistmod:FlowDrawAction";
-//    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-//    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private FlowPower power;
 

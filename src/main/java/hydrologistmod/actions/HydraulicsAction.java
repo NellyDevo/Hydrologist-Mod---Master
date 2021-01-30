@@ -6,9 +6,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class HydraulicsAction extends AbstractGameAction {
-//    private static final String ID = "hydrologistmod:HydraulicsAction";
-//    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-//    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private AbstractMonster monster;
 

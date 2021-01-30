@@ -1,12 +1,7 @@
 {
-  "hydrologistmod:InputSettingsScreen": {
-    "TEXT": [
-      "Change \"Swappable\" cards"
-    ]
-  },
   "hydrologistmod:FlowAction": {
     "TEXT": [
-      "Choose any number of cards to discard."
+      "discard."
     ]
   },
   "hydrologistmod:hydrologistmod": {
@@ -15,9 +10,32 @@
       "Show Swappables tutorial again",
       "Show Heat and Cold tutorial again",
       "hydro homie"
-    ],
-    "EXTRA_TEXT": [
-      "Choose any number of cards to discard."
+    ]
+  },
+  "hydrologistmod:InputSettingsScreen": {
+    "TEXT": [
+      "Change \"Swappable\" cards"
+    ]
+  },
+  "hydrologistmod:PersonalRaincloudAction": {
+    "TEXT": [
+      "pair with your Raincloud."
+    ]
+  },
+  "hydrologistmod:StormOfSleetAction": {
+    "TEXT": [
+      "discard."
+    ]
+  },
+  "hydrologistmod:TransmuteCardAction": {
+    "TEXT": [
+      "transmute.",
+      "Choose your new card."
+    ]
+  },
+  "hydrologistmod:UpgradeCorporealAction": {
+    "TEXT": [
+      "upgrade."
     ]
   }
 }

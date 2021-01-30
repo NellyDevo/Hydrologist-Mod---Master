@@ -5,8 +5,10 @@ import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 import hydrologistmod.cards.Raincloud;
 import hydrologistmod.helpers.CardProxyHelper;
@@ -20,9 +22,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 public class PersonalRaincloudAction extends AbstractGameAction {
-//    private static final String ID = "hydrologistmod:PersonalRaincloudAction";
-//    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-//    public static final String[] TEXT = uiStrings.TEXT;
+    private static final String ID = "hydrologistmod:PersonalRaincloudAction";
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private ArrayList<AbstractCard> cannotPair = new ArrayList<>();
     private boolean upgraded;
@@ -56,7 +58,7 @@ public class PersonalRaincloudAction extends AbstractGameAction {
             }
             p.hand.group.removeAll(cannotPair);
             if (p.hand.group.size() > 1) {
-                AbstractDungeon.handCardSelectScreen.open("pair with your Raincloud.", 1, false, false, false, false);
+                AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, false, false, false, false);
                 tickDuration();
                 return;
             } else if (p.hand.group.size() == 1) {

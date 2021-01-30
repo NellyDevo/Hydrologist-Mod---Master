@@ -6,7 +6,9 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -25,6 +27,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TransmuteCardAction extends AbstractGameAction {
+    private static final String ID = "hydrologistmod:TransmuteCardAction";
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+    public static final String[] TEXT = uiStrings.TEXT;
     private boolean initialized = false;
     private boolean completed = false;
     public int choices = 1;
@@ -96,9 +101,9 @@ public class TransmuteCardAction extends AbstractGameAction {
                     isDone = true;
                 } else {
                     if (anyNumber) {
-                        AbstractDungeon.handCardSelectScreen.open("Transmute.", 99, true, true);
+                        AbstractDungeon.handCardSelectScreen.open(TEXT[0], 99, true, true);
                     } else {
-                        AbstractDungeon.handCardSelectScreen.open("Transmute.", Math.min(AbstractDungeon.player.hand.size(), cards), false, false);
+                        AbstractDungeon.handCardSelectScreen.open(TEXT[0], Math.min(AbstractDungeon.player.hand.size(), cards), false, false);
                     }
                 }
             } else {
@@ -145,7 +150,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                             --i;
                         }
                     }
-                    AbstractDungeon.gridSelectScreen.open(tmp, 1, "Choose your new card.", false);
+                    AbstractDungeon.gridSelectScreen.open(tmp, 1, TEXT[1], false);
                     return;
                 }
             }
@@ -180,7 +185,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                 }
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
                 storedOldCard = oldCard;
-                AbstractDungeon.gridSelectScreen.open(tmp, 1, "Choose your new card.", false);
+                AbstractDungeon.gridSelectScreen.open(tmp, 1, TEXT[1], false);
                 return;
             }
         } else if (AbstractDungeon.gridSelectScreen.selectedCards.size() != 0) {

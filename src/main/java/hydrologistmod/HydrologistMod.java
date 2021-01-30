@@ -85,7 +85,6 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     public static final String ID = "hydrologistmod:hydrologistmod";
     public static UIStrings uiStrings;
     public static String[] TEXT;
-    public static String[] EXTRA_TEXT;
 
     public static SpireConfig hydrologistConfig;
 
@@ -192,7 +191,6 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
         uiStrings = CardCrawlGame.languagePack.getUIString(ID);
         TEXT = uiStrings.TEXT;
-        EXTRA_TEXT = uiStrings.EXTRA_TEXT;
         settingsPanel.addUIElement(new ModLabel(TEXT[0], 450.0f, 725.0f, settingsPanel, me -> {}));
         ModButton showSubtypeTutorial = new ModButton(325.0f, 675.0f, settingsPanel, button -> {
             hydrologistConfig.setString("Subtype Tutorial Seen", "FALSE");

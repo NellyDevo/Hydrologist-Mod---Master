@@ -4,8 +4,10 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hydrologistmod.interfaces.FlowAffectingPower;
@@ -14,9 +16,9 @@ import hydrologistmod.powers.FlowPower;
 import java.util.ArrayList;
 
 public class FlowAction extends AbstractGameAction {
-//    private static final String ID = "hydrologistmod:FlowAction";
-//    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
-//    public static final String[] TEXT = uiStrings.TEXT;
+    private static final String ID = "hydrologistmod:FlowAction";
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+    public static final String[] TEXT = uiStrings.TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private AfterDiscard followup;
 
@@ -41,7 +43,7 @@ public class FlowAction extends AbstractGameAction {
                 isDone = true;
                 return;
             } else {
-                AbstractDungeon.handCardSelectScreen.open("discard.", 99, true, true);
+                AbstractDungeon.handCardSelectScreen.open(TEXT[0], 99, true, true);
             }
             AbstractDungeon.player.hand.applyPowers();
             tickDuration();
