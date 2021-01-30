@@ -46,23 +46,14 @@ public class HeatBlast extends AbstractHydrologistCard {
                     AbstractCard masterDeckCard = StSLib.getMasterDeckEquivalent(card);
                     int amount = m.getPower(HeatPower.POWER_ID).amount;
                     if (masterDeckCard != null) {
-                        incrementDamage(masterDeckCard, amount);
+                        CardModifierManager.addModifier(card, new HeatBlastModifier(amount));
                     }
-                    incrementDamage(card, amount);
+                    CardModifierManager.addModifier(card, new HeatBlastModifier(amount));
                 }
                 isDone = true;
             }
         });
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
-    }
-
-    private void incrementDamage(AbstractCard card, int amt) {
-        if (CardModifierManager.hasModifier(card, HeatBlastModifier.ID)) {
-            ((HeatBlastModifier) CardModifierManager.getModifiers(card, HeatBlastModifier.ID).get(0)).amount += amt;
-            card.initializeDescription();
-        } else {
-            CardModifierManager.addModifier(card, new HeatBlastModifier(amt));
-        }
     }
 
     @Override

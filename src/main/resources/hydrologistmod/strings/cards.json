@@ -214,11 +214,7 @@
   "hydrologistmod:HeatBlast": {
     "NAME": "Heat Blast",
     "DESCRIPTION": "Deal !D! damage. NL Permanently gain damage equal to the enemy's hydrologistmod:Heat amount. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": [
-      " NL (",
-      " extra damage.)"
-    ]
+    "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:HighPressure": {
     "NAME": "High Pressure",
