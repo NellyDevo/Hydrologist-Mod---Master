@@ -4,29 +4,29 @@ import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
-public class TempMagicNumberModifier extends AbstractTemporaryCardmod {
-    public static final String ID = "hydrologistmod:TempMagicNumberModifier";
+public class TempBlockModifier extends AbstractTemporaryCardmod {
+    public static final String ID = "hydrologistmod:TempBlockModifier";
     public int increase;
 
-    public TempMagicNumberModifier(int increase) {
+    public TempBlockModifier(int increase) {
         this.increase = increase;
     }
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new TempMagicNumberModifier(increase);
+        return new TempBlockModifier(increase);
     }
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.baseMagicNumber += increase;
-        card.magicNumber = card.baseMagicNumber;
+        card.baseBlock += increase;
+        card.applyPowers();
     }
 
     @Override
     public void onRemove(AbstractCard card) {
-        card.baseMagicNumber -= increase;
-        card.magicNumber = card.baseMagicNumber;
+        card.baseBlock -= increase;
+        card.applyPowers();
     }
 
     @Override
@@ -37,9 +37,9 @@ public class TempMagicNumberModifier extends AbstractTemporaryCardmod {
     @Override
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, ID)) {
-            ((TempMagicNumberModifier)CardModifierManager.getModifiers(card, ID).get(0)).increase += increase;
-            card.baseMagicNumber += increase;
-            card.magicNumber = card.baseMagicNumber;
+            ((TempBlockModifier)CardModifierManager.getModifiers(card, ID).get(0)).increase += increase;
+            card.baseBlock += increase;
+            card.applyPowers();
             return false;
         }
         return true;
