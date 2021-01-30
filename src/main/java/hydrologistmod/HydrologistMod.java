@@ -80,6 +80,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     public static final String ID = "hydrologistmod:hydrologistmod";
     public static UIStrings uiStrings;
     public static String[] TEXT;
+    public static String[] EXTRA_TEXT;
 
     public static SpireConfig hydrologistConfig;
 
@@ -159,9 +160,10 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
             }
         }
 
+        EXTRA_TEXT = uiStrings.EXTRA_TEXT;
         Texture badgeImg = new Texture("hydrologistmod/images/badge.png");
         ModPanel settingsPanel = new ModPanel();
-        BaseMod.registerModBadge(badgeImg, "The Hydrologist Mod", "Johnny Devo", "Adds a new character to the game: The Hydrologist.", settingsPanel);
+        BaseMod.registerModBadge(badgeImg, EXTRA_TEXT[0], "JohnnyDevo", EXTRA_TEXT[1], settingsPanel);
         HydrologistParticle.initializeRegions();
 
         CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInfo() {

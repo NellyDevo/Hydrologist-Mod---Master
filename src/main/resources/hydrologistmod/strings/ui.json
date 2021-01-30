@@ -10,6 +10,10 @@
       "Show Swappables tutorial again",
       "Show Heat and Cold tutorial again",
       "hydro homie"
+    ],
+    "EXTRA_TEXT": [
+      "The Hydrologist Mod",
+      "Adds a new character to the game: The Hydrologist."
     ]
   },
   "hydrologistmod:InputSettingsScreen": {
