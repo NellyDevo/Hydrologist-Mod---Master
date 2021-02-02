@@ -47,6 +47,7 @@ import hydrologistmod.powers.HeatPower;
 import hydrologistmod.powers.ThermalShockPower;
 import hydrologistmod.relics.*;
 import hydrologistmod.vfx.HydrologistParticle;
+import hydrologistmod.vfx.YawningAbyssEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -168,6 +169,7 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         ModPanel settingsPanel = new ModPanel();
         BaseMod.registerModBadge(badgeImg, EXTRA_TEXT[0], "JohnnyDevo", EXTRA_TEXT[1], settingsPanel);
         HydrologistParticle.initializeRegions();
+        YawningAbyssEffect.initializeRegions();
 
         CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInfo() {
             @Override

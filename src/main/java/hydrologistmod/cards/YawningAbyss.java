@@ -31,7 +31,7 @@ public class YawningAbyss extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new YawningAbyssAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
+        addToBot(new YawningAbyssAction(m, new DamageInfo(p, damage, damageTypeForTurn), m.hb.cX, m.hb.cY - (m.hb_h / 2.0f), 1.0f));
     }
 
     @Override
