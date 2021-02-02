@@ -16,7 +16,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
     private static final Texture MASK_TEXTURE = new Texture("hydrologistmod/images/vfx/YawningAbyssMask.png");
     private static final Texture EFFECT_TEXTURE = new Texture("hydrologistmod/images/vfx/YawningAbyssEffect.png");
     private static final int CRACK_WIDTH = 568;
-    private static final int CRACK_HEIGHT = 240;
+    private static final int CRACK_HEIGHT = 280;
     private static final int CRACK_HORIZONTAL = 5;
     private static final int CRACK_VERTICAL = 5;
     private static TextureRegion[] crackAnimation = null;
