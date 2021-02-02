@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Matrix4;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
@@ -130,11 +131,11 @@ public class YawningAbyssEffect extends AbstractGameEffect {
             //TODO: find out how to apply a color oscillating shader
             sb.setColor(Color.WHITE.cpy());
             r = effect;
-            float scaleY = 1.0f - (((EFFECT_DURATION / 2.0f) / Math.abs(effectDuration - (EFFECT_DURATION / 2.0f))) / 5.0f);
+            float scaleY = 1.0f - Math.abs(Interpolation.linear.apply(-0.1f, 0.1f, effectDuration / EFFECT_DURATION));
             sb.draw(r, 0.0f, 0.0f,
-                    w / 2.0f, h / 2.0f,
-                    w, h * scaleY * (effectFadeOut / EFFECT_FADE_OUT),
-                    1.0f, 1.0f, 0.0f);
+                    0.0f, 0.0f,
+                    w, h,
+                    1.0f,  scaleY, 0.0f);
 
             //mask borealis
             r = maskAnimation[currentFrame];
