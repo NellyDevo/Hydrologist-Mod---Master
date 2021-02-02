@@ -44,7 +44,7 @@
     "DESCRIPTION": "This card gains \"Mutable: Adaptive !hydrologistmod:A!\". NL hydrologistmod:Mutable: hydrologistmod:Adaptive !hydrologistmod:A!.",
     "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
-      "This card gains #y\"Mutable: hydrologistmod:Adaptive !hydrologistmod:A!\". NL hydrologistmod:Mutable: "
+      "This card gains \"Mutable: Adaptive !hydrologistmod:A!\". NL hydrologistmod:Mutable: "
     ]
   },
   "hydrologistmod:BracedForm": {
