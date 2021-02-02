@@ -167,6 +167,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
 
     public static void initializeRegions() {
         crackAnimation = new TextureRegion[CRACK_VERTICAL * CRACK_HORIZONTAL];
+        maskAnimation = new TextureRegion[CRACK_VERTICAL * CRACK_HORIZONTAL];
         int i = 0;
         for (int h = 0; h < CRACK_VERTICAL; ++h) {
             for (int w = 0; w < CRACK_HORIZONTAL; ++w) {
