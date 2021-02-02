@@ -17,12 +17,8 @@ public class YawningAbyssEffect extends AbstractGameEffect {
     private static final Texture EFFECT_TEXTURE = new Texture("hydrologistmod/images/vfx/YawningAbyssEffect.png");
     private static final int CRACK_WIDTH = 568;
     private static final int CRACK_HEIGHT = 240;
-    private static final int MASK_WIDTH = 568;
-    private static final int MASK_HEIGHT = 280;
     private static final int CRACK_HORIZONTAL = 5;
     private static final int CRACK_VERTICAL = 5;
-    private static final int MASK_HORIZONTAL = 5;
-    private static final int MASK_VERTICAL = 5;
     private static TextureRegion[] crackAnimation = null;
     private static TextureRegion[] maskAnimation = null;
     private static TextureRegion effect = null;
@@ -107,26 +103,26 @@ public class YawningAbyssEffect extends AbstractGameEffect {
         Color frame2Color = new Color(1.0f, 1.0f, 1.0f, 1.0f - currentFrameAlpha);
 
         sb.setColor(frame1Color);
+        float w = effect.getRegionWidth();
+        float h = effect.getRegionHeight();
         TextureRegion r = crackAnimation[currentFrame];
-        float crackWidth = r.getRegionWidth();
-        float crackHeight = r.getRegionHeight();
-        sb.draw(r, x - (crackWidth / 2.0f), y - (crackHeight / 2.0f),
-                crackWidth / 2.0f, crackHeight / 2.0f,
-                crackWidth, crackHeight,
+        sb.draw(r, x - (w / 2.0f), y - (h / 2.0f),
+                w / 2.0f, h / 2.0f,
+                w, h,
                 effectScale, effectScale, 0.0f);
 
         sb.setColor(frame2Color);
         r = crackAnimation[nextFrame];
-        sb.draw(r, x - (crackWidth / 2.0f), y - (crackHeight / 2.0f),
-                crackWidth / 2.0f, crackHeight / 2.0f,
-                crackWidth, crackHeight,
+        sb.draw(r, x - (w / 2.0f), y - (h / 2.0f),
+                w / 2.0f, h / 2.0f,
+                w, h,
                 effectScale, effectScale, 0.0f);
 
         if (effectFadeOut > 0.0f) {
             //turn on the frame buffer, change camera
             sb.end();
             HydrologistMod.beginBuffer(fbo);
-            Matrix4 tmp = sb.getProjectionMatrix();
+            Matrix4 tmp = sb.getProjectionMatrix().cpy();
             sb.setProjectionMatrix(camera.combined);
             sb.begin();
 
@@ -136,9 +132,9 @@ public class YawningAbyssEffect extends AbstractGameEffect {
             r = effect;
             float scaleY = 1.0f - (((EFFECT_DURATION / 2.0f) / Math.abs(effectDuration - (EFFECT_DURATION / 2.0f))) / 5.0f);
             sb.draw(r, 0.0f, 0.0f,
-                    crackWidth / 2.0f, crackHeight / 2.0f,
-                    r.getRegionWidth(), r.getRegionHeight(),
-                    1.0f, scaleY * (effectFadeOut / EFFECT_FADE_OUT), 0.0f);
+                    w / 2.0f, h / 2.0f,
+                    w, h * scaleY * (effectFadeOut / EFFECT_FADE_OUT),
+                    1.0f, 1.0f, 0.0f);
 
             //mask borealis
             r = maskAnimation[currentFrame];
@@ -154,9 +150,9 @@ public class YawningAbyssEffect extends AbstractGameEffect {
 
             //render captured texture at x/y
             sb.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA);
-            sb.draw(texture, x, y,
-                    crackWidth / 2.0f, crackHeight / 2.0f,
-                    texture.getRegionWidth(), texture.getRegionHeight(),
+            sb.draw(texture, x - (w / 2.0f), y - (h / 2.0f),
+                    w / 2.0f, h / 2.0f,
+                    w, h,
                     effectScale, effectScale, 0.0f);
 
             //reset blend function
@@ -174,19 +170,13 @@ public class YawningAbyssEffect extends AbstractGameEffect {
         int i = 0;
         for (int h = 0; h < CRACK_VERTICAL; ++h) {
             for (int w = 0; w < CRACK_HORIZONTAL; ++w) {
-                crackAnimation[i++] = new TextureRegion(CRACK_TEXTURE, CRACK_WIDTH * w, CRACK_HEIGHT * h, CRACK_WIDTH, CRACK_HEIGHT);
-            }
-        }
-        maskAnimation = new TextureRegion[MASK_VERTICAL * MASK_HORIZONTAL];
-        i = 0;
-        for (int h = 0; h < MASK_VERTICAL; ++h) {
-            for (int w = 0; w < MASK_HORIZONTAL; ++w) {
-                maskAnimation[i++] = new TextureRegion(MASK_TEXTURE, MASK_WIDTH * w, MASK_HEIGHT * h, MASK_WIDTH, MASK_HEIGHT);
+                crackAnimation[i] = new TextureRegion(CRACK_TEXTURE, CRACK_WIDTH * w, CRACK_HEIGHT * h, CRACK_WIDTH, CRACK_HEIGHT);
+                maskAnimation[i++] = new TextureRegion(MASK_TEXTURE, CRACK_WIDTH * w, CRACK_HEIGHT * h, CRACK_WIDTH, CRACK_HEIGHT);
             }
         }
         effect = new TextureRegion(EFFECT_TEXTURE);
-        fbo = new FrameBuffer(Pixmap.Format.RGBA8888, MASK_WIDTH, MASK_HEIGHT, false, false);
-        camera = new OrthographicCamera(MASK_WIDTH, MASK_HEIGHT);
+        fbo = new FrameBuffer(Pixmap.Format.RGBA8888, CRACK_WIDTH, CRACK_HEIGHT, false, false);
+        camera = new OrthographicCamera(CRACK_WIDTH, CRACK_HEIGHT);
         camera.position.x = fbo.getWidth() / 2.0f;
         camera.position.y = fbo.getHeight() / 2.0f;
         camera.update();
