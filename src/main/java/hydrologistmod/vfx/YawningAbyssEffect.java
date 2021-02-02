@@ -43,7 +43,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
     private float effectDuration = EFFECT_DURATION;
     private float currentFrameAlpha = 1.0f;
     private float effectScale;
-    private static final float EFFECT_FADE_OUT = 3.0f;
+    private static final float EFFECT_FADE_OUT = 1.0f;
     private float effectFadeOut = 0.0f;
 
     public YawningAbyssEffect(float x, float y, YawningAbyssAction parent, float scale) {
@@ -61,6 +61,9 @@ public class YawningAbyssEffect extends AbstractGameEffect {
             effectDuration += EFFECT_DURATION;
         }
         frameDuration += time;
+        if (stage == Stage.SHRINKING) {
+            frameDuration += time;
+        }
         currentFrameAlpha = 1.0f - (frameDuration / (1.0f / BASE_FPS));
         if (frameDuration > 1.0f / BASE_FPS) {
             currentFrameAlpha = 1.0f;
@@ -184,6 +187,9 @@ public class YawningAbyssEffect extends AbstractGameEffect {
         effect = new TextureRegion(EFFECT_TEXTURE);
         fbo = new FrameBuffer(Pixmap.Format.RGBA8888, MASK_WIDTH, MASK_HEIGHT, false, false);
         camera = new OrthographicCamera(MASK_WIDTH, MASK_HEIGHT);
+        camera.position.x = fbo.getWidth() / 2.0f;
+        camera.position.y = fbo.getHeight() / 2.0f;
+        camera.update();
     }
 
     public void finish() {
