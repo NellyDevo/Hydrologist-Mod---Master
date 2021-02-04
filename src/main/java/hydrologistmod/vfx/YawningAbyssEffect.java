@@ -45,7 +45,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
     private float effectDuration = EFFECT_DURATION;
     private float currentFrameAlpha = 1.0f;
     private float effectScale;
-    private static final float EFFECT_FADE_OUT = 1.0f;
+    private static final float EFFECT_FADE_OUT = 3.0f;
     private float effectFadeOut = 0.0f;
     private long openSound = 0;
     private long energyLoop = 0;
@@ -182,7 +182,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
             sb.draw(r, 0.0f, 0.0f,
                     0.0f, 0.0f,
                     w, h,
-                    1.0f,  scaleY * effectFadeOut, 0.0f);
+                    1.0f,  scaleY * (effectFadeOut / EFFECT_FADE_OUT), 0.0f);
 
             //end shader program
             sb.end();
