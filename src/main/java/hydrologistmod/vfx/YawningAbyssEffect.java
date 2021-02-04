@@ -47,7 +47,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
     private float effectScale;
     private static final float EFFECT_FADE_OUT = 3.0f;
     private float effectFadeOut = 0.0f;
-    private long openSound = 0;
+    private long openSound;
     private long energyLoop = 0;
     private long closeSound = 0;
 
@@ -56,13 +56,11 @@ public class YawningAbyssEffect extends AbstractGameEffect {
         this.y = y;
         this.parent = parent;
         effectScale = scale * Settings.scale;
+        openSound = CardCrawlGame.sound.play("hydrologistmod:ABYSS_OPEN");
     }
 
     @Override
     public void update() {
-        if (openSound == 0) {
-            openSound = CardCrawlGame.sound.play("hydrologistmod:ABYSS_OPEN");
-        }
         float time = Gdx.graphics.getDeltaTime();
         effectDuration -= time;
         if (effectDuration < 0) {
