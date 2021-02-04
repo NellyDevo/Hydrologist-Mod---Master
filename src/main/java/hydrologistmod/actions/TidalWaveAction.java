@@ -35,8 +35,8 @@ public class TidalWaveAction extends AbstractGameAction {
     private Vector2 targetPosition;
     private Vector2 currentPosition;
     private Vector2 drawPosition;
-    private float effectWidth = 200.0f * Settings.scale;
-    private float effectHeight = 400.0f * Settings.scale;
+    private float effectWidth = 250.0f * Settings.scale;
+    private float effectHeight = 500.0f * Settings.scale;
 
     public TidalWaveAction(AbstractCreature source, int[] amount, DamageInfo.DamageType type) {
         if (source instanceof HydrologistCharacter) {
