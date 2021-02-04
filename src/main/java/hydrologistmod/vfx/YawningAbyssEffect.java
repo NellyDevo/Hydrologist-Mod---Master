@@ -73,39 +73,47 @@ public class YawningAbyssEffect extends AbstractGameEffect {
             frameDuration += time;
         }
         currentFrameAlpha = 1.0f - (frameDuration / (1.0f / BASE_FPS));
-        if (frameDuration > 1.0f / BASE_FPS) {
-            currentFrameAlpha = 1.0f;
-            frameDuration = 0;
-            currentFrame = nextFrame;
-            if (currentFrame >= WIND_UP_FRAMES && !parent.doingDamage) {
-                parent.startDamage();
-                energyLoop = CardCrawlGame.sound.playAndLoop("hydrologistmod:ABYSS_BEAM", 0.5f);
-            }
-            switch (stage) {
-                case EXPANDING:
-                    effectFadeOut += time;
-                    if (effectFadeOut > EFFECT_FADE_OUT) {
-                        effectFadeOut = EFFECT_FADE_OUT;
+        switch (stage) {
+            case EXPANDING:
+                if (frameDuration > 1.0f / BASE_FPS) {
+                    currentFrameAlpha = 1.0f;
+                    frameDuration = 0;
+                    currentFrame = nextFrame;
+                    if (currentFrame >= WIND_UP_FRAMES && !parent.doingDamage) {
+                        parent.startDamage();
+                        energyLoop = CardCrawlGame.sound.playAndLoop("hydrologistmod:ABYSS_BEAM", 0.5f);
                     }
                     if (nextFrame + 1 < CRACK_HORIZONTAL * CRACK_VERTICAL) {
                         ++nextFrame;
                     } else {
                         stage = Stage.STABLE;
                     }
-                    break;
-                case SHRINKING:
-                    effectFadeOut -= time;
-                    if (effectFadeOut < 0.0f) {
-                        effectFadeOut = 0.0f;
-                    }
+                }
+                effectFadeOut += time;
+                if (effectFadeOut > EFFECT_FADE_OUT) {
+                    effectFadeOut = EFFECT_FADE_OUT;
+                }
+                break;
+            case STABLE:
+                effectFadeOut = EFFECT_FADE_OUT;
+                break;
+            case SHRINKING:
+                if (frameDuration > 1.0f / BASE_FPS) {
+                    currentFrameAlpha = 1.0f;
+                    frameDuration = 0;
+                    currentFrame = nextFrame;
                     if (nextFrame - 1 >= 0) {
                         --nextFrame;
                     } else {
                         isDone = true;
                         CardCrawlGame.sound.fadeOut("hydrologistmod:ABYSS_OPEN", closeSound);
                     }
-                    break;
-            }
+                }
+                effectFadeOut -= time * 3.0f;
+                if (effectFadeOut < 0.0f) {
+                    effectFadeOut = 0.0f;
+                }
+                break;
         }
         currentFrameAlpha = 1.0f - (frameDuration / (1.0f / BASE_FPS));
     }
@@ -174,7 +182,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
             sb.draw(r, 0.0f, 0.0f,
                     0.0f, 0.0f,
                     w, h,
-                    1.0f,  scaleY, 0.0f);
+                    1.0f,  scaleY * effectFadeOut, 0.0f);
 
             //end shader program
             sb.end();
