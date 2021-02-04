@@ -90,8 +90,8 @@ public class TidalWaveAction extends AbstractGameAction {
                 } else if (shapeDuration > 0.0f) {
                     //override spline position to travel along tidal wave shape
                     float alpha = 1.0f - (shapeDuration / SHAPE_DURATION);
-                    currentPosition.x = Interpolation.linear.apply(startPosition.x, targetPosition.x, alpha);
-                    currentPosition.y = Interpolation.linear.apply(startPosition.y, targetPosition.y, alpha);
+                    currentPosition.x = Interpolation.circleIn.apply(startPosition.x, targetPosition.x, alpha);
+                    currentPosition.y = Interpolation.circleOut.apply(startPosition.y, targetPosition.y, alpha);
                     player.waterbending.override(currentPosition);
                     shapeDuration -= time;
                     //when shape is drawn, snapshot the bending and create the child effect
