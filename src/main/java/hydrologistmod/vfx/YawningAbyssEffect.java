@@ -61,7 +61,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
     @Override
     public void update() {
         if (openSound == 0) {
-            openSound = CardCrawlGame.sound.playV("hydrologistmod:ABYSS_OPEN", 3.0f);
+            openSound = CardCrawlGame.sound.play("hydrologistmod:ABYSS_OPEN");
         }
         float time = Gdx.graphics.getDeltaTime();
         effectDuration -= time;
@@ -81,7 +81,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
                     currentFrame = nextFrame;
                     if (currentFrame >= WIND_UP_FRAMES && !parent.doingDamage) {
                         parent.startDamage();
-                        energyLoop = CardCrawlGame.sound.playAndLoop("hydrologistmod:ABYSS_BEAM", 0.5f);
+                        energyLoop = CardCrawlGame.sound.playAndLoop("hydrologistmod:ABYSS_BEAM");
                     }
                     if (nextFrame + 1 < CRACK_HORIZONTAL * CRACK_VERTICAL) {
                         ++nextFrame;
@@ -251,7 +251,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
         CardCrawlGame.sound.fadeOut("hydrologistmod:ABYSS_OPEN", openSound);
         CardCrawlGame.sound.fadeOut("hydrologistmod:ABYSS_BEAM", energyLoop);
         if (closeSound == 0) {
-            closeSound = CardCrawlGame.sound.playV("hydrologistmod:ABYSS_CLOSE", 3.0f);
+            closeSound = CardCrawlGame.sound.play("hydrologistmod:ABYSS_CLOSE");
         }
     }
 
