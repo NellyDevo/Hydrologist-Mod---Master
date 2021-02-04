@@ -64,6 +64,7 @@ public class TidalWaveEffect extends AbstractGameEffect {
                 float rotation = AbstractDungeon.miscRng.random(0.0f, 360.0f);
                 float scale = AbstractDungeon.miscRng.random(0.8f, 1.2f);
                 AbstractDungeon.effectsQueue.add(new HydrologistParticle(HydrologistTags.WATER, coords.x, coords.y, rotation, scale));
+                particleTimer -= 1.0f / PARTICLES_PER_SECOND;
             }
             if (effectDuration <= 0.0f && passed.containsAll(AbstractDungeon.getCurrRoom().monsters.monsters)) {
                 isDone = true;
