@@ -97,7 +97,7 @@ public class TidalWaveAction extends AbstractGameAction {
                     //when shape is drawn, snapshot the bending and create the child effect
                     if (shapeDuration <= 0.0f) {
                         player.waterbending.doCapture(drawPosition.x, drawPosition.y, effectWidth, effectHeight);
-                        child = new TidalWaveEffect(drawPosition, ATTACK_DURATION, player);
+                        child = new TidalWaveEffect(drawPosition, ATTACK_DURATION, player, player.waterbending.captureSpline());
                         AbstractDungeon.effectList.add(child);
                         startPosition = currentPosition.cpy();
                     }

@@ -378,6 +378,10 @@ public class HydrologistWaterbendingManager {
         captureHeight = height;
     }
 
+    public ArrayList<Coordinates> captureSpline() {
+        return (ArrayList<Coordinates>)spline.clone();
+    }
+
     private interface RenderInstructor {
         void instruct();
     }
