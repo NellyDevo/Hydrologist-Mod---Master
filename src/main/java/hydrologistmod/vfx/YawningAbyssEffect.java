@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Matrix4;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hydrologistmod.HydrologistMod;
@@ -46,6 +47,9 @@ public class YawningAbyssEffect extends AbstractGameEffect {
     private float effectScale;
     private static final float EFFECT_FADE_OUT = 1.0f;
     private float effectFadeOut = 0.0f;
+    private long openSound = 0;
+    private long energyLoop = 0;
+    private long closeSound = 0;
 
     public YawningAbyssEffect(float x, float y, YawningAbyssAction parent, float scale) {
         this.x = x;
@@ -56,6 +60,9 @@ public class YawningAbyssEffect extends AbstractGameEffect {
 
     @Override
     public void update() {
+        if (openSound == 0) {
+            openSound = CardCrawlGame.sound.play("hydrologistmod:ABYSS_OPEN");
+        }
         float time = Gdx.graphics.getDeltaTime();
         effectDuration -= time;
         if (effectDuration < 0) {
@@ -72,6 +79,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
             currentFrame = nextFrame;
             if (currentFrame >= WIND_UP_FRAMES && !parent.doingDamage) {
                 parent.startDamage();
+                energyLoop = CardCrawlGame.sound.playAndLoop("hydrologistmod:ABYSS_BEAM", 0.5f);
             }
             switch (stage) {
                 case EXPANDING:
@@ -94,6 +102,7 @@ public class YawningAbyssEffect extends AbstractGameEffect {
                         --nextFrame;
                     } else {
                         isDone = true;
+                        CardCrawlGame.sound.fadeOut("hydrologistmod:ABYSS_OPEN", closeSound);
                     }
                     break;
             }
@@ -231,6 +240,11 @@ public class YawningAbyssEffect extends AbstractGameEffect {
             nextFrame = currentFrame - 1;
         }
         stage = Stage.SHRINKING;
+        CardCrawlGame.sound.fadeOut("hydrologistmod:ABYSS_OPEN", openSound);
+        CardCrawlGame.sound.fadeOut("hydrologistmod:ABYSS_BEAM", energyLoop);
+        if (closeSound == 0) {
+            closeSound = CardCrawlGame.sound.play("hydrologistmod:ABYSS_CLOSE");
+        }
     }
 
     private enum Stage {
