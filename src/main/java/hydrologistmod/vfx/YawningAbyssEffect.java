@@ -17,7 +17,6 @@ public class YawningAbyssEffect extends AbstractGameEffect {
     private static final Texture CRACK_TEXTURE = new Texture("hydrologistmod/images/vfx/YawningAbyssCrack.png");
     private static final Texture MASK_TEXTURE = new Texture("hydrologistmod/images/vfx/YawningAbyssMask.png");
     private static final Texture EFFECT_TEXTURE = new Texture("hydrologistmod/images/vfx/YawningAbyssEffect.png");
-    private static final ShaderProgram shader = makeShader();
     private Color hslc = new Color(0.0f, 0.5f, 0.5f, 0.5f);
     private static final int CRACK_WIDTH = 568;
     private static final int CRACK_HEIGHT = 280;
@@ -27,6 +26,8 @@ public class YawningAbyssEffect extends AbstractGameEffect {
     private static TextureRegion[] maskAnimation = null;
     private static TextureRegion effect = null;
     private static FrameBuffer fbo = null;
+    private static FrameBuffer maskFbo = null;
+    private static ShaderProgram shader = null;
     private static OrthographicCamera camera = null;
 
     private static final int BASE_FPS = 5;
@@ -123,20 +124,42 @@ public class YawningAbyssEffect extends AbstractGameEffect {
                 effectScale, effectScale, 0.0f);
 
         if (effectFadeOut > 0.0f) {
-            //turn on the frame buffer, change camera
+            //create a single mask by combining the two mask frames the same way the regular crack frames are
+            //begin buffer, change camera
             sb.end();
-            HydrologistMod.beginBuffer(fbo);
+            HydrologistMod.beginBuffer(maskFbo);
             Matrix4 tmp = sb.getProjectionMatrix().cpy();
             sb.setProjectionMatrix(camera.combined);
+
+            //render current frame mask
+            sb.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA); //don't multiply alpha until next fbo
+            r = maskAnimation[currentFrame];
+            sb.begin();
+            sb.setColor(frame1Color);
+            sb.draw(r, 0.0f, 0.0f);
+
+            //render next frame mask
+            r = maskAnimation[nextFrame];
+            sb.setColor(frame2Color);
+            sb.draw(r, 0.0f, 0.0f);
+
+            //capture the texture
+            sb.end();
+            maskFbo.end();
+            TextureRegion mask = HydrologistMod.getBufferTexture(maskFbo);
+
+            //turn on the aurora frame buffer
+            HydrologistMod.beginBuffer(fbo);
 
             //begin shader program
             ShaderProgram tmpShader = sb.getShader();
             sb.setShader(shader);
             hslc.r = effectDuration;
             sb.setColor(hslc);
+            sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
             sb.begin();
 
-            //render aurora borealis in the buffer
+            //render effect in the buffer
             r = effect;
             float scaleY = 1.0f - Math.abs(Interpolation.linear.apply(-0.1f, 0.1f, effectDuration / EFFECT_DURATION));
             sb.draw(r, 0.0f, 0.0f,
@@ -150,10 +173,9 @@ public class YawningAbyssEffect extends AbstractGameEffect {
             sb.setColor(Color.WHITE.cpy());
             sb.begin();
 
-            //mask borealis
-            r = maskAnimation[currentFrame];
+            //render previously generated mask
             sb.setBlendFunction(0, GL20.GL_SRC_ALPHA);
-            sb.draw(r, 0.0f, 0.0f);
+            sb.draw(mask, 0.0f, 0.0f);
 
             //turn off frame buffer, capture texture, change camera back
             sb.end();
@@ -191,6 +213,8 @@ public class YawningAbyssEffect extends AbstractGameEffect {
         }
         effect = new TextureRegion(EFFECT_TEXTURE);
         fbo = new FrameBuffer(Pixmap.Format.RGBA8888, CRACK_WIDTH, CRACK_HEIGHT, false, false);
+        maskFbo = new FrameBuffer(Pixmap.Format.RGBA8888, CRACK_WIDTH, CRACK_HEIGHT, false, false);
+        shader = makeShader();
         camera = new OrthographicCamera(CRACK_WIDTH, CRACK_HEIGHT);
         camera.position.x = fbo.getWidth() / 2.0f;
         camera.position.y = fbo.getHeight() / 2.0f;
