@@ -23,8 +23,8 @@ public class TidalWaveEffect extends AbstractGameEffect {
     private float effectDuration;
     private float startEffectDuration;
     private HydrologistCharacter player;
-    private static final int PARTICLES_PER_SECOND = 30;
-    private static final float PARTICLE_RANGE = 30.0f;
+    private static final int PARTICLES_PER_SECOND = 300;
+    private static final float PARTICLE_RANGE = 15.0f;
     private float particleTimer = 0.0f;
     private ArrayList<HydrologistWaterbendingManager.Coordinates> splineCopy;
     private boolean sound = false;
