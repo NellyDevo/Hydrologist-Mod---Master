@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -26,6 +27,7 @@ public class TidalWaveEffect extends AbstractGameEffect {
     private static final float PARTICLE_RANGE = 30.0f;
     private float particleTimer = 0.0f;
     private ArrayList<HydrologistWaterbendingManager.Coordinates> splineCopy;
+    private boolean sound = false;
 
     public TidalWaveEffect(Vector2 drawPosition, float travelTime, HydrologistCharacter player, ArrayList<HydrologistWaterbendingManager.Coordinates> splineCopy) {
         this.drawPosition = drawPosition.cpy();
@@ -40,6 +42,10 @@ public class TidalWaveEffect extends AbstractGameEffect {
     @Override
     public void update() {
         if (goTime) {
+            if (!sound) {
+                CardCrawlGame.sound.play("hydrologistmod:TIDAL_WAVE");
+                sound = true;
+            }
             float time = Gdx.graphics.getDeltaTime();
             effectDuration -= time;
             drawPosition.x = Interpolation.linear.apply(targetPosition.x, startPosition.x, effectDuration / startEffectDuration);
