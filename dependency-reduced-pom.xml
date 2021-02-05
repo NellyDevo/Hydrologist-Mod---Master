@@ -4,7 +4,7 @@
   <groupId>hydrologistmod</groupId>
   <artifactId>HydrologistMod</artifactId>
   <name>TheHydrologist</name>
-  <version>0.6.4</version>
+  <version>0.6.5</version>
   <description>Slay the Spire mod introducing custom character: The Hydrologist.</description>
   <build>
     <resources>
