@@ -252,6 +252,9 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         //tidal wave
         BaseMod.addAudio("hydrologistmod:TIDAL_WAVE", "hydrologistmod/sfx/Tidal_Wave_SFX.ogg");
 
+        //ice spike
+        BaseMod.addAudio("hydrologistmod:ICE_SPIKE", "hydrologistmod/sfx/Ice_Spike_SFX.ogg");
+
         //yawning abyss
         BaseMod.addAudio("hydrologistmod:ABYSS_OPEN", "hydrologistmod/sfx/Yawning_Earth_Open_SFX.ogg");
         BaseMod.addAudio("hydrologistmod:ABYSS_BEAM", "hydrologistmod/sfx/Yawning_Energy_SFX.ogg");

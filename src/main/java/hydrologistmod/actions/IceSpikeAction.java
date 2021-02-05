@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.character.HydrologistCharacter;
 
@@ -67,6 +68,9 @@ public class IceSpikeAction extends AbstractGameAction {
             //override the same spot every frame
             player.waterbending.override(currentPosition);
             hangDuration -= time;
+            if (hangDuration <= 0.0f) {
+                CardCrawlGame.sound.play("hydrologistmod:ICE_SPIKE");
+            }
         } else if (slashDuration > 0.0f) {
             //go to below monster
             float alpha = 1.0f - (slashDuration / SLASH_DURATION);
