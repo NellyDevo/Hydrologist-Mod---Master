@@ -5,5 +5,25 @@
       "#pLOSS. NL NL You must flee. NL NL #b@\"BETRAYER!\"@ NL #r@\"MURDERER!\"@ NL #g@\"BLASHPHEMER!\"@ NL NL Pursuers. Those who you once called friends and family. Those whose faces now contort in #r~terrible~ #r~rage.~ Those who lied to you. NL NL You have to learn the truth. You have to see for yourself. You have to get out... have to get out... ~have~ ~to~ ~get~ ~out~ ..."
     ],
     "OPTIONS": []
+  },
+  "hydrologistmod:KnowledgeSeekerLibrary": {
+  "NAME": "",
+    "DESCRIPTIONS": [
+      "You come across an ornate building which appears strangely familiar. NL You remember this place from what seems like a lifetime ago, a distant memory. NL Inside, you find countless rows of scrolls and books curated by creatures you remember as Knowledge Seekers. NL You pick a book and cozy yourself into a chair for some quiet time.",
+      "Reading is for chumps. NL You doze off in the comfy chair instead. NL ~Zzz...~ ~zzz...~ ~..Zz....~ NL You wake up feeling refreshed.",
+      "The story is about a young boy separated from his people and era. Friendship, genocide, war, and compassion fill this surprisingly deep story that ends up sucking you in from page one. NL Heartwarming.",
+      "The story is about a girl coming of age in a time of great change and prosperity. Change, tradition, and responsibility teach lessons as she learns more about who she is. NL Inspiring. ",
+      "The story is about a man in a time of great strife. Man and spirit, ever at odds, yet unaware of a more sinister plot. The story tells how he becomes a bridge between their worlds. NL Intriguing.",
+      "You decide instead to make an offering of knowledge to a nearby Knowledge Seeker. It runs off and eventually returns with a scroll. Knowledge for knowledge."
+    ],
+    "OPTIONS": [
+      "[Read] #gChoose #g1 #gof #g20 #gcards #gto #gadd #gto #gyour #gdeck.",
+      "[Sleep] #gHeal #g",
+      " #gHP.",
+      "[Leave]",
+      "Add a card to your deck.",
+      "[Offer] #gTransform #ga #gcard.",
+      "Select a Card to Transform."
+    ]
   }
 }

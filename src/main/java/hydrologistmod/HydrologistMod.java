@@ -2,6 +2,7 @@ package hydrologistmod;
 
 import basemod.*;
 import basemod.abstracts.CustomRelic;
+import basemod.eventUtil.AddEventParams;
 import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -23,6 +24,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.events.city.TheLibrary;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -34,6 +36,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.cards.AbstractAdaptiveCard;
 import hydrologistmod.cards.AbstractHydrologistCard;
 import hydrologistmod.character.HydrologistCharacter;
+import hydrologistmod.events.KnowledgeSeeker;
 import hydrologistmod.helpers.DynamicDynamicVariableManager;
 import hydrologistmod.interfaces.CorporealRelevantObject;
 import hydrologistmod.interfaces.SwappableCard;
@@ -221,6 +224,12 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
             try {hydrologistConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
         settingsPanel.addUIElement(hydroHomie);
+
+        BaseMod.addEvent(new AddEventParams.Builder(KnowledgeSeeker.ID, KnowledgeSeeker.class)
+                .playerClass(HydrologistEnum.HYDROLOGIST_CLASS)
+                .overrideEvent(TheLibrary.ID)
+                .create()
+        );
     }
 
     @Override
