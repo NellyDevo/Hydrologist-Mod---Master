@@ -46,7 +46,7 @@ public class HeatBlast extends AbstractHydrologistCard {
                     AbstractCard masterDeckCard = StSLib.getMasterDeckEquivalent(card);
                     int amount = m.getPower(HeatPower.POWER_ID).amount;
                     if (masterDeckCard != null) {
-                        CardModifierManager.addModifier(card, new HeatBlastModifier(amount));
+                        CardModifierManager.addModifier(masterDeckCard, new HeatBlastModifier(amount));
                     }
                     CardModifierManager.addModifier(card, new HeatBlastModifier(amount));
                 }
