@@ -60,7 +60,8 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
         setValues();
     }
 
-    public void onCalculateAttachedCardDamage(AbstractCard card, AbstractMonster mo) {
+    @Override
+    public void onCalculateCardDamage(AbstractCard card, AbstractMonster mo) {
         CardModifierManager.removeAllModifiers(attachedCard, true);
         for (AbstractCardModifier mod : CardModifierManager.modifiers(card)) {
             if (!(mod instanceof AbstractExtraEffectModifier)) {
@@ -145,19 +146,5 @@ public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
             s = TEXT[0] + s;
         }
         return s;
-    }
-
-    @SpirePatch(
-            clz = AbstractCard.class,
-            method = "calculateCardDamage"
-    )
-    public static class EffectModifierCalculateCardDamage {
-        public static void Postfix(AbstractCard __instance, AbstractMonster mo) {
-            for (AbstractCardModifier mod : CardModifierManager.modifiers(__instance)) {
-                if (mod instanceof AbstractExtraEffectModifier) {
-                    ((AbstractExtraEffectModifier)mod).onCalculateAttachedCardDamage(__instance, mo);
-                }
-            }
-        }
     }
 }

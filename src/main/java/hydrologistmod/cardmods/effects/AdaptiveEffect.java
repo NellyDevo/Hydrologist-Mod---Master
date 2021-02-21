@@ -53,8 +53,8 @@ public class AdaptiveEffect extends AbstractExtraEffectModifier {
     }
 
     @Override
-    public void onCalculateAttachedCardDamage(AbstractCard card, AbstractMonster mo) {
-        super.onCalculateAttachedCardDamage(card, mo);
+    public void onCalculateCardDamage(AbstractCard card, AbstractMonster mo) {
+        super.onCalculateCardDamage(card, mo);
         card.initializeDescription();
         setTarget(card);
     }

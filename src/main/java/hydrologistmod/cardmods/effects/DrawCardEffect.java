@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 @AbstractCardModifier.SaveIgnore
 public class DrawCardEffect extends AbstractExtraEffectModifier {
@@ -61,6 +62,13 @@ public class DrawCardEffect extends AbstractExtraEffectModifier {
     @Override
     public void onApplyPowers(AbstractCard card) {
         super.onApplyPowers(card);
+        baseValue *= amount;
+        value *= amount;
+    }
+
+    @Override
+    public void onCalculateCardDamage(AbstractCard card, AbstractMonster mo) {
+        super.onCalculateCardDamage(card, mo);
         baseValue *= amount;
         value *= amount;
     }
