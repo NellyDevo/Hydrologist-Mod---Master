@@ -31,7 +31,7 @@ public class WaterPouch extends CustomRelic implements CustomSavable<WaterPouch.
     public static final String ID = "hydrologistmod:WaterPouch";
     public static final Texture IMG = new Texture("hydrologistmod/images/relics/WaterPouch.png");
     public static final Texture OUTLINE = new Texture("hydrologistmod/images/relics/WaterPouchOutline.png");
-    public static AbstractCard storedCard = null;
+    public AbstractCard storedCard = null;
 
     public WaterPouch() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
@@ -164,11 +164,14 @@ public class WaterPouch extends CustomRelic implements CustomSavable<WaterPouch.
                 localvars = {"copy"}
         )
         public static void Insert(CardGroup __instance, CardGroup masterDeck, CardGroup copy) {
-            if (AbstractDungeon.player.hasRelic(ID) && storedCard != null) {
-                for (AbstractCard card : copy.group) {
-                    if (card.uuid.equals(storedCard.uuid)) {
-                        copy.removeCard(card);
-                        break;
+            if (AbstractDungeon.player.hasRelic(ID)) {
+                WaterPouch pouch = (WaterPouch)AbstractDungeon.player.getRelic(ID);
+                if (pouch.storedCard != null) {
+                    for (AbstractCard card : copy.group) {
+                        if (card.uuid.equals(pouch.storedCard.uuid)) {
+                            copy.removeCard(card);
+                            break;
+                        }
                     }
                 }
             }

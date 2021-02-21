@@ -31,7 +31,7 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
     public static final String ID = "hydrologistmod:MysticalPouch";
     public static final Texture IMG = new Texture("hydrologistmod/images/relics/MysticalPouch.png");
     public static final Texture OUTLINE = new Texture("hydrologistmod/images/relics/MysticalPouchOutline.png");
-    public static AbstractCard storedCard = null;
+    public AbstractCard storedCard = null;
 
     public MysticalPouch() {
         super(ID, IMG, OUTLINE, RelicTier.BOSS, LandingSound.MAGICAL);
@@ -154,8 +154,9 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
     public void obtain() {
         if (AbstractDungeon.player.hasRelic(WaterPouch.ID)) {
             for (int i = 0; i < AbstractDungeon.player.relics.size(); ++i) {
-                if (AbstractDungeon.player.relics.get(i).relicId.equals(WaterPouch.ID)) {
-                    storedCard = WaterPouch.storedCard;
+                AbstractRelic relic = AbstractDungeon.player.relics.get(i);
+                if (relic instanceof WaterPouch) {
+                    storedCard = ((WaterPouch)relic).storedCard;
                     if (storedCard != null) {
                         setDescriptionWithCard();
                     }
@@ -188,11 +189,14 @@ public class MysticalPouch extends CustomRelic implements CustomSavable<WaterPou
                 localvars = {"copy"}
         )
         public static void Insert(CardGroup __instance, CardGroup masterDeck, CardGroup copy) {
-            if (AbstractDungeon.player.hasRelic(ID) && storedCard != null) {
-                for (AbstractCard card : copy.group) {
-                    if (card.uuid.equals(storedCard.uuid)) {
-                        copy.removeCard(card);
-                        break;
+            if (AbstractDungeon.player.hasRelic(ID)) {
+                MysticalPouch pouch = (MysticalPouch)AbstractDungeon.player.getRelic(ID);
+                if (pouch.storedCard != null) {
+                    for (AbstractCard card : copy.group) {
+                        if (card.uuid.equals(pouch.storedCard.uuid)) {
+                            copy.removeCard(card);
+                            break;
+                        }
                     }
                 }
             }
