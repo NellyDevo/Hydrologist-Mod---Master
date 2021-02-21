@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hydrologistmod.cardmods.AbstractTemporaryCardmod;
+import hydrologistmod.cardmods.PurityModifier;
 import hydrologistmod.cardmods.effects.AbstractExtraEffectModifier;
 import hydrologistmod.helpers.SwapperHelper;
 import javassist.CtBehavior;
@@ -58,7 +59,7 @@ public class WaterPouch extends CustomRelic implements CustomSavable<WaterPouch.
             do {
                 ArrayList<AbstractCardModifier> toRemove = new ArrayList<>();
                 for (AbstractCardModifier mod : CardModifierManager.modifiers(c)) {
-                    if (mod instanceof AbstractExtraEffectModifier || mod instanceof AbstractTemporaryCardmod) {
+                    if (mod instanceof AbstractExtraEffectModifier || mod instanceof AbstractTemporaryCardmod || mod instanceof PurityModifier) {
                         toRemove.add(mod);
                     }
                 }
