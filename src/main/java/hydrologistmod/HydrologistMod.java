@@ -126,6 +126,8 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
         logger.info("Swappable tutorial seen: " + hydrologistConfig.getString("Swappable Tutorial Seen") + ".");
         logger.info("Temperature tutorial seen: " + hydrologistConfig.getString("Temperature Tutorial Seen") + ".");
         logger.info("hydrohomie: " + hydrologistConfig.getString("hydrohomie") + ".");
+
+        CreditsHelper.initialize();
     }
 
     //Used by @SpireInitializer
@@ -231,8 +233,6 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
                 .overrideEvent(TheLibrary.ID)
                 .create()
         );
-
-        CreditsHelper.initialize();
     }
 
     @Override
