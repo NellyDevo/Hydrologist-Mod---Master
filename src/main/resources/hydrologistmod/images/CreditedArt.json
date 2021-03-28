@@ -1,0 +1,26 @@
+{
+  "hydrologistmod:Defend_Hydrologist": {
+    "ARTISTS": [
+      "Megacrit"
+    ],
+    "URLS": [
+      "https://www.megacrit.com/"
+    ]
+  },
+  "hydrologistmod:": {
+    "ARTISTS": [
+      "Megacrit"
+    ],
+    "URLS": [
+      "https://www.megacrit.com/"
+    ]
+  },
+  "hydrologistmod:YawningAbyss": {
+    "ARTISTS": [
+      "Megacrit"
+    ],
+    "URLS": [
+      "https://www.megacrit.com/"
+    ]
+  }
+}

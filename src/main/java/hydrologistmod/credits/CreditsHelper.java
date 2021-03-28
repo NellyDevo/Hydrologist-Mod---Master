@@ -3,8 +3,11 @@ package hydrologistmod.credits;
 import basemod.Pair;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -20,10 +23,13 @@ import hydrologistmod.patches.SwapperCardPatch;
 
 import java.awt.*;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CreditsHelper {
     private static HashMap<String, Pair<ArrayList<CreditsInfo>, String>> creditedArts = new HashMap<>();
@@ -290,5 +296,34 @@ public class CreditsHelper {
             }
         }
         return list;
+    }
+
+    public static void initialize() {
+        System.out.println("CreditsHelper: INFO: parsing credited art information");
+        long time = System.currentTimeMillis();
+        Gson gson = new Gson();
+        String path = "hydrologistmod/images/CreditedArt.json";
+        Type creditType = new TypeToken<Map<String, CreditStrings>>() {}.getType();
+        String jsonString = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
+        HashMap<String, CreditStrings> credits = gson.fromJson(jsonString, creditType);
+
+        for (String cardID : credits.keySet()) {
+            CreditStrings credit = credits.get(cardID);
+            if (credit.ARTISTS.length != credit.URLS.length) {
+                System.out.println("CreditsHelper: ERROR: credits for " + cardID + " are mismatched. No arts will be loaded for this card during this session");
+                break;
+            }
+            ArrayList<CreditsInfo> infos;
+            if (!isArtCredited(cardID)) {
+                infos = new ArrayList<>();
+                creditedArts.put(cardID, new Pair<>(infos, CreditsInfo.DEFAULT_ID));
+            } else {
+                infos = creditedArts.get(cardID).getKey();
+            }
+            for (int i = 0; i < credit.ARTISTS.length; ++i) {
+                infos.add(new CreditsInfo(cardID, credit.ARTISTS[i], credit.URLS[i]));
+            }
+        }
+        System.out.println("CreditsHelper: INFO: credited art info loaded. Time elapsed: " + (System.currentTimeMillis() - time) + "ms");
     }
 }

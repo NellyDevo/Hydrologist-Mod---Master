@@ -36,6 +36,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.cards.AbstractAdaptiveCard;
 import hydrologistmod.cards.AbstractHydrologistCard;
 import hydrologistmod.character.HydrologistCharacter;
+import hydrologistmod.credits.CreditsHelper;
 import hydrologistmod.events.KnowledgeSeeker;
 import hydrologistmod.helpers.DynamicDynamicVariableManager;
 import hydrologistmod.interfaces.CorporealRelevantObject;
@@ -230,6 +231,8 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
                 .overrideEvent(TheLibrary.ID)
                 .create()
         );
+
+        CreditsHelper.initialize();
     }
 
     @Override
