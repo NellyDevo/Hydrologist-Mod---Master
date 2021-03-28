@@ -10,8 +10,8 @@ public class CreditsInfo {
     private String artistName;
     private String artistWebsite;
     private String ID;
-    public TextureAtlas.AtlasRegion defaultSmallImage;
-    public Texture defaultLargeImage;
+    public TextureAtlas.AtlasRegion smallImage;
+    public Texture largeImage;
 
     public CreditsInfo(String card, String artist, String url) {
         cardID = card;
@@ -39,6 +39,20 @@ public class CreditsInfo {
             return null;
         }
         return BASE_IMG_PATH + cardID + "/" + artistName + "/IMG_LARGE.png";
+    }
+
+    public TextureAtlas.AtlasRegion getSmallImage() {
+        if (smallImage == null) {
+            smallImage = CreditsHelper.getSmallImage(getImgPath());
+        }
+        return smallImage;
+    }
+
+    public Texture getLargeImage() {
+        if (largeImage == null) {
+            largeImage = CreditsHelper.getLargeImage(getLargeImgPath());
+        }
+        return largeImage;
     }
 
     public String getArtistWebsite() {

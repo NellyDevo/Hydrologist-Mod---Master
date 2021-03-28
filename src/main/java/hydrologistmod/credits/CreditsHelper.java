@@ -5,15 +5,20 @@ import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
@@ -35,6 +40,150 @@ import java.util.Map;
 public class CreditsHelper {
     private static HashMap<String, Pair<ArrayList<CreditsInfo>, String>> creditedArts = new HashMap<>();
     public static SpireConfig creditedArtSettings;
+    private static final float LEFT_ARROW_X = (Settings.WIDTH / 2.0f) - (600.0f * Settings.scale);
+    private static final float LEFT_ARROW_Y = (Settings.HEIGHT / 2.0f) + (300.0f * Settings.scale);
+    private static final float RIGHT_ARROW_X = (Settings.WIDTH / 2.0f) + (600.0f * Settings.scale);
+    private static final float RIGHT_ARROW_Y = (Settings.HEIGHT / 2.0f) + (300.0f * Settings.scale);
+    private static final float ARROW_SIZE = 100.0f * Settings.scale;
+    private static final float LINK_X = (Settings.WIDTH / 2.0f);
+    private static final float LINK_Y = (Settings.HEIGHT / 2.0f) + (600.0f * Settings.scale);
+    private static final float LINK_WIDTH = 800.0f * Settings.scale;
+    private static final float LINK_HEIGHT = 100.0f * Settings.scale;
+    private static Hitbox leftArrow, rightArrow, link;
+    private static String currentArt;
+    private static String currentCard;
+
+    public static void update(SingleCardViewPopup screen) {
+        if (currentCard != null) {
+            if (leftArrow != null) {
+                leftArrow.update();
+                if (leftArrow.justHovered) {
+                    CardCrawlGame.sound.play("UI_HOVER");
+                }
+                if (leftArrow.clicked) {
+                    getNextArt(screen);
+                }
+            }
+
+            if (rightArrow != null) {
+                rightArrow.update();
+                if (rightArrow.justHovered) {
+                    CardCrawlGame.sound.play("UI_HOVER");
+                }
+
+                if (rightArrow.clicked) {
+                    getPreviousArt(screen);
+                }
+            }
+
+            if (link != null) {
+                link.update();
+                if (link.justHovered) {
+                    CardCrawlGame.sound.play("UI_HOVER");
+                }
+
+                if (link.clicked) {
+                    CreditsInfo info = getInfoByID(currentCard, currentArt);
+                    if (info != null) {
+                        String url = info.getArtistWebsite();
+                        openBrowser(url);
+                    } else {
+                        System.out.println("CreditsHelper: ERROR: no valid info for this card/art. How did this happen?");
+                    }
+                }
+            }
+        }
+    }
+
+    public static boolean updateInput() {
+        if (InputHelper.justClickedLeft) {
+            if (leftArrow != null && leftArrow.hovered) {
+                leftArrow.clickStarted = true;
+                CardCrawlGame.sound.play("UI_CLICK_1");
+                return true;
+            } else if (rightArrow != null && rightArrow.hovered) {
+                rightArrow.clickStarted = true;
+                CardCrawlGame.sound.play("UI_CLICK_1");
+                return true;
+            } else if (link != null && link.hovered) {
+                link.clickStarted = true;
+                CardCrawlGame.sound.play("UI_CLICK_1");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void getNextArt(SingleCardViewPopup screen) {
+        int index = 0;
+        ArrayList<CreditsInfo> list = creditedArts.get(currentCard).getKey();
+        for (int i = 0; i < list.size(); ++i) {
+            if (list.get(i).getCreditsID().equals(currentArt)) {
+                index = i;
+                break;
+            }
+        }
+        if (index + 1 >= list.size()) {
+            index = 0;
+        } else {
+            ++index;
+        }
+        CreditsInfo info = list.get(index);
+        currentArt = info.getCreditsID();
+        setSingleViewScreenImage(screen, info.getLargeImage());
+    }
+
+    public static void getPreviousArt(SingleCardViewPopup screen) {
+        int index = 0;
+        ArrayList<CreditsInfo> list = creditedArts.get(currentCard).getKey();
+        for (int i = 0; i < list.size(); ++i) {
+            if (list.get(i).getCreditsID().equals(currentArt)) {
+                index = i;
+                break;
+            }
+        }
+        if (index - 1 <= 0) {
+            index = list.size() - 1;
+        } else {
+            --index;
+        }
+        CreditsInfo info = list.get(index);
+        currentArt = info.getCreditsID();
+        setSingleViewScreenImage(screen, info.getLargeImage());
+    }
+
+    public static void render(SpriteBatch sb) {
+        if (currentCard != null) {
+            Texture arrow = ImageMaster.POPUP_ARROW;
+            int w = arrow.getWidth();
+            int h = arrow.getHeight();
+            sb.draw(arrow, leftArrow.cX - (w / 2.0f), leftArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, leftArrow.width, leftArrow.height, 1.0f, 1.0f, 0.0f, 0, 0, w, h, false, false);
+            sb.draw(arrow, rightArrow.cX - (w / 2.0f), rightArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, rightArrow.width, rightArrow.height, 1.0f, 1.0f, 0.0f, 0, 0, w, h, false, false);
+
+            //draw the credits box
+            //render name
+            //render link
+        }
+    }
+
+    public static void onScreenOpen(String cardID) {
+        if (isArtCredited(cardID)) {
+            leftArrow = new Hitbox(LEFT_ARROW_X - (ARROW_SIZE / 2.0f), LEFT_ARROW_Y - (ARROW_SIZE / 2.0f), ARROW_SIZE, ARROW_SIZE);
+            rightArrow = new Hitbox(RIGHT_ARROW_X - (ARROW_SIZE / 2.0f), RIGHT_ARROW_Y - (ARROW_SIZE / 2.0f), ARROW_SIZE, ARROW_SIZE);
+            link = new Hitbox(LINK_X - (LINK_WIDTH / 2.0f), LINK_Y - (LINK_HEIGHT / 2.0f), LINK_WIDTH, LINK_HEIGHT);
+            currentCard = cardID;
+        }
+    }
+
+    public static void onScreenClose(SingleCardViewPopup screen) {
+        if (currentCard != null && isArtCredited(currentCard)) {
+            setCurrentArt(currentCard, currentArt, screen);
+            leftArrow = null;
+            rightArrow = null;
+            link = null;
+            currentCard = null;
+        }
+    }
 
     public static void openBrowser(String url) {
         if (Desktop.isDesktopSupported()) {
@@ -77,15 +226,24 @@ public class CreditsHelper {
     }
 
     public static CreditsInfo getDefaultInfo(String cardID) {
+        CreditsInfo def = getInfoByID(cardID, CreditsInfo.DEFAULT_ID);
+        if (def == null) {
+            ArrayList<CreditsInfo> infos = creditedArts.get(cardID).getKey();
+            CreditsInfo newDefault = new CreditsInfo(cardID);
+            infos.add(newDefault);
+            return newDefault;
+        }
+        return def;
+    }
+
+    public static CreditsInfo getInfoByID(String cardID, String infoID) {
         ArrayList<CreditsInfo> infos = creditedArts.get(cardID).getKey();
         for (CreditsInfo info : infos) {
-            if (info.getCreditsID().equals(CreditsInfo.DEFAULT_ID)) {
+            if (info.getCreditsID().equals(infoID)) {
                 return info;
             }
         }
-        CreditsInfo newDefault = new CreditsInfo(cardID);
-        infos.add(newDefault);
-        return newDefault;
+        return null;
     }
 
     public static void setCurrentArt(String cardID, String artID, SingleCardViewPopup cardViewPopup) {
@@ -97,58 +255,29 @@ public class CreditsHelper {
         for (CreditsInfo info : infos) {
             if (info.getCreditsID().equals(artID)) {
                 creditedArts.put(cardID, new Pair<>(infos, artID));
-                String imgUrl = null;
-                TextureAtlas.AtlasRegion region = null;
-                if (artID.equals(CreditsInfo.DEFAULT_ID)) {
-                     region = getDefaultInfo(cardID).defaultSmallImage;
-                } else {
-                     imgUrl = info.getImgPath();
-                }
+                TextureAtlas.AtlasRegion region = info.getSmallImage();
+                Texture texture = info.getLargeImage();
                 ArrayList<AbstractCard> allInstances = getAllExistingCards(cardID);
-                if (imgUrl != null) {
-                    for (AbstractCard card : allInstances) {
-                        loadImage(card, imgUrl);
-                    }
-                } else if (region != null) {
-                    for (AbstractCard card : allInstances) {
-                        ReflectionHacks.setPrivate(card, AbstractCard.class, "portrait", region);
-                    }
-                } else {
-                    System.out.println("CreditsHelper: ERROR: how did you get here?");
+                for (AbstractCard card : allInstances) {
+                    ReflectionHacks.setPrivate(card, AbstractCard.class, "portrait", region);
                 }
-                setSingleViewScreenPortrait(cardViewPopup);
+                setSingleViewScreenImage(cardViewPopup, texture);
                 return;
             }
         }
         System.out.println("CreditsHelper: ALERT: " + artID + " is not a valid art ID");
     }
 
-    public static void setSingleViewScreenPortrait(SingleCardViewPopup popup) {
-        String imgPath = null;
-        AbstractCard card = ReflectionHacks.getPrivate(popup, SingleCardViewPopup.class, "card");
-        if (CreditsHelper.isArtCredited(card.cardID)) {
-            imgPath = CreditsHelper.getCurrentInfo(card.cardID).getLargeImgPath();
-        }
-        if (imgPath != null) {
-            Texture cardTexture;
-            if (CustomCard.imgMap.containsKey(imgPath)) {
-                cardTexture = CustomCard.imgMap.get(imgPath);
-            } else {
-                cardTexture = ImageMaster.loadImage(imgPath);
-                CustomCard.imgMap.put(imgPath, cardTexture);
-            }
-            ReflectionHacks.setPrivate(popup, SingleCardViewPopup.class, "portraitImg", cardTexture);
-        } else {
-            ReflectionHacks.setPrivate(popup, SingleCardViewPopup.class, "portraitImg", CreditsHelper.getDefaultInfo(card.cardID).defaultLargeImage);
-        }
+    public static void setSingleViewScreenImage(SingleCardViewPopup popup, Texture img) {
+        ReflectionHacks.setPrivate(popup, SingleCardViewPopup.class, "portraitImg", img);
     }
 
-    public static void loadImage(AbstractCard card, String imgUrl) {
+    public static void setImage(AbstractCard card, TextureAtlas.AtlasRegion img) {
+        ReflectionHacks.setPrivate(card, AbstractCard.class, "portrait", img);
+    }
+
+    public static TextureAtlas.AtlasRegion getSmallImage(String imgUrl) {
         Texture cardTexture;
-        if (imgUrl == null) {
-            ReflectionHacks.setPrivate(card, AbstractCard.class, "portrait", getDefaultInfo(card.cardID).defaultSmallImage);
-            return;
-        }
         if (CustomCard.imgMap.containsKey(imgUrl)) {
             cardTexture = CustomCard.imgMap.get(imgUrl);
         } else {
@@ -158,9 +287,20 @@ public class CreditsHelper {
         }
         int tw = cardTexture.getWidth();
         int th = cardTexture.getHeight();
-        TextureAtlas.AtlasRegion cardImg = new TextureAtlas.AtlasRegion(cardTexture, 0, 0, tw, th);
-        ReflectionHacks.setPrivate(card, AbstractCard.class, "portrait", cardImg);
+        return new TextureAtlas.AtlasRegion(cardTexture, 0, 0, tw, th);
     }
+
+    public static Texture getLargeImage(String imgUrl) {
+        Texture cardTexture;
+        if (CustomCard.imgMap.containsKey(imgUrl)) {
+            cardTexture = CustomCard.imgMap.get(imgUrl);
+        } else {
+            cardTexture = ImageMaster.loadImage(imgUrl);
+            CustomCard.imgMap.put(imgUrl, cardTexture);
+        }
+        return cardTexture;
+    }
+
 
     public static ArrayList<AbstractCard> getAllExistingCards(String cardID) {
         ArrayList<AbstractCard> list = new ArrayList<>();
