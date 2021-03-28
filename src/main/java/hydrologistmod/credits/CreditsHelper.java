@@ -453,7 +453,7 @@ public class CreditsHelper {
         long time = System.currentTimeMillis();
         Gson gson = new Gson();
         String path = "hydrologistmod/images/CreditedArt.json";
-        Type creditType = new TypeToken<Map<String, CreditStrings>>() {}.getType();
+        Type creditType = new TypeToken<HashMap<String, CreditStrings>>() {}.getType();
         String jsonString = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
         HashMap<String, CreditStrings> credits = gson.fromJson(jsonString, creditType);
 
