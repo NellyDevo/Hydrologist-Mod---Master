@@ -6,6 +6,7 @@ import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -33,6 +34,7 @@ import java.util.Map;
 
 public class CreditsHelper {
     private static HashMap<String, Pair<ArrayList<CreditsInfo>, String>> creditedArts = new HashMap<>();
+    public static SpireConfig creditedArtSettings;
 
     public static void openBrowser(String url) {
         if (Desktop.isDesktopSupported()) {
@@ -299,6 +301,14 @@ public class CreditsHelper {
     }
 
     public static void initialize() {
+        System.out.println("CreditsHelper: INFO: loading user-selected art information");
+        try {
+            creditedArtSettings = new SpireConfig("hydrologistmod", "CreditedArtSettings");
+            System.out.println("CreditsHelper: INFO: SpireConfig successfully loaded");
+        } catch (IOException e) {
+            System.out.println("CreditsHelper: ERROR: unable to initialize Config for credited art. User art settings will not be loaded or saved this session");
+            e.printStackTrace();
+        }
         System.out.println("CreditsHelper: INFO: parsing credited art information");
         long time = System.currentTimeMillis();
         Gson gson = new Gson();
@@ -316,12 +326,16 @@ public class CreditsHelper {
             ArrayList<CreditsInfo> infos;
             if (!isArtCredited(cardID)) {
                 infos = new ArrayList<>();
+                infos.add(new CreditsInfo(cardID));
                 creditedArts.put(cardID, new Pair<>(infos, CreditsInfo.DEFAULT_ID));
             } else {
                 infos = creditedArts.get(cardID).getKey();
             }
             for (int i = 0; i < credit.ARTISTS.length; ++i) {
                 infos.add(new CreditsInfo(cardID, credit.ARTISTS[i], credit.URLS[i]));
+            }
+            if (creditedArtSettings != null && creditedArtSettings.has(cardID)) {
+                creditedArts.put(cardID, new Pair<>(infos, creditedArtSettings.getString(cardID)));
             }
         }
         System.out.println("CreditsHelper: INFO: credited art info loaded. Time elapsed: " + (System.currentTimeMillis() - time) + "ms");
