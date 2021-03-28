@@ -2,6 +2,7 @@ package hydrologistmod.credits;
 
 import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
@@ -99,6 +100,16 @@ public class CreditsPatch {
     public static class SingleCardViewUpdateArrowsPatch {
         public static void Prefix(SingleCardViewPopup __instance) {
             CreditsHelper.update(__instance);
+        }
+    }
+
+    @SpirePatch(
+            clz = SingleCardViewPopup.class,
+            method = "renderArrows"
+    )
+    public static class SingleCardViewRenderArrowsPatch {
+        public static void Postfix(SingleCardViewPopup __instance, SpriteBatch sb) {
+            CreditsHelper.render(sb);
         }
     }
 }

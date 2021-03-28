@@ -35,14 +35,13 @@ import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class CreditsHelper {
     private static HashMap<String, Pair<ArrayList<CreditsInfo>, String>> creditedArts = new HashMap<>();
     public static SpireConfig creditedArtSettings;
-    private static final float LEFT_ARROW_X = (Settings.WIDTH / 2.0f) - (600.0f * Settings.scale);
+    private static final float LEFT_ARROW_X = (Settings.WIDTH / 2.0f) - (500.0f * Settings.scale);
     private static final float LEFT_ARROW_Y = (Settings.HEIGHT / 2.0f) + (300.0f * Settings.scale);
-    private static final float RIGHT_ARROW_X = (Settings.WIDTH / 2.0f) + (600.0f * Settings.scale);
+    private static final float RIGHT_ARROW_X = (Settings.WIDTH / 2.0f) + (500.0f * Settings.scale);
     private static final float RIGHT_ARROW_Y = (Settings.HEIGHT / 2.0f) + (300.0f * Settings.scale);
     private static final float ARROW_SIZE = 100.0f * Settings.scale;
     private static final float LINK_X = (Settings.WIDTH / 2.0f);
@@ -157,8 +156,8 @@ public class CreditsHelper {
             Texture arrow = ImageMaster.POPUP_ARROW;
             int w = arrow.getWidth();
             int h = arrow.getHeight();
-            sb.draw(arrow, leftArrow.cX - (w / 2.0f), leftArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, leftArrow.width, leftArrow.height, 1.0f, 1.0f, 0.0f, 0, 0, w, h, false, false);
-            sb.draw(arrow, rightArrow.cX - (w / 2.0f), rightArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, rightArrow.width, rightArrow.height, 1.0f, 1.0f, 0.0f, 0, 0, w, h, false, false);
+            sb.draw(arrow, leftArrow.cX - (w / 2.0f), leftArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, w, h, leftArrow.width / w, leftArrow.height / h, 0.0f, 0, 0, w, h, false, false);
+            sb.draw(arrow, rightArrow.cX - (w / 2.0f), rightArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, w, h, rightArrow.width / w, rightArrow.height / h, 0.0f, 0, 0, w, h, true, false);
 
             //draw the credits box
             //render name
@@ -172,6 +171,7 @@ public class CreditsHelper {
             rightArrow = new Hitbox(RIGHT_ARROW_X - (ARROW_SIZE / 2.0f), RIGHT_ARROW_Y - (ARROW_SIZE / 2.0f), ARROW_SIZE, ARROW_SIZE);
             link = new Hitbox(LINK_X - (LINK_WIDTH / 2.0f), LINK_Y - (LINK_HEIGHT / 2.0f), LINK_WIDTH, LINK_HEIGHT);
             currentCard = cardID;
+            currentArt = getCurrentInfo(currentCard).getCreditsID();
         }
     }
 
