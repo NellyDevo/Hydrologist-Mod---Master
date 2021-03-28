@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 public class CreditsInfo {
     private static final String BASE_IMG_PATH = "hydrologistmod/images/cards/";
     public static final String DEFAULT_ID = "DEFAULT";
+    private static final String[] illegalCharacters = {":"};
     private String cardID;
     private String artistName;
     private String artistWebsite;
@@ -14,17 +15,24 @@ public class CreditsInfo {
     public Texture largeImage;
 
     public CreditsInfo(String card, String artist, String url) {
-        cardID = card;
+        cardID = fixString(card, illegalCharacters);
         artistName = artist;
         artistWebsite = url;
         ID = card + ":" + artist;
     }
 
     public CreditsInfo(String card) {
-        cardID = card;
+        cardID = fixString(card, illegalCharacters);
         artistName = null;
         artistWebsite = null;
         ID = DEFAULT_ID;
+    }
+
+    private String fixString(String s, String[] toRemove) {
+        for (String c : toRemove) {
+            s = s.replaceAll(c, "");
+        }
+        return s;
     }
 
     public String getImgPath() {
