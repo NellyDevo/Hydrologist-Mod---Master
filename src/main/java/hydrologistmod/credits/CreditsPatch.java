@@ -1,6 +1,7 @@
 package hydrologistmod.credits;
 
 import basemod.ReflectionHacks;
+import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -17,16 +18,34 @@ public class CreditsPatch {
             method = SpirePatch.CONSTRUCTOR,
             paramtypez = {String.class, String.class, String.class, int.class, String.class, AbstractCard.CardType.class, AbstractCard.CardColor.class, AbstractCard.CardRarity.class, AbstractCard.CardTarget.class, DamageInfo.DamageType.class}
     )
-    public static class SetArtToCreditedPatch {
+    public static class SetAbstractCardArtToCreditedPatch {
         public static void Postfix(AbstractCard __instance, String id, String name, String imgUrl, int cost, String rawDescription, AbstractCard.CardType type, AbstractCard.CardColor color, AbstractCard.CardRarity rarity, AbstractCard.CardTarget target, DamageInfo.DamageType dtype) {
             if (CreditsHelper.isArtCredited(__instance.cardID)) {
                 CreditsInfo defaultInfo = CreditsHelper.getDefaultInfo(__instance.cardID);
                 if (defaultInfo.smallImage == null) {
                     defaultInfo.smallImage = ReflectionHacks.getPrivate(__instance, AbstractCard.class, "portrait");
+                    if (defaultInfo.smallImage != null && defaultInfo.smallImage.name != null && defaultInfo.smallImage.name.equals("status/beta")) {
+                        defaultInfo.smallImage = null;
+                    }
                 }
-                TextureAtlas.AtlasRegion img = CreditsHelper.getCurrentInfo(__instance.cardID).getSmallImage();
+                CreditsInfo info = CreditsHelper.getCurrentInfo(__instance.cardID);
+                if (info == defaultInfo) {
+                    return;
+                }
+                TextureAtlas.AtlasRegion img = info.getSmallImage();
                 CreditsHelper.setImage(__instance, img);
             }
+        }
+    }
+
+    @SpirePatch(
+            clz = CustomCard.class,
+            method = SpirePatch.CONSTRUCTOR,
+            paramtypez = {String.class, String.class, String.class, int.class, String.class, AbstractCard.CardType.class, AbstractCard.CardColor.class, AbstractCard.CardRarity.class, AbstractCard.CardTarget.class}
+    )
+    public static class SetCustomCardArtToCreditedPatch {
+        public static void Postfix(AbstractCard __instance, String id, String name, String imgUrl, int cost, String rawDescription, AbstractCard.CardType type, AbstractCard.CardColor color, AbstractCard.CardRarity rarity, AbstractCard.CardTarget target) {
+            SetAbstractCardArtToCreditedPatch.Postfix(__instance, id, name, imgUrl, cost, rawDescription, type, color, rarity, target, null);
         }
     }
 
@@ -75,7 +94,7 @@ public class CreditsPatch {
             method = "close"
     )
     public static class SingleCardViewClosePatch {
-        public static void Postfix(SingleCardViewPopup __instance) {
+        public static void Prefix(SingleCardViewPopup __instance) {
             CreditsHelper.onScreenClose(__instance);
         }
     }

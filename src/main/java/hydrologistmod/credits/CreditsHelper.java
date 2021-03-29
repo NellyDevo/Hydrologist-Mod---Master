@@ -147,7 +147,7 @@ public class CreditsHelper {
                 break;
             }
         }
-        if (index - 1 == 0) {
+        if (index - 1 < 0) {
             index = list.size() - 1;
         } else {
             --index;
@@ -188,6 +188,7 @@ public class CreditsHelper {
             rightArrow = null;
             link = null;
             currentCard = null;
+            setSingleViewScreenImage(screen, null);
         }
     }
 
