@@ -269,19 +269,24 @@ public class CreditsHelper {
                     setImage(card, region);
                 }
                 setSingleViewScreenImage(cardViewPopup, texture);
-                if (creditedArtSettings != null) {
-                    creditedArtSettings.setString(cardID, artID);
-                    try {
-                        creditedArtSettings.save();
-                    } catch (IOException e) {
-                        System.out.println("CreditsHelper: ERROR: unable to save art settings.");
-                        e.printStackTrace();
-                    }
-                }
+                saveSettings(cardID, artID);
                 return;
             }
         }
         System.out.println("CreditsHelper: ALERT: " + artID + " is not a valid art ID");
+        saveSettings(cardID, CreditsInfo.DEFAULT_ID);
+    }
+    
+    private static void saveSettings(String cardID, String artID) {
+        if (creditedArtSettings != null) {
+            creditedArtSettings.setString(cardID, artID);
+            try {
+                creditedArtSettings.save();
+            } catch (IOException e) {
+                System.out.println("CreditsHelper: ERROR: unable to save art settings.");
+                e.printStackTrace();
+            }
+        }
     }
 
     public static void setSingleViewScreenImage(SingleCardViewPopup popup, Texture img) {
