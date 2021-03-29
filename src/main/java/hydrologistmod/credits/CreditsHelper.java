@@ -269,6 +269,15 @@ public class CreditsHelper {
                     setImage(card, region);
                 }
                 setSingleViewScreenImage(cardViewPopup, texture);
+                if (creditedArtSettings != null) {
+                    creditedArtSettings.setString(cardID, artID);
+                    try {
+                        creditedArtSettings.save();
+                    } catch (IOException e) {
+                        System.out.println("CreditsHelper: ERROR: unable to save art settings.");
+                        e.printStackTrace();
+                    }
+                }
                 return;
             }
         }
