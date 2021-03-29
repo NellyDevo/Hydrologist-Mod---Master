@@ -15,21 +15,21 @@ public class CreditsInfo {
     public Texture largeImage;
 
     public CreditsInfo(String card, String artist, String url) {
-        cardID = fixString(card, illegalCharacters);
+        cardID = card;
         artistName = artist;
         artistWebsite = url;
         ID = card + ":" + artist;
     }
 
     public CreditsInfo(String card) {
-        cardID = fixString(card, illegalCharacters);
+        cardID = card;
         artistName = null;
         artistWebsite = null;
         ID = DEFAULT_ID;
     }
 
-    private String fixString(String s, String[] toRemove) {
-        for (String c : toRemove) {
+    private String fixString(String s) {
+        for (String c : illegalCharacters) {
             s = s.replaceAll(c, "");
         }
         return s;
@@ -39,14 +39,14 @@ public class CreditsInfo {
         if (ID.equals(DEFAULT_ID)) {
             return null;
         }
-        return BASE_IMG_PATH + cardID + "/" + artistName + "/IMG.png";
+        return BASE_IMG_PATH + fixString(cardID) + "/" + artistName + "/IMG.png";
     }
 
     public String getLargeImgPath() {
         if (ID.equals(DEFAULT_ID)) {
             return null;
         }
-        return BASE_IMG_PATH + cardID + "/" + artistName + "/IMG_LARGE.png";
+        return BASE_IMG_PATH + fixString(cardID) + "/" + artistName + "/IMG_LARGE.png";
     }
 
     public TextureAtlas.AtlasRegion getSmallImage() {

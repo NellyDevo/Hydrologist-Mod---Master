@@ -60,7 +60,8 @@ public class CreditsHelper {
                     CardCrawlGame.sound.play("UI_HOVER");
                 }
                 if (leftArrow.clicked) {
-                    getNextArt(screen);
+                    leftArrow.clicked = false;
+                    getPreviousArt(screen);
                 }
             }
 
@@ -71,7 +72,8 @@ public class CreditsHelper {
                 }
 
                 if (rightArrow.clicked) {
-                    getPreviousArt(screen);
+                    rightArrow.clicked = false;
+                    getNextArt(screen);
                 }
             }
 
@@ -82,6 +84,7 @@ public class CreditsHelper {
                 }
 
                 if (link.clicked) {
+                    link.clicked = false;
                     CreditsInfo info = getInfoByID(currentCard, currentArt);
                     if (info != null) {
                         String url = info.getArtistWebsite();
@@ -98,14 +101,17 @@ public class CreditsHelper {
         if (InputHelper.justClickedLeft) {
             if (leftArrow != null && leftArrow.hovered) {
                 leftArrow.clickStarted = true;
+                InputHelper.justClickedLeft = false;
                 CardCrawlGame.sound.play("UI_CLICK_1");
                 return true;
             } else if (rightArrow != null && rightArrow.hovered) {
                 rightArrow.clickStarted = true;
+                InputHelper.justClickedLeft = false;
                 CardCrawlGame.sound.play("UI_CLICK_1");
                 return true;
             } else if (link != null && link.hovered) {
                 link.clickStarted = true;
+                InputHelper.justClickedLeft = false;
                 CardCrawlGame.sound.play("UI_CLICK_1");
                 return true;
             }
@@ -141,7 +147,7 @@ public class CreditsHelper {
                 break;
             }
         }
-        if (index - 1 <= 0) {
+        if (index - 1 == 0) {
             index = list.size() - 1;
         } else {
             --index;
@@ -259,7 +265,7 @@ public class CreditsHelper {
                 Texture texture = info.getLargeImage();
                 ArrayList<AbstractCard> allInstances = getAllExistingCards(cardID);
                 for (AbstractCard card : allInstances) {
-                    ReflectionHacks.setPrivate(card, AbstractCard.class, "portrait", region);
+                    setImage(card, region);
                 }
                 setSingleViewScreenImage(cardViewPopup, texture);
                 return;
