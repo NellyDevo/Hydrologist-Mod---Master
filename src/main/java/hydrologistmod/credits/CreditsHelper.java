@@ -4,7 +4,9 @@ import basemod.Pair;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
@@ -15,9 +17,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
-import com.megacrit.cardcrawl.helpers.Hitbox;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -40,14 +40,12 @@ public class CreditsHelper {
     private static HashMap<String, Pair<ArrayList<CreditsInfo>, String>> creditedArts = new HashMap<>();
     public static SpireConfig creditedArtSettings;
     private static final float LEFT_ARROW_X = (Settings.WIDTH / 2.0f) - (500.0f * Settings.scale);
-    private static final float LEFT_ARROW_Y = (Settings.HEIGHT / 2.0f) + (300.0f * Settings.scale);
+    private static final float LEFT_ARROW_Y = Settings.HEIGHT - (300.0f * Settings.scale);
     private static final float RIGHT_ARROW_X = (Settings.WIDTH / 2.0f) + (500.0f * Settings.scale);
-    private static final float RIGHT_ARROW_Y = (Settings.HEIGHT / 2.0f) + (300.0f * Settings.scale);
+    private static final float RIGHT_ARROW_Y = Settings.HEIGHT - (300.0f * Settings.scale);
     private static final float ARROW_SIZE = 100.0f * Settings.scale;
     private static final float LINK_X = (Settings.WIDTH / 2.0f);
-    private static final float LINK_Y = (Settings.HEIGHT / 2.0f) + (600.0f * Settings.scale);
-    private static final float LINK_WIDTH = 800.0f * Settings.scale;
-    private static final float LINK_HEIGHT = 100.0f * Settings.scale;
+    private static final float LINK_Y = Settings.HEIGHT - (200.0f * Settings.scale);
     private static Hitbox leftArrow, rightArrow, link;
     private static String currentArt;
     private static String currentCard;
@@ -165,9 +163,57 @@ public class CreditsHelper {
             sb.draw(arrow, leftArrow.cX - (w / 2.0f), leftArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, w, h, leftArrow.width / w, leftArrow.height / h, 0.0f, 0, 0, w, h, false, false);
             sb.draw(arrow, rightArrow.cX - (w / 2.0f), rightArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, w, h, rightArrow.width / w, rightArrow.height / h, 0.0f, 0, 0, w, h, true, false);
 
-            //draw the credits box
-            //render name
-            //render link
+            //render the textbox
+            CreditsInfo info = getInfoByID(currentCard, currentArt);
+            if (info != null) {
+                String artist;
+                String url;
+                if (info.getCreditsID().equals(CreditsInfo.DEFAULT_ID)) {
+                    artist = "This is the default art for this card";
+                    url = "http://www.random-art.org/";
+                } else {
+                    artist = "Illustrated by: " + info.getArtistName();
+                    url = info.getArtistWebsite();
+                }
+
+                BitmapFont nameFont = FontHelper.buttonLabelFont; //TODO
+                BitmapFont urlFont = FontHelper.smallDialogOptionFont;
+
+                float spacing = ReflectionHacks.getPrivateStatic(TipHelper.class, "TIP_DESC_LINE_SPACING");
+
+                float textWidth = Math.max(
+                        FontHelper.getSmartWidth(nameFont, artist, Settings.WIDTH, spacing),
+                        FontHelper.getSmartWidth(urlFont, url, Settings.WIDTH, spacing));
+                float artistHeight = FontHelper.getSmartHeight(nameFont, artist, Settings.WIDTH, spacing);
+                float textHeight =  artistHeight + FontHelper.getSmartHeight(urlFont, url, Settings.WIDTH, spacing);
+                float offset = 7f * Settings.scale; //Why is this not a variable, Casey?
+                float boxWidth = textWidth + (offset * 2.0f);
+                float boxHeight = textHeight + (offset * 2.0f);
+                link.resize(textWidth, textHeight);
+                link.move(LINK_X, LINK_Y);
+
+                //draw box shadow
+                float shadowOffset = ReflectionHacks.getPrivateStatic(TipHelper.class, "SHADOW_DIST_X");
+                float x = link.cX - (boxWidth / 2.0f);
+                float y = link.cY + (boxHeight / 2.0f);
+
+                sb.setColor(Settings.TOP_PANEL_SHADOW_COLOR);
+                sb.draw(ImageMaster.KEYWORD_TOP, x + shadowOffset, y - ImageMaster.KEYWORD_TOP.getHeight() - shadowOffset, boxWidth, ImageMaster.KEYWORD_TOP.getHeight());
+                sb.draw(ImageMaster.KEYWORD_BODY, x + shadowOffset, y - boxHeight - shadowOffset, boxWidth, Math.max(0, boxHeight - ImageMaster.KEYWORD_TOP.getHeight()));
+                sb.draw(ImageMaster.KEYWORD_BOT, x + shadowOffset, y - boxHeight - shadowOffset, boxWidth, ImageMaster.KEYWORD_BOT.getHeight());
+
+                //draw box
+                sb.setColor(Color.WHITE);
+                sb.draw(ImageMaster.KEYWORD_TOP, x, y - ImageMaster.KEYWORD_TOP.getHeight(), boxWidth, ImageMaster.KEYWORD_TOP.getHeight());
+                sb.draw(ImageMaster.KEYWORD_BODY, x, y - boxHeight, boxWidth, Math.max(0, boxHeight - ImageMaster.KEYWORD_TOP.getHeight()));
+                sb.draw(ImageMaster.KEYWORD_BOT, x, y - boxHeight, boxWidth, ImageMaster.KEYWORD_BOT.getHeight());
+
+                //render name
+                FontHelper.renderFontCentered(sb, nameFont, artist, link.cX, link.cY + artistHeight / 2.0f);
+
+                //render link
+                FontHelper.renderFontCentered(sb, urlFont, url, link.cX, link.cY - artistHeight / 2.0f);
+            }
         }
     }
 
@@ -175,7 +221,7 @@ public class CreditsHelper {
         if (isArtCredited(cardID)) {
             leftArrow = new Hitbox(LEFT_ARROW_X - (ARROW_SIZE / 2.0f), LEFT_ARROW_Y - (ARROW_SIZE / 2.0f), ARROW_SIZE, ARROW_SIZE);
             rightArrow = new Hitbox(RIGHT_ARROW_X - (ARROW_SIZE / 2.0f), RIGHT_ARROW_Y - (ARROW_SIZE / 2.0f), ARROW_SIZE, ARROW_SIZE);
-            link = new Hitbox(LINK_X - (LINK_WIDTH / 2.0f), LINK_Y - (LINK_HEIGHT / 2.0f), LINK_WIDTH, LINK_HEIGHT);
+            link = new Hitbox(0, 0);
             currentCard = cardID;
             currentArt = getCurrentInfo(currentCard).getCreditsID();
         }
