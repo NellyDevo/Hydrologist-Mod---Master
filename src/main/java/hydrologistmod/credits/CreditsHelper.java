@@ -5,6 +5,7 @@ import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -39,13 +40,12 @@ import java.util.HashMap;
 public class CreditsHelper {
     private static HashMap<String, Pair<ArrayList<CreditsInfo>, String>> creditedArts = new HashMap<>();
     public static SpireConfig creditedArtSettings;
-    private static final float LEFT_ARROW_X = (Settings.WIDTH / 2.0f) - (500.0f * Settings.scale);
-    private static final float LEFT_ARROW_Y = Settings.HEIGHT - (300.0f * Settings.scale);
-    private static final float RIGHT_ARROW_X = (Settings.WIDTH / 2.0f) + (500.0f * Settings.scale);
-    private static final float RIGHT_ARROW_Y = Settings.HEIGHT - (300.0f * Settings.scale);
+    private static final float WIDGET_HEIGHT = Settings.HEIGHT - (60.0f * Settings.scale);
+    private static final float ARROW_SPACING = 300.0f * Settings.scale;
+    private static final float LEFT_ARROW_X = (Settings.WIDTH / 2.0f) - ARROW_SPACING;
+    private static final float RIGHT_ARROW_X = (Settings.WIDTH / 2.0f) + ARROW_SPACING;
     private static final float ARROW_SIZE = 100.0f * Settings.scale;
     private static final float LINK_X = (Settings.WIDTH / 2.0f);
-    private static final float LINK_Y = Settings.HEIGHT - (50.0f * Settings.scale);
     private static Hitbox leftArrow, rightArrow, link;
     private static String currentArt;
     private static String currentCard;
@@ -177,7 +177,17 @@ public class CreditsHelper {
             int w = arrow.getWidth();
             int h = arrow.getHeight();
             sb.draw(arrow, leftArrow.cX - (w / 2.0f), leftArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, w, h, leftArrow.width / w, leftArrow.height / h, 0.0f, 0, 0, w, h, false, false);
+            if (leftArrow.hovered) {
+                sb.setBlendFunction(GL30.GL_SRC_ALPHA, GL30.GL_ONE);
+                sb.draw(arrow, leftArrow.cX - (w / 2.0f), leftArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, w, h, leftArrow.width / w, leftArrow.height / h, 0.0f, 0, 0, w, h, false, false);
+                sb.setBlendFunction(GL30.GL_SRC_ALPHA, GL30.GL_ONE_MINUS_SRC_ALPHA);
+            }
             sb.draw(arrow, rightArrow.cX - (w / 2.0f), rightArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, w, h, rightArrow.width / w, rightArrow.height / h, 0.0f, 0, 0, w, h, true, false);
+            if (rightArrow.hovered) {
+                sb.setBlendFunction(GL30.GL_SRC_ALPHA, GL30.GL_ONE);
+                sb.draw(arrow, rightArrow.cX - (w / 2.0f), rightArrow.cY - (h / 2.0f), w / 2.0f, h / 2.0f, w, h, rightArrow.width / w, rightArrow.height / h, 0.0f, 0, 0, w, h, true, false);
+                sb.setBlendFunction(GL30.GL_SRC_ALPHA, GL30.GL_ONE_MINUS_SRC_ALPHA);
+            }
 
             //render the textbox
             CreditsInfo info = getInfoByID(currentCard, currentArt);
@@ -222,15 +232,15 @@ public class CreditsHelper {
                 float boxWidth = textWidth + (offset * 2.0f);
                 float boxHeight = textHeight + (offset * 2.0f);
                 link.resize(textWidth, textHeight);
-                link.move(LINK_X, LINK_Y);
+                link.move(LINK_X, WIDGET_HEIGHT);
 
                 //render the clickable credits link
                 boolean renderBody = boxHeight  > ImageMaster.KEYWORD_TOP.getHeight() + ImageMaster.KEYWORD_BOT.getHeight();
                 TextureRegion top = new TextureRegion(ImageMaster.KEYWORD_TOP, 0, 0, 1.0f, (Math.min(ImageMaster.KEYWORD_TOP.getHeight(), boxHeight / 2.0f)) / ImageMaster.KEYWORD_TOP.getHeight());
                 TextureRegion bot = new TextureRegion(ImageMaster.KEYWORD_BOT, 0, (Math.max(0, ImageMaster.KEYWORD_BOT.getHeight() - (boxHeight / 2.0f)) / ImageMaster.KEYWORD_BOT.getHeight()), 1.0f, 1.0f);
                 float renderOffset;
-                if (link.clicked) {
-                    renderOffset = 20.0f;
+                if (link.clickStarted) {
+                    renderOffset = 5.0f;
                 } else {
                     renderOffset = 0.0f;
                 }
@@ -244,18 +254,18 @@ public class CreditsHelper {
                 sb.draw(bot, x, y - boxHeight, boxWidth, bot.getRegionHeight());
 
                 //render name
-                FontHelper.renderFontCentered(sb, nameFont, artist, link.cX, link.cY + artistHeight / 2.0f);
+                FontHelper.renderFontCentered(sb, nameFont, artist, link.cX + renderOffset, link.cY + artistHeight / 2.0f - renderOffset);
 
                 //render link
-                FontHelper.renderFontCentered(sb, urlFont, url, link.cX, link.cY - artistHeight / 2.0f);
+                FontHelper.renderFontCentered(sb, urlFont, url, link.cX + renderOffset, link.cY - artistHeight / 2.0f - renderOffset);
             }
         }
     }
 
     public static void onScreenOpen(String cardID) {
         if (isArtCredited(cardID)) {
-            leftArrow = new Hitbox(LEFT_ARROW_X - (ARROW_SIZE / 2.0f), LEFT_ARROW_Y - (ARROW_SIZE / 2.0f), ARROW_SIZE, ARROW_SIZE);
-            rightArrow = new Hitbox(RIGHT_ARROW_X - (ARROW_SIZE / 2.0f), RIGHT_ARROW_Y - (ARROW_SIZE / 2.0f), ARROW_SIZE, ARROW_SIZE);
+            leftArrow = new Hitbox(LEFT_ARROW_X - (ARROW_SIZE / 2.0f), WIDGET_HEIGHT - (ARROW_SIZE / 2.0f), ARROW_SIZE, ARROW_SIZE);
+            rightArrow = new Hitbox(RIGHT_ARROW_X - (ARROW_SIZE / 2.0f), WIDGET_HEIGHT - (ARROW_SIZE / 2.0f), ARROW_SIZE, ARROW_SIZE);
             link = new Hitbox(0, 0);
             currentCard = cardID;
             currentArt = getCurrentInfo(currentCard).getCreditsID();
