@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -27,11 +28,8 @@ import com.megacrit.cardcrawl.shop.Merchant;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.SwapperCardPatch;
 
-import java.awt.*;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,10 +43,11 @@ public class CreditsHelper {
     private static final float RIGHT_ARROW_Y = Settings.HEIGHT - (300.0f * Settings.scale);
     private static final float ARROW_SIZE = 100.0f * Settings.scale;
     private static final float LINK_X = (Settings.WIDTH / 2.0f);
-    private static final float LINK_Y = Settings.HEIGHT - (200.0f * Settings.scale);
+    private static final float LINK_Y = Settings.HEIGHT - (50.0f * Settings.scale);
     private static Hitbox leftArrow, rightArrow, link;
     private static String currentArt;
     private static String currentCard;
+    private static String defaultUrl = "http://www.random-art.org/";
 
     public static void update(SingleCardViewPopup screen) {
         if (currentCard != null) {
@@ -85,8 +84,15 @@ public class CreditsHelper {
                     link.clicked = false;
                     CreditsInfo info = getInfoByID(currentCard, currentArt);
                     if (info != null) {
-                        String url = info.getArtistWebsite();
-                        openBrowser(url);
+                        String url;
+                        if (currentArt.equals(CreditsInfo.DEFAULT_ID)) {
+                            url = defaultUrl;
+                        } else {
+                            url = info.getArtistWebsite();
+                        }
+                        if (Gdx.net.openURI(url)) {
+                            info.visited = true;
+                        }
                     } else {
                         System.out.println("CreditsHelper: ERROR: no valid info for this card/art. How did this happen?");
                     }
@@ -166,47 +172,66 @@ public class CreditsHelper {
             //render the textbox
             CreditsInfo info = getInfoByID(currentCard, currentArt);
             if (info != null) {
+                String artistHex = "[#4ac41a]";
+                String urlHex;
+                if (info.visited) {
+                    if (link.hovered) {
+                        urlHex = "[#7123b8]";
+                    } else {
+                        urlHex = "[#551A8B]";
+                    }
+                } else {
+                    if (link.hovered) {
+                        urlHex = "[#00AFEE]";
+                    } else {
+                        urlHex = "[#3939ED]";
+                    }
+                }
                 String artist;
                 String url;
                 if (info.getCreditsID().equals(CreditsInfo.DEFAULT_ID)) {
-                    artist = "This is the default art for this card";
-                    url = "http://www.random-art.org/";
+                    artist = "Art was randomly generated";
+                    url = urlHex + defaultUrl + "[]";
                 } else {
-                    artist = "Illustrated by: " + info.getArtistName();
-                    url = info.getArtistWebsite();
+                    artist = "Illustrated by: " + artistHex + info.getArtistName() + "[]";
+                    url = urlHex + info.getArtistWebsite() + "[]";
                 }
 
                 BitmapFont nameFont = FontHelper.buttonLabelFont; //TODO
                 BitmapFont urlFont = FontHelper.smallDialogOptionFont;
+                urlFont.getData().markupEnabled = true;
 
                 float spacing = ReflectionHacks.getPrivateStatic(TipHelper.class, "TIP_DESC_LINE_SPACING");
 
                 float textWidth = Math.max(
                         FontHelper.getSmartWidth(nameFont, artist, Settings.WIDTH, spacing),
                         FontHelper.getSmartWidth(urlFont, url, Settings.WIDTH, spacing));
-                float artistHeight = FontHelper.getSmartHeight(nameFont, artist, Settings.WIDTH, spacing);
-                float textHeight =  artistHeight + FontHelper.getSmartHeight(urlFont, url, Settings.WIDTH, spacing);
-                float offset = 7f * Settings.scale; //Why is this not a variable, Casey?
+                float artistHeight = -FontHelper.getSmartHeight(nameFont, artist + " NL " + artist, Settings.WIDTH, spacing);
+                float textHeight =  artistHeight + -FontHelper.getSmartHeight(urlFont, url + " NL " + url, Settings.WIDTH, spacing);
+                float offset = 15f * Settings.scale;
                 float boxWidth = textWidth + (offset * 2.0f);
                 float boxHeight = textHeight + (offset * 2.0f);
                 link.resize(textWidth, textHeight);
                 link.move(LINK_X, LINK_Y);
 
-                //draw box shadow
-                float shadowOffset = ReflectionHacks.getPrivateStatic(TipHelper.class, "SHADOW_DIST_X");
-                float x = link.cX - (boxWidth / 2.0f);
-                float y = link.cY + (boxHeight / 2.0f);
-
-                sb.setColor(Settings.TOP_PANEL_SHADOW_COLOR);
-                sb.draw(ImageMaster.KEYWORD_TOP, x + shadowOffset, y - ImageMaster.KEYWORD_TOP.getHeight() - shadowOffset, boxWidth, ImageMaster.KEYWORD_TOP.getHeight());
-                sb.draw(ImageMaster.KEYWORD_BODY, x + shadowOffset, y - boxHeight - shadowOffset, boxWidth, Math.max(0, boxHeight - ImageMaster.KEYWORD_TOP.getHeight()));
-                sb.draw(ImageMaster.KEYWORD_BOT, x + shadowOffset, y - boxHeight - shadowOffset, boxWidth, ImageMaster.KEYWORD_BOT.getHeight());
+                //render the clickable credits link
+                boolean renderBody = boxHeight  > ImageMaster.KEYWORD_TOP.getHeight() + ImageMaster.KEYWORD_BOT.getHeight();
+                TextureRegion top = new TextureRegion(ImageMaster.KEYWORD_TOP, 0, 0, 1.0f, (Math.min(ImageMaster.KEYWORD_TOP.getHeight(), boxHeight / 2.0f)) / ImageMaster.KEYWORD_TOP.getHeight());
+                TextureRegion bot = new TextureRegion(ImageMaster.KEYWORD_BOT, 0, (Math.max(0, ImageMaster.KEYWORD_BOT.getHeight() - (boxHeight / 2.0f)) / ImageMaster.KEYWORD_BOT.getHeight()), 1.0f, 1.0f);
+                float renderOffset;
+                if (link.clicked) {
+                    renderOffset = 20.0f;
+                } else {
+                    renderOffset = 0.0f;
+                }
+                float x = link.cX - (boxWidth / 2.0f) + renderOffset;
+                float y = link.cY + (boxHeight / 2.0f) - renderOffset;
 
                 //draw box
                 sb.setColor(Color.WHITE);
-                sb.draw(ImageMaster.KEYWORD_TOP, x, y - ImageMaster.KEYWORD_TOP.getHeight(), boxWidth, ImageMaster.KEYWORD_TOP.getHeight());
-                sb.draw(ImageMaster.KEYWORD_BODY, x, y - boxHeight, boxWidth, Math.max(0, boxHeight - ImageMaster.KEYWORD_TOP.getHeight()));
-                sb.draw(ImageMaster.KEYWORD_BOT, x, y - boxHeight, boxWidth, ImageMaster.KEYWORD_BOT.getHeight());
+                sb.draw(top, x, y - top.getRegionHeight(), boxWidth, top.getRegionHeight());
+                if (renderBody) sb.draw(ImageMaster.KEYWORD_BODY, x, y - boxHeight + bot.getRegionHeight(), boxWidth, boxHeight - (top.getRegionHeight() + bot.getRegionHeight()));
+                sb.draw(bot, x, y - boxHeight, boxWidth, bot.getRegionHeight());
 
                 //render name
                 FontHelper.renderFontCentered(sb, nameFont, artist, link.cX, link.cY + artistHeight / 2.0f);
@@ -235,28 +260,6 @@ public class CreditsHelper {
             link = null;
             currentCard = null;
             setSingleViewScreenImage(screen, null);
-        }
-    }
-
-    public static void openBrowser(String url) {
-        if (Desktop.isDesktopSupported()) {
-            Desktop desktop = Desktop.getDesktop();
-            if (desktop.isSupported(Desktop.Action.BROWSE)) {
-                try {
-                    desktop.browse(new URI(url));
-                } catch (IOException | URISyntaxException e) {
-                    System.out.println("Error occurred when trying to open a webpage");
-                    e.printStackTrace();
-                }
-            } else {
-                Runtime runtime = Runtime.getRuntime();
-                try {
-                    runtime.exec("xdg-open " + url);
-                } catch (IOException e) {
-                    System.out.println("Error occurred when trying to open a webpage");
-                    e.printStackTrace();
-                }
-            }
         }
     }
 

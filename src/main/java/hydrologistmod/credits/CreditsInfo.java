@@ -13,6 +13,7 @@ public class CreditsInfo {
     private String ID;
     public TextureAtlas.AtlasRegion smallImage;
     public Texture largeImage;
+    public boolean visited = false;
 
     public CreditsInfo(String card, String artist, String url) {
         cardID = card;
