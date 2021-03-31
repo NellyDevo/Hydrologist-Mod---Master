@@ -28,6 +28,8 @@ import com.megacrit.cardcrawl.shop.Merchant;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.SwapperCardPatch;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
@@ -92,6 +94,14 @@ public class CreditsHelper {
                         }
                         if (Gdx.net.openURI(url)) {
                             info.visited = true;
+                        } else {
+                            Toolkit.getDefaultToolkit()
+                                    .getSystemClipboard()
+                                    .setContents(
+                                            new StringSelection(url),
+                                            null
+                                    );
+                            System.out.println("CreditsHelper: ERROR: could not open a webpage for " + url + ". Attempting to copy it to clipboard");
                         }
                     } else {
                         System.out.println("CreditsHelper: ERROR: no valid info for this card/art. How did this happen?");
