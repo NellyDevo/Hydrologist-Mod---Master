@@ -9,4 +9,5 @@ public class CardInfo {
     public String TYPE = "";
     public String SUBTYPE = "";
     public String[] KEYWORDS;
+    public String SWAPS_TO;
 }

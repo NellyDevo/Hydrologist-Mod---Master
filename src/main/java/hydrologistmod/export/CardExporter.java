@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.DescriptionLine;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import hydrologistmod.cards.AbstractAdaptiveCard;
 import hydrologistmod.cards.AbstractHydrologistCard;
+import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.patches.AbstractCardEnum;
 
 import java.io.FileWriter;
@@ -75,6 +76,10 @@ public class CardExporter {
                 }
 
                 parseDescription(info, copy);
+
+                if (SwapperHelper.isCardSwappable(card)) {
+                    info.SWAPS_TO = SwapperHelper.getNextCard(card).cardID;
+                }
 
                 cards.put(copy.cardID, info);
                 System.out.println("PARSED: " + info.NAME);
