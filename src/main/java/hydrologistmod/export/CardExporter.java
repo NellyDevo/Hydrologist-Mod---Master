@@ -40,7 +40,7 @@ public class CardExporter {
 
                 info.COST = copy.cost;
                 for (DescriptionLine line : copy.description) {
-                    info.DESCRIPTION += line.text + "<br>";
+                    info.DESCRIPTION += line.text + " <br> ";
                 }
                 ArrayList<String> tmp = new ArrayList<>(copy.keywords);
                 String tmpDesc = copy.rawDescription;
@@ -52,7 +52,7 @@ public class CardExporter {
                 info.UPGRADED_COST = copy.cost;
                 if (!copy.rawDescription.equals(tmpDesc)) {
                     for (DescriptionLine line : copy.description) {
-                        info.UPGRADED_DESCRIPTION += line.text + "<br>";
+                        info.UPGRADED_DESCRIPTION += line.text + " <br> ";
                     }
                 } else {
                     info.UPGRADED_DESCRIPTION = beforeParse;
@@ -85,6 +85,7 @@ public class CardExporter {
     private static void parseDescription(CardInfo info, AbstractHydrologistCard card) {
         AbstractCard cpy = card.makeCopy();
         stringBuilder.setLength(0);
+        stringBuilder.replace(0, 0, "");
         String desc;
         if (card.upgraded) {
             desc = info.UPGRADED_DESCRIPTION;
@@ -134,7 +135,7 @@ public class CardExporter {
     }
 
     public static void exportToJson() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
         try {
             gson.toJson(cards, new FileWriter("hydro-cards.json"));
             System.out.println("Successfully exported to hydro-cards.json");
