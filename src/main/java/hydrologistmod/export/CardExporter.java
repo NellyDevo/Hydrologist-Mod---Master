@@ -85,7 +85,6 @@ public class CardExporter {
     private static void parseDescription(CardInfo info, AbstractHydrologistCard card) {
         AbstractCard cpy = card.makeCopy();
         stringBuilder.setLength(0);
-        stringBuilder.replace(0, 0, "");
         String desc;
         if (card.upgraded) {
             desc = info.UPGRADED_DESCRIPTION;
@@ -95,26 +94,26 @@ public class CardExporter {
         for (String word : desc.split(" ")) {
             word = word.trim();
             if (word.equals("!D!")) {
-                word = String.valueOf(card.damage);
-                if (card.damage != cpy.damage) {
+                word = String.valueOf(card.baseDamage);
+                if (card.baseDamage != cpy.baseDamage) {
                     word = "<span class=\"upgrade\">" + word + "</span>";
                 }
             }
             if (word.equals("!B!")) {
-                word = String.valueOf(card.block);
-                if (card.block != cpy.block) {
+                word = String.valueOf(card.baseBlock);
+                if (card.baseBlock != cpy.baseBlock) {
                     word = "<span class=\"upgrade\">" + word + "</span>";
                 }
             }
             if (word.equals("!M!")) {
-                word = String.valueOf(card.magicNumber);
-                if (card.magicNumber != cpy.magicNumber) {
+                word = String.valueOf(card.baseMagicNumber);
+                if (card.baseMagicNumber != cpy.baseMagicNumber) {
                     word = "<span class=\"upgrade\">" + word + "</span>";
                 }
             }
             if (word.equals("!hydrologistmod:A!")) {
-                word = String.valueOf(((AbstractAdaptiveCard)card).adaptiveNumber);
-                if (((AbstractAdaptiveCard)card).adaptiveNumber != ((AbstractAdaptiveCard)cpy).adaptiveNumber) {
+                word = String.valueOf(((AbstractAdaptiveCard)card).baseAdaptiveNumber);
+                if (((AbstractAdaptiveCard)card).baseAdaptiveNumber != ((AbstractAdaptiveCard)cpy).baseAdaptiveNumber) {
                     word = "<span class=\"upgrade\">" + word + "</span>";
                 }
             }
@@ -125,7 +124,8 @@ public class CardExporter {
                 word = word.replace("*", "");
                 word = "<span class=\"keyword\">" + word + "</span>";
             }
-            stringBuilder.append(word).append(" ");
+            stringBuilder.append(word);
+            stringBuilder.append(" ");
         }
         if (card.upgraded) {
             info.UPGRADED_DESCRIPTION = stringBuilder.toString();
