@@ -31,7 +31,12 @@ public class CardExporter {
                 CardInfo info = new CardInfo();
                 info.NAME = copy.name;
                 info.TYPE = copy.type.toString();
-                info.SUBTYPE = copy.getHydrologistSubtype().toString();
+                AbstractCard.CardTags subtype = copy.getHydrologistSubtype();
+                if (subtype != null) {
+                    info.SUBTYPE = subtype.toString();
+                } else {
+                    info.SUBTYPE = null;
+                }
 
                 info.COST = copy.cost;
                 for (DescriptionLine line : copy.description) {
