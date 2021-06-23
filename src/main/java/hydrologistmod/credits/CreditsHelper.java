@@ -543,9 +543,13 @@ public class CreditsHelper {
         long time = System.currentTimeMillis();
         Gson gson = new Gson();
         String path = "hydrologistmod/images/CreditedArt.json";
+        String defaultsPath = "hydrologistmod/images/ArtDefaults.json";
         Type creditType = new TypeToken<HashMap<String, CreditStrings>>() {}.getType();
+        Type defaultsType = new TypeToken<HashMap<String, String>>() {}.getType();
         String jsonString = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
+        String defaultsString = Gdx.files.internal(defaultsPath).readString(String.valueOf(StandardCharsets.UTF_8));
         HashMap<String, CreditStrings> credits = gson.fromJson(jsonString, creditType);
+        HashMap<String, String> defaults = gson.fromJson(defaultsString, defaultsType);
 
         for (String cardID : credits.keySet()) {
             CreditStrings credit = credits.get(cardID);
@@ -563,6 +567,9 @@ public class CreditsHelper {
             }
             for (int i = 0; i < credit.ARTISTS.length; ++i) {
                 infos.add(new CreditsInfo(cardID, credit.ARTISTS[i], credit.URLS[i]));
+            }
+            if (defaults.containsKey(cardID)) {
+                creditedArts.put(cardID, new Pair<>(infos, cardID + ":" + defaults.get(cardID)));
             }
             if (creditedArtSettings != null && creditedArtSettings.has(cardID)) {
                 creditedArts.put(cardID, new Pair<>(infos, creditedArtSettings.getString(cardID)));
