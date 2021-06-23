@@ -38,6 +38,7 @@ import hydrologistmod.cards.AbstractHydrologistCard;
 import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.credits.CreditsHelper;
 import hydrologistmod.events.KnowledgeSeeker;
+import hydrologistmod.export.CardExporter;
 import hydrologistmod.helpers.DynamicDynamicVariableManager;
 import hydrologistmod.interfaces.CorporealRelevantObject;
 import hydrologistmod.interfaces.SwappableCard;
@@ -96,6 +97,8 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     private static ArrayList<AbstractCard> nonCorporealCards = new ArrayList<>();
 
     public static final ArrayList<AbstractCard.CardTags> subTypes = new ArrayList<>();
+
+    private static final boolean DEVELOP = false;
 
     public HydrologistMod(){
         BaseMod.subscribe(this);
@@ -225,6 +228,15 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
             try {hydrologistConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
         settingsPanel.addUIElement(hydroHomie);
+
+        if (DEVELOP) {
+            ModLabeledButton exporter = new ModLabeledButton("Export Cards", 325.0f, 425.0f, settingsPanel, button -> {
+                CardExporter.initialize();
+                CardExporter.getCardData();
+                CardExporter.exportToJson();
+            });
+            settingsPanel.addUIElement(exporter);
+        }
 
         BaseMod.addEvent(new AddEventParams.Builder(KnowledgeSeeker.ID, KnowledgeSeeker.class)
                 .playerClass(HydrologistEnum.HYDROLOGIST_CLASS)
