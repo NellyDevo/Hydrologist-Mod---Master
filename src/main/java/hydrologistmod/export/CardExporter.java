@@ -142,11 +142,15 @@ public class CardExporter {
     public static void exportToJson() {
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
         try {
-            gson.toJson(cards, new FileWriter("hydro-cards.json"));
+            FileWriter writer = new FileWriter("hydro-cards.json");
+            gson.toJson(cards, writer);
+            writer.close();
             System.out.println("Successfully exported to hydro-cards.json");
         } catch (IOException e) {
             System.out.println("Exception occured when creating output file:");
             e.printStackTrace();
         }
+        cards = null;
+        stringBuilder = null;
     }
 }
