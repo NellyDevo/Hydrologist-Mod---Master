@@ -132,10 +132,12 @@ public class CardExporter {
             stringBuilder.append(word);
             stringBuilder.append(" ");
         }
+        String result = stringBuilder.toString();
+        result = result.substring(0, result.length() - 6); //cut off the extra " <br> "
         if (card.upgraded) {
-            info.UPGRADED_DESCRIPTION = stringBuilder.toString();
+            info.UPGRADED_DESCRIPTION = result;
         } else {
-            info.DESCRIPTION = stringBuilder.toString();
+            info.DESCRIPTION = result;
         }
     }
 
