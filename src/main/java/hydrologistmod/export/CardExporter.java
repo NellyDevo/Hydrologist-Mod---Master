@@ -48,13 +48,16 @@ public class CardExporter {
                 }
                 ArrayList<String> tmp = new ArrayList<>();
                 for (String keyword : copy.keywords) {
-                    tmp.add(keyword);
                     if (!keywords.containsKey(keyword)) {
                         KeywordInfo keywordInfo = new KeywordInfo();
                         keywordInfo.NAME = BaseMod.getKeywordProper(keyword);
                         keywordInfo.DESCRIPTION = BaseMod.getKeywordDescription(keyword);
+                        if (keywordInfo.NAME == null) {
+                            keywordInfo.NAME = keyword.substring(0, 1).toUpperCase() + keyword.substring(1);
+                        }
                         keywords.put(keyword, keywordInfo);
                     }
+                    tmp.add(keyword);
                 }
                 String tmpDesc = copy.rawDescription;
                 String beforeParse = info.DESCRIPTION;
@@ -97,6 +100,7 @@ public class CardExporter {
                 System.out.println("PARSED: " + info.NAME);
             }
         }
+        parseKeywords();
     }
 
     private static void parseDescription(CardInfo info, AbstractHydrologistCard card) {
@@ -149,6 +153,24 @@ public class CardExporter {
         if (card.upgraded) {
             info.UPGRADED_DESCRIPTION = result;
         } else {
+            info.DESCRIPTION = result;
+        }
+    }
+
+    private static void parseKeywords() {
+        for (KeywordInfo info : keywords.values()) {
+            stringBuilder.setLength(0);
+            for (String word : info.DESCRIPTION.split(" ")) {
+                word = word.trim();
+                if (word.startsWith("#y")) {
+                    word = word.replaceFirst("^#y", "");
+                    word = "<span class=\"keyword\">" + word + "</span>";
+                }
+                stringBuilder.append(word);
+                stringBuilder.append(" ");
+            }
+            String result = stringBuilder.toString();
+            result = result.substring(0, result.length() - 1); //get rid of extra space
             info.DESCRIPTION = result;
         }
     }
