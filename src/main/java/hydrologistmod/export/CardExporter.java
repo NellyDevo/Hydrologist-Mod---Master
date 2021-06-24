@@ -1,5 +1,6 @@
 package hydrologistmod.export;
 
+import basemod.BaseMod;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -17,10 +18,12 @@ import java.util.HashMap;
 
 public class CardExporter {
     public static HashMap<String, CardInfo> cards;
+    public static HashMap<String, KeywordInfo> keywords;
     private static StringBuilder stringBuilder;
 
     public static void initialize() {
         cards = new HashMap<>();
+        keywords = new HashMap<>();
         stringBuilder = new StringBuilder();
     }
 
@@ -43,7 +46,16 @@ public class CardExporter {
                 for (DescriptionLine line : copy.description) {
                     info.DESCRIPTION += line.text + " <br> ";
                 }
-                ArrayList<String> tmp = new ArrayList<>(copy.keywords);
+                ArrayList<String> tmp = new ArrayList<>();
+                for (String keyword : copy.keywords) {
+                    tmp.add(keyword);
+                    if (!keywords.containsKey(keyword)) {
+                        KeywordInfo keywordInfo = new KeywordInfo();
+                        keywordInfo.NAME = BaseMod.getKeywordProper(keyword);
+                        keywordInfo.DESCRIPTION = BaseMod.getKeywordDescription(keyword);
+                        keywords.put(keyword, keywordInfo);
+                    }
+                }
                 String tmpDesc = copy.rawDescription;
                 String beforeParse = info.DESCRIPTION;
                 parseDescription(info, copy);
@@ -144,15 +156,22 @@ public class CardExporter {
     public static void exportToJson() {
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
         try {
+            System.out.println("Exporting to hydro-cards.json...");
             FileWriter writer = new FileWriter("hydro-cards.json");
             gson.toJson(cards, writer);
             writer.close();
             System.out.println("Successfully exported to hydro-cards.json");
+            System.out.println("Exporting to hydro-keywords.json...");
+            writer = new FileWriter("hydro-keywords.json");
+            gson.toJson(keywords, writer);
+            writer.close();
+            System.out.println("Successfully exported to hydro-keywords.json");
         } catch (IOException e) {
-            System.out.println("Exception occured when creating output file:");
+            System.out.println("Exception occurred when creating output files:");
             e.printStackTrace();
         }
         cards = null;
+        keywords = null;
         stringBuilder = null;
     }
 }
