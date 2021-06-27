@@ -41,6 +41,7 @@ public class CardExporter {
                 } else {
                     info.SUBTYPE = null;
                 }
+                info.RARITY = copy.rarity.toString();
 
                 info.COST = copy.cost;
                 for (DescriptionLine line : copy.description) {
@@ -65,7 +66,10 @@ public class CardExporter {
 
                 copy.upgrade();
 
-                info.UPGRADED_COST = copy.cost;
+                info.UPGRADED_COST = String.valueOf(copy.cost);
+                if (info.COST > copy.cost) {
+                    info.UPGRADED_COST = "<span class=\"upgrade\">" + info.UPGRADED_COST + "</span>";
+                }
                 if (!copy.rawDescription.equals(tmpDesc)) {
                     for (DescriptionLine line : copy.description) {
                         info.UPGRADED_DESCRIPTION += line.text + " <br> ";
@@ -114,6 +118,14 @@ public class CardExporter {
         }
         for (String word : desc.split(" ")) {
             word = word.trim();
+            boolean punctuated = false;
+            String punctuation = ".,?;:";
+            String lastChar = word.substring(word.length() - 1);
+            if (punctuation.contains(lastChar)) {
+                punctuation = lastChar;
+                word = word.substring(0, word.length() - 1);
+                punctuated = true;
+            }
             if (word.equals("!D!")) {
                 word = String.valueOf(card.baseDamage);
                 if (card.baseDamage != cpy.baseDamage) {
@@ -144,6 +156,9 @@ public class CardExporter {
             if (word.startsWith("*")) {
                 word = word.replace("*", "");
                 word = "<span class=\"keyword\">" + word + "</span>";
+            }
+            if (punctuated) {
+                word = word + punctuation;
             }
             stringBuilder.append(word);
             stringBuilder.append(" ");
