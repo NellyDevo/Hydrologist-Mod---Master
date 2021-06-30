@@ -15,6 +15,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class FrigidLash extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:FrigidLash";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -28,13 +31,20 @@ public class FrigidLash extends AbstractHydrologistCard implements SwappableCard
     private static final int INCREASE_BLOCK = 3;
     private static final int UPGRADE_INCREASE = 2;
 
-    public FrigidLash() {
+    public FrigidLash(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = INCREASE_BLOCK;
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new LayeredShell(false))));
+        }
+    }
+
+    public FrigidLash() {
+        this(true);
     }
 
     @Override

@@ -25,15 +25,21 @@ public class Ripcurrent extends AbstractHydrologistCard {
     private static final int MULTIPLIER = 2;
     private static final int UPGRADE_MULTIPLIER = 1;
 
-    public Ripcurrent() {
+    public Ripcurrent(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = MULTIPLIER;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new HeatAndPressure())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new HeatAndPressure(false))));
+        }
         tags.add(HydrologistTags.TEMPERATURE);
         exhaust = true;
+    }
+
+    public Ripcurrent() {
+        this(true);
     }
 
     @Override

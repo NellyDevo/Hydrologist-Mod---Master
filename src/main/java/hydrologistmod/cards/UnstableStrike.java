@@ -12,6 +12,9 @@ import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class UnstableStrike extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:UnstableStrike";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -23,12 +26,19 @@ public class UnstableStrike extends AbstractHydrologistCard implements Swappable
     private static final int ATTACK_DMG = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
 
-    public UnstableStrike() {
+    public UnstableStrike(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.BASIC, CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         tags.add(CardTags.STRIKE);
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new UnstableDefend(false))));
+        }
+    }
+
+    public UnstableStrike() {
+        this(true);
     }
 
     @Override

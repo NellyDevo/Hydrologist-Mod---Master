@@ -27,14 +27,20 @@ public class TidalWave extends AbstractHydrologistCard {
     private static final int DAMAGE_AMT = 7;
     private static final int UPGRADE_DAMAGE_AMT = 3;
 
-    public TidalWave() {
+    public TidalWave(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.ALL_ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         isMultiDamage = true;
         baseDamage = damage = DAMAGE_AMT;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new IceSpike())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new IceSpike(false))));
+        }
+    }
+
+    public TidalWave() {
+        this(true);
     }
 
     @Override

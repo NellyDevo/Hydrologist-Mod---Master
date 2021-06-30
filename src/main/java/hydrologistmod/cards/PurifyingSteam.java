@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.HydrologistDamageAction;
+import hydrologistmod.cardmods.PurityModifier;
 import hydrologistmod.helpers.SwapperHelper;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
@@ -28,14 +29,20 @@ public class PurifyingSteam extends AbstractHydrologistCard implements Swappable
     public static final int ATTACK_DMG = 4;
     private static final int UPGRADE_PLUS_DMG = 3;
 
-    public PurifyingSteam() {
+    public PurifyingSteam(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         assignHydrologistSubtype(HydrologistTags.STEAM);
         tags.add(CardTags.HEALING);
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SoothingWater())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SoothingWater(false))));
+        }
+    }
+
+    public PurifyingSteam() {
+        this(true);
     }
 
     @Override

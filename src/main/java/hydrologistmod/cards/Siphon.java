@@ -27,12 +27,18 @@ public class Siphon extends AbstractHydrologistCard {
     public static final String IMG_PATH = "hydrologistmod/images/cards/Siphon.png";
     private static final int COST = 1;
 
-    public Siphon() {
+    public Siphon(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.WATER);
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Freeze())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Freeze(false))));
+        }
+    }
+
+    public Siphon() {
+        this(true);
     }
 
     @Override

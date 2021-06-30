@@ -35,15 +35,21 @@ public class FrostWhip extends AbstractHydrologistCard implements SwappableCard 
     private static final int ENERGY_LOSS_ON_SWAP = 1;
     private String cantSwapMessage = EXTENDED_DESCRIPTION[0];
 
-    public FrostWhip() {
+    public FrostWhip(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 AbstractCard.CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY);
         damage = baseDamage = ATTACK_DMG;
         magicNumber = baseMagicNumber = COLD_AMT;
         assignHydrologistSubtype(HydrologistTags.ICE);
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SteamLash())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SteamLash(false))));
+        }
         tags.add(HydrologistTags.TEMPERATURE);
+    }
+
+    public FrostWhip() {
+        this(true);
     }
 
     @Override

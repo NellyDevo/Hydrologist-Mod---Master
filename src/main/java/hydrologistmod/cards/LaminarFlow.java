@@ -12,6 +12,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class LaminarFlow extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:LaminarFlow";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -23,12 +26,19 @@ public class LaminarFlow extends AbstractHydrologistCard implements SwappableCar
     private static final int POWER_AMT = 3;
     private static final int UPGRADE_AMT = 1;
 
-    public LaminarFlow() {
+    public LaminarFlow(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = POWER_AMT;
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new CrystalIce(false))));
+        }
+    }
+
+    public LaminarFlow() {
+        this(true);
     }
 
     @Override

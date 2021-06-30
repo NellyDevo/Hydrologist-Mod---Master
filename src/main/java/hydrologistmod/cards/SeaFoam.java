@@ -13,6 +13,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class SeaFoam extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:SeaFoam";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -24,12 +27,19 @@ public class SeaFoam extends AbstractHydrologistCard implements SwappableCard {
     private static final int DAMAGE_AMT = 7;
     private static final int UPGRADE_DAMAGE = 3;
 
-    public SeaFoam() {
+    public SeaFoam(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new HighTide(false))));
+        }
+    }
+
+    public SeaFoam() {
+        this(true);
     }
 
     @Override

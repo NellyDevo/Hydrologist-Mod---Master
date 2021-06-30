@@ -26,14 +26,20 @@ public class HighTide extends AbstractHydrologistCard {
     private static final int DAMAGE_AMT = 7;
     private static final int UPGRADE_DAMAGE = 3;
 
-    public HighTide() {
+    public HighTide(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.WATER);
         damage = baseDamage = DAMAGE_AMT;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SeaFoam())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new SeaFoam(false))));
+        }
         tags.add(CardTags.HEALING);
+    }
+
+    public HighTide() {
+        this(true);
     }
 
     @Override

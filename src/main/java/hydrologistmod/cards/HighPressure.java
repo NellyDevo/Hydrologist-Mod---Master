@@ -12,6 +12,9 @@ import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.HighPressurePower;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class HighPressure extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:HighPressure";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -23,13 +26,20 @@ public class HighPressure extends AbstractHydrologistCard implements SwappableCa
     private static final int POWER_AMT = 1;
     private static final int UPGRADE_POWER = 1;
 
-    public HighPressure() {
+    public HighPressure(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = POWER_AMT;
         tags.add(HydrologistTags.TEMPERATURE);
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new DeepFreeze(false))));
+        }
+    }
+
+    public HighPressure() {
+        this(true);
     }
 
     @Override

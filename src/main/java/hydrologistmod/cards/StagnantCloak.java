@@ -25,13 +25,19 @@ public class StagnantCloak extends AbstractHydrologistCard {
     private static final int UPGRADED_COST = 1;
     private static final int REDUCTION = 1;
 
-    public StagnantCloak() {
+    public StagnantCloak(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = REDUCTION;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new AblativeShell())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new AblativeShell(false))));
+        }
+    }
+
+    public StagnantCloak() {
+        this(true);
     }
 
     @Override

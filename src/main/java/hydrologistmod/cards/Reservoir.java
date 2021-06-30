@@ -25,13 +25,19 @@ public class Reservoir extends AbstractHydrologistCard implements SwappableCard 
     private static final int UPGRADED_COST = 0;
     private static final int UPGRADE_ENERGY_LOSS = -1;
 
-    public Reservoir() {
+    public Reservoir(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.WATER);
         isInnate = true;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Eruption())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Eruption(false))));
+        }
+    }
+
+    public Reservoir() {
+        this(true);
     }
 
     @Override

@@ -12,6 +12,9 @@ import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.ExothermicReactionsPower;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class Exothermancy extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:Exothermancy";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -23,13 +26,20 @@ public class Exothermancy extends AbstractHydrologistCard implements SwappableCa
     private static final int AMOUNT = 2;
     private static final int UPGRADE_AMOUNT = 1;
 
-    public Exothermancy() {
+    public Exothermancy(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         magicNumber = baseMagicNumber = AMOUNT;
         tags.add(HydrologistTags.TEMPERATURE);
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Endothermancy(false))));
+        }
+    }
+
+    public Exothermancy() {
+        this(true);
     }
 
     @Override

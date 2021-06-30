@@ -29,14 +29,20 @@ public class LayeredShell extends AbstractHydrologistCard {
     private static final int DAMAGE_INCREASE = 4;
     private static final int UPGRADE_DAMAGE_INC = 3;
 
-    public LayeredShell() {
+    public LayeredShell(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.ICE);
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = DAMAGE_INCREASE;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new FrigidLash())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new FrigidLash(false))));
+        }
+    }
+
+    public LayeredShell() {
+        this(true);
     }
 
     @Override

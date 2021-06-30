@@ -11,6 +11,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class WallOfIce extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:WallOfIce";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -23,13 +26,20 @@ public class WallOfIce extends AbstractHydrologistCard implements SwappableCard 
     private static final int UPGRADE_BLOCK_AMT = 4;
 
 
-    public WallOfIce() {
+    public WallOfIce(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.ICE);
         block = baseBlock = BLOCK_AMT;
         exhaust = true;
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new OccludingMist(false))));
+        }
+    }
+
+    public WallOfIce() {
+        this(true);
     }
 
     @Override

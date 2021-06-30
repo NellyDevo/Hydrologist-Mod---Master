@@ -7,10 +7,14 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.MultiplyPowerAction;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.HeatAndColdRelic;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.HeatPower;
+
+import java.util.Arrays;
+import java.util.LinkedList;
 
 public class HeatAndPressure extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:HeatAndPressure";
@@ -23,7 +27,7 @@ public class HeatAndPressure extends AbstractHydrologistCard implements Swappabl
     private static final int MULTIPLIER = 2;
     private static final int UPGRADE_MULTIPLIER = 1;
 
-    public HeatAndPressure() {
+    public HeatAndPressure(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
@@ -31,6 +35,13 @@ public class HeatAndPressure extends AbstractHydrologistCard implements Swappabl
         magicNumber = baseMagicNumber = MULTIPLIER;
         tags.add(HydrologistTags.TEMPERATURE);
         exhaust = true;
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Ripcurrent(false))));
+        }
+    }
+
+    public HeatAndPressure() {
+        this(true);
     }
 
     @Override

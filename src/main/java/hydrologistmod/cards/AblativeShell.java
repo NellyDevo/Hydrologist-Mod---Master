@@ -12,6 +12,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class AblativeShell extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:AblativeShell";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -23,12 +26,19 @@ public class AblativeShell extends AbstractHydrologistCard implements SwappableC
     private static final int UPGRADED_COST = 2;
     private static final int BUFFER_AMT = 1;
 
-    public AblativeShell() {
+    public AblativeShell(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = BUFFER_AMT;
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new StagnantCloak(false))));
+        }
+    }
+
+    public AblativeShell() {
+        this(true);
     }
 
     @Override

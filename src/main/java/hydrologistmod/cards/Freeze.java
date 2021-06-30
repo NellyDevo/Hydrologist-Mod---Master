@@ -12,6 +12,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class Freeze extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:Freeze";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -23,12 +26,19 @@ public class Freeze extends AbstractHydrologistCard implements SwappableCard {
     private static final int DAMAGE = 8;
     private static final int UPGRADE_DAMAGE = 3;
 
-    public Freeze() {
+    public Freeze(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE;
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Siphon(false))));
+        }
+    }
+
+    public Freeze() {
+        this(true);
     }
 
     @Override

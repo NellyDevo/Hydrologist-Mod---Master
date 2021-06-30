@@ -15,6 +15,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class Eruption extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:Eruption";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -27,13 +30,20 @@ public class Eruption extends AbstractHydrologistCard implements SwappableCard {
     private static final int UPGRADE_DAMAGE = 5;
     private static final int ENERGY_GAIN = 3;
 
-    public Eruption() {
+    public Eruption(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = ENERGY_GAIN;
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Reservoir(false))));
+        }
+    }
+
+    public Eruption() {
+        this(true);
     }
 
     @Override

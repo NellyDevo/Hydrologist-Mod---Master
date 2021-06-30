@@ -15,6 +15,9 @@ import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 import hydrologistmod.powers.HeatPower;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class SteamLash extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:SteamLash";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -29,7 +32,7 @@ public class SteamLash extends AbstractHydrologistCard implements SwappableCard 
     private static final int HEAT_TO_APPLY = 4;
     private static final int UPGRADE_HEAT = 1;
 
-    public SteamLash() {
+    public SteamLash(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 AbstractCard.CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.BASIC, AbstractCard.CardTarget.ENEMY);
@@ -37,6 +40,13 @@ public class SteamLash extends AbstractHydrologistCard implements SwappableCard 
         magicNumber = baseMagicNumber = HEAT_TO_APPLY;
         assignHydrologistSubtype(HydrologistTags.STEAM);
         tags.add(HydrologistTags.TEMPERATURE);
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new FrostWhip(false))));
+        }
+    }
+
+    public SteamLash() {
+        this(true);
     }
 
     @Override

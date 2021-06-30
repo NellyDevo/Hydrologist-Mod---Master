@@ -25,14 +25,20 @@ public class Endothermancy extends AbstractHydrologistCard {
     private static final int AMOUNT = 2;
     private static final int UPGRADE_AMOUNT = 1;
 
-    public Endothermancy() {
+    public Endothermancy(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = AMOUNT;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Exothermancy())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new Exothermancy(false))));
+        }
         tags.add(HydrologistTags.TEMPERATURE);
+    }
+
+    public Endothermancy() {
+        this(true);
     }
 
     @Override

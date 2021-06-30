@@ -25,14 +25,20 @@ public class DeepFreeze extends AbstractHydrologistCard {
     private static final int POWER_AMT = 1;
     private static final int UPGRADE_POWER = 1;
 
-    public DeepFreeze() {
+    public DeepFreeze(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.POWER, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
         magicNumber = baseMagicNumber = POWER_AMT;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new HighPressure())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new HighPressure(false))));
+        }
         tags.add(HydrologistTags.TEMPERATURE);
+    }
+
+    public DeepFreeze() {
+        this(true);
     }
 
     @Override

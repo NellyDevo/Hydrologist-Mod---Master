@@ -12,6 +12,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class EncapsulatingIce extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:EncapsulatingIce";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -21,11 +24,18 @@ public class EncapsulatingIce extends AbstractHydrologistCard implements Swappab
     public static final String IMG_PATH = "hydrologistmod/images/cards/EncapsulatingIce.png";
     private static final int COST = -1;
 
-    public EncapsulatingIce() {
+    public EncapsulatingIce(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.ICE);
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new PressureBlast(false))));
+        }
+    }
+
+    public EncapsulatingIce() {
+        this(true);
     }
 
     @Override

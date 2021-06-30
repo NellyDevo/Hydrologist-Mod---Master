@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hydrologistmod.actions.FlowAction;
 import hydrologistmod.helpers.SwapperHelper;
+import hydrologistmod.interfaces.FlowAffectingRelic;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
@@ -29,13 +30,19 @@ public class FlowingCurrents extends AbstractHydrologistCard implements Swappabl
     private int lastTurnSwapped = -1;
     private String cantSwapMessage = EXTENDED_DESCRIPTION[0];
 
-    public FlowingCurrents() {
+    public FlowingCurrents(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = DRAW;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new GlacierBash())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new GlacierBash(false))));
+        }
+    }
+
+    public FlowingCurrents() {
+        this(true);
     }
 
     @Override

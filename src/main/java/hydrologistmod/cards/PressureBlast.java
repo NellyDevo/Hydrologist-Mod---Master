@@ -26,14 +26,20 @@ public class PressureBlast extends AbstractHydrologistCard {
     private static final int DAMAGE_AMT = 7;
     private static final int UPGRADE_DAMAGE = 3;
 
-    public PressureBlast() {
+    public PressureBlast(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = 0;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new EncapsulatingIce())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new EncapsulatingIce(false))));
+        }
+    }
+
+    public PressureBlast() {
+        this(true);
     }
 
     @Override

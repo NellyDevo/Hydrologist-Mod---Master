@@ -23,12 +23,18 @@ public class UnstableDefend extends AbstractHydrologistCard {
     private static final int BLOCK_AMT = 5;
     private static final int UPGRADE_PLUS_BLOCK = 3;
 
-    public UnstableDefend() {
+    public UnstableDefend(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.BASIC, CardTarget.SELF);
         block = baseBlock = BLOCK_AMT;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new UnstableStrike())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new UnstableStrike(false))));
+        }
+    }
+
+    public UnstableDefend() {
+        this(true);
     }
 
     @Override

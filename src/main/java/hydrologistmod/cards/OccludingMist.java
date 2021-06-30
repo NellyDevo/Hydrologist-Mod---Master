@@ -24,13 +24,19 @@ public class OccludingMist extends AbstractHydrologistCard {
     private static final int BLOCK_AMT = 6;
     private static final int UPGRADE_BLOCK_AMT = 3;
 
-    public OccludingMist() {
+    public OccludingMist(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.SELF);
         assignHydrologistSubtype(HydrologistTags.STEAM);
         block = baseBlock = BLOCK_AMT;
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new WallOfIce())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new WallOfIce(false))));
+        }
+    }
+
+    public OccludingMist() {
+        this(true);
     }
 
     @Override

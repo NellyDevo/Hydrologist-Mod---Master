@@ -14,6 +14,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class SoothingWater extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:SoothingWater";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -26,7 +29,7 @@ public class SoothingWater extends AbstractHydrologistCard implements SwappableC
     private static final int HEAL_INCREASE = 4;
     private static final int UPGRADED_HEAL_INCREASE = 6;
 
-    public SoothingWater() {
+    public SoothingWater(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.SELF);
@@ -34,6 +37,13 @@ public class SoothingWater extends AbstractHydrologistCard implements SwappableC
         assignHydrologistSubtype(HydrologistTags.WATER);
         tags.add(CardTags.HEALING);
         FleetingField.fleeting.set(this, true);
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new PurifyingSteam(false))));
+        }
+    }
+
+    public SoothingWater() {
+        this(true);
     }
 
     @Override

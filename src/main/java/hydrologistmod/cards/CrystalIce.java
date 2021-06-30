@@ -26,13 +26,19 @@ public class CrystalIce extends AbstractHydrologistCard {
     private static final int BLOCK_AMT = 3;
     private static final int UPGRADE_BLOCK_AMT = 1;
 
-    public CrystalIce() {
+    public CrystalIce(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.RARE, CardTarget.NONE);
         assignHydrologistSubtype(HydrologistTags.ICE);
-        SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new LaminarFlow())));
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new LaminarFlow(false))));
+        }
         block = baseBlock = BLOCK_AMT;
+    }
+
+    public CrystalIce() {
+        this(true);
     }
 
     @Override

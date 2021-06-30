@@ -12,6 +12,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class GlacierBash extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:GlacierBash";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -25,13 +28,20 @@ public class GlacierBash extends AbstractHydrologistCard implements SwappableCar
     private static final int UPGRADE_DAMAGE = 7;
     private static final int COST_REDUCE = 1;
 
-    public GlacierBash() {
+    public GlacierBash(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.UNCOMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = COST_REDUCE;
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new FlowingCurrents(false))));
+        }
+    }
+
+    public GlacierBash() {
+        this(true);
     }
 
     @Override

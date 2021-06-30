@@ -13,6 +13,9 @@ import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class IceSpike extends AbstractHydrologistCard implements SwappableCard {
     public static final String ID = "hydrologistmod:IceSpike";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -24,12 +27,19 @@ public class IceSpike extends AbstractHydrologistCard implements SwappableCard {
     private static final int DAMAGE_AMT = 10;
     private static final int UPGRADE_DAMAGE_AMT = 4;
 
-    public IceSpike() {
+    public IceSpike(boolean makeSwappable) {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.ATTACK, AbstractCardEnum.HYDROLOGIST_CYAN,
                 CardRarity.COMMON, CardTarget.ENEMY);
         assignHydrologistSubtype(HydrologistTags.ICE);
         damage = baseDamage = DAMAGE_AMT;
+        if (makeSwappable) {
+            SwapperHelper.makeSwappableGroup(new LinkedList<>(Arrays.asList(this, new TidalWave(false))));
+        }
+    }
+
+    public IceSpike() {
+        this(true);
     }
 
     @Override
