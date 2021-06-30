@@ -406,7 +406,7 @@ public class CreditsHelper {
                 }
             }
         }
-        if (AbstractDungeon.player != null) {
+        if (AbstractDungeon.isPlayerInDungeon()) {
             CardGroup group = AbstractDungeon.player.drawPile;
             if (group != null) {
                 for (AbstractCard card : group.group) {
