@@ -30,7 +30,7 @@ public class CardExporter {
     public static void getCardData() {
         System.out.println("Retrieving card data --");
         for (AbstractCard card : CardLibrary.getAllCards()) {
-            if (card.color == AbstractCardEnum.HYDROLOGIST_CYAN) {
+            if (card instanceof AbstractHydrologistCard) {
                 AbstractHydrologistCard copy = (AbstractHydrologistCard) card.makeCopy();
                 CardInfo info = new CardInfo();
                 info.NAME = copy.name;
@@ -98,6 +98,8 @@ public class CardExporter {
 
                 if (SwapperHelper.isCardSwappable(card)) {
                     info.SWAPS_TO = SwapperHelper.getNextCard(card).cardID;
+                } else if (card.cardsToPreview != null) {
+                    info.SWAPS_TO = card.cardsToPreview.cardID;
                 }
 
                 cards.put(copy.cardID, info);
