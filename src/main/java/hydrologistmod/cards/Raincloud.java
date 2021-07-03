@@ -48,8 +48,6 @@ public class Raincloud extends AbstractHydrologistCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
         }
     }
 }
