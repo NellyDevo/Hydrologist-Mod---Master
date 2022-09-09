@@ -10,6 +10,7 @@ import hydrologistmod.HydrologistMod;
 import hydrologistmod.actions.HydrologistDamageAction;
 import hydrologistmod.patches.AbstractCardEnum;
 import hydrologistmod.patches.HydrologistTags;
+import hydrologistmod.powers.ThermalShockPower;
 
 public class SwelteringStrike extends AbstractHydrologistCard {
     public static final String ID = "hydrologistmod:SwelteringStrike";
@@ -34,10 +35,10 @@ public class SwelteringStrike extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
-        if (HydrologistMod.isCool(m)) {
+        if (HydrologistMod.isCool(m) || HydrologistMod.isHot(m)) {
             addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
         }
-        if (HydrologistMod.isHot(m)) {
+        if (m.hasPower(ThermalShockPower.POWER_ID)) {
             addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
         }
     }

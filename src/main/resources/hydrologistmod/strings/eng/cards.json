@@ -482,7 +482,7 @@
   },
   "hydrologistmod:SwelteringStrike": {
     "NAME": "Sweltering Strike",
-    "DESCRIPTION": "Deal !D! damage. NL If enemy is hydrologistmod:Hot, deal !D! damage. NL If enemy is hydrologistmod:Cool, deal !D! damage.",
+    "DESCRIPTION": "Deal !D! damage. NL If enemy is hydrologistmod:Hot or hydrologistmod:Cool, deal !D! damage. NL If enemy is suffering from hydrologistmod:Thermal_Shock, deal !D! damage.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:TidalWave": {

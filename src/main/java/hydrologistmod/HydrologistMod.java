@@ -397,11 +397,11 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
     }
 
     public static boolean isHot(AbstractCreature creature) {
-        return (creature.hasPower(ThermalShockPower.POWER_ID) || creature.hasPower(HeatPower.POWER_ID));
+        return creature.hasPower(HeatPower.POWER_ID);
     }
 
     public static boolean isCool(AbstractCreature creature) {
-        return (creature.hasPower(ThermalShockPower.POWER_ID) || creature.hasPower(ColdPower.POWER_ID));
+        return creature.hasPower(ColdPower.POWER_ID);
     }
 
     public static AbstractCard returnTrulyRandomCardWithTagInCombat(AbstractCard.CardTags tag) {
