@@ -31,10 +31,12 @@ public class SteamPower extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m.hasPower(ThermalShockPower.POWER_ID)) {
-            AbstractPower power = m.getPower(ThermalShockPower.POWER_ID);
+        AbstractPower power = m.getPower(ThermalShockPower.POWER_ID);
+        if (power != null) {
             addToBot(new DrawCardAction(p, power.amount));
-            addToBot(new RemoveSpecificPowerAction(m, p, power));
+            if (!upgraded) {
+                addToBot(new RemoveSpecificPowerAction(m, p, power));
+            }
         }
     }
 
@@ -47,7 +49,6 @@ public class SteamPower extends AbstractHydrologistCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            exhaust = false;
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
