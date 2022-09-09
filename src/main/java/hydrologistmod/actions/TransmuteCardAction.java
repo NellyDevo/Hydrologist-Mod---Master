@@ -141,13 +141,14 @@ public class TransmuteCardAction extends AbstractGameAction {
                     CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
                     ArrayList<AbstractCard> targets = getTransmutationCandidates(playedCard);
                     for (int i = 0; i < choices; ++i) {
-                        if (!targets.isEmpty()) {
-                            AbstractCard choice = getRandomCard(targets);
-                            UnlockTracker.markCardAsSeen(choice.cardID);
-                            if (!tmp.contains(choice)) {
-                                tmp.addToBottom(choice);
-                                targets.remove(choice);
-                            }
+                        if (targets.isEmpty()) {
+                            targets = getTransmutationCandidates(playedCard);
+                        }
+                        AbstractCard choice = getRandomCard(targets);
+                        UnlockTracker.markCardAsSeen(choice.cardID);
+                        if (!tmp.contains(choice)) {
+                            tmp.addToBottom(choice);
+                            targets.remove(choice);
                         }
                     }
                     AbstractDungeon.gridSelectScreen.open(tmp, 1, TEXT[1], false);
@@ -176,13 +177,14 @@ public class TransmuteCardAction extends AbstractGameAction {
                 CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
                 ArrayList<AbstractCard> targets = getTransmutationCandidates(oldCard);
                 for (int i = 0; i < choices; ++i) {
-                    if (!targets.isEmpty()) {
-                        AbstractCard choice = getRandomCard(targets);
-                        UnlockTracker.markCardAsSeen(choice.cardID);
-                        if (!tmp.contains(choice)) {
-                            tmp.addToBottom(choice);
-                            targets.remove(choice);
-                        }
+                    if (targets.isEmpty()) {
+                        targets = getTransmutationCandidates(oldCard);
+                    }
+                    AbstractCard choice = getRandomCard(targets);
+                    UnlockTracker.markCardAsSeen(choice.cardID);
+                    if (!tmp.contains(choice)) {
+                        tmp.addToBottom(choice);
+                        targets.remove(choice);
                     }
                 }
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
