@@ -44,7 +44,7 @@ public class ExothermicReactionsPower extends AbstractPower implements Transmuta
     public void affectTransmutedCard(AbstractCard card) {
         flash();
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            addToBot(new ApplyTemperatureAction(mo, AbstractDungeon.player, new HeatPower(mo, AbstractDungeon.player, amount)));
+            addToBot(new ApplyTemperatureAction(mo, AbstractDungeon.player, amount, true));
         }
     }
 }

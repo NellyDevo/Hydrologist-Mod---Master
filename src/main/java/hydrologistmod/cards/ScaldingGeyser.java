@@ -40,7 +40,7 @@ public class ScaldingGeyser extends AbstractHydrologistCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
-        addToBot(new ApplyTemperatureAction(m, p, new HeatPower(m, p, magicNumber)));
+        addToBot(new ApplyTemperatureAction(m, p, magicNumber, true));
     }
 
     @Override

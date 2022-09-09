@@ -44,7 +44,7 @@ public class SolidificationPower extends AbstractStateChangePower implements Clo
         if (card.hasTag(tag)) {
             flash();
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                addToBot(new ApplyTemperatureAction(m, (AbstractPlayer)owner, new ColdPower(m, owner, amount)));
+                addToBot(new ApplyTemperatureAction(m, (AbstractPlayer)owner, amount, false));
             }
         }
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));

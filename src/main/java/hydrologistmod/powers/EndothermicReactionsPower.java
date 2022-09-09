@@ -44,7 +44,7 @@ public class EndothermicReactionsPower extends AbstractPower implements Transmut
     public void affectTransmutedCard(AbstractCard card) {
         flash();
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            addToTop(new ApplyTemperatureAction(mo, AbstractDungeon.player, new ColdPower(mo, AbstractDungeon.player, amount)));
+            addToTop(new ApplyTemperatureAction(mo, AbstractDungeon.player, amount, false));
         }
     }
 }

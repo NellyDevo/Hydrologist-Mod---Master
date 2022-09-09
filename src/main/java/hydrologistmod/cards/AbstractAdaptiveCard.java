@@ -43,13 +43,13 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (mode) {
             case ICE:
-                addToBot(new ApplyTemperatureAction(m, p, new ColdPower(m, p, adaptiveNumber)));
+                addToBot(new ApplyTemperatureAction(m, p, adaptiveNumber, false));
                 break;
             case WATER:
                 addToBot(new GainBlockAction(p, p, adaptiveNumber));
                 break;
             case STEAM:
-                addToBot(new ApplyTemperatureAction(m, p, new HeatPower(m, p, adaptiveNumber)));
+                addToBot(new ApplyTemperatureAction(m, p, adaptiveNumber, true));
                 break;
             case NONE:
                 break;

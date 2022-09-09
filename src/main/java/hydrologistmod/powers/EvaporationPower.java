@@ -44,7 +44,7 @@ public class EvaporationPower extends AbstractStateChangePower implements Clonea
         if (card.hasTag(tag)) {
             flash();
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                addToBot(new ApplyTemperatureAction(m, (AbstractPlayer)owner, new HeatPower(m, owner, amount)));
+                addToBot(new ApplyTemperatureAction(m, (AbstractPlayer)owner, amount, true));
             }
         }
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));

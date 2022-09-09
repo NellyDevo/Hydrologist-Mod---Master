@@ -36,7 +36,7 @@ public class Upstream extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyTemperatureAction(m, p, new ColdPower(m, p, magicNumber)));
+        addToBot(new ApplyTemperatureAction(m, p, magicNumber, true));
         addToBot(new UpstreamAction(m, block));
     }
 

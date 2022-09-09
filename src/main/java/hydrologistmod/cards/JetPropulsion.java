@@ -34,7 +34,7 @@ public class JetPropulsion extends AbstractHydrologistCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyTemperatureAction(m, p, new HeatPower(m, p, magicNumber)));
+        addToBot(new ApplyTemperatureAction(m, p, magicNumber, true));
         addToBot(new JetPropulsionAction(m, CARD_DRAW));
     }
 

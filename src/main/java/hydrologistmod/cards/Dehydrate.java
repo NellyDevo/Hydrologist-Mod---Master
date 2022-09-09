@@ -39,7 +39,7 @@ public class Dehydrate extends AbstractHydrologistCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HydrologistDamageAction(getHydrologistSubtype(), m, new DamageInfo(p, damage, damageTypeForTurn)));
         if (!HydrologistMod.isCool(m) || upgraded) {
-            addToBot(new ApplyTemperatureAction(m, p, new HeatPower(m, p, magicNumber)));
+            addToBot(new ApplyTemperatureAction(m, p, magicNumber, true));
         }
     }
 

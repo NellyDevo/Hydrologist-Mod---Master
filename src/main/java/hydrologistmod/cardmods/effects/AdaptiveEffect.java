@@ -80,13 +80,13 @@ public class AdaptiveEffect extends AbstractExtraEffectModifier {
         for (int i = 0; i < amount; ++i) {
             switch (card.mode) {
                 case ICE:
-                    addToBot(new ApplyTemperatureAction(m, p, new ColdPower(m, p, value)));
+                    addToBot(new ApplyTemperatureAction(m, p, value, false));
                     break;
                 case WATER:
                     addToBot(new GainBlockAction(p, p, value));
                     break;
                 case STEAM:
-                    addToBot(new ApplyTemperatureAction(m, p, new HeatPower(m, p, value)));
+                    addToBot(new ApplyTemperatureAction(m, p, value, true));
                     break;
                 case NONE:
                     break;
