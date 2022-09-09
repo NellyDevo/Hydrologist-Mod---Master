@@ -1,6 +1,8 @@
 package hydrologistmod.patches;
 
 import basemod.BaseMod;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.TipHelper;
@@ -49,7 +51,11 @@ public class GetSwappableHotkeyPatch {
     public static String getKeywordString(Object s) {
         String body = GameDictionary.keywords.get(s);
         if (s.equals(BaseMod.getKeywordPrefix(AbstractHydrologistCard.swappable.toLowerCase()) + BaseMod.getKeywordUnique(AbstractHydrologistCard.swappable.toLowerCase()))) {
-            body += SwapperInputActionSet.swapCard.getKeyString() + ".";
+            String addon = SwapperInputActionSet.swapCard.getKeyString();
+            if (addon.isEmpty()) {
+                addon = Input.Keys.toString(62);
+            }
+            body += addon + ".";
         }
         return body;
     }

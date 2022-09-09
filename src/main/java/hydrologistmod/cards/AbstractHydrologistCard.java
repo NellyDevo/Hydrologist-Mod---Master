@@ -30,8 +30,8 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     private static final String ICE_SMALL_ORB = "hydrologistmod/images/512/card_hydrologist_orb_ice_small.png";
     private static final String WATER_SMALL_ORB = "hydrologistmod/images/512/card_hydrologist_orb_water_small.png";
     private static final String STEAM_SMALL_ORB = "hydrologistmod/images/512/card_hydrologist_orb_steam_small.png";
-    private static HashMap<CardTags, String> smallOrbMap;
-    private static HashMap<CardTags, String> largeOrbMap;
+    private static final HashMap<CardTags, String> smallOrbMap = makeMap(ICE_SMALL_ORB, WATER_SMALL_ORB, STEAM_SMALL_ORB);
+    private static final HashMap<CardTags, String> largeOrbMap = makeMap(ICE_LARGE_ORB, WATER_LARGE_ORB, STEAM_LARGE_ORB);
     public static final TextureAtlas.AtlasRegion ICE_LARGE_ATTACK_FRAME = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/Ice Large Attack Frame.png"), 0, 0, 1024, 1024);
     public static final TextureAtlas.AtlasRegion ICE_LARGE_SKILL_FRAME = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/Ice Large Skill Frame.png"), 0, 0, 1024, 1024);
     public static final TextureAtlas.AtlasRegion ICE_LARGE_POWER_FRAME = new TextureAtlas.AtlasRegion(new Texture("hydrologistmod/images/1024/Ice Large Power Frame.png"), 0, 0, 1024, 1024);
@@ -77,24 +77,18 @@ public abstract class AbstractHydrologistCard extends CustomCard {
     public static String water = tooltip.EXTENDED_DESCRIPTION[5];
     public static String steam = tooltip.EXTENDED_DESCRIPTION[6];
 
-    private static void makeOrbMap() {
-        smallOrbMap = new HashMap<>();
-        largeOrbMap = new HashMap<>();
-        smallOrbMap.put(HydrologistTags.ICE, ICE_SMALL_ORB);
-        largeOrbMap.put(HydrologistTags.ICE, ICE_LARGE_ORB);
-        smallOrbMap.put(HydrologistTags.WATER, WATER_SMALL_ORB);
-        largeOrbMap.put(HydrologistTags.WATER, WATER_LARGE_ORB);
-        smallOrbMap.put(HydrologistTags.STEAM, STEAM_SMALL_ORB);
-        largeOrbMap.put(HydrologistTags.STEAM, STEAM_LARGE_ORB);
+    private static HashMap<CardTags, String> makeMap(String ice, String water, String steam) {
+        HashMap<CardTags, String> retVal = new HashMap<>();
+        retVal.put(HydrologistTags.ICE, ice);
+        retVal.put(HydrologistTags.WATER, water);
+        retVal.put(HydrologistTags.STEAM, steam);
+        return retVal;
     }
 
     public AbstractHydrologistCard(String id, String name, String img, int cost, String rawDescription,
                                    CardType type, CardColor color,
                                    CardRarity rarity, CardTarget target) {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
-        if (smallOrbMap == null) {
-            makeOrbMap();
-        }
     }
 
     protected void assignHydrologistSubtype(CardTags tag) {
