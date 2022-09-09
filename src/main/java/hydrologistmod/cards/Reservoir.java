@@ -20,7 +20,7 @@ public class Reservoir extends AbstractHydrologistCard implements SwappableCard 
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/Reservoir.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/reservoir.png";
     private static final int COST = -2;
     private static final int UPGRADED_COST = 0;
     private static final int UPGRADE_ENERGY_LOSS = -1;

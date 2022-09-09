@@ -13,7 +13,7 @@ public class StaticWater extends AbstractAdaptiveCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/StaticWater.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/static_water.png";
     private static final int COST = 0;
     private static final int ADAPTIVE_AMT = 3;
     private static final int UPGRADE_ADAPTIVE = 1;

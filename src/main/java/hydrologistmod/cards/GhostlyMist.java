@@ -20,7 +20,7 @@ public class GhostlyMist extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/GhostlyMist.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/ghostly_mist.png";
     private static final int COST = 1;
     private static final int DAMAGE_AMT = 7;
     private static final int UPGRADE_DAMAGE_AMT = 3;

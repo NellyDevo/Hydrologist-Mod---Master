@@ -22,7 +22,7 @@ public class HeatBlast extends AbstractHydrologistCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/HeatBlast.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/heat_blast.png";
     private static final int COST = 3;
     private static final int DAMAGE_AMT = 5;
     private static final int UPGRADED_COST = 2;

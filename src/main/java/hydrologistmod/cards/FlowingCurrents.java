@@ -24,7 +24,7 @@ public class FlowingCurrents extends AbstractHydrologistCard implements Swappabl
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/FlowingCurrents.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/flowing_currents.png";
     private static final int COST = 0;
     private static final int DRAW = 1;
     private int lastTurnSwapped = -1;

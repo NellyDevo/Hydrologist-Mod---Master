@@ -16,7 +16,7 @@ public class StormFront extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/StormFront.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/storm_front.png";
     private static final int COST = 3;
     private static final int DAMAGE = 20;
     private static final int UPGRADE_DAMAGE = 5;

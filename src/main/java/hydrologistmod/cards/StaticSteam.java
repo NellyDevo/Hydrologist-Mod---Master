@@ -17,7 +17,7 @@ public class StaticSteam extends AbstractAdaptiveCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/StaticSteam.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/static_steam.png";
     private static final int COST = 0;
     private static final int ADAPTIVE_AMT = 2;
     private static final int DAMAGE_AMT = 3;

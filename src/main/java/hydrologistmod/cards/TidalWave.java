@@ -22,7 +22,7 @@ public class TidalWave extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/TidalWave.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/tidal_wave.png";
     private static final int COST = 1;
     private static final int DAMAGE_AMT = 7;
     private static final int UPGRADE_DAMAGE_AMT = 3;

@@ -16,7 +16,7 @@ public class YawningAbyss extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/YawningAbyss.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/yawning_abyss.png";
     private static final int COST = 2;
     private static final int DAMAGE_AMT = 5;
     private static final int UPGRADE_DAMAGE = 2;

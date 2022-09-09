@@ -16,7 +16,7 @@ public class Raincloud extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/Raincloud.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/raincloud.png";
     private static final int COST = 0;
     private static final int BLOCK_AMT = 4;
     private static final int UPGRADE_BLOCK = 3;

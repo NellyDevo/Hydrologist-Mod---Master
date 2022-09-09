@@ -18,7 +18,7 @@ public class CrystalLattice extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/CrystalLattice.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/crystal_lattice.png";
     private static final int COST = 0;
     private static final int DAMAGE_AMT = 5;
     private static final int UPGRADE_DAMAGE = 3;

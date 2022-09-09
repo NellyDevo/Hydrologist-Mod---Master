@@ -15,7 +15,7 @@ public class StormOfSleet extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/StormOfSleet.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/storm_of_sleet.png";
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
 

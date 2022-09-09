@@ -23,7 +23,7 @@ public class SoothingWater extends AbstractHydrologistCard implements SwappableC
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/SoothingWater.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/soothing_water.png";
     private static final int COST = 1;
     private static final int BASE_HEAL = 6;
     private static final int HEAL_INCREASE = 4;

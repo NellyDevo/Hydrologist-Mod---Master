@@ -17,7 +17,7 @@ public class Pneumatics extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/Pneumatics.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/pneumatics.png";
     private static final int COST = 0;
     private static final int TURN_COUNT = 1;
     private static final int UPGRADE_COUNT = 1;

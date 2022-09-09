@@ -1,11 +1,12 @@
 {
-  "modid": "${modid}",
-  "name": "${mod_name}",
-  "author_list": ["${mod_author}"],
-  "description": "${mod_description}",
-  "dependencies": ["basemod", "stslib"],
+  "modid": "HydrologistMod",
+  "name": "The Hydrologist",
+  "author_list": ["JohnnyDevo"],
+  "description": "Adds a new character: The Hydrologist.",
+  "dependencies": ["basemod"],
   "credits": "",
-  "version": "${mod_version}",
-  "sts_version": "${sts_version}",
-  "mts_version": "${mts_version}"
+  "version": "${project.version}",
+  "sts_version": "${SlayTheSpire.version}",
+  "mts_version": "${ModTheSpire.version}",
+  "update_json": "https://api.github.com/repos/JohnnyDevo/Hydrologist-Mod---Master/releases/latest"
 }

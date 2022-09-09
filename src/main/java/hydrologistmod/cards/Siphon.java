@@ -24,7 +24,7 @@ public class Siphon extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/Siphon.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/siphon.png";
     private static final int COST = 1;
 
     public Siphon(boolean makeSwappable) {

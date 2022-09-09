@@ -22,7 +22,7 @@ public class HeatAndPressure extends AbstractHydrologistCard implements Swappabl
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/HeatAndPressure.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/heat_and_pressure.png";
     private static final int COST = 1;
     private static final int MULTIPLIER = 2;
     private static final int UPGRADE_MULTIPLIER = 1;

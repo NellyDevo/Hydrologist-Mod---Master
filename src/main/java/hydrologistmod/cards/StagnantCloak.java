@@ -20,7 +20,7 @@ public class StagnantCloak extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/StagnantCloak.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/stagnant_cloak.png";
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
     private static final int REDUCTION = 1;

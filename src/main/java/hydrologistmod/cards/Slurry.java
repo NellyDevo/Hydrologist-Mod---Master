@@ -19,7 +19,7 @@ public class Slurry extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/Slurry.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/slurry.png";
     private static final int COST = 2;
 
     public Slurry() {

@@ -18,7 +18,7 @@ public class SoggySynthesis extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/SoggySynthesis.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/soggy_synthesis.png";
     private static final int COST = 1;
     private static final int DAMAGE_AMT = 5;
     private static final int BLOCK_AMT = 5;

@@ -19,7 +19,7 @@ public class PressureCycle extends AbstractHydrologistCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/PressureCycle.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/pressure_cycle.png";
     private static final int COST = 1;
     private static final int BLOCK_AMT = 1;
 

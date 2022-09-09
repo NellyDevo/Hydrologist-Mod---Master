@@ -21,7 +21,7 @@ public class LaminarFlow extends AbstractHydrologistCard implements SwappableCar
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/LaminarFlow.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/laminar_flow.png";
     private static final int COST = 1;
     private static final int POWER_AMT = 3;
     private static final int UPGRADE_AMT = 1;

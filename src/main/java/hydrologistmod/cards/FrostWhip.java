@@ -26,7 +26,7 @@ public class FrostWhip extends AbstractHydrologistCard implements SwappableCard 
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/WaterWhip.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/frost_whip.png";
     private static final int COST = 1;
     public static final int ATTACK_DMG = 6;
     private static final int COLD_AMT = 1;

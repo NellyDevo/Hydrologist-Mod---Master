@@ -17,7 +17,7 @@ public class Purify extends AbstractHydrologistCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String IMG_PATH = "hydrologistmod/images/cards/Purify.png";
+    public static final String IMG_PATH = "hydrologistmod/images/cards/purify.png";
     private static final int COST = 2;
     private static final int DAMAGE = 12;
     private static final int UPGRADE_DAMAGE = 4;
