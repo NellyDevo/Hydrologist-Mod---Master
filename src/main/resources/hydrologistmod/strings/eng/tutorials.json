@@ -11,7 +11,7 @@
     "TEXT": [
       "A central #yHydrologist mechanic is the interactions between #yHeat, #yCold, and #yThermal #yShock. NL NL Apply #yHeat to an enemy to make it #yHot, and it takes 30% more damage. NL NL Apply #yCold to an enemy to make it #yCool, and it deals 15% less damage.",
       "Build up #yHeat or #yCold on an enemy, then apply the opposite to inflict #yThermal #yShock, causing that enemy to lose health equal to 3 times the amount you built up.",
-      "While suffering from #yThermal #yShock, an enemy counts as both #yHot and #yCool, and thus takes 30% more damage and deals 15% less damage. NL NL During this time, applying more #yHeat or #yCold will instead increase this duration."
+      "While suffering from #yThermal #yShock, any additional triggers of #yHeat or #yCold deal additional damage equal to the thermal shock amount."
     ],
     "LABEL": [
       "Next",
