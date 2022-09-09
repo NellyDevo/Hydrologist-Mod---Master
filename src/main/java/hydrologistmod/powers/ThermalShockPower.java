@@ -36,29 +36,6 @@ public class ThermalShockPower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
-    public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        if (type == DamageInfo.DamageType.NORMAL) {
-            return damage * ColdPower.calculateMultiplier();
-        } else {
-            return damage;
-        }
-    }
-
-    @Override
-    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
-        if (type == DamageInfo.DamageType.NORMAL) {
-            return damage * HeatPower.calculateMultiplier();
-        } else {
-            return damage;
-        }
-    }
-
-    @Override
-    public void atEndOfRound() {
-        addToBot(new ReducePowerAction(owner, owner, this, 1));
-    }
-
-    @Override
     public AbstractPower makeCopy() {
         return new ThermalShockPower(owner, source, amount);
     }
