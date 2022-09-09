@@ -22,7 +22,7 @@ public class Scald extends AbstractHydrologistCard {
     private static final int COST = 1;
     private static final int DAMAGE = 12;
     private static final int UPGRADE_DAMAGE = 4;
-    private static final int POWER_AMT = 2;
+    private static final int POWER_AMT = 3;
     private static final int UPGRADE_POWER_AMT = 1;
 
     public Scald() {
