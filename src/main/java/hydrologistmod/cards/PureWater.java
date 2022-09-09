@@ -34,6 +34,7 @@ public class PureWater extends AbstractAdaptiveCard implements TransmutableCard 
                 CardRarity.UNCOMMON, CardTarget.SELF, ADAPTIVE_AMT);
         assignHydrologistSubtype(HydrologistTags.WATER);
         magicNumber = baseMagicNumber = DRAW_AMT;
+        exhaust = true;
     }
 
     @Override

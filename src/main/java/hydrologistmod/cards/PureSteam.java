@@ -36,6 +36,7 @@ public class PureSteam extends AbstractHydrologistCard implements TransmutableCa
         assignHydrologistSubtype(HydrologistTags.STEAM);
         damage = baseDamage = DAMAGE_AMT;
         magicNumber = baseMagicNumber = CARD_DRAW;
+        exhaust = true;
     }
 
     @Override

@@ -35,6 +35,7 @@ public class PureIce extends AbstractHydrologistCard implements TransmutableCard
         assignHydrologistSubtype(HydrologistTags.ICE);
         block = baseBlock = BLOCK_AMT;
         magicNumber = baseMagicNumber = CARD_DRAW;
+        exhaust = true;
     }
 
     @Override

@@ -306,20 +306,20 @@
   },
   "hydrologistmod:PureIce": {
     "NAME": "Pure Ice",
-    "DESCRIPTION": "hydrologistmod:Mutable: Draw a card. NL hydrologistmod:Mutable: Gain !B! Block.",
+    "DESCRIPTION": "hydrologistmod:Mutable: Draw a card. NL hydrologistmod:Mutable: Gain !B! Block. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:PureSteam": {
     "NAME": "Pure Steam",
-    "DESCRIPTION": "hydrologistmod:Mutable: Draw a card. NL hydrologistmod:Mutable: Deal !D! damage.",
+    "DESCRIPTION": "hydrologistmod:Mutable: Draw a card. NL hydrologistmod:Mutable: Deal !D! damage. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:PureWater": {
     "NAME": "Pure Water",
-    "DESCRIPTION": "hydrologistmod:Mutable: Draw a card. NL hydrologistmod:Mutable: hydrologistmod:Adaptive !hydrologistmod:A!.",
+    "DESCRIPTION": "hydrologistmod:Mutable: Draw a card. NL Exhaust. NL hydrologistmod:Mutable: hydrologistmod:Adaptive !hydrologistmod:A!.",
     "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
-      "hydrologistmod:Mutable: Draw a card. NL hydrologistmod:Mutable: "
+      "hydrologistmod:Mutable: Draw a card. NL Exhaust. NL hydrologistmod:Mutable: "
     ]
   },
   "hydrologistmod:Purify": {
