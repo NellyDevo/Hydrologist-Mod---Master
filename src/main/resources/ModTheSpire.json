@@ -4,7 +4,7 @@
   "author_list": ["JohnnyDevo"],
   "description": "Adds a new character: The Hydrologist.",
   "dependencies": ["basemod"],
-  "credits": "many thanks to katizua for power images",
+  "credits": "many thanks to katizua for power images: https://www.deviantart.com/katizua",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
   "mts_version": "${ModTheSpire.version}",

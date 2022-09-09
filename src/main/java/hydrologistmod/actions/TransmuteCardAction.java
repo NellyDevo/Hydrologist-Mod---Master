@@ -113,7 +113,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                     System.out.println("TRANSMUTECARDACTION: Make 0 choices? How did this happen?");
                     return;
                 } else if (choices == 1) {
-                    AbstractCard newCard = getTransmutationResult(playedCard).makeCopy();
+                    AbstractCard newCard = getRandomCard(getTransmutationCandidates(playedCard)).makeCopy();
                     modifyNewCard(playedCard, newCard);
                     //modify useCardAction for the current card using related patch
                     UseCardAction useCardAction = null;
@@ -139,13 +139,15 @@ public class TransmuteCardAction extends AbstractGameAction {
                     completed = true;
                 } else {
                     CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+                    ArrayList<AbstractCard> targets = getTransmutationCandidates(playedCard);
                     for (int i = 0; i < choices; ++i) {
-                        AbstractCard choice = getTransmutationResult(playedCard);
-                        UnlockTracker.markCardAsSeen(choice.cardID);
-                        if (!tmp.contains(choice)) {
-                            tmp.addToBottom(choice);
-                        } else {
-                            --i;
+                        if (!targets.isEmpty()) {
+                            AbstractCard choice = getRandomCard(targets);
+                            UnlockTracker.markCardAsSeen(choice.cardID);
+                            if (!tmp.contains(choice)) {
+                                tmp.addToBottom(choice);
+                                targets.remove(choice);
+                            }
                         }
                     }
                     AbstractDungeon.gridSelectScreen.open(tmp, 1, TEXT[1], false);
@@ -161,7 +163,7 @@ public class TransmuteCardAction extends AbstractGameAction {
                 System.out.println("TRANSMUTECARDACTION: Make 0 choices? How did this happen?");
                 return;
             } else if (choices == 1) {
-                AbstractCard newCard = getTransmutationResult(oldCard).makeCopy();
+                AbstractCard newCard = getRandomCard(getTransmutationCandidates(oldCard)).makeCopy();
                 UnlockTracker.markCardAsSeen(newCard.cardID);
                 modifyNewCard(oldCard, newCard);
                 transmutedPairs.put(oldCard, newCard);
@@ -172,13 +174,15 @@ public class TransmuteCardAction extends AbstractGameAction {
                 return;
             } else {
                 CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+                ArrayList<AbstractCard> targets = getTransmutationCandidates(oldCard);
                 for (int i = 0; i < choices; ++i) {
-                    AbstractCard choice = getTransmutationResult(oldCard);
-                    UnlockTracker.markCardAsSeen(choice.cardID);
-                    if (!tmp.contains(choice)) {
-                        tmp.addToBottom(choice);
-                    } else {
-                        --i;
+                    if (!targets.isEmpty()) {
+                        AbstractCard choice = getRandomCard(targets);
+                        UnlockTracker.markCardAsSeen(choice.cardID);
+                        if (!tmp.contains(choice)) {
+                            tmp.addToBottom(choice);
+                            targets.remove(choice);
+                        }
                     }
                 }
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
@@ -238,40 +242,36 @@ public class TransmuteCardAction extends AbstractGameAction {
         }
     }
 
-    private AbstractCard getTransmutationResult(AbstractCard oldCard) {
+    private ArrayList<AbstractCard> getTransmutationCandidates(AbstractCard oldCard) {
         ArrayList<AbstractCard> targets = new ArrayList<>();
         switch (oldCard.rarity) {
             case RARE:
                 for (AbstractCard candidate : AbstractDungeon.srcRareCardPool.group) {
-                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING) && (conditions == null || conditions.filter(candidate))) {
-                        targets.add(candidate);
+                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING) && (conditions == null || conditions.filter(candidate)) && !candidate.cardID.equals(oldCard.cardID)) {
+                        targets.add(candidate.makeCopy());
                     }
                 }
                 break;
             case UNCOMMON:
                 for (AbstractCard candidate : AbstractDungeon.srcUncommonCardPool.group) {
-                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING) && (conditions == null || conditions.filter(candidate))) {
-                        targets.add(candidate);
+                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING) && (conditions == null || conditions.filter(candidate)) && !candidate.cardID.equals(oldCard.cardID)) {
+                        targets.add(candidate.makeCopy());
                     }
                 }
                 break;
             default:
                 for (AbstractCard candidate : AbstractDungeon.srcCommonCardPool.group) {
-                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING) && (conditions == null || conditions.filter(candidate))) {
-                        targets.add(candidate);
+                    if (!candidate.hasTag(AbstractCard.CardTags.HEALING) && (conditions == null || conditions.filter(candidate)) && !candidate.cardID.equals(oldCard.cardID)) {
+                        targets.add(candidate.makeCopy());
                     }
                 }
                 break;
         }
-        if (targets.isEmpty()) {
-            isDone = true;
-            return null;
-        }
-        AbstractCard result;
-        do {
-            result = targets.get(AbstractDungeon.cardRandomRng.random(targets.size() - 1));
-        } while (result.cardID.equals(oldCard.cardID));
-        return result;
+        return targets;
+    }
+
+    private AbstractCard getRandomCard(ArrayList<AbstractCard> targets) {
+        return targets.get(AbstractDungeon.cardRandomRng.random(targets.size() - 1));
     }
 
     private void modifyNewCard(AbstractCard oldCard, AbstractCard newCard) {
