@@ -13,7 +13,7 @@
       "cold",
       "cool"
     ],
-    "DESCRIPTION": "A #yCool enemy deals 15% less damage with Attacks. If a #yCool enemy becomes #yHot, remove it, it loses triple its #yCool amount in HP, and apply #yThermal #yShock for 1 turn."
+    "DESCRIPTION": "A #yCool enemy deals 15% less damage with Attacks. If a #yCool enemy becomes #yHot, remove all #yCool, and apply #yThermal #yShock, and it loses triple its #yCool amount in HP."
   },
   "CORPOREAL": {
     "PROPER_NAME": "Corporeal",
@@ -42,7 +42,7 @@
       "heat",
       "hot"
     ],
-    "DESCRIPTION": "A #yHot enemy takes 30% increased damage from Attacks. If a #yHot enemy becomes #yCool, remove it, it loses triple its #yHot amount in HP, and apply #yThermal #yShock for 1 turn."
+    "DESCRIPTION": "A #yHot enemy takes 30% increased damage from Attacks. If a #yHot enemy becomes #yCool, remove all #yHot, and apply #yThermal #yShock, and it loses triple its #yHot amount in HP."
   },
   "MUTABLE": {
     "PROPER_NAME": "Mutable",
@@ -85,6 +85,6 @@
       "thermal shock",
       "thermal_shock"
     ],
-    "DESCRIPTION": "A Shocked enemy counts as both #yHot and #yCool. Applying any #yCold or #yHeat to this enemy will instead increase this duration by 1 turn."
+    "DESCRIPTION": "Whenever #yHeat or #yCold is triggered on a shocked enemy, the enemy loses HP equal to the shocked amount."
   }
 }

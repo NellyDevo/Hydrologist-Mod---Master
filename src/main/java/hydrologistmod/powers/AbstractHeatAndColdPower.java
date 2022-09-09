@@ -19,12 +19,17 @@ public abstract class AbstractHeatAndColdPower extends AbstractPower implements 
 
     public void dealDamage() {
         flash();
-        addToTop(new DamageAction(owner, new DamageInfo(source, amount * damageMultiplier(), DamageInfo.DamageType.HP_LOSS)));
+        addToTop(new DamageAction(owner, new DamageInfo(source, getHealthBarAmount(), DamageInfo.DamageType.HP_LOSS)));
     }
 
     @Override
     public int getHealthBarAmount() {
-        return amount * damageMultiplier();
+        int extra = 0;
+        AbstractPower shock = owner.getPower(ThermalShockPower.POWER_ID);
+        if (shock != null) {
+            extra = shock.amount;
+        }
+        return (amount * damageMultiplier()) + extra;
     }
 
     @Override

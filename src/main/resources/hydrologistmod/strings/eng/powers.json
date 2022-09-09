@@ -26,7 +26,7 @@
       "% less damage for #b",
       " turn.",
       " turns.",
-      " If #yHeat would be applied, this monster instead suffers from #yThermal #yShock and loses #b",
+      " When #yHeat is applied, this is removed and this monster suffers from #yThermal #yShock, losing #b",
       " HP."
     ]
   },
@@ -61,7 +61,7 @@
       "% more damage from #yAttacks for #b",
       " turn.",
       " turns.",
-      " If #yCold would be applied, this monster instead suffers from #yThermal #yShock and loses #b",
+      " When #yCold is applied, this is removed and this monster suffers from #yThermal #yShock, losing #b",
       " HP."
     ]
   },
@@ -111,9 +111,8 @@
   "hydrologistmod:ThermalShockPower": {
     "NAME": "Thermal Shock",
     "DESCRIPTIONS": [
-      "Receive #b",
-      "% more damage from and deal #b",
-      "% less damage with #yAttacks this turn. If #yHeat or #yCold would be applied, increase the duration of this effect by 1 instead."
+      "Any future triggers of #yHeat or #yCold cause this monster to lose #b",
+      " additional HP."
     ]
   }
 }

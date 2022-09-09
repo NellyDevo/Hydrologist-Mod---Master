@@ -54,17 +54,6 @@ public class ThermalShockPower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
-    public void onInitialApplication() {
-        if (owner.hasPower(ColdPower.POWER_ID)) {
-            addToTop(new RemoveSpecificPowerAction(owner, source, ColdPower.POWER_ID));
-            ((AbstractHeatAndColdPower)owner.getPower(ColdPower.POWER_ID)).dealDamage();
-        } else if (owner.hasPower(HeatPower.POWER_ID)) {
-            addToTop(new RemoveSpecificPowerAction(owner, source, HeatPower.POWER_ID));
-            ((AbstractHeatAndColdPower)owner.getPower(HeatPower.POWER_ID)).dealDamage();
-        }
-    }
-
-    @Override
     public void atEndOfRound() {
         addToBot(new ReducePowerAction(owner, owner, this, 1));
     }
