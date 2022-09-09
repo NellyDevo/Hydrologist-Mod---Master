@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class DynamicDynamicVariableManager {
-    public static HashMap<String, DynamicDynamicVariable> variableDatabase;
+    public static HashMap<String, DynamicDynamicVariable> variableDatabase = new HashMap<>();
 
     public static void clearVariables() {
         for (String id : variableDatabase.keySet()) {
