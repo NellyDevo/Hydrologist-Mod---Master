@@ -38,7 +38,7 @@ import hydrologistmod.cards.AbstractHydrologistCard;
 import hydrologistmod.character.HydrologistCharacter;
 import hydrologistmod.events.KnowledgeSeeker;
 import hydrologistmod.export.CardExporter;
-import hydrologistmod.helpers.DynamicDynamicVariableManager;
+import hydrologistmod.dynamicdynamicvariable.DynamicDynamicVariableManager;
 import hydrologistmod.interfaces.CorporealRelevantObject;
 import hydrologistmod.interfaces.SwappableCard;
 import hydrologistmod.patches.HydrologistEnum;
@@ -138,7 +138,6 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     @Override
     public void receiveEditCards() {
-        BaseMod.addDynamicVariable(new DynamicDynamicVariableManager());
         BaseMod.addDynamicVariable(new AbstractAdaptiveCard.AdaptiveVariable());
         new AutoAdd("HydrologistMod")
                 .packageFilter(AbstractHydrologistCard.class)

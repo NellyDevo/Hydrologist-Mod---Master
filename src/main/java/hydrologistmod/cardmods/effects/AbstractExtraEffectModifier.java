@@ -2,7 +2,6 @@ package hydrologistmod.cardmods.effects;
 
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,7 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hydrologistmod.helpers.DynamicDynamicVariableManager;
+import hydrologistmod.dynamicdynamicvariable.DynamicDynamicVariableManager;
 
 @AbstractCardModifier.SaveIgnore
 public abstract class AbstractExtraEffectModifier extends AbstractCardModifier {
