@@ -36,7 +36,6 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hydrologistmod.cards.AbstractAdaptiveCard;
 import hydrologistmod.cards.AbstractHydrologistCard;
 import hydrologistmod.character.HydrologistCharacter;
-import hydrologistmod.credits.CreditsHelper;
 import hydrologistmod.events.KnowledgeSeeker;
 import hydrologistmod.export.CardExporter;
 import hydrologistmod.helpers.DynamicDynamicVariableManager;
@@ -323,7 +322,6 @@ public class HydrologistMod implements AddAudioSubscriber, EditCardsSubscriber, 
 
     @Override
     public void receiveEditStrings() {
-        CreditsHelper.initialize();
 
         addStrings("eng");
         String lang = Settings.language.toString().toLowerCase();
