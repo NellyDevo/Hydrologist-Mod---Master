@@ -54,7 +54,7 @@
   },
   "hydrologistmod:BranchingCreeks": {
     "NAME": "Branching Creeks",
-    "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, choose between !M! additional cards.",
+    "DESCRIPTION": "Whenever you hydrologistmod:Transmute a card, increase the number of result choices by !M!.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:Cascade": {
@@ -74,7 +74,7 @@
   },
   "hydrologistmod:CrystalLattice": {
     "NAME": "Crystal Lattice",
-    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand. Add !M! additional copies of the new card to your hand. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage. NL hydrologistmod:Transmute a card in your hand. Add !M! copies of the new card to your hand. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:CrystalSpear": {
@@ -84,7 +84,7 @@
   },
   "hydrologistmod:Debilitate": {
     "NAME": "Debilitate",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Apply !M! hydrologistmod:Thermal_Shock to ALL enemies. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage and Apply !M! hydrologistmod:Thermal_Shock to ALL enemies. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:DeepFreeze": {
@@ -144,7 +144,7 @@
   },
   "hydrologistmod:FlowingCurrents": {
     "NAME": "Flowing Currents",
-    "DESCRIPTION": "hydrologistmod:Flow. NL When hydrologistmod:Swapped, you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
+    "DESCRIPTION": "hydrologistmod:Flow. NL You can only hydrologistmod:Swap this card once per turn. NL hydrologistmod:Swappable.",
     "UPGRADE_DESCRIPTION": "Draw a card, then hydrologistmod:Flow. NL When hydrologistmod:Swapped, you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
     "EXTENDED_DESCRIPTION": [
       "This card can't be swapped again this turn!"
@@ -157,7 +157,7 @@
   },
   "hydrologistmod:FreezeDry": {
     "NAME": "Freeze Dry",
-    "DESCRIPTION": "Add !M! copies of *Razor *Ice to your hand.",
+    "DESCRIPTION": "Add !M! *Razor *Ice to your hand.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:FrostWhip": {
@@ -208,12 +208,12 @@
   },
   "hydrologistmod:HeatAndPressure": {
     "NAME": "Heat and Pressure",
-    "DESCRIPTION": "Double the enemy's hydrologistmod:Heat amount. NL Exhaust. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Triple the enemy's hydrologistmod:Heat amount. NL Exhaust. NL hydrologistmod:Swappable."
+    "DESCRIPTION": "Double the enemy's hydrologistmod:Heat. NL Exhaust. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Triple the enemy's hydrologistmod:Heat. NL Exhaust. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:HeatBlast": {
     "NAME": "Heat Blast",
-    "DESCRIPTION": "Deal !D! damage. NL Permanently gain damage equal to the enemy's hydrologistmod:Heat amount. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage. NL Permanently gain damage equal to the enemy's hydrologistmod:Heat. NL Exhaust.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:HighPressure": {
@@ -293,7 +293,7 @@
   },
   "hydrologistmod:PressureBuildup": {
     "NAME": "Pressure Buildup",
-    "DESCRIPTION": "Every 5th hydrologistmod:Corporeal card you play, deal !M! damage to ALL enemies.",
+    "DESCRIPTION": "Every time you play 5th hydrologistmod:Corporeal cards, deal !M! damage to ALL enemies.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:PressureCycle": {
@@ -362,8 +362,8 @@
   },
   "hydrologistmod:Ripcurrent": {
     "NAME": "Ripcurrent",
-    "DESCRIPTION": "Double the enemy's hydrologistmod:Cold amount. NL Exhaust. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Triple the enemy's hydrologistmod:Cold amount. NL Exhaust. NL hydrologistmod:Swappable."
+    "DESCRIPTION": "Double the enemy's hydrologistmod:Cold. NL Exhaust. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Triple the enemy's hydrologistmod:Cold. NL Exhaust. NL hydrologistmod:Swappable."
   },
   "hydrologistmod:RiverOfTime": {
     "NAME": "River Of Time",
@@ -442,7 +442,7 @@
   },
   "hydrologistmod:SteadyTide": {
     "NAME": "Steady Tide",
-    "DESCRIPTION": "hydrologistmod:Flow. NL Next turn, draw an additional extra card for each card discarded this way.",
+    "DESCRIPTION": "hydrologistmod:Flow. NL Next turn, draw an additional card for each card discarded this way.",
     "UPGRADE_DESCRIPTION": ""
   },
   "hydrologistmod:SteamEngine": {
