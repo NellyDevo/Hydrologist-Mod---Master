@@ -15,6 +15,7 @@ import javassist.expr.MethodCall;
 import java.util.TreeMap;
 
 public class GetSwappableHotkeyPatch {
+    private static final String keyKey = "[hydrologistmod:swap_key]";
 
     @SpirePatch(
             clz = TipHelper.class,
@@ -50,12 +51,9 @@ public class GetSwappableHotkeyPatch {
 
     public static String getKeywordString(Object s) {
         String body = GameDictionary.keywords.get(s);
-        if (s.equals(BaseMod.getKeywordPrefix(AbstractHydrologistCard.swappable.toLowerCase()) + BaseMod.getKeywordUnique(AbstractHydrologistCard.swappable.toLowerCase()))) {
+        if (body.contains(keyKey)) {
             String addon = SwapperInputActionSet.swapCard.getKeyString();
-            if (addon.isEmpty()) {
-                addon = Input.Keys.toString(62);
-            }
-            body += addon + ".";
+            body = body.replace(keyKey, addon);
         }
         return body;
     }

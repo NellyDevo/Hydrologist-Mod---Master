@@ -69,7 +69,7 @@
       "pair",
       "paired"
     ],
-    "DESCRIPTION": "A Swappable card is #yPaired with another card and, while selected, can be freely #ySwapped between the two by pressing #b"
+    "DESCRIPTION": "A Swappable card is #yPaired with another card and, while selected, can be freely #ySwapped between the two by pressing #b[hydrologistmod:swap_key]."
   },
   "TRANSMUTE": {
     "PROPER_NAME": "Transmute",
