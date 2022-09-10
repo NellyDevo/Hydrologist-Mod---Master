@@ -145,7 +145,7 @@
   "hydrologistmod:FlowingCurrents": {
     "NAME": "Flowing Currents",
     "DESCRIPTION": "hydrologistmod:Flow. NL You can only hydrologistmod:Swap this card once per turn. NL hydrologistmod:Swappable.",
-    "UPGRADE_DESCRIPTION": "Draw a card, then hydrologistmod:Flow. NL When hydrologistmod:Swapped, you cannot swap away from this card again this turn. NL hydrologistmod:Swappable.",
+    "UPGRADE_DESCRIPTION": "Draw a card, then hydrologistmod:Flow. NL You can only hydrologistmod:Swap this card once per turn. NL hydrologistmod:Swappable.",
     "EXTENDED_DESCRIPTION": [
       "This card can't be swapped again this turn!"
     ]
