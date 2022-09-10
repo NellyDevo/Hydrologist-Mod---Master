@@ -111,7 +111,7 @@
   "hydrologistmod:ThermalShockPower": {
     "NAME": "Thermal Shock",
     "DESCRIPTIONS": [
-      "Any future triggers of #yHeat or #yCold cause this monster to lose #b",
+      "Whenever #yHeat or #yCold cause this monster to lose HP, it loses #b",
       " additional HP."
     ]
   }

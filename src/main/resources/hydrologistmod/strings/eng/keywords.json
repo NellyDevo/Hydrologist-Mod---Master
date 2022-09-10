@@ -85,6 +85,6 @@
       "thermal shock",
       "thermal_shock"
     ],
-    "DESCRIPTION": "Whenever #yHeat or #yCold is triggered on a shocked enemy, the enemy loses HP equal to the shocked amount."
+    "DESCRIPTION": "Whenever #yHeat or #yCold hurts a shocked enemy, the enemy loses extra HP equal to the shocked amount."
   }
 }
