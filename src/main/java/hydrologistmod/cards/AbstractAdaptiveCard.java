@@ -126,7 +126,7 @@ public abstract class AbstractAdaptiveCard extends AbstractHydrologistCard {
             case WATER:
                 int tmp = baseBlock;
                 baseAdaptiveNumber = baseAdaptiveBlockNumber;
-                baseBlock = baseAdaptiveNumber * 2;
+                baseBlock = baseAdaptiveNumber;
                 super.calculateCardDamage(mo);
                 baseBlock = tmp;
                 adaptiveNumber = block;
